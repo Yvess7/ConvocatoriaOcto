@@ -1,12 +1,19 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('RoboticaAlEstiloJalisco');
+  readonly isMenuOpen = signal(false);
+
+  toggleMenu(): void {
+    this.isMenuOpen.update((open) => !open);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen.set(false);
+  }
 }
