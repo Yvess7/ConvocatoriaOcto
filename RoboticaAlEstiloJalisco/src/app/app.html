@@ -4,7 +4,7 @@
     <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
       <!-- Logo / Inicio -->
       <a
-        href="#"
+        routerLink="/"
         (click)="closeMenu()"
         class="flex items-center text-ink transition-opacity hover:opacity-90"
         aria-label="Inicio"
@@ -16,27 +16,99 @@
 
       <!-- Navegación de escritorio (derecha) -->
       <div class="hidden md:flex items-center gap-8">
-        <a
-          href="#torneos"
-          class="text-base text-ink hover:text-brand-orange transition-colors font-normal"
-        >
-          Torneos
-        </a>
-        <a
-          href="#documentacion"
-          class="text-base text-ink hover:text-brand-orange transition-colors font-normal"
-        >
-          Documentación
-        </a>
-        <a
-          href="#videos"
-          class="text-base text-ink hover:text-brand-orange transition-colors font-normal"
-        >
-          Videos
-        </a>
+        <!-- Torneos con Menú Desplegable Centrado -->
+        <div class="relative group">
+          <a
+            routerLink="/torneos"
+            class="text-lg text-ink group-hover:text-brand-orange transition-colors font-normal py-7 inline-flex items-center"
+          >
+            Torneos
+          </a>
+          <!-- Panel Desplegable Centrado -->
+          <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-64 opacity-0 -translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-50">
+            <div class="bg-white rounded-md shadow-xl border border-gray-100 p-2 space-y-1">
+              <a routerLink="/torneos" [fragment]="'mbot'" class="block px-4 py-2.5 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">mBot</span>
+              </a>
+              <a routerLink="/torneos" [fragment]="'octostudio'" class="block px-4 py-2.5 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">OctoStudio</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentación con Menú Desplegable Centrado -->
+        <div class="relative group">
+          <a
+            routerLink="/documentacion"
+            class="text-lg text-ink group-hover:text-brand-orange transition-colors font-normal py-7 inline-flex items-center"
+          >
+            Documentación
+          </a>
+          <!-- Panel Desplegable Centrado (Lista limpia y ordenada) -->
+          <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-64 opacity-0 -translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-50">
+            <div class="bg-white rounded-md shadow-xl border border-gray-100 p-2 space-y-1 max-h-96 overflow-y-auto">
+              <a routerLink="/documentacion" [fragment]="'registro'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Registro</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'reglamento'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Reglamento</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'premios'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Premios</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'codigo-conducta'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Código de Conducta</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'convocatoria'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Convocatoria</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'uso-de-imagen'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Uso de Imagen</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'aviso-de-privacidad'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Aviso de Privacidad</span>
+              </a>
+              <a routerLink="/documentacion" [fragment]="'anexos'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Anexos</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Videos con Menú Desplegable Centrado -->
+        <div class="relative group">
+          <a
+            routerLink="/videos"
+            class="text-lg text-ink group-hover:text-brand-orange transition-colors font-normal py-7 inline-flex items-center"
+          >
+            Videos
+          </a>
+          <!-- Panel Desplegable Centrado -->
+          <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-64 opacity-0 -translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-50">
+            <div class="bg-white rounded-md shadow-xl border border-gray-100 p-2 space-y-1">
+              <a routerLink="/videos" [fragment]="'webinars'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Webinars</span>
+              </a>
+              <a routerLink="/videos" [fragment]="'shorts'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Shorts</span>
+              </a>
+              <a routerLink="/videos" [fragment]="'en-vivo'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">En Vivo</span>
+              </a>
+              <a routerLink="/videos" [fragment]="'seccion-videos'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Videos</span>
+              </a>
+              <a routerLink="/videos" [fragment]="'galeria'" class="block px-4 py-2 rounded-md hover:bg-orange-50/60 transition-colors">
+                <span class="block text-base text-ink hover:text-brand-orange transition-colors font-normal">Galería</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <a
           href="#contacto"
-          class="px-5 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal shadow-xs inline-flex items-center justify-center"
+          class="px-6 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal text-base shadow-xs inline-flex items-center justify-center"
         >
           Contacto
         </a>
@@ -70,28 +142,46 @@
 
   <!-- Menú desplegable para móviles -->
   @if (isMenuOpen()) {
-    <div class="md:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-3">
-      <a
-        href="#torneos"
-        (click)="closeMenu()"
-        class="block px-3 py-2 rounded-lg text-base text-ink hover:bg-orange-50 hover:text-brand-orange transition-colors font-normal"
-      >
-        Torneos
-      </a>
-      <a
-        href="#documentacion"
-        (click)="closeMenu()"
-        class="block px-3 py-2 rounded-lg text-base text-ink hover:bg-orange-50 hover:text-brand-orange transition-colors font-normal"
-      >
-        Documentación
-      </a>
-      <a
-        href="#videos"
-        (click)="closeMenu()"
-        class="block px-3 py-2 rounded-lg text-base text-ink hover:bg-orange-50 hover:text-brand-orange transition-colors font-normal"
-      >
-        Videos
-      </a>
+    <div class="md:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-4 max-h-[80vh] overflow-y-auto">
+      <div>
+        <a routerLink="/torneos" (click)="closeMenu()" class="block text-xs uppercase tracking-wider text-brand-orange font-normal px-2 mb-1">
+          Torneos
+        </a>
+        <div class="space-y-1 pl-2">
+          <a routerLink="/torneos" [fragment]="'mbot'" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-normal">mBot</a>
+          <a routerLink="/torneos" [fragment]="'octostudio'" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-normal">OctoStudio</a>
+        </div>
+      </div>
+
+      <div>
+        <a routerLink="/documentacion" (click)="closeMenu()" class="block text-xs uppercase tracking-wider text-brand-orange font-normal px-2 mb-1">
+          Documentación
+        </a>
+        <div class="space-y-1 pl-2">
+          <a routerLink="/documentacion" [fragment]="'registro'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Registro</a>
+          <a routerLink="/documentacion" [fragment]="'reglamento'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Reglamento</a>
+          <a routerLink="/documentacion" [fragment]="'premios'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Premios</a>
+          <a routerLink="/documentacion" [fragment]="'codigo-conducta'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Código de Conducta</a>
+          <a routerLink="/documentacion" [fragment]="'convocatoria'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Convocatoria</a>
+          <a routerLink="/documentacion" [fragment]="'uso-de-imagen'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Uso de Imagen</a>
+          <a routerLink="/documentacion" [fragment]="'aviso-de-privacidad'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Aviso de Privacidad</a>
+          <a routerLink="/documentacion" [fragment]="'anexos'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Anexos</a>
+        </div>
+      </div>
+
+      <div>
+        <a routerLink="/videos" (click)="closeMenu()" class="block text-xs uppercase tracking-wider text-brand-orange font-normal px-2 mb-1">
+          Videos
+        </a>
+        <div class="space-y-1 pl-2">
+          <a routerLink="/videos" [fragment]="'webinars'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Webinars</a>
+          <a routerLink="/videos" [fragment]="'shorts'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Shorts</a>
+          <a routerLink="/videos" [fragment]="'en-vivo'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">En Vivo</a>
+          <a routerLink="/videos" [fragment]="'seccion-videos'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Videos</a>
+          <a routerLink="/videos" [fragment]="'galeria'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-normal">Galería</a>
+        </div>
+      </div>
+
       <div class="pt-2">
         <a
           href="#contacto"
@@ -105,31 +195,37 @@
   }
 </header>
 
-<!-- Contenido principal con compensación por la barra fija -->
-<main class="pt-21">
-  <!-- Banner Hero de inicio que abarca de lado a lado -->
-  <section id="inicio" class="relative w-full overflow-hidden bg-gray-900">
-    <!-- Altura responsiva definida en escala Tailwind -->
-    <div class="relative w-full h-80 sm:h-96 md:h-128 lg:h-144">
-      <!-- Imagen de fondo de lado a lado -->
-      <img
-        src="/images/hero-banner.jpg"
-        alt="Instalaciones Convocatoria Robótica al Estilo Jalisco"
-        class="w-full h-full object-cover object-center select-none"
-      />
+<!-- Salida de Router para cada página independiente -->
+<main class="pt-21 min-h-[calc(100vh-84px)]">
+  <router-outlet></router-outlet>
 
-      <!-- Filtro naranja transparente sobre la imagen -->
-      <div class="absolute inset-0 bg-brand-orange/35 mix-blend-multiply pointer-events-none"></div>
-      <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
-    </div>
-  </section>
+  <!-- Sección Contacto compartida en la base del sitio -->
+  <section id="contacto" class="border-t border-gray-200 bg-gray-50/50 py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-sm text-brand-orange uppercase tracking-wider font-normal">Atención y Dudas</span>
+      <h2 class="text-3xl sm:text-4xl text-ink font-normal tracking-tight mt-1">Contacto</h2>
+      <p class="text-base text-ink/80 mt-3 font-normal leading-relaxed">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+      </p>
 
-  <!-- Secciones adicionales de la landing (Torneos, Documentación, Videos, Contacto) -->
-  <section id="torneos" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-xs text-brand-orange uppercase tracking-wider font-normal">Categorías y Competencias</span>
-      <h2 class="text-3xl text-ink font-normal tracking-tight mt-1">Torneos</h2>
-      <p class="text-base text-ink/80 mt-2 font-normal">Descubre las modalidades y desafíos preparados para esta edición.</p>
+      <div class="mt-8 p-6 bg-white rounded-md border border-gray-200 shadow-xs max-w-lg mx-auto text-left space-y-4">
+        <div>
+          <span class="text-xs uppercase text-gray-500 font-normal block">Correo electrónico</span>
+          <span class="text-base text-ink font-normal">contacto&#64;robotica.jalisco.gob.mx</span>
+        </div>
+        <div>
+          <span class="text-xs uppercase text-gray-500 font-normal block">Horario de atención</span>
+          <span class="text-base text-ink font-normal">Lunes a Viernes de 9:00 a 17:00 hrs</span>
+        </div>
+        <div class="pt-2">
+          <a
+            href="mailto:contacto@robotica.jalisco.gob.mx"
+            class="block w-full text-center px-6 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal text-base shadow-xs"
+          >
+            Enviar Mensaje
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
