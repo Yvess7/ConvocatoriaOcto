@@ -41,3 +41,13 @@ description: Reglas obligatorias de Tailwind CSS y tipografía Gareth para el pr
 - **No usar iconos ni emojis**: No agregar iconos (SVG, librerías como Material Symbols o Lucide) ni emojis en textos, botones, navegación, encabezados o tarjetas, a menos que el usuario lo solicite de manera explícita.
 - La interfaz debe priorizar la limpieza visual tipográfica y de color sin elementos iconográficos decorativos innecesarios.
 
+## 5. Composición visual, textos libres, banners rectangulares y figuras variadas
+- **Banners estrictamente rectangulares y sin figuras geométricas**: El banner principal de cada página debe mantener su forma rectangular limpia, sin cortes diagonales (`skew`), ondas ni deformaciones en sus bordes, **sin figuras geométricas decorativas sobre el banner**, e incluir siempre el título principal (`h1`) y descripción principal de la vista.
+- **Sección blanca siempre debajo del banner**: La primera sección inmediatamente debajo del banner de cada vista debe tener fondo blanco (`bg-white`).
+- **Textos libres (evitar diseño encajonado)**: No encerrar los textos y botones de cada sección dentro de cajas o tarjetas cuadradas innecesarias. Dejar que los párrafos, títulos y destaques editoriales (`border-l-2` / `border-l-4`) respiren libremente sobre el lienzo de color de la sección.
+- **Alternancia Izquierda/Derecha sin colisión de textos**:
+  - Alternar la posición del título y el contenido entre secciones consecutivas (`Izquierda/Derecha` y `Derecha/Izquierda`).
+  - Usar grillas equilibradas (`md:grid-cols-12` con `md:col-span-6` + `md:col-span-6` y `gap-12 lg:gap-20`) y tamaños de encabezado simétricos (`text-4xl sm:text-5xl lg:text-6xl`) para que palabras largas como `Documentación` o `Convocatoria` nunca invadan ni se encimen sobre la columna contigua.
+- **Variedad de figuras geométricas en movimiento**: En los fondos dinámicos, utilizar figuras geométricas variadas más allá de simples cuadrados (`shape-hexagon`, `shape-triangle`, `shape-diamond`, `shape-octagon`, `shape-parallelogram`, `shape-cross`, `bg-tech-dots`), animadas únicamente con propiedades aceleradas por GPU (`transform` y `opacity`).
+
+

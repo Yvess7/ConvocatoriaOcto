@@ -1,20 +1,20 @@
-<!-- Banner de Videos con filtro ROJO y texto principal -->
-<section class="relative w-full overflow-hidden bg-gray-900">
-  <div class="relative w-full h-80 sm:h-96 md:h-128 lg:h-144 overflow-hidden">
+<!-- Banner de Videos rectangular con filtro propio (Contraste Ink + Naranja) y texto principal -->
+<section class="relative w-full overflow-hidden bg-ink">
+  <div class="relative w-full h-88 sm:h-104 md:h-128 lg:h-144 overflow-hidden">
     <img
       src="/images/hero-banner.jpg"
       alt="Banner Videos Robótica al Estilo Jalisco"
       class="w-full h-full object-cover object-center select-none animate-zoom"
     />
-    <!-- Filtro rojo transparente obligatorio para secciones no-home -->
-    <div class="absolute inset-0 bg-brand-red/35 mix-blend-multiply pointer-events-none"></div>
-    <div class="absolute inset-0 bg-brand-red/25 pointer-events-none"></div>
+    <!-- Filtro distintivo para la sección de Videos -->
+    <div class="absolute inset-0 bg-ink/60 mix-blend-multiply pointer-events-none"></div>
+    <div class="absolute inset-0 bg-brand-orange/30 pointer-events-none"></div>
     <!-- Texto principal sobre el banner -->
     <div class="parallax-img absolute inset-0 flex items-center">
-      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <span class="inline-block px-3 py-1 rounded-md bg-brand-orange text-white text-sm uppercase tracking-wider animate-rise">Contenido Multimedia</span>
-        <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 animate-rise [animation-delay:150ms]">Videos</h1>
-        <p class="max-w-2xl text-base sm:text-xl text-white mt-4 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal animate-rise">Contenido Multimedia</span>
+        <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">Videos</h1>
+        <p class="max-w-2xl text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, sapien a efficitur pellentesque, justo purus dapibus eros, at sollicitudin quam ligula eu sapien.
         </p>
       </div>
@@ -22,117 +22,134 @@
   </div>
 </section>
 
-<!-- 1. Webinars (Sección blanca debajo del banner) -->
-<section id="webinars" class="relative bg-white overflow-hidden">
-  <div class="absolute right-0 top-0 w-48 h-48 rounded-lg bg-brand-red/10 animate-float-slow [--r:-12deg]" aria-hidden="true"></div>
-  <div class="absolute left-1/3 bottom-8 w-20 h-20 rounded-lg bg-brand-orange/25 animate-float [--r:25deg]" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-    <div class="reveal-left">
-      <span class="text-xs uppercase tracking-wider text-brand-red block mb-2">Capacitación</span>
-      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-ink font-normal tracking-tight">Webinars</h2>
-    </div>
-    <div class="reveal">
-      <div class="w-full h-48 rounded-lg bg-orange-50 mb-6 flex items-center justify-center hover:bg-orange-100 transition-colors duration-300">
-        <span class="text-sm text-brand-orange">Reproductor Webinars</span>
-      </div>
-      <p class="text-lg text-ink/80 font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-      </p>
-      <button type="button" class="mt-8 px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-        Ver Sesiones Grabadas
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- 2. Shorts -->
-<section id="shorts" class="relative bg-brand-orange overflow-hidden">
-  <div class="absolute -left-10 top-10 w-40 h-40 rounded-lg bg-white/15 animate-spin-slow" aria-hidden="true"></div>
-  <div class="absolute right-10 bottom-10 w-24 h-24 rounded-lg bg-brand-red/40 animate-float [--r:15deg]" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-    <div class="reveal-left">
-      <span class="text-xs uppercase tracking-wider text-white block mb-2">Cápsulas Rápidas</span>
-      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight">Shorts</h2>
-    </div>
-    <div class="reveal">
-      <div class="w-full h-48 rounded-lg bg-white/15 mb-6 flex items-center justify-center hover:bg-white/25 transition-colors duration-300">
-        <span class="text-sm text-white">Reproductor Shorts</span>
-      </div>
-      <p class="text-lg text-white font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-      </p>
-      <button type="button" class="mt-8 px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-        Ver Lista de Shorts
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- 3. En Vivo -->
+<!-- 1. En Vivo (Prioridad principal: Sección blanca debajo del banner · Título Izquierda / Contenido Libre Derecha) -->
 <section id="en-vivo" class="relative bg-white overflow-hidden">
-  <div class="absolute -left-8 top-8 w-36 h-36 rounded-lg bg-brand-orange/20 animate-spin-slow" aria-hidden="true"></div>
-  <div class="absolute right-16 bottom-8 w-20 h-20 rounded-lg bg-brand-red/20 animate-float [--r:18deg]" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-    <div class="reveal-left">
-      <span class="text-xs uppercase tracking-wider text-brand-red block mb-2">Transmisión Oficial</span>
-      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-ink font-normal tracking-tight">En Vivo</h2>
+  <div class="absolute right-8 top-8 w-48 h-48 bg-brand-red/10 shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-1/3 bottom-8 w-28 h-28 bg-brand-orange/15 shape-triangle animate-float [--r:25deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-12 top-10 w-36 h-24 text-brand-red/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 reveal-left">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4 animate-pop">Prioridad · Transmisión Oficial</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">En Vivo</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red"></div>
     </div>
-    <div class="reveal">
-      <div class="w-full h-48 rounded-lg bg-orange-50 mb-6 flex items-center justify-center animate-pop">
-        <span class="text-sm text-brand-orange">Transmisión en Directo</span>
+    <div class="md:col-span-6 reveal-right delay-150 space-y-6">
+      <div class="apple-zoom delay-200 w-full h-56 rounded-lg bg-red-50/70 border border-brand-red/20 flex items-center justify-center hover:scale-[1.02] transition-all duration-500">
+        <span class="text-sm text-brand-red uppercase tracking-widest font-normal animate-pop">Transmisión en Directo</span>
       </div>
-      <p class="text-lg text-ink/80 font-normal leading-relaxed">
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
       </p>
-      <button type="button" class="mt-8 px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-        Ir a Transmisión en Vivo
-      </button>
+      <div class="pt-2">
+        <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          Ir a Transmisión en Vivo
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 4. Videos -->
-<section id="seccion-videos" class="relative bg-brand-red overflow-hidden">
-  <div class="absolute left-1/4 -top-8 w-32 h-32 rounded-lg bg-white/15 animate-float [--r:10deg]" aria-hidden="true"></div>
-  <div class="absolute -right-12 bottom-0 w-56 h-56 rounded-lg bg-brand-orange/40 animate-spin-slow" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-    <div class="reveal-left">
-      <span class="text-xs uppercase tracking-wider text-white block mb-2">Material Audiovisual</span>
-      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight">Videos</h2>
-    </div>
-    <div class="reveal">
-      <div class="w-full h-48 rounded-lg bg-white/15 mb-6 flex items-center justify-center hover:bg-white/25 transition-colors duration-300">
-        <span class="text-sm text-white">Repositorio de Videos</span>
+<!-- 2. Shorts (Alternado: Contenido Libre Izquierda / Título Derecha) -->
+<section id="shorts" class="relative bg-brand-orange overflow-hidden">
+  <div class="absolute -left-10 top-12 w-44 h-44 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 bottom-10 w-32 h-32 bg-brand-red/35 shape-parallelogram animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-1/3 bottom-8 w-24 h-24 bg-white/15 shape-cross animate-float pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
+      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-white/15 flex items-center justify-center hover:bg-white/25 hover:scale-[1.02] transition-all duration-500">
+        <span class="text-sm text-white uppercase tracking-widest font-normal">Reproductor Shorts</span>
       </div>
-      <p class="text-lg text-white font-normal leading-relaxed">
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      </p>
+      <div class="pt-2">
+        <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          Ver Lista de Shorts
+        </button>
+      </div>
+    </div>
+    <div class="md:col-span-6 order-1 md:order-2 md:text-right reveal-right">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Cápsulas Rápidas</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Shorts</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-white md:ml-auto"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Webinars (Alternado: Título Izquierda / Contenido Libre Derecha) -->
+<section id="webinars" class="relative bg-white overflow-hidden">
+  <div class="absolute -left-8 top-8 w-36 h-36 bg-brand-orange/15 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-16 bottom-8 w-28 h-28 bg-brand-red/15 shape-triangle-inv animate-drift [--r:18deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 reveal-left">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Capacitación</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Webinars</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange"></div>
+    </div>
+    <div class="md:col-span-6 reveal-right delay-150 space-y-6">
+      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-orange-50/70 border border-brand-orange/20 flex items-center justify-center hover:scale-[1.02] transition-all duration-500">
+        <span class="text-sm text-brand-orange uppercase tracking-widest font-normal">Reproductor Webinars</span>
+      </div>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+      </p>
+      <div class="pt-2">
+        <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          Ver Sesiones Grabadas
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Videos (Alternado: Contenido Libre Izquierda / Título Derecha) -->
+<section id="seccion-videos" class="relative bg-brand-red overflow-hidden">
+  <div class="absolute left-1/4 top-8 w-32 h-32 bg-white/15 shape-hexagon animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -right-12 bottom-6 w-56 h-56 bg-brand-orange/40 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
+      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-white/15 flex items-center justify-center hover:bg-white/25 hover:scale-[1.02] transition-all duration-500">
+        <span class="text-sm text-white uppercase tracking-widest font-normal">Repositorio de Videos</span>
+      </div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
       </p>
-      <button type="button" class="mt-8 px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-        Explorar Videos
-      </button>
+      <div class="pt-2">
+        <button type="button" class="px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          Explorar Videos
+        </button>
+      </div>
+    </div>
+    <div class="md:col-span-6 order-1 md:order-2 md:text-right reveal-right">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Material Audiovisual</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Videos</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-white md:ml-auto"></div>
     </div>
   </div>
 </section>
 
-<!-- 5. Galería -->
+<!-- 5. Galería (Alternado: Título Izquierda / Contenido Libre Derecha) -->
 <section id="galeria" class="relative bg-white overflow-hidden">
-  <div class="absolute right-0 top-0 w-48 h-48 rounded-lg bg-brand-red/10 animate-float-slow [--r:-12deg]" aria-hidden="true"></div>
-  <div class="absolute left-1/3 bottom-8 w-20 h-20 rounded-lg bg-brand-orange/25 animate-float [--r:25deg]" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-    <div class="reveal-left">
-      <span class="text-xs uppercase tracking-wider text-brand-red block mb-2">Registro Gráfico</span>
-      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-ink font-normal tracking-tight">Galería</h2>
+  <div class="absolute right-8 top-8 w-44 h-44 bg-brand-red/10 shape-parallelogram animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-1/3 bottom-8 w-24 h-24 bg-brand-orange/20 shape-cross animate-float [--r:25deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 reveal-left">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-4">Registro Gráfico</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Galería</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red"></div>
     </div>
-    <div class="reveal">
-      <div class="w-full h-48 rounded-lg bg-orange-50 mb-6 flex items-center justify-center hover:bg-orange-100 transition-colors duration-300">
-        <span class="text-sm text-brand-orange">Galería de Imágenes</span>
+    <div class="md:col-span-6 reveal-right delay-150 space-y-6">
+      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-orange-50/70 border border-brand-orange/20 flex items-center justify-center hover:scale-[1.02] transition-all duration-500">
+        <span class="text-sm text-brand-orange uppercase tracking-widest font-normal">Galería de Imágenes</span>
       </div>
-      <p class="text-lg text-ink/80 font-normal leading-relaxed">
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla quis sem at nibh elementum imperdiet.
       </p>
-      <button type="button" class="mt-8 px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-        Ver Galería Fotográfica
-      </button>
+      <div class="pt-2">
+        <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          Ver Galería Fotográfica
+        </button>
+      </div>
     </div>
   </div>
 </section>
