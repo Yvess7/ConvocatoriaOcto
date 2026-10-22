@@ -1,65 +1,105 @@
-<!-- Banner de bienvenida de Home con filtro naranja -->
+<!-- Banner de bienvenida de Home con filtro naranja y texto principal -->
 <section class="relative w-full overflow-hidden bg-gray-900">
-  <div class="relative w-full h-80 sm:h-96 md:h-128 lg:h-144">
+  <div class="relative w-full h-80 sm:h-96 md:h-128 lg:h-144 overflow-hidden">
     <img
       src="/images/hero-banner.jpg"
       alt="Instalaciones Convocatoria Robótica al Estilo Jalisco"
-      class="w-full h-full object-cover object-center select-none"
+      class="w-full h-full object-cover object-center select-none animate-zoom"
     />
     <!-- Filtro naranja transparente sobre el banner de home -->
     <div class="absolute inset-0 bg-brand-orange/35 mix-blend-multiply pointer-events-none"></div>
     <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
+    <!-- Texto principal sobre el banner -->
+    <div class="parallax-img absolute inset-0 flex items-center">
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <span class="inline-block px-3 py-1 rounded-md bg-brand-red text-white text-sm uppercase tracking-wider animate-rise">Edición 2026</span>
+        <h1 class="text-4xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-tight animate-rise [animation-delay:150ms]">
+          Robótica al Estilo Jalisco
+        </h1>
+        <p class="max-w-2xl text-base sm:text-xl text-white mt-4 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Contenido de inicio / bienvenida -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-  <div class="max-w-3xl mb-12">
-    <span class="text-sm text-brand-orange uppercase tracking-wider font-normal">Edición 2026</span>
-    <h1 class="text-3xl sm:text-4xl text-ink font-normal tracking-tight mt-1">Robótica al Estilo Jalisco</h1>
-    <p class="text-base sm:text-lg text-ink/80 mt-3 font-normal leading-relaxed">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+<!-- Sección blanca debajo del banner: Quiénes somos -->
+<section id="quienes-somos" class="relative bg-white overflow-hidden">
+  <div class="absolute -top-10 right-10 w-32 h-32 rounded-lg bg-brand-orange/20 rotate-12 animate-float [--r:12deg]" aria-hidden="true"></div>
+  <div class="absolute bottom-6 right-1/3 w-16 h-16 rounded-lg bg-brand-red/20 animate-float-slow [--r:-20deg]" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+    <div class="reveal-left">
+      <span class="text-xs uppercase tracking-wider text-brand-orange block mb-2">Nuestra Iniciativa</span>
+      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-ink font-normal tracking-tight">Quiénes somos</h2>
+    </div>
+    <div class="reveal">
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Impulsamos el talento científico, creativo y tecnológico de niñas, niños y jóvenes en todo el estado de Jalisco.
+      </p>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-4">
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </div>
   </div>
+</section>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div class="p-8 rounded-md border border-gray-200 bg-white shadow-xs">
-      <span class="text-xs uppercase text-brand-orange font-normal block mb-2">Competencia</span>
-      <h2 class="text-2xl text-ink font-normal">Torneos</h2>
-      <p class="text-base text-ink/70 font-normal mt-3 leading-relaxed">
+<!-- Sección Torneos -->
+<section id="torneos" class="relative bg-brand-orange overflow-hidden">
+  <div class="absolute -left-10 top-10 w-40 h-40 rounded-lg bg-white/15 animate-spin-slow" aria-hidden="true"></div>
+  <div class="absolute right-10 bottom-10 w-24 h-24 rounded-lg bg-brand-red/40 animate-float [--r:15deg]" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+    <div class="reveal-left">
+      <span class="text-xs uppercase tracking-wider text-white block mb-2">Competencia</span>
+      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight">Torneos</h2>
+    </div>
+    <div class="reveal">
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Participa en las categorías oficiales de mBot y OctoStudio para estudiantes de Jalisco.
       </p>
-      <div class="mt-6">
-        <a routerLink="/torneos" class="inline-block px-5 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal text-base shadow-xs">
-          Ver Torneos
-        </a>
-      </div>
+      <a routerLink="/torneos" class="inline-block mt-8 px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+        Ver Torneos
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="p-8 rounded-md border border-gray-200 bg-white shadow-xs">
-      <span class="text-xs uppercase text-brand-red font-normal block mb-2">Requisitos</span>
-      <h2 class="text-2xl text-ink font-normal">Documentación</h2>
-      <p class="text-base text-ink/70 font-normal mt-3 leading-relaxed">
+<!-- Sección Documentación -->
+<section id="documentacion" class="relative bg-white overflow-hidden">
+  <div class="absolute right-0 top-0 w-48 h-48 rounded-lg bg-brand-red/10 -rotate-12 animate-float-slow [--r:-12deg]" aria-hidden="true"></div>
+  <div class="absolute left-1/3 bottom-8 w-20 h-20 rounded-lg bg-brand-orange/25 animate-float [--r:25deg]" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+    <div class="reveal-left">
+      <span class="text-xs uppercase tracking-wider text-brand-red block mb-2">Requisitos</span>
+      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-ink font-normal tracking-tight">Documentación</h2>
+    </div>
+    <div class="reveal">
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consulta reglamentos, formatos de registro, autorizaciones y avisos oficiales.
       </p>
-      <div class="mt-6">
-        <a routerLink="/documentacion" class="inline-block px-5 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal text-base shadow-xs">
-          Ver Documentos
-        </a>
-      </div>
+      <a routerLink="/documentacion" class="inline-block mt-8 px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+        Ver Documentos
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="p-8 rounded-md border border-gray-200 bg-white shadow-xs">
-      <span class="text-xs uppercase text-brand-orange font-normal block mb-2">Multimedia</span>
-      <h2 class="text-2xl text-ink font-normal">Videos</h2>
-      <p class="text-base text-ink/70 font-normal mt-3 leading-relaxed">
+<!-- Sección Videos -->
+<section id="videos" class="relative bg-brand-red overflow-hidden">
+  <div class="absolute left-1/4 -top-8 w-32 h-32 rounded-lg bg-white/15 animate-float [--r:10deg]" aria-hidden="true"></div>
+  <div class="absolute -right-12 bottom-0 w-56 h-56 rounded-lg bg-brand-orange/40 animate-spin-slow" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+    <div class="reveal-left">
+      <span class="text-xs uppercase tracking-wider text-white block mb-2">Multimedia</span>
+      <h2 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight">Videos</h2>
+    </div>
+    <div class="reveal">
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Revisa webinars, cápsulas cortas, transmisiones en vivo y la galería fotográfica.
       </p>
-      <div class="mt-6">
-        <a routerLink="/videos" class="inline-block px-5 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal text-base shadow-xs">
-          Ver Videos
-        </a>
-      </div>
+      <a routerLink="/videos" class="inline-block mt-8 px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+        Ver Videos
+      </a>
     </div>
   </div>
 </section>

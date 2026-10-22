@@ -1,5 +1,33 @@
 @import 'tailwindcss';
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Animaciones ligadas al scroll (si no hay soporte, simplemente no se aplican) */
+@supports (animation-timeline: view()) {
+  .scroll-progress {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+  .parallax-img {
+    animation: parallax linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 70vh;
+  }
+}
+
+@keyframes grow-x {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+
+@keyframes parallax {
+  from { transform: translateY(0); }
+  to { transform: translateY(8rem); }
+}
+
 /* Tipografía oficial Garet / Gareth (Peso Regular 400) */
 @font-face {
   font-family: 'Garet';
@@ -55,6 +83,66 @@
   --color-brand-red: #e81a4f;
   --color-brand-red-dark: #b8143d;
   --color-ink: #3a3a3a;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite reverse;
+  --animate-spin-slow: spin 24s linear infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-zoom: zoom 24s ease-in-out infinite alternate;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-pop: pop 2.4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+    50% { transform: translateY(-1.5rem) rotate(calc(var(--r, 0deg) + 8deg)); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(2rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.12); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes pop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+}
+
+/* Revelado al hacer scroll (CSS puro; si el navegador no lo soporta, el contenido se ve normal) */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  .reveal-left {
+    animation: reveal-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(3rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(-3rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* Aplicación universal y exclusiva de la fuente Gareth / Garet */
