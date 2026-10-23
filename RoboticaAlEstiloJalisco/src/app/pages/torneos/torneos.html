@@ -15,7 +15,7 @@
         <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal animate-rise">Competencias Oficiales</span>
         <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">Torneos</h1>
         <p class="max-w-2xl text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, sapien a efficitur pellentesque, justo purus dapibus eros.
+          Conoce nuestras dos grandes modalidades de competencia y elige la categoría ideal para tu equipo.
         </p>
         <div class="flex flex-wrap gap-4 mt-6 animate-rise [animation-delay:450ms]">
           <button type="button" (click)="scrollTo('mbot')" class="px-8 py-3.5 rounded-lg bg-brand-orange text-white hover:bg-white hover:text-brand-red hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
@@ -30,120 +30,127 @@
   </div>
 </section>
 
-<!-- 1. Sección blanca debajo del banner: Qué es cada categoría en general (Texto libre y fluido) -->
+<!-- 1. Sección blanca debajo del banner: Qué es cada categoría (Título + Descripción Izquierda / Foto + Botones Derecha) -->
 <section id="categorias-general" class="relative bg-white overflow-hidden">
   <div class="absolute -left-8 top-10 w-44 h-44 bg-brand-orange/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-12 bottom-10 w-36 h-36 bg-brand-red/15 shape-triangle animate-drift [--r:18deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-1/4 top-12 w-40 h-28 text-brand-orange/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <!-- Columna Izquierda: Título + Descripción -->
       <div class="md:col-span-6 reveal-left">
         <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-4">Panorama General</span>
         <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">¿Qué es cada categoría?</h2>
         <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red"></div>
-      </div>
-      <div class="md:col-span-6 reveal-right delay-150 space-y-4">
-        <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Los torneos de Robótica al Estilo Jalisco se dividen en dos grandes modalidades pensadas para desarrollar tanto habilidades de programación física con robots como creatividad computacional interactiva.
-        </p>
-        <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
-          Conoce en qué consiste cada una de las dos categorías oficiales antes de explorar sus detalles y convocatorias específicas.
+        <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
+          Los torneos de Robótica al Estilo Jalisco se dividen en dos modalidades: robótica móvil autónoma en pista con mBot y creatividad digital interactiva con OctoStudio.
         </p>
       </div>
-    </div>
 
-    <!-- Comparativa libre con acentos laterales en lugar de cajas cuadradas -->
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 pt-8 border-t border-gray-100">
-      <div class="apple-zoom delay-100 border-l-4 border-brand-orange pl-6 sm:pl-8 space-y-3">
-        <span class="inline-block px-3 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal">Robótica Física</span>
-        <h3 class="text-3xl sm:text-4xl text-ink font-normal">¿Qué es mBot?</h3>
-        <p class="text-lg text-ink/80 leading-relaxed font-normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Es la modalidad enfocada en robótica móvil y programación por bloques, donde los equipos diseñan estrategias para superar circuitos, pistas de destreza y retos físicos autónomos.
-        </p>
-      </div>
-      <div class="apple-zoom delay-200 border-l-4 border-brand-red pl-6 sm:pl-8 space-y-3">
-        <span class="inline-block px-3 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal">Creatividad Digital</span>
-        <h3 class="text-3xl sm:text-4xl text-ink font-normal">¿Qué es OctoStudio?</h3>
-        <p class="text-lg text-ink/80 leading-relaxed font-normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Es la modalidad de creatividad digital y programación móvil donde las y los estudiantes crean proyectos interactivos, animaciones e historias utilizando sensores, sonidos y movimiento.
-        </p>
+      <!-- Columna Derecha: Espacio visual + Botones para ir a cada categoría -->
+      <div class="md:col-span-6 reveal-right delay-150 space-y-6">
+        <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+          <img
+            src="/images/hero-banner.jpg"
+            alt="Categorías Oficiales mBot y OctoStudio"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <button
+            type="button"
+            (click)="scrollTo('mbot')"
+            class="px-7 py-3.5 rounded-lg bg-brand-orange text-white hover:bg-brand-red hover:-translate-y-1 transition-all duration-300 font-normal text-base sm:text-lg"
+          >
+            Revisar mBot
+          </button>
+          <button
+            type="button"
+            (click)="scrollTo('octostudio')"
+            class="px-7 py-3.5 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 transition-all duration-300 font-normal text-base sm:text-lg"
+          >
+            Revisar OctoStudio
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2. mBot (Alternado: Texto Libre Izquierda / Título Derecha) -->
-<section id="mbot" class="relative bg-brand-orange overflow-hidden">
-  <div class="absolute -left-10 top-14 w-48 h-48 bg-white/15 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-1/3 top-10 w-28 h-28 bg-white/15 shape-cross animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-10 bottom-10 w-36 h-36 bg-brand-red/35 shape-parallelogram animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+<!-- 2. mBot (Alternado: Foto + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
+<section id="mbot" class="relative z-20 -mb-14 bg-brand-orange overflow-hidden section-triangle-both">
+  <div class="absolute -left-10 top-20 w-48 h-48 bg-white/15 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 bottom-20 w-36 h-36 bg-brand-red/35 shape-parallelogram animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <!-- Columna Izquierda: Foto/Preview + Botón -->
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      </p>
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-2">
-        <div class="apple-zoom delay-100 border-l-2 border-white pl-5">
-          <dt class="text-xs uppercase tracking-widest text-white/80 font-normal">Nivel Educativo</dt>
-          <dd class="text-xl text-white font-normal mt-1">Primaria y Secundaria</dd>
-        </div>
-        <div class="apple-zoom delay-200 border-l-2 border-white pl-5">
-          <dt class="text-xs uppercase tracking-widest text-white/80 font-normal">Modalidad de Evaluación</dt>
-          <dd class="text-xl text-white font-normal mt-1">Pistas de destreza y retos en vivo</dd>
-        </div>
-      </dl>
-      <div class="pt-4">
-        <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-          Ver Convocatoria mBot
-        </button>
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
+        <img
+          src="/images/hero-banner.jpg"
+          alt="Categoría mBot Robótica Física"
+          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+        />
+        <div class="absolute inset-0 bg-brand-red/20 pointer-events-none"></div>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <a
+          routerLink="/documentacion"
+          [fragment]="'registro'"
+          class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        >
+          Inscribirse a mBot
+        </a>
       </div>
     </div>
+
+    <!-- Columna Derecha: Título + Descripción -->
     <div class="md:col-span-6 order-1 md:order-2 md:text-right reveal-right">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Categoría</span>
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Robótica Física</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">mBot</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-white md:ml-auto"></div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
+        Modalidad enfocada en robótica móvil y programación por bloques donde los equipos de primaria y secundaria superan circuitos, pistas de destreza y retos autónomos en vivo.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- 3. OctoStudio (Alternado: Título Izquierda / Texto Libre Derecha) -->
-<section id="octostudio" class="relative bg-brand-red overflow-hidden">
-  <div class="absolute left-1/4 top-10 w-36 h-36 bg-white/15 shape-diamond animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -right-12 bottom-6 w-56 h-56 bg-brand-orange/40 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-12 bottom-10 w-28 h-28 bg-white/15 shape-triangle animate-float-slow pointer-events-none" aria-hidden="true"></div>
+<!-- 3. OctoStudio (Alternado: Título + Descripción Izquierda / Foto + Botón Derecha · Cierra en triángulo inferior) -->
+<section id="octostudio" class="relative z-10 -mb-14 bg-brand-red overflow-hidden section-triangle-bottom">
+  <div class="absolute left-1/4 top-20 w-36 h-36 bg-white/15 shape-diamond animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -right-12 bottom-20 w-56 h-56 bg-brand-orange/40 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-32 sm:pt-44 sm:pb-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <!-- Columna Izquierda: Título + Descripción -->
     <div class="md:col-span-6 reveal-left">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Categoría</span>
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Creatividad Digital</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">OctoStudio</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-white"></div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
+        Modalidad de programación móvil creativa donde estudiantes de educación básica y media superior crean historias interactivas, animaciones y proyectos utilizando sensores, sonidos y movimiento.
+      </p>
     </div>
+
+    <!-- Columna Derecha: Foto/Preview + Botón -->
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit vel arcu ultrices gravida. Integer eu libero eu nunc malesuada imperdiet. Suspendisse potenti. Pellentesque habitant morbi tristique senectus.
-      </p>
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
-        Aenean scelerisque semper orci, vitae facilisis ligula fermentum et. Curabitur sed arcu et tellus consequat auctor.
-      </p>
-      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-2">
-        <div class="apple-zoom delay-100 border-l-2 border-white pl-5">
-          <dt class="text-xs uppercase tracking-widest text-white/80 font-normal">Nivel Educativo</dt>
-          <dd class="text-xl text-white font-normal mt-1">Básica y Media Superior</dd>
-        </div>
-        <div class="apple-zoom delay-200 border-l-2 border-white pl-5">
-          <dt class="text-xs uppercase tracking-widest text-white/80 font-normal">Modalidad de Evaluación</dt>
-          <dd class="text-xl text-white font-normal mt-1">Historias interactivas y sensores</dd>
-        </div>
-      </dl>
-      <div class="pt-4">
-        <button type="button" class="px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-          Ver Convocatoria OctoStudio
-        </button>
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
+        <img
+          src="/images/hero-banner.jpg"
+          alt="Categoría OctoStudio Creatividad Digital"
+          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+        />
+        <div class="absolute inset-0 bg-brand-orange/25 pointer-events-none"></div>
+      </div>
+      <div>
+        <a
+          routerLink="/documentacion"
+          [fragment]="'registro'"
+          class="inline-block px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        >
+          Inscribirse a OctoStudio
+        </a>
       </div>
     </div>
   </div>

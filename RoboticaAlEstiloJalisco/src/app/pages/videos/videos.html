@@ -15,32 +15,35 @@
         <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal animate-rise">Contenido Multimedia</span>
         <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">Videos</h1>
         <p class="max-w-2xl text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, sapien a efficitur pellentesque, justo purus dapibus eros, at sollicitudin quam ligula eu sapien.
+          Sigue las transmisiones en directo, cápsulas técnicas, webinars de capacitación y la galería fotográfica del evento.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 1. En Vivo (Prioridad principal: Sección blanca debajo del banner · Título Izquierda / Contenido Libre Derecha) -->
+<!-- 1. En Vivo (Sección blanca debajo del banner · Título + Descripción Izquierda / Preview de Video + Botón Derecha) -->
 <section id="en-vivo" class="relative bg-white overflow-hidden">
   <div class="absolute right-8 top-8 w-48 h-48 bg-brand-red/10 shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-1/3 bottom-8 w-28 h-28 bg-brand-orange/15 shape-triangle animate-float [--r:25deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-12 top-10 w-36 h-24 text-brand-red/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
+
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 reveal-left">
       <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4 animate-pop">Prioridad · Transmisión Oficial</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">En Vivo</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red"></div>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
+        Sigue en tiempo real las eliminatorias, retos en mesa de mBot, demostraciones de OctoStudio y la ceremonia de premiación.
+      </p>
     </div>
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-200 w-full h-56 rounded-lg bg-red-50/70 border border-brand-red/20 flex items-center justify-center hover:scale-[1.02] transition-all duration-500">
-        <span class="text-sm text-brand-red uppercase tracking-widest font-normal animate-pop">Transmisión en Directo</span>
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+        <img src="/images/hero-banner.jpg" alt="Preview Transmisión en Directo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-ink/45 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal animate-pop">Transmisión en Directo</span>
+        </div>
       </div>
-      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
-      </p>
-      <div class="pt-2">
+      <div>
         <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
           Ir a Transmisión en Vivo
         </button>
@@ -49,22 +52,22 @@
   </div>
 </section>
 
-<!-- 2. Shorts (Alternado: Contenido Libre Izquierda / Título Derecha) -->
-<section id="shorts" class="relative bg-brand-orange overflow-hidden">
-  <div class="absolute -left-10 top-12 w-44 h-44 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-10 bottom-10 w-32 h-32 bg-brand-red/35 shape-parallelogram animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-1/3 bottom-8 w-24 h-24 bg-white/15 shape-cross animate-float pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+<!-- 2. Shorts (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
+<section id="shorts" class="relative z-10 bg-brand-orange overflow-hidden section-triangle-both">
+  <div class="absolute -left-10 top-20 w-44 h-44 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 bottom-20 w-32 h-32 bg-brand-red/35 shape-parallelogram animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-white/15 flex items-center justify-center hover:bg-white/25 hover:scale-[1.02] transition-all duration-500">
-        <span class="text-sm text-white uppercase tracking-widest font-normal">Reproductor Shorts</span>
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
+        <img src="/images/hero-banner.jpg" alt="Preview Reproductor Shorts" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-ink/40 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal">Vista Previa · Shorts</span>
+        </div>
       </div>
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-      </p>
-      <div class="pt-2">
+      <div>
         <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-          Ver Lista de Shorts
+          Ver Shorts
         </button>
       </div>
     </div>
@@ -72,49 +75,57 @@
       <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Cápsulas Rápidas</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Shorts</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-white md:ml-auto"></div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
+        Videos cortos con consejos de calibración, programación por bloques y los mejores momentos de los participantes.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- 3. Webinars (Alternado: Título Izquierda / Contenido Libre Derecha) -->
+<!-- 3. Webinars (Alternado: Título + Descripción Izquierda / Preview de Video + Botón Derecha) -->
 <section id="webinars" class="relative bg-white overflow-hidden">
   <div class="absolute -left-8 top-8 w-36 h-36 bg-brand-orange/15 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-16 bottom-8 w-28 h-28 bg-brand-red/15 shape-triangle-inv animate-drift [--r:18deg] pointer-events-none" aria-hidden="true"></div>
+
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 reveal-left">
       <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Capacitación</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Webinars</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange"></div>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
+        Sesiones grabadas de capacitación técnica y acompañamiento pedagógico para docentes asesores y equipos.
+      </p>
     </div>
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-orange-50/70 border border-brand-orange/20 flex items-center justify-center hover:scale-[1.02] transition-all duration-500">
-        <span class="text-sm text-brand-orange uppercase tracking-widest font-normal">Reproductor Webinars</span>
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+        <img src="/images/hero-banner.jpg" alt="Preview Webinars" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-ink/40 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal">Vista Previa · Webinars</span>
+        </div>
       </div>
-      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-      </p>
-      <div class="pt-2">
+      <div>
         <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
-          Ver Sesiones Grabadas
+          Ver Webinars
         </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4. Videos (Alternado: Contenido Libre Izquierda / Título Derecha) -->
-<section id="seccion-videos" class="relative bg-brand-red overflow-hidden">
-  <div class="absolute left-1/4 top-8 w-32 h-32 bg-white/15 shape-hexagon animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -right-12 bottom-6 w-56 h-56 bg-brand-orange/40 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+<!-- 4. Videos (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
+<section id="seccion-videos" class="relative z-10 bg-brand-red overflow-hidden section-triangle-both">
+  <div class="absolute left-1/4 top-20 w-32 h-32 bg-white/15 shape-hexagon animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -right-12 bottom-20 w-56 h-56 bg-brand-orange/40 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-white/15 flex items-center justify-center hover:bg-white/25 hover:scale-[1.02] transition-all duration-500">
-        <span class="text-sm text-white uppercase tracking-widest font-normal">Repositorio de Videos</span>
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
+        <img src="/images/hero-banner.jpg" alt="Preview Repositorio de Videos" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-ink/40 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-md bg-white text-brand-red text-xs uppercase tracking-widest font-normal">Vista Previa · Videos</span>
+        </div>
       </div>
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-      </p>
-      <div class="pt-2">
+      <div>
         <button type="button" class="px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
           Explorar Videos
         </button>
@@ -124,28 +135,33 @@
       <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Material Audiovisual</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Videos</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-white md:ml-auto"></div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
+        Tutoriales paso a paso, entrevistas con equipos destacados y resúmenes audiovisuales de cada etapa regional.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- 5. Galería (Alternado: Título Izquierda / Contenido Libre Derecha) -->
+<!-- 5. Galería (Alternado: Título + Descripción Izquierda / Foto + Botón Derecha) -->
 <section id="galeria" class="relative bg-white overflow-hidden">
   <div class="absolute right-8 top-8 w-44 h-44 bg-brand-red/10 shape-parallelogram animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-1/3 bottom-8 w-24 h-24 bg-brand-orange/20 shape-cross animate-float [--r:25deg] pointer-events-none" aria-hidden="true"></div>
+
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 reveal-left">
       <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-4">Registro Gráfico</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Galería</h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red"></div>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
+        Recorre los álbumes fotográficos de los entrenamientos, mesas de reto, prototipos y premiaciones estatales.
+      </p>
     </div>
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-200 w-full h-52 rounded-lg bg-orange-50/70 border border-brand-orange/20 flex items-center justify-center hover:scale-[1.02] transition-all duration-500">
-        <span class="text-sm text-brand-orange uppercase tracking-widest font-normal">Galería de Imágenes</span>
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+        <img src="/images/hero-banner.jpg" alt="Preview Galería Fotográfica" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
       </div>
-      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla quis sem at nibh elementum imperdiet.
-      </p>
-      <div class="pt-2">
+      <div>
         <button type="button" class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
           Ver Galería Fotográfica
         </button>

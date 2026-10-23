@@ -281,6 +281,29 @@ html {
   background-size: 22px 22px;
 }
 
+/* Secciones con triángulo de punta completa de lado a lado arriba (▲) y abajo (▼) */
+.section-triangle-both {
+  clip-path: polygon(
+    0% 3.5rem,
+    50% 0%,
+    100% 3.5rem,
+    100% calc(100% - 3.5rem),
+    50% 100%,
+    0% calc(100% - 3.5rem)
+  );
+}
+
+/* Sección con triángulo completo de lado a lado en la parte inferior (▼) */
+.section-triangle-bottom {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 3.5rem),
+    50% 100%,
+    0% calc(100% - 3.5rem)
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;

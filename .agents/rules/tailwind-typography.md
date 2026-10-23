@@ -50,4 +50,3 @@ description: Reglas obligatorias de Tailwind CSS y tipografía Gareth para el pr
   - Usar grillas equilibradas (`md:grid-cols-12` con `md:col-span-6` + `md:col-span-6` y `gap-12 lg:gap-20`) y tamaños de encabezado simétricos (`text-4xl sm:text-5xl lg:text-6xl`) para que palabras largas como `Documentación` o `Convocatoria` nunca invadan ni se encimen sobre la columna contigua.
 - **Variedad de figuras geométricas en movimiento**: En los fondos dinámicos, utilizar figuras geométricas variadas más allá de simples cuadrados (`shape-hexagon`, `shape-triangle`, `shape-diamond`, `shape-octagon`, `shape-parallelogram`, `shape-cross`, `bg-tech-dots`), animadas únicamente con propiedades aceleradas por GPU (`transform` y `opacity`).
 
-
