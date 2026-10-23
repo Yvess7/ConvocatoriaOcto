@@ -1,17 +1,16 @@
 <!-- Banner de Videos rectangular con filtro propio (Contraste Ink + Naranja) y texto principal -->
 <section class="relative w-full overflow-hidden bg-ink">
-  <div class="relative w-full h-88 sm:h-104 md:h-128 lg:h-144 overflow-hidden">
+  <div class="relative w-full min-h-112 md:min-h-128 lg:min-h-144 overflow-hidden flex items-center">
     <img
       src="/images/hero-banner.jpg"
       alt="Banner Videos Robótica al Estilo Jalisco"
-      class="w-full h-full object-cover object-center select-none animate-zoom"
+      class="absolute inset-0 w-full h-full object-cover object-center select-none"
     />
     <!-- Filtro distintivo para la sección de Videos -->
-    <div class="absolute inset-0 bg-ink/60 mix-blend-multiply pointer-events-none"></div>
     <div class="absolute inset-0 bg-brand-orange/30 pointer-events-none"></div>
     <!-- Texto principal sobre el banner -->
-    <div class="parallax-img absolute inset-0 flex items-center">
-      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="parallax-img relative w-full">
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal animate-rise">Contenido Multimedia</span>
         <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">Videos</h1>
         <p class="max-w-2xl text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
@@ -24,7 +23,7 @@
 
 <!-- 1. En Vivo (Sección blanca debajo del banner · Título + Descripción Izquierda / Preview de Video + Botón Derecha) -->
 <section id="en-vivo" class="relative bg-white overflow-hidden">
-  <div class="absolute right-8 top-8 w-48 h-48 bg-brand-red/10 shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-8 top-8 w-48 h-48 bg-brand-red shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-1/3 bottom-8 w-28 h-28 bg-brand-orange/15 shape-triangle animate-float [--r:25deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -37,7 +36,7 @@
       </p>
     </div>
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-orange group">
         <img src="/images/hero-banner.jpg" alt="Preview Transmisión en Directo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
         <div class="absolute inset-0 bg-ink/45 flex items-center justify-center">
           <span class="px-4 py-2 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal animate-pop">Transmisión en Directo</span>
@@ -55,11 +54,11 @@
 <!-- 2. Shorts (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
 <section id="shorts" class="relative z-10 bg-brand-orange overflow-hidden section-triangle-both">
   <div class="absolute -left-10 top-20 w-44 h-44 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-10 bottom-20 w-32 h-32 bg-brand-red/35 shape-parallelogram animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 bottom-20 w-32 h-32 bg-brand-red shape-parallelogram animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-red group">
         <img src="/images/hero-banner.jpg" alt="Preview Reproductor Shorts" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
         <div class="absolute inset-0 bg-ink/40 flex items-center justify-center">
           <span class="px-4 py-2 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal">Vista Previa · Shorts</span>
@@ -85,7 +84,7 @@
 <!-- 3. Webinars (Alternado: Título + Descripción Izquierda / Preview de Video + Botón Derecha) -->
 <section id="webinars" class="relative bg-white overflow-hidden">
   <div class="absolute -left-8 top-8 w-36 h-36 bg-brand-orange/15 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-16 bottom-8 w-28 h-28 bg-brand-red/15 shape-triangle-inv animate-drift [--r:18deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-16 bottom-8 w-28 h-28 bg-brand-red shape-triangle-inv animate-drift [--r:18deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 reveal-left">
@@ -97,7 +96,7 @@
       </p>
     </div>
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-orange group">
         <img src="/images/hero-banner.jpg" alt="Preview Webinars" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
         <div class="absolute inset-0 bg-ink/40 flex items-center justify-center">
           <span class="px-4 py-2 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal">Vista Previa · Webinars</span>
@@ -119,7 +118,7 @@
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-orange group">
         <img src="/images/hero-banner.jpg" alt="Preview Repositorio de Videos" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
         <div class="absolute inset-0 bg-ink/40 flex items-center justify-center">
           <span class="px-4 py-2 rounded-md bg-white text-brand-red text-xs uppercase tracking-widest font-normal">Vista Previa · Videos</span>
@@ -144,7 +143,7 @@
 
 <!-- 5. Galería (Alternado: Título + Descripción Izquierda / Foto + Botón Derecha) -->
 <section id="galeria" class="relative bg-white overflow-hidden">
-  <div class="absolute right-8 top-8 w-44 h-44 bg-brand-red/10 shape-parallelogram animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-8 top-8 w-44 h-44 bg-brand-red shape-parallelogram animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-1/3 bottom-8 w-24 h-24 bg-brand-orange/20 shape-cross animate-float [--r:25deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -157,7 +156,7 @@
       </p>
     </div>
     <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
+      <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-orange group">
         <img src="/images/hero-banner.jpg" alt="Preview Galería Fotográfica" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
         <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
       </div>

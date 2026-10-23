@@ -7,20 +7,11 @@ html {
 
 /* Animaciones ligadas al scroll (si no hay soporte, simplemente no se aplican) */
 @supports (animation-timeline: view()) {
-  .scroll-progress {
-    animation: grow-x linear both;
-    animation-timeline: scroll(root);
-  }
   .parallax-img {
     animation: parallax linear both;
     animation-timeline: scroll(root);
     animation-range: 0 70vh;
   }
-}
-
-@keyframes grow-x {
-  from { scale: 0 1; }
-  to { scale: 1 1; }
 }
 
 @keyframes parallax {
@@ -136,19 +127,13 @@ html {
 
 /* Transición cinematográfica al cambiar de página (Fade-in + Zoom + Blur estilo Apple) */
 .page-enter-active {
-  animation: page-enter 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: page-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 @keyframes page-enter {
   0% {
     opacity: 0;
-    transform: scale(0.975) translateY(1.25rem);
-    filter: blur(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
+    transform: translateY(1rem);
   }
 }
 
@@ -174,45 +159,33 @@ html {
 .reveal {
   opacity: 0;
   transform: translateY(3.25rem) scale(0.96);
-  filter: blur(6px);
   transition:
     opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-left {
   opacity: 0;
   transform: translate3d(-3.25rem, 1.25rem, 0) scale(0.95);
-  filter: blur(6px);
   transition:
     opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-right {
   opacity: 0;
   transform: translate3d(3.25rem, 1.25rem, 0) scale(0.95);
-  filter: blur(6px);
   transition:
     opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-zoom {
   opacity: 0;
   transform: translate3d(0, 2rem, 0) scale(0.88);
-  filter: blur(6px);
   transition:
     opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 1s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.is-visible,
@@ -222,6 +195,33 @@ html {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
+}
+
+/* Marco de color desplazado (sólido, sin desenfoque) para las fotos del sitio */
+.photo-frame {
+  --dx: 1rem;
+  --dy: 1rem;
+  box-shadow: var(--dx) var(--dy) 0 0 var(--fc);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-frame-l {
+  --dx: -1rem;
+}
+
+.photo-frame:hover {
+  box-shadow: calc(var(--dx) * 1.5) calc(var(--dy) * 1.5) 0 0 var(--fc);
+}
+
+.frame-orange {
+  --fc: var(--color-brand-orange);
+}
+
+.frame-red {
+  --fc: var(--color-brand-red);
 }
 
 .delay-100 {
@@ -241,6 +241,11 @@ html {
 }
 
 /* Figuras geométricas variadas para fondos dinámicos (GPU-friendly) */
+[class*='shape-'] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 .shape-triangle {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
@@ -282,6 +287,12 @@ html {
 }
 
 /* Secciones con triángulo de punta completa de lado a lado arriba (▲) y abajo (▼) */
+.section-triangle-both,
+.section-triangle-bottom {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 .section-triangle-both {
   clip-path: polygon(
     0% 3.5rem,

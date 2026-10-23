@@ -1,37 +1,48 @@
-<!-- Banner de bienvenida de Home rectangular con filtro NARANJA y texto principal -->
+<!-- Banner de bienvenida rectangular con filtro NARANJA y texto principal -->
 <section class="relative w-full overflow-hidden bg-brand-orange">
-  <div class="relative w-full h-88 sm:h-104 md:h-128 lg:h-144 overflow-hidden">
+  <div class="relative w-full min-h-112 md:min-h-128 lg:min-h-144 overflow-hidden flex items-center">
     <img
       src="/images/hero-banner.jpg"
       alt="Instalaciones Convocatoria Robótica al Estilo Jalisco"
-      class="w-full h-full object-cover object-center select-none animate-zoom"
+      class="absolute inset-0 w-full h-full object-cover object-center select-none"
     />
-    <!-- Filtro naranja distintivo sobre el banner de Inicio -->
-    <div class="absolute inset-0 bg-brand-orange/50 mix-blend-multiply pointer-events-none"></div>
     <div class="absolute inset-0 bg-brand-orange/25 pointer-events-none"></div>
-    <!-- Texto principal sobre el banner -->
-    <div class="parallax-img absolute inset-0 flex items-center">
-      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="parallax-img relative w-full">
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal animate-rise">Edición 2026</span>
-        <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">
+        <h1 class="text-5xl sm:text-7xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">
           Robótica al Estilo Jalisco
         </h1>
         <p class="max-w-2xl text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
           Impulsamos el talento científico, creativo y tecnológico de niñas, niños y jóvenes en todo el estado de Jalisco.
         </p>
+        <div class="flex flex-wrap gap-4 mt-8 animate-rise [animation-delay:450ms]">
+          <a
+            routerLink="/documentacion"
+            [fragment]="'registro'"
+            class="px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          >
+            Inscribirse
+          </a>
+          <a
+            routerLink="/torneos"
+            class="px-8 py-4 rounded-md bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          >
+            Ver torneos
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 1. Sección blanca debajo del banner: Quiénes somos (Título + Descripción Izquierda / Foto + Botón Derecha) -->
+<!-- 1. Sección blanca: Quiénes somos (Título + Descripción Izquierda / Foto + Botón Derecha) -->
 <section id="quienes-somos" class="relative bg-white overflow-hidden">
   <div class="absolute top-10 right-10 w-48 h-48 text-brand-orange/15 bg-tech-dots animate-drift pointer-events-none" aria-hidden="true"></div>
   <div class="absolute -top-6 right-1/4 w-36 h-36 bg-brand-orange/15 shape-hexagon animate-float [--r:14deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute bottom-8 left-12 w-28 h-28 bg-brand-red/15 shape-triangle animate-float-slow [--r:-15deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-8 left-12 w-28 h-28 bg-brand-red shape-triangle animate-float-slow [--r:-15deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <!-- Columna Izquierda: Título + Descripción -->
     <div class="md:col-span-6 reveal-left">
       <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Nuestra Iniciativa</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Quiénes somos</h2>
@@ -41,21 +52,23 @@
       </p>
     </div>
 
-    <!-- Columna Derecha: Espacio visual (Foto) + Botón de acción -->
-    <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
-        <img
-          src="/images/hero-banner.jpg"
-          alt="Comunidad Robótica al Estilo Jalisco"
-          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
+    <div class="md:col-span-6 reveal-right delay-150 space-y-8">
+      <div class="apple-zoom delay-100 relative group">
+        <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-xl bg-brand-orange group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500" aria-hidden="true"></div>
+        <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden">
+          <img
+            src="/images/hero-banner.jpg"
+            alt="Comunidad Robótica al Estilo Jalisco"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-brand-orange/20 pointer-events-none"></div>
+        </div>
       </div>
       <div>
         <a
           routerLink="/documentacion"
           [fragment]="'registro'"
-          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Inscribirse
         </a>
@@ -64,34 +77,35 @@
   </div>
 </section>
 
-<!-- 2. Sección Torneos (Alternado: Foto + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
+<!-- 2. Torneos (Foto + Botón Izquierda / Título + Descripción Derecha) -->
 <section id="torneos" class="relative z-10 bg-brand-orange overflow-hidden section-triangle-both">
   <div class="absolute -left-10 top-20 w-52 h-52 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-1/3 top-16 w-36 h-36 bg-brand-red/35 shape-parallelogram animate-drift [--r:12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-1/3 top-16 w-36 h-36 bg-brand-red shape-parallelogram animate-drift [--r:12deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-10 bottom-20 w-36 h-36 bg-white/15 shape-diamond animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <!-- Columna Izquierda: Espacio visual (Foto/Preview) + Botón -->
-    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
-        <img
-          src="/images/hero-banner.jpg"
-          alt="Vista previa Torneos mBot y OctoStudio"
-          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-brand-red/25 pointer-events-none"></div>
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-8">
+      <div class="apple-zoom delay-100 relative group">
+        <div class="absolute inset-0 -translate-x-4 translate-y-4 rounded-xl bg-brand-red group-hover:-translate-x-6 group-hover:translate-y-6 transition-transform duration-500" aria-hidden="true"></div>
+        <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden">
+          <img
+            src="/images/hero-banner.jpg"
+            alt="Vista previa Torneos mBot y OctoStudio"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-brand-red/25 pointer-events-none"></div>
+        </div>
       </div>
       <div>
         <a
           routerLink="/torneos"
-          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Ver Torneos
         </a>
       </div>
     </div>
 
-    <!-- Columna Derecha: Título + Descripción -->
     <div class="md:col-span-6 order-1 md:order-2 md:text-right reveal-right">
       <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Competencia</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Torneos</h2>
@@ -103,14 +117,13 @@
   </div>
 </section>
 
-<!-- 3. Sección Documentación (Alternado: Título + Descripción Izquierda / Foto + Botón Derecha) -->
+<!-- 3. Documentación (Título + Descripción Izquierda / Foto + Botón Derecha) -->
 <section id="documentacion" class="relative bg-white overflow-hidden">
-  <div class="absolute right-10 top-10 w-48 h-48 bg-brand-red/10 shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 top-10 w-48 h-48 bg-brand-red shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-10 bottom-10 w-32 h-32 bg-brand-orange/15 shape-triangle-inv animate-float [--r:20deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-1/4 top-8 w-40 h-28 text-brand-red/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <!-- Columna Izquierda: Título + Descripción -->
     <div class="md:col-span-6 reveal-left">
       <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-4">Requisitos</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Documentación</h2>
@@ -120,20 +133,22 @@
       </p>
     </div>
 
-    <!-- Columna Derecha: Espacio visual (Preview) + Botón -->
-    <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-md group">
-        <img
-          src="/images/hero-banner.jpg"
-          alt="Vista previa Documentación Oficial"
-          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-brand-red-dark/30 pointer-events-none"></div>
+    <div class="md:col-span-6 reveal-right delay-150 space-y-8">
+      <div class="apple-zoom delay-100 relative group">
+        <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-xl bg-brand-red group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500" aria-hidden="true"></div>
+        <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden">
+          <img
+            src="/images/hero-banner.jpg"
+            alt="Vista previa Documentación Oficial"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-brand-red-dark/30 pointer-events-none"></div>
+        </div>
       </div>
       <div>
         <a
           routerLink="/documentacion"
-          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Revisar Documentos
         </a>
@@ -142,38 +157,37 @@
   </div>
 </section>
 
-<!-- 4. Sección Videos (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
+<!-- 4. Videos (Preview + Botón Izquierda / Título + Descripción Derecha) -->
 <section id="videos" class="relative z-10 -mb-14 bg-brand-red overflow-hidden section-triangle-both">
   <div class="absolute left-1/4 top-20 w-36 h-36 bg-white/15 shape-diamond animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute -right-10 bottom-20 w-56 h-56 bg-brand-orange/40 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
   <div class="absolute left-10 bottom-20 w-28 h-28 bg-white/15 shape-triangle animate-float-slow [--r:-20deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <!-- Columna Izquierda: Preview de Video + Botón -->
-    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-lg group">
-        <img
-          src="/images/hero-banner.jpg"
-          alt="Preview de Videos y Transmisiones"
-          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-        />
-        <div class="absolute inset-0 bg-ink/45 flex items-center justify-center">
-          <span class="px-4 py-2 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal">
-            Vista Previa · Videos y En Vivo
-          </span>
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-8">
+      <div class="apple-zoom delay-100 relative group">
+        <div class="absolute inset-0 -translate-x-4 translate-y-4 rounded-xl bg-brand-orange group-hover:-translate-x-6 group-hover:translate-y-6 transition-transform duration-500" aria-hidden="true"></div>
+        <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden">
+          <img
+            src="/images/hero-banner.jpg"
+            alt="Preview de Videos y Transmisiones"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-ink/45 flex items-center justify-center">
+            <span class="px-4 py-2 rounded-md bg-brand-orange text-white text-lg font-normal animate-pop">En vivo y bajo demanda</span>
+          </div>
         </div>
       </div>
       <div>
         <a
           routerLink="/videos"
-          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 inline-block px-8 py-4 rounded-md bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Ir a Videos
         </a>
       </div>
     </div>
 
-    <!-- Columna Derecha: Título + Descripción -->
     <div class="md:col-span-6 order-1 md:order-2 md:text-right reveal-right">
       <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Multimedia</span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Videos</h2>

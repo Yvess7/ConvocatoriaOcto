@@ -63,33 +63,44 @@ export class App {
   }
 
   private setupScrollAnimations(): void {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const selector = '.reveal, .reveal-left, .reveal-right, .apple-reveal, .apple-zoom';
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll(selector).forEach((el) => el.classList.add('is-visible'));
       return;
     }
 
     this.observer?.disconnect();
 
+    // Cada elemento se revela una sola vez y nunca se vuelve a ocultar (evita parpadeos).
     this.observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-          } else if (entry.boundingClientRect.top > 0) {
-            entry.target.classList.remove('is-visible');
+            this.observer?.unobserve(entry.target);
           }
         }
       },
       {
-        threshold: 0.14,
-        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.05,
+        rootMargin: '0px 0px -5% 0px',
       }
     );
 
-    setTimeout(() => {
-      const elements = document.querySelectorAll(
-        '.reveal, .reveal-left, .reveal-right, .apple-reveal, .apple-zoom'
-      );
-      elements.forEach((el) => this.observer?.observe(el));
-    }, 40);
+    // El DOM de la nueva ruta puede tardar en renderizarse: se observa varias veces
+    // (los elementos ya observados se ignoran) para no dejar contenido invisible.
+    const observeAll = () => {
+      document.querySelectorAll(selector).forEach((el) => {
+        if (!el.classList.contains('is-visible')) {
+          this.observer?.observe(el);
+        }
+      });
+    };
+    [40, 250, 700].forEach((ms) => setTimeout(observeAll, ms));
   }
 }
