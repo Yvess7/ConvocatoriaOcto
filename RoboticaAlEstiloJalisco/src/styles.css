@@ -84,6 +84,16 @@ html {
   --animate-marquee: marquee 28s linear infinite;
   --animate-pop: pop 2.4s ease-in-out infinite;
   --animate-route-load: route-load 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-bob: bob 3.2s ease-in-out infinite;
+  --animate-dash: dash-flow 1.4s linear infinite;
+
+  @keyframes bob {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -0.6rem, 0); }
+  }
+  @keyframes dash-flow {
+    to { stroke-dashoffset: -16px; }
+  }
 
   @keyframes float {
     0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--r, 0deg)); }

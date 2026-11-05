@@ -1,329 +1,190 @@
-<!-- Banner mBot rectangular con filtro azul y texto principal -->
-<section class="relative w-full overflow-hidden bg-sky-950">
-  <div class="relative w-full min-h-112 md:min-h-128 lg:min-h-144 overflow-hidden flex items-center">
-    <img
-      src="/images/hero-banner.jpg"
-      alt="Banner Convocatoria mBot Robótica al Estilo Jalisco"
-      class="absolute inset-0 w-full h-full object-cover object-center select-none"
-    />
-    <!-- Filtro azul característico de mBot -->
-    <div class="absolute inset-0 bg-sky-900/60 pointer-events-none"></div>
+<!-- Banner mBot panorámico con integración fluida desktop/móvil -->
+<section id="hero-banner" class="relative w-full overflow-hidden bg-[#000c3c] text-white">
+  <!-- Imagen del banner alineada a la derecha preservando proporción original -->
+  <img
+    src="/images/banner-mbot-desktop.jpg"
+    alt="Robot mBot Convocatoria Robótica al Estilo Jalisco"
+    class="absolute inset-0 w-full h-full object-cover object-right select-none pointer-events-none"
+  />
 
-    <!-- Texto principal sobre el banner -->
-    <div class="parallax-img relative w-full">
-      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+  <!-- Degradado suave hacia el azul oscuro del banner para garantizar legibilidad perfecta -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-[#000c3c] via-[#000c3c]/85 to-[#000c3c]/60 lg:bg-gradient-to-r lg:from-[#000c3c] lg:via-[#000c3c]/80 lg:to-transparent pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Contenido editorial sobre el banner -->
+  <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 min-h-112 md:min-h-128 flex items-center">
+    <div class="max-w-xl lg:max-w-2xl space-y-6">
+      <div class="space-y-3">
         <span class="inline-block px-3.5 py-1 rounded-md bg-sky-600 text-white text-xs uppercase tracking-widest font-normal animate-rise">
-          Categoría Oficial
+          Edición 2026
         </span>
-        <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-normal tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl text-white font-normal tracking-tight leading-none animate-rise [animation-delay:150ms]">
           Torneo mBot
         </h1>
-        <p class="max-w-2xl text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
-          Robótica móvil, sensores autónomos y programación por bloques. Conoce la ruta completa de competencia y las 4 etapas del torneo.
-        </p>
-        <div class="flex flex-wrap gap-4 mt-8 animate-rise [animation-delay:450ms]">
-          <button
-            type="button"
-            (click)="scrollTo('camino-etapas')"
-            class="px-8 py-4 rounded-lg bg-sky-600 text-white hover:bg-sky-700 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-          >
-            Ver las 4 etapas
-          </button>
-          <a
-            routerLink="/torneos"
-            class="px-8 py-4 rounded-lg bg-white text-sky-900 hover:bg-sky-100 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-          >
-            Volver a Torneos
-          </a>
-        </div>
+      </div>
+
+      <p class="text-lg sm:text-xl text-sky-100 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
+        Retos de programación, resolución de obstáculos y trabajo en equipo. Conoce el mapa completo del torneo, de la fase previa a la gran final.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-2 animate-rise [animation-delay:400ms]">
+        <button
+          type="button"
+          (click)="scrollTo('camino-etapas')"
+          class="px-8 py-4 rounded-lg bg-sky-600 text-white hover:bg-sky-500 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        >
+          Ver mapa
+        </button>
+        <a
+          routerLink="/documentacion"
+          [fragment]="'registro'"
+          class="px-8 py-4 rounded-lg bg-white text-sky-950 hover:bg-sky-100 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        >
+          Inscríbete
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 1. Sección blanca obligatoria debajo del banner -->
-<section class="relative bg-white overflow-hidden py-20 sm:py-28">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-      <div class="md:col-span-6">
-        <span class="inline-block px-3.5 py-1 rounded-md bg-sky-100 text-sky-800 text-xs uppercase tracking-widest font-normal mb-4">
-          Convocatoria Completa
-        </span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">
-          La ruta del reto mBot
-        </h2>
-        <div class="mt-6 h-1.5 w-20 rounded-md bg-sky-600"></div>
-        <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
-          Los equipos participantes ponen a prueba sus robots móviles en pistas físicas, resolviendo desafíos de seguimiento de líneas, evasión de obstáculos y tareas colaborativas.
-        </p>
-        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed mt-4">
-          A continuación se presenta el camino oficial del torneo dividido en 4 etapas progresivas.
-        </p>
-      </div>
+<!-- Mapa de camino al torneo (sección blanca debajo del banner · tarjetas que se voltean al hacer clic) -->
+<section id="camino-etapas" class="relative z-10 bg-white py-24 sm:py-32 overflow-hidden">
+  <!-- Fondo dinámico: figuras variadas y retículas de puntos en movimiento -->
+  <div class="absolute -left-10 top-16 w-44 h-44 bg-sky-200/60 shape-hexagon animate-float [--r:10deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 top-24 w-28 h-28 bg-sky-300/50 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-6 top-1/4 w-40 h-28 text-sky-300/60 bg-tech-dots animate-drift pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -right-8 top-1/3 w-36 h-36 bg-sky-200/70 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-10 top-1/2 w-24 h-24 bg-sky-300/50 shape-cross animate-float-slow [--r:20deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-12 top-1/2 w-40 h-28 text-sky-300/60 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -left-8 top-2/3 w-36 h-36 bg-sky-200/60 shape-parallelogram animate-drift [--r:-10deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-6 top-3/4 w-28 h-28 bg-sky-300/50 shape-triangle animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-1/4 bottom-16 w-32 h-32 bg-sky-200/60 shape-diamond animate-drift pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-1/4 bottom-6 w-24 h-24 bg-sky-300/50 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
 
-      <div class="md:col-span-6 space-y-10 sm:space-y-12">
-        <div class="apple-zoom delay-100 relative group">
-          <div
-            class="absolute inset-0 translate-x-4 translate-y-4 rounded-xl bg-sky-600 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500"
-            aria-hidden="true"
-          ></div>
-          <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden border-2 border-sky-300">
-            <img
-              src="/images/hero-banner.jpg"
-              alt="Robots mBot en competencia"
-              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-            />
-            <div class="absolute inset-0 bg-sky-950/20 pointer-events-none"></div>
-          </div>
-        </div>
-        <div>
-          <a
-            routerLink="/documentacion"
-            [fragment]="'registro'"
-            class="inline-block px-8 py-4 rounded-lg bg-sky-600 text-white hover:bg-sky-700 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-          >
-            Inscribir equipo a mBot
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 2. Camino de Progreso Dinámico (Estilo Duolingo con temática Azul y Blanco) -->
-<section id="camino-etapas" class="relative z-10 bg-sky-50/60 border-t border-sky-100 py-24 sm:py-32 overflow-hidden">
-  <!-- Figuras geométricas dinámicas en movimiento de fondo -->
-  <div class="absolute left-6 top-20 w-36 h-36 bg-sky-200/50 shape-hexagon animate-float pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-8 top-1/4 w-28 h-28 bg-sky-300/40 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-8 top-2/3 w-32 h-32 bg-sky-200/60 shape-parallelogram animate-drift pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-6 bottom-32 w-40 h-40 bg-sky-300/40 shape-triangle animate-float-slow pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Encabezado de la Ruta -->
-    <div class="text-center mb-16 sm:mb-20">
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 sm:mb-20 reveal">
       <span class="inline-block px-3.5 py-1 rounded-md bg-sky-600 text-white text-xs uppercase tracking-widest font-normal mb-3">
-        Ruta Oficial de Participación
+        Mapa del torneo
       </span>
       <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight">
-        Camino del Torneo mBot
+        Camino al torneo mBot
       </h2>
       <div class="mt-4 mx-auto h-1.5 w-20 rounded-md bg-sky-600"></div>
       <p class="text-lg text-ink/70 font-normal mt-4 max-w-xl mx-auto">
-        Recorre la fase previa de preparación y supera las 3 grandes etapas de la competencia oficial.
+        Toca una tarjeta para voltearla y ver su fecha. Desde ahí puedes ir directo a la sección correspondiente del sitio.
       </p>
     </div>
 
-    <!-- ==================== TRAMO 1: FASE PREVIA ==================== -->
-    <div class="mb-20 sm:mb-28">
-      <!-- Banner de Unidad estilo Duolingo (Fase Previa) -->
-      <div class="max-w-md mx-auto mb-14 text-center">
-        <div class="bg-sky-600 text-white rounded-2xl p-5 border-b-6 border-sky-800 shadow-lg transform transition-transform hover:-translate-y-1">
-          <span class="text-xs uppercase tracking-widest text-sky-100 font-normal">Fase Inicial</span>
-          <h3 class="text-2xl font-normal mt-1">Previo al Torneo</h3>
-          <p class="text-xs text-sky-100 font-normal mt-1.5">Preparación, inducción y selección de aspirantes</p>
+    @for (tramo of tramos; track tramo.id) {
+      <div class="mb-20 sm:mb-28 last:mb-0">
+        <!-- Encabezado del tramo -->
+        <div class="max-w-md mx-auto mb-16 text-center reveal">
+          <div class="bg-sky-600 text-white rounded-2xl p-5 border-b-6 border-sky-900 shadow-lg hover:-translate-y-1 transition-transform duration-300">
+            <span class="text-xs uppercase tracking-widest text-sky-100 font-normal">{{ tramo.insignia }}</span>
+            <h3 class="text-2xl font-normal mt-1">{{ tramo.titulo }}</h3>
+            <p class="text-sm text-sky-100 font-normal mt-1.5">{{ tramo.subtitulo }}</p>
+          </div>
+        </div>
+
+        <!-- Sendero sinuoso: los pasos se alternan a izquierda y derecha y se unen con curvas -->
+        <div class="relative">
+          @for (paso of tramo.pasos; track paso.id; let ultimo = $last; let i = $index) {
+            <div
+              class="relative flex flex-col items-center md:w-1/2"
+              [class]="esIzquierda(paso.id) ? 'md:mr-auto' : 'md:ml-auto'"
+            >
+              <!-- Curva punteada animada hacia el siguiente paso (escritorio) -->
+              @if (!ultimo) {
+                <svg
+                  class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
+                  [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    [attr.d]="esIzquierda(paso.id) ? 'M0 0 C0 50 100 50 100 100' : 'M100 0 C100 50 0 50 0 100'"
+                    class="fill-none stroke-sky-300 stroke-4 animate-dash [vector-effect:non-scaling-stroke]"
+                    stroke-dasharray="2 14"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              }
+
+              <!-- Nodo numerado: aparece con zoom, late con un anillo y flota suavemente -->
+              <div class="apple-zoom delay-100 relative z-10 w-16 h-16">
+                <span class="absolute inset-0 rounded-full bg-sky-400/60 animate-ping" aria-hidden="true"></span>
+                <button
+                  type="button"
+                  (click)="alternar(paso.id)"
+                  [attr.aria-label]="'Voltear tarjeta: ' + paso.titulo"
+                  class="relative w-16 h-16 rounded-full bg-sky-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-xl hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer"
+                  [class]="(paso.meta ? 'animate-pop' : 'animate-bob') + (i % 2 ? ' [animation-delay:-1.5s]' : '')"
+                >
+                  0{{ i + 1 }}
+                </button>
+              </div>
+
+              <!-- Tarjeta con volteo 3D -->
+              <div
+                class="w-full max-w-sm mt-4"
+                [class]="esIzquierda(paso.id) ? 'reveal-left' : 'reveal-right'"
+              >
+                <div class="perspective-distant">
+                  <div
+                    role="button"
+                    tabindex="0"
+                    [attr.aria-pressed]="esVolteada(paso.id)"
+                    (click)="alternar(paso.id)"
+                    (keydown.enter)="alternar(paso.id)"
+                    (keydown.space)="alternar(paso.id); $event.preventDefault()"
+                    class="group relative h-64 w-full transform-3d transition-transform duration-700 cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-sky-300 rounded-2xl"
+                    [class.rotate-y-180]="esVolteada(paso.id)"
+                  >
+                    <!-- Cara frontal -->
+                    <div class="absolute inset-0 backface-hidden rounded-2xl bg-white border-2 border-sky-200 border-b-6 border-b-sky-600 p-6 flex flex-col justify-between shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                      <div>
+                        <span class="inline-block px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-normal uppercase tracking-wider">
+                          {{ paso.etiqueta }}
+                        </span>
+                        <h4 class="text-2xl text-ink font-normal tracking-tight mt-3 leading-tight">{{ paso.titulo }}</h4>
+                        <p class="text-sm sm:text-base text-ink/75 font-normal mt-2 leading-relaxed">{{ paso.resumen }}</p>
+                      </div>
+                      <span class="text-xs uppercase tracking-wider text-sky-700 font-normal">Toca para ver la fecha</span>
+                    </div>
+
+                    <!-- Cara posterior -->
+                    <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-sky-700 border-b-6 border-sky-950 p-6 flex flex-col justify-between text-white shadow-xl">
+                      <div>
+                        <span class="text-xs uppercase tracking-widest text-sky-200 font-normal">{{ paso.etiqueta }} · Fecha</span>
+                        <p class="text-2xl sm:text-3xl font-normal leading-tight mt-2">{{ paso.fecha }}</p>
+                      </div>
+                      <div>
+                        <a
+                          [routerLink]="paso.ruta"
+                          [fragment]="paso.fragmento"
+                          (click)="$event.stopPropagation()"
+                          class="text-base underline underline-offset-4 decoration-2 hover:text-sky-200 transition-colors"
+                        >
+                          {{ paso.enlace }}
+                        </a>
+                        <p class="text-xs uppercase tracking-wider text-sky-200 font-normal mt-3">Toca la tarjeta para volver</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Separación entre pasos (línea punteada solo en móvil) -->
+            @if (!ultimo) {
+              <div class="h-16 w-0 mx-auto border-l-4 border-dashed border-sky-300 md:border-l-0" aria-hidden="true"></div>
+            }
+          }
         </div>
       </div>
-
-      <!-- Sendero serpenteante Previo -->
-      <div class="flex flex-col items-center">
-        <!-- Paso 1: Lanzamiento (Izquierda) -->
-        <div class="w-full flex flex-col items-center sm:items-start sm:pl-8 sm:-translate-x-10 mb-6">
-          <div class="flex flex-col items-center sm:items-start group cursor-pointer">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-700 shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 active:translate-y-2">
-              <div class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-sky-500 border-2 border-white/70 flex flex-col items-center justify-center text-white">
-                <span class="text-[10px] uppercase tracking-wider text-sky-100">Paso</span>
-                <span class="text-2xl sm:text-3xl leading-none">01</span>
-              </div>
-            </div>
-            <div class="mt-4 w-full max-w-xs sm:max-w-sm bg-white rounded-2xl border-2 border-sky-200 border-b-6 border-b-sky-600 p-5 shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
-              <span class="px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-normal uppercase tracking-wider">Previo · 01</span>
-              <h4 class="text-xl text-ink font-normal tracking-tight mt-2">Lanzamiento</h4>
-              <p class="text-sm text-ink/75 font-normal mt-1.5 leading-relaxed">
-                Publicación oficial de la convocatoria, apertura de sedes regionales y difusión de las bases técnicas.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stepping stones conectores en curva hacia la derecha -->
-        <div class="flex flex-col items-center gap-3 my-2 pointer-events-none" aria-hidden="true">
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform -translate-x-6 animate-pulse"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform translate-x-0"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform translate-x-6"></div>
-        </div>
-
-        <!-- Paso 2: Sesión informativa previa (Derecha) -->
-        <div class="w-full flex flex-col items-center sm:items-end sm:pr-8 sm:translate-x-10 mb-6">
-          <div class="flex flex-col items-center sm:items-end group cursor-pointer">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-700 shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 active:translate-y-2">
-              <div class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-sky-500 border-2 border-white/70 flex flex-col items-center justify-center text-white">
-                <span class="text-[10px] uppercase tracking-wider text-sky-100">Paso</span>
-                <span class="text-2xl sm:text-3xl leading-none">02</span>
-              </div>
-            </div>
-            <div class="mt-4 w-full max-w-xs sm:max-w-sm bg-white rounded-2xl border-2 border-sky-200 border-b-6 border-b-sky-600 p-5 shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
-              <span class="px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-normal uppercase tracking-wider">Previo · 02</span>
-              <h4 class="text-xl text-ink font-normal tracking-tight mt-2">Sesión informativa previa</h4>
-              <p class="text-sm text-ink/75 font-normal mt-1.5 leading-relaxed">
-                Sesión virtual con directivos, asesores y docentes para resolver inquietudes de registro y cronograma.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stepping stones conectores en curva hacia la izquierda -->
-        <div class="flex flex-col items-center gap-3 my-2 pointer-events-none" aria-hidden="true">
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform translate-x-6 animate-pulse"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform translate-x-0"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform -translate-x-6"></div>
-        </div>
-
-        <!-- Paso 3: Sesión de preparación (Izquierda) -->
-        <div class="w-full flex flex-col items-center sm:items-start sm:pl-8 sm:-translate-x-10 mb-6">
-          <div class="flex flex-col items-center sm:items-start group cursor-pointer">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-700 shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 active:translate-y-2">
-              <div class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-sky-500 border-2 border-white/70 flex flex-col items-center justify-center text-white">
-                <span class="text-[10px] uppercase tracking-wider text-sky-100">Paso</span>
-                <span class="text-2xl sm:text-3xl leading-none">03</span>
-              </div>
-            </div>
-            <div class="mt-4 w-full max-w-xs sm:max-w-sm bg-white rounded-2xl border-2 border-sky-200 border-b-6 border-b-sky-600 p-5 shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
-              <span class="px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-normal uppercase tracking-wider">Previo · 03</span>
-              <h4 class="text-xl text-ink font-normal tracking-tight mt-2">Sesión de preparación</h4>
-              <p class="text-sm text-ink/75 font-normal mt-1.5 leading-relaxed">
-                Capacitación técnica en calibración de sensores, pistas de prueba y mejores prácticas de programación en bloques.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stepping stones conectores hacia la derecha -->
-        <div class="flex flex-col items-center gap-3 my-2 pointer-events-none" aria-hidden="true">
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform -translate-x-6 animate-pulse"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform translate-x-0"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-300 shadow-sm transform translate-x-6"></div>
-        </div>
-
-        <!-- Paso 4: Etapa de selección (Derecha) -->
-        <div class="w-full flex flex-col items-center sm:items-end sm:pr-8 sm:translate-x-10">
-          <div class="flex flex-col items-center sm:items-end group cursor-pointer">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-700 shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 active:translate-y-2">
-              <div class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-sky-500 border-2 border-white/70 flex flex-col items-center justify-center text-white">
-                <span class="text-[10px] uppercase tracking-wider text-sky-100">Paso</span>
-                <span class="text-2xl sm:text-3xl leading-none">04</span>
-              </div>
-            </div>
-            <div class="mt-4 w-full max-w-xs sm:max-w-sm bg-white rounded-2xl border-2 border-sky-200 border-b-6 border-b-sky-600 p-5 shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all">
-              <span class="px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-normal uppercase tracking-wider">Previo · 04</span>
-              <h4 class="text-xl text-ink font-normal tracking-tight mt-2">Etapa de selección</h4>
-              <p class="text-sm text-ink/75 font-normal mt-1.5 leading-relaxed">
-                Validación de equipos postulados y publicación del listado oficial habilitado para la competencia.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== TRAMO 2: TORNEO OFICIAL ==================== -->
-    <div>
-      <!-- Banner de Unidad estilo Duolingo (Torneo Oficial) -->
-      <div class="max-w-md mx-auto mb-14 text-center">
-        <div class="bg-sky-700 text-white rounded-2xl p-5 border-b-6 border-sky-950 shadow-xl transform transition-transform hover:-translate-y-1">
-          <span class="text-xs uppercase tracking-widest text-sky-200 font-normal">Etapas de Competencia</span>
-          <h3 class="text-2xl font-normal mt-1">Torneo Oficial mBot</h3>
-          <p class="text-xs text-sky-200 font-normal mt-1.5">Las 3 etapas decisivas hacia la gran final</p>
-        </div>
-      </div>
-
-      <!-- Sendero serpenteante Torneo Oficial -->
-      <div class="flex flex-col items-center">
-        <!-- Etapa 1: Registro de equipo (Izquierda) -->
-        <div class="w-full flex flex-col items-center sm:items-start sm:pl-8 sm:-translate-x-10 mb-6">
-          <div class="flex flex-col items-center sm:items-start group cursor-pointer">
-            <div class="w-22 h-22 sm:w-26 sm:h-26 rounded-full bg-sky-800 shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 active:translate-y-2">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-600 border-3 border-white/80 flex flex-col items-center justify-center text-white">
-                <span class="text-[10px] uppercase tracking-wider text-sky-100">Etapa</span>
-                <span class="text-2xl sm:text-3xl leading-none">01</span>
-              </div>
-            </div>
-            <div class="mt-4 w-full max-w-xs sm:max-w-sm bg-white rounded-2xl border-2 border-sky-300 border-b-6 border-b-sky-700 p-5 shadow-lg group-hover:shadow-2xl group-hover:-translate-y-1 transition-all">
-              <span class="px-2.5 py-0.5 rounded-md bg-sky-600 text-white text-xs font-normal uppercase tracking-wider">Etapa 1</span>
-              <h4 class="text-xl text-ink font-normal tracking-tight mt-2">Registro de equipo</h4>
-              <p class="text-sm text-ink/75 font-normal mt-1.5 leading-relaxed">
-                Formalización de plantillas oficiales con estudiantes y docente asesor para quedar asignados a su región de competencia.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stepping stones conectores en curva hacia la derecha -->
-        <div class="flex flex-col items-center gap-3 my-2 pointer-events-none" aria-hidden="true">
-          <div class="w-4 h-4 rounded-full bg-sky-400 shadow-sm transform -translate-x-6 animate-pulse"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-400 shadow-sm transform translate-x-0"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-400 shadow-sm transform translate-x-6"></div>
-        </div>
-
-        <!-- Etapa 2: Eliminatoria (Derecha) -->
-        <div class="w-full flex flex-col items-center sm:items-end sm:pr-8 sm:translate-x-10 mb-6">
-          <div class="flex flex-col items-center sm:items-end group cursor-pointer">
-            <div class="w-22 h-22 sm:w-26 sm:h-26 rounded-full bg-sky-800 shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 active:translate-y-2">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-600 border-3 border-white/80 flex flex-col items-center justify-center text-white">
-                <span class="text-[10px] uppercase tracking-wider text-sky-100">Etapa</span>
-                <span class="text-2xl sm:text-3xl leading-none">02</span>
-              </div>
-            </div>
-            <div class="mt-4 w-full max-w-xs sm:max-w-sm bg-white rounded-2xl border-2 border-sky-300 border-b-6 border-b-sky-700 p-5 shadow-lg group-hover:shadow-2xl group-hover:-translate-y-1 transition-all">
-              <span class="px-2.5 py-0.5 rounded-md bg-sky-600 text-white text-xs font-normal uppercase tracking-wider">Etapa 2</span>
-              <h4 class="text-xl text-ink font-normal tracking-tight mt-2">Eliminatoria</h4>
-              <p class="text-sm text-ink/75 font-normal mt-1.5 leading-relaxed">
-                Rondas eliminatorias presenciales en pista con evaluación de tiempo y precisión autónoma para definir a los finalistas estatales.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stepping stones conectores hacia el centro de la Gran Final -->
-        <div class="flex flex-col items-center gap-3 my-2 pointer-events-none" aria-hidden="true">
-          <div class="w-4 h-4 rounded-full bg-sky-400 shadow-sm transform translate-x-6 animate-pulse"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-400 shadow-sm transform translate-x-3"></div>
-          <div class="w-4 h-4 rounded-full bg-sky-400 shadow-sm transform translate-x-0"></div>
-        </div>
-
-        <!-- Etapa 3: Gran final (Meta / Centro destacado) -->
-        <div class="w-full flex flex-col items-center mt-2">
-          <div class="flex flex-col items-center group cursor-pointer">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-sky-950 shadow-2xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 active:translate-y-2">
-              <div class="w-22 h-22 sm:w-26 sm:h-26 rounded-full bg-sky-600 border-4 border-white flex flex-col items-center justify-center text-white animate-pop">
-                <span class="text-[10px] uppercase tracking-wider text-sky-200">Etapa</span>
-                <span class="text-3xl sm:text-4xl leading-none">03</span>
-              </div>
-            </div>
-            <div class="mt-5 w-full max-w-sm sm:max-w-md bg-white rounded-2xl border-3 border-sky-400 border-b-8 border-b-sky-800 p-6 sm:p-7 shadow-xl group-hover:shadow-2xl group-hover:-translate-y-1 transition-all text-center">
-              <span class="inline-block px-3 py-1 rounded-md bg-sky-700 text-white text-xs font-normal uppercase tracking-wider mb-2">
-                Meta · Gran Final
-              </span>
-              <h4 class="text-2xl text-ink font-normal tracking-tight">Gran final</h4>
-              <p class="text-sm sm:text-base text-ink/75 font-normal mt-2 leading-relaxed">
-                Encuentro estatal cumbre: demostración en directo ante jueces, desafíos de pista sorpresa y premiación oficial de los campeones.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botón de acción al final de la ruta -->
-    <div class="text-center mt-16 sm:mt-24">
-      <a
-        routerLink="/documentacion"
-        [fragment]="'registro'"
-        class="inline-block px-10 py-5 rounded-lg bg-sky-600 text-white hover:bg-sky-700 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-      >
-        Inscribir equipo al torneo mBot
-      </a>
-    </div>
+    }
   </div>
 </section>
-
-
