@@ -28,10 +28,10 @@
           <!-- Panel Desplegable Centrado -->
           <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-64 opacity-0 -translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-50">
             <div class="bg-white rounded-md shadow-xl border border-gray-100 p-2 space-y-1">
-              <a routerLink="/torneos" [fragment]="'mbot'" class="block px-4 py-2.5 rounded-md hover:bg-orange-50/60 transition-colors">
+              <a routerLink="/mbot" class="block px-4 py-2.5 rounded-md hover:bg-orange-50/60 transition-colors">
                 <span class="block text-base text-ink hover:text-brand-orange transition-colors font-bold">mBot</span>
               </a>
-              <a routerLink="/torneos" [fragment]="'octostudio'" class="block px-4 py-2.5 rounded-md hover:bg-orange-50/60 transition-colors">
+              <a routerLink="/octostudio" class="block px-4 py-2.5 rounded-md hover:bg-orange-50/60 transition-colors">
                 <span class="block text-base text-ink hover:text-brand-orange transition-colors font-bold">OctoStudio</span>
               </a>
             </div>
@@ -149,8 +149,8 @@
           Torneos
         </a>
         <div class="space-y-1 pl-2">
-          <a routerLink="/torneos" [fragment]="'mbot'" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-bold">mBot</a>
-          <a routerLink="/torneos" [fragment]="'octostudio'" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-bold">OctoStudio</a>
+          <a routerLink="/mbot" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-bold">mBot</a>
+          <a routerLink="/octostudio" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-bold">OctoStudio</a>
         </div>
       </div>
 

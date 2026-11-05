@@ -224,6 +224,15 @@ html {
   --fc: var(--color-brand-red);
 }
 
+.frame-sky,
+.frame-blue {
+  --fc: #0284c7;
+}
+
+.frame-purple {
+  --fc: #9333ea;
+}
+
 .delay-100 {
   transition-delay: 100ms;
 }

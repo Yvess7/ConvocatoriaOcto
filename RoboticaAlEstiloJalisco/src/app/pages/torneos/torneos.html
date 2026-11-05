@@ -17,12 +17,12 @@
           Conoce nuestras dos grandes modalidades de competencia y elige la categoría ideal para tu equipo.
         </p>
         <div class="flex flex-wrap gap-4 mt-6 animate-rise [animation-delay:450ms]">
-          <button type="button" (click)="scrollTo('mbot')" class="px-8 py-3.5 rounded-lg bg-brand-orange text-white hover:bg-white hover:text-brand-red hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          <a routerLink="/mbot" class="px-8 py-3.5 rounded-lg bg-brand-orange text-white hover:bg-white hover:text-brand-red hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg inline-block text-center">
             mBot
-          </button>
-          <button type="button" (click)="scrollTo('octostudio')" class="px-8 py-3.5 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg">
+          </a>
+          <a routerLink="/octostudio" class="px-8 py-3.5 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg inline-block text-center">
             OctoStudio
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -68,8 +68,8 @@
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <!-- Columna Izquierda: Foto/Preview + Botón -->
-    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-6">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-red group">
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-sky group">
         <img
           src="/images/hero-banner.jpg"
           alt="Categoría mBot Robótica Física"
@@ -79,11 +79,17 @@
       </div>
       <div class="flex flex-wrap gap-4">
         <a
-          routerLink="/documentacion"
-          [fragment]="'registro'"
+          routerLink="/mbot"
           class="px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
-          Inscribirse a mBot
+          Convocatoria mBot
+        </a>
+        <a
+          routerLink="/documentacion"
+          [fragment]="'registro'"
+          class="px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-white/90 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        >
+          Inscribirse
         </a>
       </div>
     </div>
@@ -117,8 +123,8 @@
     </div>
 
     <!-- Columna Derecha: Foto/Preview + Botón -->
-    <div class="md:col-span-6 reveal-right delay-150 space-y-6">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-orange group">
+    <div class="md:col-span-6 reveal-right delay-150 space-y-10 sm:space-y-12">
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-purple group">
         <img
           src="/images/hero-banner.jpg"
           alt="Categoría OctoStudio Creatividad Digital"
@@ -126,13 +132,19 @@
         />
         <div class="absolute inset-0 bg-brand-orange/25 pointer-events-none"></div>
       </div>
-      <div>
+      <div class="flex flex-wrap gap-4">
+        <a
+          routerLink="/octostudio"
+          class="inline-block px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        >
+          Convocatoria OctoStudio
+        </a>
         <a
           routerLink="/documentacion"
           [fragment]="'registro'"
-          class="inline-block px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="inline-block px-8 py-4 rounded-lg bg-brand-red-dark text-white hover:bg-white hover:text-brand-red hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
-          Inscribirse a OctoStudio
+          Inscribirse
         </a>
       </div>
     </div>
