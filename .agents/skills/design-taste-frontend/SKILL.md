@@ -412,3 +412,17 @@ open collections could not be searched.
 | `scripts/lint.mjs` · `scripts/inspect.mjs` | The gate. |
 | `assets/base.css` · `assets/base.js` | An optional neutral foundation to build on. |
 | `library/` | The data the draw reads: directions, heroes, sections, type systems, palettes, photographs, studied sites, motions. Do not read it whole; use the script. |
+
+## Mobile (proyecto Robótica al Estilo Jalisco)
+
+Reglas obligatorias al construir o revisar cualquier vista en pantallas menores a `md` (768px). Guía completa con ejemplos: `GUIA-RESPONSIVO-MOBILE.md` en la raíz del repo.
+
+- **Mobile-first y centrado.** Todo texto de sección (badge, título, barra de acento, párrafo) va centrado en móvil: `text-center md:text-left` (o `md:text-right` en la columna derecha). Barras de acento: `mx-auto md:mx-0` (`mx-auto md:mr-0 md:ml-auto` si alinean a la derecha). Párrafos con `max-w-*`: añadir `mx-auto md:mx-0`.
+- **Márgenes laterales de `px-6`** en móvil (`px-6 lg:px-8`), nunca `px-4`: el contenido no debe quedar pegado al borde.
+- **Botones:** en móvil ocupan el ancho (`w-full sm:w-auto text-center`) y el grupo se centra (`flex flex-wrap justify-center md:justify-start gap-4`).
+- **Ritmo vertical:** secciones con `py-16 sm:py-24 lg:py-32`; separación entre bloques apilados `gap-10` o más. Banner con `py-20 sm:py-24`.
+- **Orden de columnas:** en móvil siempre título y descripción primero, imagen y botones después (`order-1` / `order-2 md:order-1`).
+- **Sombras/marcos desplazados** (`photo-frame`): desplazamiento de `0.5rem` en móvil y `1rem` desde `md`, para que no se recorten ni toquen el borde.
+- **Nada de overflow horizontal:** figuras decorativas absolutas con `overflow-hidden` en la sección; sin anchos fijos mayores al viewport.
+- **Efectos de escritorio:** hover, parallax, robot del mapa y desenfoque de tarjetas solo desde `md`. En móvil, versión simple y legible.
+- **Verificación:** revisar siempre a 360px, 390px, 768px y 1280px antes de dar por terminado.

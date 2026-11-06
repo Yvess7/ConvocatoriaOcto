@@ -1,4 +1,4 @@
-import { afterNextRender, Component, DestroyRef, inject, signal } from '@angular/core';
+import { afterNextRender, Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -24,29 +24,42 @@ export class App {
   readonly isMenuOpen = signal(false);
   readonly isNavigating = signal(false);
   readonly pageAnimating = signal(true);
+  readonly currentUrl = signal<string>(this.router.url);
+
+  readonly tournamentVariant = computed<'torneos' | 'mbot' | 'octostudio' | null>(() => {
+    const url = this.currentUrl();
+    if (url.includes('/mbot')) return 'mbot';
+    if (url.includes('/octostudio')) return 'octostudio';
+    if (url.includes('/torneos')) return 'torneos';
+    return null;
+  });
 
   constructor() {
-    afterNextRender(() => {
-      this.setupScrollAnimations();
-
-      this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event) => {
-        if (event instanceof NavigationStart) {
-          this.isNavigating.set(true);
-          this.pageAnimating.set(false);
-        } else if (
-          event instanceof NavigationEnd ||
-          event instanceof NavigationCancel ||
-          event instanceof NavigationError
-        ) {
-          requestAnimationFrame(() => {
-            this.pageAnimating.set(true);
-            this.setupScrollAnimations();
-          });
-          setTimeout(() => {
-            this.isNavigating.set(false);
-          }, 420);
+    this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isNavigating.set(true);
+        this.pageAnimating.set(false);
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        if (event instanceof NavigationEnd) {
+          this.currentUrl.set(event.urlAfterRedirects || event.url);
         }
-      });
+        requestAnimationFrame(() => {
+          this.pageAnimating.set(true);
+          this.setupScrollAnimations();
+        });
+        setTimeout(() => {
+          this.isNavigating.set(false);
+        }, 420);
+      }
+    });
+
+    afterNextRender(() => {
+      this.currentUrl.set(this.router.url);
+      this.setupScrollAnimations();
     });
 
     this.destroyRef.onDestroy(() => {

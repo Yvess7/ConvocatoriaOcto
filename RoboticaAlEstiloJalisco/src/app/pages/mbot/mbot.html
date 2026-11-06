@@ -1,56 +1,56 @@
-<!-- Banner mBot panorámico con integración fluida desktop/móvil -->
-<section id="hero-banner" class="relative w-full overflow-hidden bg-[#000c3c] text-white">
-  <!-- Imagen del banner alineada a la derecha preservando proporción original -->
-  <img
-    src="/images/banner-mbot-desktop.jpg"
-    alt="Robot mBot Convocatoria Robótica al Estilo Jalisco"
-    class="absolute inset-0 w-full h-full object-cover object-right select-none pointer-events-none"
-  />
+<!-- Banner mBot -->
+<section id="hero-banner" class="relative w-full overflow-hidden bg-[#0191c9]">
+  <div class="relative w-full min-h-112 md:min-h-128 lg:min-h-144 overflow-hidden flex items-center">
+    <img
+      src="/images/mbot.png"
+      alt="Torneo mBot Convocatoria Robótica al Estilo Jalisco"
+      class="absolute inset-0 w-full h-full object-cover object-right select-none z-0"
+    />
+    <!-- Filtro intermedio con z-10 para máxima legibilidad del texto -->
+    <div
+      class="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/85 via-slate-950/50 to-slate-950/20 md:bg-gradient-to-r md:from-slate-950/85 md:via-slate-950/50 md:to-transparent pointer-events-none"
+      aria-hidden="true"
+    ></div>
+    <div class="parallax-img relative z-20 w-full">
+      <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-24 text-center md:text-left">
+        <div class="max-w-2xl mx-auto md:mx-0 space-y-6">
+          <div class="space-y-3">
+            <span class="inline-block px-3.5 py-1 rounded-md bg-sky-900 text-white text-xs uppercase tracking-widest font-normal animate-rise">
+              Edición 2026
+            </span>
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl text-white font-bold tracking-tight leading-none animate-rise [animation-delay:150ms]">
+              Torneo mBot
+            </h1>
+          </div>
 
-  <!-- Degradado suave hacia el azul oscuro del banner para garantizar legibilidad perfecta -->
-  <div
-    class="absolute inset-0 bg-gradient-to-b from-[#000c3c] via-[#000c3c]/85 to-[#000c3c]/60 lg:bg-gradient-to-r lg:from-[#000c3c] lg:via-[#000c3c]/80 lg:to-transparent pointer-events-none"
-    aria-hidden="true"
-  ></div>
+          <p class="max-w-2xl mx-auto md:mx-0 text-lg sm:text-xl text-white font-normal leading-relaxed animate-rise [animation-delay:300ms]">
+            Retos de programación, resolución de obstáculos y trabajo en equipo. Conoce el mapa completo del torneo, de la fase previa a la gran final.
+          </p>
 
-  <!-- Contenido editorial sobre el banner -->
-  <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 min-h-112 md:min-h-128 flex items-center">
-    <div class="max-w-xl lg:max-w-2xl space-y-6">
-      <div class="space-y-3">
-        <span class="inline-block px-3.5 py-1 rounded-md bg-sky-600 text-white text-xs uppercase tracking-widest font-normal animate-rise">
-          Edición 2026
-        </span>
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl text-white font-normal tracking-tight leading-none animate-rise [animation-delay:150ms]">
-          Torneo mBot
-        </h1>
-      </div>
-
-      <p class="text-lg sm:text-xl text-sky-100 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
-        Retos de programación, resolución de obstáculos y trabajo en equipo. Conoce el mapa completo del torneo, de la fase previa a la gran final.
-      </p>
-
-      <div class="flex flex-wrap gap-4 pt-2 animate-rise [animation-delay:400ms]">
-        <button
-          type="button"
-          (click)="scrollTo('camino-etapas')"
-          class="px-8 py-4 rounded-lg bg-sky-600 text-white hover:bg-sky-500 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-        >
-          Ver mapa
-        </button>
-        <a
-          routerLink="/documentacion"
-          [fragment]="'registro'"
-          class="px-8 py-4 rounded-lg bg-white text-sky-950 hover:bg-sky-100 hover:-translate-y-1 hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-        >
-          Inscríbete
-        </a>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-2 animate-rise [animation-delay:400ms]">
+            <button
+              type="button"
+              (click)="scrollTo('camino-etapas')"
+              class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-[#0191c9] text-white hover:bg-[#017fae] hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg shadow-md cursor-pointer"
+            >
+              Ver mapa
+            </button>
+            <a
+              routerLink="/documentacion"
+              [fragment]="'registro'"
+              class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-white text-sky-950 hover:bg-sky-100 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+            >
+              Inscríbete
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Mapa de camino al torneo (sección blanca debajo del banner · tarjetas que se voltean al hacer clic) -->
-<section id="camino-etapas" class="relative z-10 bg-white py-24 sm:py-32 overflow-hidden">
+<section id="camino-etapas" class="relative z-10 bg-white py-16 sm:py-24 lg:py-32 overflow-hidden">
   <!-- Fondo dinámico: figuras variadas y retículas de puntos en movimiento -->
   <div class="absolute -left-10 top-16 w-44 h-44 bg-sky-200/60 shape-hexagon animate-float [--r:10deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-10 top-24 w-28 h-28 bg-sky-300/50 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
@@ -63,33 +63,56 @@
   <div class="absolute left-1/4 bottom-16 w-32 h-32 bg-sky-200/60 shape-diamond animate-drift pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-1/4 bottom-6 w-24 h-24 bg-sky-300/50 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16 sm:mb-20 reveal">
+  <!-- Fondo extra animado con GSAP (parallax al hacer scroll + flotación) -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute left-1/4 top-12 w-16 h-16 shape-triangle bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-1/3 top-1/6 w-20 h-20 shape-cross bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.5" class="absolute left-1/3 top-1/5 w-14 h-14 shape-diamond bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute right-4 top-2/5 w-24 h-24 shape-parallelogram bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-2 top-2/5 w-20 h-20 shape-hexagon bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.6" class="absolute left-1/5 top-1/2 w-12 h-12 shape-octagon bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.5" class="absolute right-1/5 top-3/5 w-16 h-16 shape-triangle bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.2" class="absolute right-1/3 top-3/5 w-40 h-28 bg-tech-dots text-sky-300/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute left-4 top-3/5 w-28 h-28 shape-diamond bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-1/3 top-4/5 w-20 h-20 shape-cross bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute right-8 top-4/5 w-24 h-24 shape-octagon bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-2 top-5/6 w-40 h-28 bg-tech-dots text-sky-300/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.7" class="absolute right-1/2 top-1/3 w-10 h-10 shape-hexagon bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.7" class="absolute left-1/2 top-2/3 w-10 h-10 shape-triangle bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute left-1/2 top-1/12 w-12 h-12 shape-diamond bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.6" class="absolute right-1/2 bottom-1/12 w-14 h-14 shape-cross bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-16 sm:mb-20" data-gsap="encabezado">
       <span class="inline-block px-3.5 py-1 rounded-md bg-sky-600 text-white text-xs uppercase tracking-widest font-normal mb-3">
         Mapa del torneo
       </span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight">
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight">
         Camino al torneo mBot
       </h2>
       <div class="mt-4 mx-auto h-1.5 w-20 rounded-md bg-sky-600"></div>
       <p class="text-lg text-ink/70 font-normal mt-4 max-w-xl mx-auto">
-        Toca una tarjeta para voltearla y ver su fecha. Desde ahí puedes ir directo a la sección correspondiente del sitio.
+        Toca una tarjeta para voltearla y ver el detalle. Desde ahí puedes ir directo a la sección correspondiente del sitio.
       </p>
     </div>
 
     @for (tramo of tramos; track tramo.id) {
-      <div class="mb-20 sm:mb-28 last:mb-0">
+      <div class="mb-20 sm:mb-28 last:mb-0" data-gsap="bloque">
         <!-- Encabezado del tramo -->
-        <div class="max-w-md mx-auto mb-16 text-center reveal">
+        <div class="max-w-md mx-auto mb-16 text-center" data-gsap="tramo">
           <div class="bg-sky-600 text-white rounded-2xl p-5 border-b-6 border-sky-900 shadow-lg hover:-translate-y-1 transition-transform duration-300">
             <span class="text-xs uppercase tracking-widest text-sky-100 font-normal">{{ tramo.insignia }}</span>
-            <h3 class="text-2xl font-normal mt-1">{{ tramo.titulo }}</h3>
+            <h3 class="text-2xl font-bold mt-1">{{ tramo.titulo }}</h3>
             <p class="text-sm text-sky-100 font-normal mt-1.5">{{ tramo.subtitulo }}</p>
           </div>
         </div>
 
         <!-- Sendero sinuoso: los pasos se alternan a izquierda y derecha y se unen con curvas -->
-        <div class="relative">
+        <div class="relative" data-gsap="sendero">
+          <!-- Robot: pasa por detrás de las tarjetas (z-30) y por encima de los nodos (z-10) -->
+          <div data-gsap="robot" class="hidden md:block absolute top-0 left-0 z-20 w-28 pointer-events-none" aria-hidden="true">
+            <img data-gsap="robot-img" src="images/mbot-robot.png" alt="" class="w-full h-auto drop-shadow-md" />
+            <span data-gsap="robot-sombra" class="absolute left-1/2 -bottom-1 h-3 w-3/4 -translate-x-1/2 rounded-full bg-ink/25 blur-sm" aria-hidden="true"></span>
+          </div>
           @for (paso of tramo.pasos; track paso.id; let ultimo = $last; let i = $index) {
             <div
               class="relative flex flex-col items-center md:w-1/2"
@@ -98,7 +121,7 @@
               <!-- Curva punteada animada hacia el siguiente paso (escritorio) -->
               @if (!ultimo) {
                 <svg
-                  class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
+                  data-gsap="curva" class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
                   [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
                   viewBox="0 0 100 100"
                   preserveAspectRatio="none"
@@ -111,17 +134,29 @@
                     stroke-linecap="round"
                   />
                 </svg>
+                <svg
+                  data-gsap="rastro" class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
+                  [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    [attr.d]="esIzquierda(paso.id) ? 'M0 0 C0 50 100 50 100 100' : 'M100 0 C100 50 0 50 0 100'"
+                    class="fill-none stroke-sky-600 stroke-4 [vector-effect:non-scaling-stroke]"
+                    stroke-linecap="round"
+                  />
+                </svg>
               }
 
               <!-- Nodo numerado: aparece con zoom, late con un anillo y flota suavemente -->
-              <div class="apple-zoom delay-100 relative z-10 w-16 h-16">
+              <div data-gsap="nodo" class="relative z-10 w-16 h-16">
                 <span class="absolute inset-0 rounded-full bg-sky-400/60 animate-ping" aria-hidden="true"></span>
                 <button
                   type="button"
                   (click)="alternar(paso.id)"
                   [attr.aria-label]="'Voltear tarjeta: ' + paso.titulo"
-                  class="relative w-16 h-16 rounded-full bg-sky-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-xl hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer"
-                  [class]="(paso.meta ? 'animate-pop' : 'animate-bob') + (i % 2 ? ' [animation-delay:-1.5s]' : '')"
+                  class="relative w-16 h-16 rounded-full bg-sky-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-xl hover:scale-110 active:scale-95 transition-[scale,background-color,color,border-color,box-shadow] duration-300 cursor-pointer data-[estado=futuro]:bg-white data-[estado=futuro]:text-sky-700 data-[estado=futuro]:border-sky-300 data-[estado=actual]:bg-sky-600 data-[estado=actual]:ring-4 data-[estado=actual]:ring-sky-300"
                 >
                   0{{ i + 1 }}
                 </button>
@@ -129,8 +164,7 @@
 
               <!-- Tarjeta con volteo 3D -->
               <div
-                class="w-full max-w-sm mt-4"
-                [class]="esIzquierda(paso.id) ? 'reveal-left' : 'reveal-right'"
+                data-gsap="tarjeta" [attr.data-lado]="esIzquierda(paso.id) ? -1 : 1" class="relative z-30 w-full max-w-sm mt-4"
               >
                 <div class="perspective-distant">
                   <div
@@ -140,8 +174,8 @@
                     (click)="alternar(paso.id)"
                     (keydown.enter)="alternar(paso.id)"
                     (keydown.space)="alternar(paso.id); $event.preventDefault()"
-                    class="group relative h-64 w-full transform-3d transition-transform duration-700 cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-sky-300 rounded-2xl"
-                    [class.rotate-y-180]="esVolteada(paso.id)"
+                    class="group relative h-64 w-full transform-3d cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-sky-300 rounded-2xl"
+                    [attr.data-paso]="paso.id" data-gsap="giro"
                   >
                     <!-- Cara frontal -->
                     <div class="absolute inset-0 backface-hidden rounded-2xl bg-white border-2 border-sky-200 border-b-6 border-b-sky-600 p-6 flex flex-col justify-between shadow-md group-hover:shadow-xl transition-shadow duration-300">
@@ -150,16 +184,16 @@
                           {{ paso.etiqueta }}
                         </span>
                         <h4 class="text-2xl text-ink font-normal tracking-tight mt-3 leading-tight">{{ paso.titulo }}</h4>
-                        <p class="text-sm sm:text-base text-ink/75 font-normal mt-2 leading-relaxed">{{ paso.resumen }}</p>
+                        <p class="text-sm sm:text-base text-sky-700 font-normal mt-3 uppercase tracking-wider">{{ paso.fecha }}</p>
                       </div>
-                      <span class="text-xs uppercase tracking-wider text-sky-700 font-normal">Toca para ver la fecha</span>
+                      <span class="text-xs uppercase tracking-wider text-sky-700 font-normal">Toca para ver el detalle</span>
                     </div>
 
                     <!-- Cara posterior -->
                     <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-sky-700 border-b-6 border-sky-950 p-6 flex flex-col justify-between text-white shadow-xl">
                       <div>
-                        <span class="text-xs uppercase tracking-widest text-sky-200 font-normal">{{ paso.etiqueta }} · Fecha</span>
-                        <p class="text-2xl sm:text-3xl font-normal leading-tight mt-2">{{ paso.fecha }}</p>
+                        <span class="text-xs uppercase tracking-widest text-sky-200 font-normal">{{ paso.etiqueta }} · Detalle</span>
+                        <p class="text-base sm:text-lg font-normal leading-relaxed mt-2">{{ paso.resumen }}</p>
                       </div>
                       <div>
                         <a
@@ -186,5 +220,13 @@
         </div>
       </div>
     }
+  </div>
+
+  <!-- Indicador de progreso fijo (aparece mientras el mapa está en pantalla) -->
+  <div data-gsap="progreso" class="invisible opacity-0 fixed z-40 right-3 bottom-3 md:right-6 md:top-1/2 md:bottom-auto md:-translate-y-1/2 flex items-center gap-3 px-3 py-2 rounded-md bg-white/90 backdrop-blur shadow-md pointer-events-none" aria-hidden="true">
+    <span data-gsap="progreso-texto" class="text-xs sm:text-sm text-ink uppercase tracking-wider font-normal">Paso 1</span>
+    <span class="relative block h-1.5 w-16 md:h-20 md:w-1.5 rounded-md bg-sky-100 overflow-hidden">
+      <span data-gsap="progreso-barra" class="absolute inset-0 rounded-md bg-sky-600 origin-top-left"></span>
+    </span>
   </div>
 </section>

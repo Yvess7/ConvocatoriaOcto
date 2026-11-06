@@ -5,18 +5,8 @@ html {
   scroll-padding-top: 5rem;
 }
 
-/* Animaciones ligadas al scroll (si no hay soporte, simplemente no se aplican) */
-@supports (animation-timeline: view()) {
-  .parallax-img {
-    animation: parallax linear both;
-    animation-timeline: scroll(root);
-    animation-range: 0 70vh;
-  }
-}
-
-@keyframes parallax {
-  from { transform: translateY(0); }
-  to { transform: translateY(8rem); }
+button, [role="button"] {
+  cursor: pointer;
 }
 
 /* Tipografía oficial Garet / Gareth (Peso Regular 400) */
@@ -209,8 +199,8 @@ html {
 
 /* Marco de color desplazado (sólido, sin desenfoque) para las fotos del sitio */
 .photo-frame {
-  --dx: 1rem;
-  --dy: 1rem;
+  --dx: 0.5rem;
+  --dy: 0.5rem;
   box-shadow: var(--dx) var(--dy) 0 0 var(--fc);
   transition:
     opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
@@ -219,7 +209,18 @@ html {
 }
 
 .photo-frame-l {
-  --dx: -1rem;
+  --dx: -0.5rem;
+}
+
+@media (min-width: 768px) {
+  .photo-frame {
+    --dx: 1rem;
+    --dy: 1rem;
+  }
+
+  .photo-frame-l {
+    --dx: -1rem;
+  }
 }
 
 .photo-frame:hover {
@@ -239,8 +240,26 @@ html {
   --fc: #0284c7;
 }
 
+.frame-sky-dark,
+.frame-blue-dark {
+  --fc: #075985;
+}
+
 .frame-purple {
   --fc: #9333ea;
+}
+
+.frame-purple-dark {
+  --fc: #4c1d95;
+}
+
+.frame-white {
+  --fc: #ffffff;
+}
+
+.frame-duo,
+.frame-indigo {
+  --fc: #6366f1;
 }
 
 .delay-100 {

@@ -1,7 +1,7 @@
 
 <!-- Barra de navegación fija con franja naranja -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-xs">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
       <!-- Logo / Inicio -->
       <a
@@ -138,19 +138,28 @@
     </nav>
   </div>
 
-  <!-- Franja naranja moderna debajo de la barra -->
-  <div class="h-1 w-full bg-brand-orange"></div>
+  <!-- Franja debajo de la barra (dinámica para torneos, mbot y octostudio) -->
+  <div
+    class="h-1 w-full transition-colors duration-300"
+    [class]="tournamentVariant() === 'torneos'
+      ? 'bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500'
+      : tournamentVariant() === 'mbot'
+      ? 'bg-cyan-400'
+      : tournamentVariant() === 'octostudio'
+      ? 'bg-purple-500'
+      : 'bg-brand-orange'"
+  ></div>
 
   <!-- Menú desplegable para móviles -->
   @if (isMenuOpen()) {
-    <div class="md:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-4 max-h-[80vh] overflow-y-auto">
+    <div class="md:hidden border-t border-gray-100 bg-white px-6 pt-4 pb-6 space-y-4 max-h-[80vh] overflow-y-auto">
       <div>
         <a routerLink="/torneos" (click)="closeMenu()" class="block text-xs uppercase tracking-wider text-brand-orange font-bold px-2 mb-1">
           Torneos
         </a>
         <div class="space-y-1 pl-2">
-          <a routerLink="/mbot" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-bold">mBot</a>
-          <a routerLink="/octostudio" (click)="closeMenu()" class="block py-1.5 text-base text-ink hover:text-brand-orange font-bold">OctoStudio</a>
+          <a routerLink="/mbot" (click)="closeMenu()" class="block py-2 px-2 rounded-md hover:bg-orange-50/60 text-base text-ink hover:text-brand-orange font-bold transition-colors">mBot</a>
+          <a routerLink="/octostudio" (click)="closeMenu()" class="block py-2 px-2 rounded-md hover:bg-orange-50/60 text-base text-ink hover:text-brand-orange font-bold transition-colors">OctoStudio</a>
         </div>
       </div>
 
@@ -159,14 +168,14 @@
           Documentación
         </a>
         <div class="space-y-1 pl-2">
-          <a routerLink="/documentacion" [fragment]="'registro'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Registro</a>
-          <a routerLink="/documentacion" [fragment]="'reglamento'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Reglamento</a>
-          <a routerLink="/documentacion" [fragment]="'premios'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Premios</a>
-          <a routerLink="/documentacion" [fragment]="'codigo-conducta'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Código de Conducta</a>
-          <a routerLink="/documentacion" [fragment]="'convocatoria'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Convocatoria</a>
-          <a routerLink="/documentacion" [fragment]="'uso-de-imagen'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Uso de Imagen</a>
-          <a routerLink="/documentacion" [fragment]="'aviso-de-privacidad'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Aviso de Privacidad</a>
-          <a routerLink="/documentacion" [fragment]="'anexos'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Anexos</a>
+          <a routerLink="/documentacion" [fragment]="'registro'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Registro</a>
+          <a routerLink="/documentacion" [fragment]="'reglamento'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Reglamento</a>
+          <a routerLink="/documentacion" [fragment]="'premios'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Premios</a>
+          <a routerLink="/documentacion" [fragment]="'codigo-conducta'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Código de Conducta</a>
+          <a routerLink="/documentacion" [fragment]="'convocatoria'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Convocatoria</a>
+          <a routerLink="/documentacion" [fragment]="'uso-de-imagen'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Uso de Imagen</a>
+          <a routerLink="/documentacion" [fragment]="'aviso-de-privacidad'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Aviso de Privacidad</a>
+          <a routerLink="/documentacion" [fragment]="'anexos'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Anexos</a>
         </div>
       </div>
 
@@ -175,11 +184,11 @@
           Videos
         </a>
         <div class="space-y-1 pl-2">
-          <a routerLink="/videos" [fragment]="'en-vivo'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">En Vivo</a>
-          <a routerLink="/videos" [fragment]="'shorts'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Shorts</a>
-          <a routerLink="/videos" [fragment]="'webinars'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Webinars</a>
-          <a routerLink="/videos" [fragment]="'seccion-videos'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Videos</a>
-          <a routerLink="/videos" [fragment]="'galeria'" (click)="closeMenu()" class="block py-1 text-sm text-ink hover:text-brand-orange font-bold">Galería</a>
+          <a routerLink="/videos" [fragment]="'en-vivo'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">En Vivo</a>
+          <a routerLink="/videos" [fragment]="'shorts'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Shorts</a>
+          <a routerLink="/videos" [fragment]="'webinars'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Webinars</a>
+          <a routerLink="/videos" [fragment]="'seccion-videos'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Videos</a>
+          <a routerLink="/videos" [fragment]="'galeria'" (click)="closeMenu()" class="block py-1.5 px-2 rounded-md hover:bg-orange-50/60 text-sm text-ink hover:text-brand-orange font-bold transition-colors">Galería</a>
         </div>
       </div>
 
@@ -187,7 +196,7 @@
         <a
           href="#contacto"
           (click)="closeMenu()"
-          class="block w-full text-center px-5 py-3 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-bold shadow-xs"
+          class="block w-full text-center px-5 py-3 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-bold shadow-xs"
         >
           Contacto
         </a>
@@ -208,11 +217,11 @@
     <div class="absolute right-12 bottom-10 w-32 h-32 bg-brand-red/15 shape-triangle animate-float-slow [--r:-16deg] pointer-events-none" aria-hidden="true"></div>
     <div class="absolute right-1/4 top-8 w-36 h-24 text-brand-orange/15 bg-tech-dots animate-float pointer-events-none" aria-hidden="true"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-      <div class="md:col-span-6 reveal-left">
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <div class="md:col-span-6 text-center md:text-left reveal-left">
         <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Atención y Dudas</span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Contacto</h2>
-        <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange"></div>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight leading-tight">Contacto</h2>
+        <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange mx-auto md:mx-0"></div>
         <p class="text-lg sm:text-xl text-ink/80 mt-6 font-normal leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
         </p>
@@ -220,19 +229,19 @@
 
       <div class="md:col-span-6 reveal-right delay-150 space-y-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div class="apple-zoom delay-100 border-l-2 border-brand-orange pl-5">
+          <div class="apple-zoom delay-100 border-l-2 border-brand-orange pl-5 text-left max-w-sm mx-auto sm:max-w-none sm:mx-0">
             <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Correo electrónico</span>
             <span class="text-lg sm:text-xl text-ink font-normal mt-1 block break-all">contacto&#64;robotica.jalisco.gob.mx</span>
           </div>
-          <div class="apple-zoom delay-200 border-l-2 border-brand-red pl-5">
+          <div class="apple-zoom delay-200 border-l-2 border-brand-red pl-5 text-left max-w-sm mx-auto sm:max-w-none sm:mx-0">
             <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Horario de atención</span>
             <span class="text-lg sm:text-xl text-ink font-normal mt-1 block">Lunes a Viernes de 9:00 a 17:00 hrs</span>
           </div>
         </div>
-        <div class="pt-2">
+        <div class="pt-2 flex flex-wrap justify-center md:justify-start">
           <a
             href="mailto:contacto@robotica.jalisco.gob.mx"
-            class="apple-zoom delay-200 inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+            class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
           >
             Enviar Mensaje
           </a>
