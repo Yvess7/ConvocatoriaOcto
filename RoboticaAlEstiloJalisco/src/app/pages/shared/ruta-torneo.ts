@@ -152,13 +152,12 @@ export abstract class RutaTorneoBase {
             ruta.push({ x: a.x, y: medio }, { x: b.x, y: medio }, b);
           }
 
-          // Elementos por paso: botón, anillo, tarjeta (capa interna) y rastro hacia el siguiente
+          // Elementos por paso: botón, anillo y rastro hacia el siguiente
           const pasos = nodos.map((n) => {
             const paso = n.parentElement!;
             return {
               boton: n.querySelector('button') as HTMLElement,
               ping: n.querySelector('span') as HTMLElement | null,
-              tarjeta: paso.querySelector('[data-gsap="tarjeta"] .perspective-distant') as HTMLElement | null,
               rastro: paso.querySelector('[data-gsap="rastro"]') as HTMLElement | null,
               latido: null as gsap.core.Tween | null,
             };
@@ -178,7 +177,7 @@ export abstract class RutaTorneoBase {
           let xPrev = ruta[0].x;
           let anterior: string[] = [];
 
-          // Estado de cada nodo, rastro recorrido y foco de tarjetas según la posición del robot
+          // Estado de cada nodo, rastro recorrido según la posición del robot
           const actualizar = () => {
             const st = tween.scrollTrigger;
             const visible = robot.offsetParent !== null;
@@ -204,16 +203,6 @@ export abstract class RutaTorneoBase {
                 p.latido?.pause();
                 gsap.to(p.boton, { y: 0, duration: 0.3, overwrite: 'auto' });
               }
-              if (p.tarjeta) {
-                const enfocada = est !== 'futuro' || !visible;
-                gsap.to(p.tarjeta, {
-                  opacity: enfocada ? 1 : 0.5,
-                  filter: enfocada ? 'blur(0px)' : 'blur(2px)',
-                  duration: 0.5,
-                  ease: 'power2.out',
-                  overwrite: 'auto',
-                });
-              }
             });
             anterior = estados;
             if (visible) {
@@ -234,8 +223,8 @@ export abstract class RutaTorneoBase {
             },
             scrollTrigger: {
               trigger: sendero,
-              start: 'top 60%',
-              end: 'bottom 60%',
+              start: 'top 80%',
+              end: `top+=${centros[centros.length - 1].y} 40%`,
               scrub: 0.8,
               onToggle: () => actualizar(),
               onUpdate: () => {

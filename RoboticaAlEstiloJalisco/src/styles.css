@@ -98,12 +98,10 @@ button, [role="button"] {
     from {
       opacity: 0;
       transform: translateY(2.5rem) scale(0.96);
-      filter: blur(8px);
     }
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
-      filter: blur(0);
     }
   }
   @keyframes banner-zoom {
@@ -194,7 +192,6 @@ button, [role="button"] {
 .apple-zoom.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0);
 }
 
 /* Marco de color desplazado (sólido, sin desenfoque) para las fotos del sitio */
