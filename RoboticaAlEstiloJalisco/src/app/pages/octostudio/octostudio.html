@@ -109,15 +109,21 @@
         <!-- Sendero sinuoso: los pasos se alternan a izquierda y derecha y se unen con curvas -->
         <div class="relative" data-gsap="sendero">
           <!-- Robot: pasa por detrás de las tarjetas (z-30) y por encima de los nodos (z-10) -->
-          <div data-gsap="robot" class="hidden md:block absolute top-0 left-0 z-20 w-24 pointer-events-none" aria-hidden="true">
+          <div data-gsap="robot" class="absolute top-0 left-0 z-20 w-16 md:w-24 pointer-events-none" aria-hidden="true">
             <img data-gsap="robot-img" src="images/octo-robot.png" alt="" class="w-full h-auto drop-shadow-md" />
             <span data-gsap="robot-sombra" class="absolute left-1/2 -bottom-1 h-3 w-3/4 -translate-x-1/2 rounded-full bg-ink/25 blur-sm" aria-hidden="true"></span>
           </div>
           @for (paso of tramo.pasos; track paso.id; let ultimo = $last; let i = $index) {
             <div
-              class="relative flex flex-col items-center md:w-1/2"
+              class="relative flex flex-row items-start gap-4 md:flex-col md:items-center md:gap-0 md:w-1/2"
               [class]="esIzquierda(paso.id) ? 'md:mr-auto' : 'md:ml-auto'"
             >
+              <!-- Línea vertical punteada y rastro hacia el siguiente paso (móvil) -->
+              @if (!ultimo) {
+                <div class="md:hidden absolute left-5.5 top-6 -bottom-10 w-1 border-l-4 border-dashed border-purple-300" aria-hidden="true"></div>
+                <span data-gsap="rastro-m" class="md:hidden absolute left-5.5 top-6 -bottom-10 w-1 bg-purple-600 origin-top" aria-hidden="true"></span>
+              }
+
               <!-- Curva punteada animada hacia el siguiente paso (escritorio) -->
               @if (!ultimo) {
                 <svg
@@ -150,13 +156,13 @@
               }
 
               <!-- Nodo numerado: aparece con zoom, late con un anillo y flota suavemente -->
-              <div data-gsap="nodo" class="relative z-10 w-16 h-16">
+              <div data-gsap="nodo" class="relative z-10 shrink-0 w-12 h-12 md:w-16 md:h-16">
                 <span class="absolute inset-0 rounded-full bg-purple-400/60 animate-ping" aria-hidden="true"></span>
                 <button
                   type="button"
                   (click)="alternar(paso.id)"
                   [attr.aria-label]="'Voltear tarjeta: ' + paso.titulo"
-                  class="relative w-16 h-16 rounded-full bg-purple-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-xl hover:scale-110 active:scale-95 transition-[scale,background-color,color,border-color,box-shadow] duration-300 cursor-pointer data-[estado=futuro]:bg-white data-[estado=futuro]:text-purple-700 data-[estado=futuro]:border-purple-300 data-[estado=actual]:bg-purple-600 data-[estado=actual]:ring-4 data-[estado=actual]:ring-purple-300"
+                  class="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-purple-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-base md:text-xl hover:scale-110 active:scale-95 transition-[scale,background-color,color,border-color,box-shadow] duration-300 cursor-pointer data-[estado=futuro]:bg-white data-[estado=futuro]:text-purple-700 data-[estado=futuro]:border-purple-300 data-[estado=actual]:bg-purple-600 data-[estado=actual]:ring-4 data-[estado=actual]:ring-purple-300"
                 >
                   0{{ i + 1 }}
                 </button>
@@ -164,7 +170,7 @@
 
               <!-- Tarjeta con volteo 3D -->
               <div
-                data-gsap="tarjeta" [attr.data-lado]="esIzquierda(paso.id) ? -1 : 1" class="relative z-30 w-full max-w-sm mt-4"
+                data-gsap="tarjeta" [attr.data-lado]="esIzquierda(paso.id) ? -1 : 1" class="relative z-30 flex-1 min-w-0 w-full max-w-sm mt-0 md:mt-4 md:flex-none"
               >
                 <div class="perspective-distant">
                   <div
@@ -174,26 +180,26 @@
                     (click)="alternar(paso.id)"
                     (keydown.enter)="alternar(paso.id)"
                     (keydown.space)="alternar(paso.id); $event.preventDefault()"
-                    class="group relative h-64 w-full transform-3d cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-purple-300 rounded-2xl"
+                    class="group relative h-60 md:h-64 w-full transform-3d cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-purple-300 rounded-2xl"
                     [attr.data-paso]="paso.id" data-gsap="giro"
                   >
                     <!-- Cara frontal -->
-                    <div class="absolute inset-0 backface-hidden rounded-2xl bg-white border-2 border-purple-200 border-b-6 border-b-purple-600 p-6 flex flex-col justify-between shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute inset-0 backface-hidden rounded-2xl bg-white border-2 border-purple-200 border-b-6 border-b-purple-600 p-4 md:p-6 flex flex-col justify-between shadow-md group-hover:shadow-xl transition-shadow duration-300">
                       <div>
                         <span class="inline-block px-2.5 py-0.5 rounded-md bg-purple-100 text-purple-800 text-xs font-normal uppercase tracking-wider">
                           {{ paso.etiqueta }}
                         </span>
-                        <h4 class="text-2xl text-ink font-normal tracking-tight mt-3 leading-tight">{{ paso.titulo }}</h4>
+                        <h4 class="text-xl md:text-2xl text-ink font-normal tracking-tight mt-3 leading-tight">{{ paso.titulo }}</h4>
                         <p class="text-sm sm:text-base text-purple-700 font-normal mt-3 uppercase tracking-wider">{{ paso.fecha }}</p>
                       </div>
                       <span class="text-xs uppercase tracking-wider text-purple-700 font-normal">Toca para ver el detalle</span>
                     </div>
 
                     <!-- Cara posterior -->
-                    <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-purple-700 border-b-6 border-purple-950 p-6 flex flex-col justify-between text-white shadow-xl">
+                    <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-purple-700 border-b-6 border-purple-950 p-4 md:p-6 flex flex-col justify-between text-white shadow-xl">
                       <div>
                         <span class="text-xs uppercase tracking-widest text-purple-200 font-normal">{{ paso.etiqueta }} · Detalle</span>
-                        <p class="text-base sm:text-lg font-normal leading-relaxed mt-2">{{ paso.resumen }}</p>
+                        <p class="text-sm sm:text-lg font-normal leading-relaxed mt-2">{{ paso.resumen }}</p>
                       </div>
                       <div>
                         <a
@@ -214,7 +220,7 @@
 
             <!-- Separación entre pasos (línea punteada solo en móvil) -->
             @if (!ultimo) {
-              <div class="h-16 w-0 mx-auto border-l-4 border-dashed border-purple-300 md:border-l-0" aria-hidden="true"></div>
+              <div class="h-10 md:h-16" aria-hidden="true"></div>
             }
           }
         </div>

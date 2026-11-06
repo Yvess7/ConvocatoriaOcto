@@ -71,3 +71,10 @@ Probar en 360px, 390px, 768px y 1280px:
 - Poner `w-full` sin `sm:w-auto`: los botones se verían gigantes en tablet.
 - Quitar clases `reveal-*`, `apple-zoom` o `data-gsap`: son animaciones y no se tocan.
 - Meter valores arbitrarios (`w-[342px]`): usar la escala de Tailwind.
+
+## Mapa del torneo en móvil (mBot / OctoStudio)
+Ya implementado en `mbot.html`, `octostudio.html` y `shared/ruta-torneo.ts`. No rehacer; solo respetar:
+- En móvil el mapa es una línea de tiempo vertical: nodo a la izquierda (`w-12`), tarjeta a la derecha (`flex-1`), y a partir de `md` vuelve al sendero en zigzag.
+- El robot/pulpo también se ve en móvil (`w-20`/`w-16`) y recorre la línea izquierda; el rastro sólido es `data-gsap="rastro-m"`.
+- Las tarjetas son más compactas en móvil (`h-60`, `p-4`, textos más chicos).
+- No quitar los `data-gsap="sendero|robot|robot-img|nodo|rastro|rastro-m|tarjeta"`: la animación depende de ellos.

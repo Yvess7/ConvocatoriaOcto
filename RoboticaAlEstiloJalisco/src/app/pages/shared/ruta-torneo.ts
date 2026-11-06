@@ -159,6 +159,7 @@ export abstract class RutaTorneoBase {
               boton: n.querySelector('button') as HTMLElement,
               ping: n.querySelector('span') as HTMLElement | null,
               rastro: paso.querySelector('[data-gsap="rastro"]') as HTMLElement | null,
+              rastroM: paso.querySelector('[data-gsap="rastro-m"]') as HTMLElement | null,
               latido: null as gsap.core.Tween | null,
             };
           });
@@ -166,6 +167,7 @@ export abstract class RutaTorneoBase {
             p.boton.dataset['estado'] = 'futuro';
             if (p.ping) p.ping.style.visibility = 'hidden';
             if (p.rastro) gsap.set(p.rastro, { clipPath: 'inset(-8px -8px 100% -8px)' });
+            if (p.rastroM) gsap.set(p.rastroM, { scaleY: 0 });
             p.latido = gsap.to(p.boton, { y: -4, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: -1, paused: true });
           });
 
@@ -207,9 +209,16 @@ export abstract class RutaTorneoBase {
             anterior = estados;
             if (visible) {
               pasos.forEach((p, i) => {
-                if (!p.rastro || i >= centros.length - 1) return;
-                const f = gsap.utils.clamp(0, 1, (robotY - centros[i].y) / (centros[i + 1].y - centros[i].y));
-                p.rastro.style.clipPath = `inset(-8px -8px ${(1 - f) * 100}% -8px)`;
+                if (i >= centros.length - 1) return;
+                const tramo = centros[i + 1].y - centros[i].y;
+                if (p.rastro) {
+                  const f = gsap.utils.clamp(0, 1, (robotY - centros[i].y) / tramo);
+                  p.rastro.style.clipPath = `inset(-8px -8px ${(1 - f) * 100}% -8px)`;
+                }
+                if (p.rastroM) {
+                  const largo = tramo - nodos[i + 1].clientHeight / 2;
+                  gsap.set(p.rastroM, { scaleY: gsap.utils.clamp(0, 1, (robotY - centros[i].y) / largo) });
+                }
               });
             }
             if (cambio) actualizarProgreso();
