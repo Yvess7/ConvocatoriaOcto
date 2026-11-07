@@ -24,10 +24,12 @@ export class App {
   readonly navigation = navigation;
   readonly isMenuOpen = signal(false);
   readonly pageAnimating = signal(true);
+  readonly activeDropdown = signal<string | null>(null);
 
   constructor() {
     this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event) => {
       if (event instanceof NavigationStart) {
+        this.closeAllDropdowns();
         this.pageAnimating.set(false);
       } else if (
         event instanceof NavigationEnd ||
@@ -56,6 +58,29 @@ export class App {
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  openDropdown(path: string): void {
+    this.activeDropdown.set(path);
+  }
+
+  closeDropdown(path?: string): void {
+    if (!path || this.activeDropdown() === path) {
+      this.activeDropdown.set(null);
+    }
+  }
+
+  closeAllDropdowns(): void {
+    this.activeDropdown.set(null);
+    this.isMenuOpen.set(false);
+  }
+
+  onFocusOut(event: FocusEvent, path: string): void {
+    const currentTarget = event.currentTarget as HTMLElement | null;
+    const relatedTarget = event.relatedTarget as HTMLElement | null;
+    if (!currentTarget || !relatedTarget || !currentTarget.contains(relatedTarget)) {
+      this.closeDropdown(path);
+    }
   }
 
   private setupScrollAnimations(): void {

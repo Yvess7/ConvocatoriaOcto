@@ -1,0 +1,156 @@
+<!-- Banner unificado: mismo formato que Torneos y Videos. -->
+<section class="relative w-full overflow-hidden bg-brand-orange">
+  <div class="banner">
+    <img
+      src="/images/hero-banner.webp"
+      alt="Novedades de Robótica al Estilo Jalisco"
+      class="absolute inset-0 w-full h-full object-cover object-right select-none z-0"
+    />
+    <div class="banner-overlay" aria-hidden="true"></div>
+    <div class="banner-body">
+      <div class="banner-inner">
+        <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white border border-white/20 text-xs uppercase tracking-widest font-normal animate-rise">Noticias del torneo</span>
+        <h1 class="text-5xl sm:text-6xl lg:text-8xl text-white font-bold tracking-tight mt-4 leading-none animate-rise [animation-delay:150ms]">Novedades</h1>
+        <p class="max-w-2xl mx-auto md:mx-0 text-lg sm:text-xl text-white mt-5 font-normal leading-relaxed animate-rise [animation-delay:300ms]">
+          Entérate de las inscripciones, los nuevos webinars y los avances de cada fase de Robótica al Estilo Jalisco.
+        </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-8 animate-rise [animation-delay:450ms]">
+          <a
+            routerLink="/novedades"
+            fragment="publicaciones"
+            class="w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            Ver noticias
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cada noticia sigue las columnas alternadas y los marcos del sitio.
+     En móvil se lee primero el texto y después la imagen y el botón. -->
+<div id="publicaciones">
+  @if (esContenidoDeEjemplo) {
+    <div class="bg-white">
+      <p class="max-w-7xl mx-auto px-6 lg:px-8 pt-10 text-center md:text-left text-base text-ink/80 font-normal leading-relaxed">
+        Publicaciones de ejemplo: los anuncios y sus fechas son ilustrativos. Los comunicados confirmados se publicarán aquí.
+      </p>
+    </div>
+  }
+
+  @for (noticia of publicaciones; track noticia.id) {
+    @if ($odd) {
+      <!-- Transición ondulada superior hacia noticia destacada -->
+      <div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+        <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" class="w-full h-8 sm:h-12 text-brand-orange fill-current block" aria-hidden="true">
+          <path d="M0,36 C340,16 620,54 940,32 C1180,12 1340,48 1440,24 L1440,60 L0,60 Z"></path>
+        </svg>
+      </div>
+    }
+
+    <section
+      [id]="noticia.id"
+      [attr.aria-labelledby]="noticia.id + '-titulo'"
+      class="relative overflow-hidden"
+      [class]="$odd ? 'z-10 bg-brand-orange' : 'bg-white'"
+    >
+      <div
+        class="absolute -left-8 top-20 w-24 h-24 md:w-44 md:h-44 shape-hexagon animate-spin-slow pointer-events-none"
+        [class]="$odd ? 'bg-white/15' : 'bg-brand-orange/15'"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute right-10 bottom-20 w-24 h-24 md:w-36 md:h-36 shape-triangle animate-drift [--r:18deg] pointer-events-none"
+        [class]="$odd ? 'bg-brand-red/25' : 'bg-brand-red/15'"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="relative max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center py-16 sm:py-24 lg:py-32"
+      >
+        <div
+          class="md:col-span-6 order-1 text-center"
+          [class]="$odd ? 'md:order-2 md:text-right reveal-right' : 'md:text-left reveal-left'"
+        >
+          <span
+            class="inline-block px-3.5 py-1 rounded-md text-xs uppercase tracking-widest font-normal mb-4"
+            [class]="$odd ? 'bg-brand-red text-white' : 'bg-orange-50 text-brand-orange'"
+          >
+            {{ categorias[noticia.categoria] }}
+          </span>
+          <h2
+            [id]="noticia.id + '-titulo'"
+            class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
+            [class]="$odd ? 'text-white' : 'text-ink'"
+          >
+            {{ noticia.titulo }}
+          </h2>
+          <div
+            class="mt-6 h-1.5 w-20 rounded-md mx-auto"
+            [class]="$odd ? 'bg-white md:mr-0 md:ml-auto' : 'bg-brand-orange md:mx-0'"
+            aria-hidden="true"
+          ></div>
+          <p class="mt-6 text-base font-normal" [class]="$odd ? 'text-white' : 'text-ink/80'">
+            <time [attr.datetime]="noticia.fecha">{{ noticia.fecha | date:'dd/MM/yyyy':'+0000' }}</time>
+          </p>
+          <p class="text-lg sm:text-xl font-normal leading-relaxed mt-6" [class]="$odd ? 'text-white' : 'text-ink/80'">
+            {{ noticia.resumen }}
+          </p>
+          @for (parrafo of noticia.contenido; track $index) {
+            <p class="text-lg sm:text-xl font-normal leading-relaxed mt-6" [class]="$odd ? 'text-white' : 'text-ink/80'">
+              {{ parrafo }}
+            </p>
+          }
+        </div>
+
+        <div
+          class="md:col-span-6 order-2 delay-150 space-y-10 sm:space-y-12"
+          [class]="$odd ? 'md:order-1 reveal-left' : 'reveal-right'"
+        >
+          <div
+            class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame group"
+            [class]="$odd ? 'photo-frame-l frame-red' : ($index % 4 === 0 ? 'frame-orange' : 'frame-red')"
+          >
+            <img
+              [src]="noticia.imagen"
+              [alt]="noticia.imagenAlt"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a
+              [routerLink]="noticia.enlace.ruta"
+              [fragment]="noticia.enlace.fragmento"
+              class="w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+              [class]="$odd ? 'bg-white text-brand-red hover:bg-orange-50' : 'bg-brand-red text-white hover:bg-brand-red-dark'"
+            >
+              {{ noticia.enlace.texto }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    @if ($odd) {
+      <!-- Transición ondulada inferior hacia siguiente publicación -->
+      <div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
+        <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" class="w-full h-8 sm:h-12 text-white fill-current block" aria-hidden="true">
+          <path d="M0,24 C280,50 560,18 840,42 C1100,60 1300,22 1440,34 L1440,60 L0,60 Z"></path>
+        </svg>
+      </div>
+    }
+  } @empty {
+    <section class="relative bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24 lg:py-32 text-center md:text-left reveal">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight leading-tight">Próximas novedades</h2>
+        <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange mx-auto md:mx-0"></div>
+        <p class="max-w-2xl mx-auto md:mx-0 mt-6 text-lg sm:text-xl text-ink/80 font-normal leading-relaxed">
+          Aquí encontrarás los próximos avisos sobre inscripciones, webinars y fases del torneo.
+        </p>
+      </div>
+    </section>
+  }
+</div>

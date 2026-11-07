@@ -6,6 +6,7 @@ import { VideosComponent } from './pages/videos/videos';
 import { MbotComponent } from './pages/mbot/mbot';
 import { OctostudioComponent } from './pages/octostudio/octostudio';
 import { RegistroComponent } from './pages/registro/registro';
+import { NovedadesComponent } from './pages/novedades/novedades';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'documentacion', component: DocumentacionComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'videos', component: VideosComponent },
+  { path: 'novedades', component: NovedadesComponent, title: 'Novedades | Robótica al Estilo Jalisco' },
   { path: '**', redirectTo: '' },
 ];

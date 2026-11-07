@@ -80,8 +80,16 @@ export abstract class RutaTorneoBase {
   abstract readonly semifinales: DueloEliminatoria[];
   abstract readonly granFinal: DueloEliminatoria;
 
-  readonly faseClasificacion = signal<'play-in' | 'eliminatorias'>('play-in');
+  readonly faseClasificacion = signal<'participantes' | 'play-in' | 'eliminatorias'>('participantes');
   readonly equipoSeleccionadoId = signal<string | null>(null);
+
+  get participantesColumna1(): EquipoClasificacion[] {
+    return this.equiposPlayIn.slice(0, 16);
+  }
+
+  get participantesColumna2(): EquipoClasificacion[] {
+    return this.equiposPlayIn.slice(16, 32);
+  }
 
   private readonly volteadas = signal<ReadonlySet<string>>(new Set());
   private pasosCache?: PasoRuta[];
@@ -464,7 +472,7 @@ export abstract class RutaTorneoBase {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  cambiarFaseClasificacion(fase: 'play-in' | 'eliminatorias'): void {
+  cambiarFaseClasificacion(fase: 'participantes' | 'play-in' | 'eliminatorias'): void {
     if (this.faseClasificacion() === fase) return;
     this.faseClasificacion.set(fase);
     requestAnimationFrame(() => {
@@ -474,7 +482,25 @@ export abstract class RutaTorneoBase {
 
   animarFaseActiva(): void {
     const q = gsap.utils.selector(this.host.nativeElement);
-    if (this.faseClasificacion() === 'play-in') {
+    const fase = this.faseClasificacion();
+    if (fase === 'participantes') {
+      const contenedor = q('[data-gsap="tabla-participantes"]')[0];
+      const items = q('[data-gsap="item-participante"]');
+      if (contenedor) {
+        gsap.fromTo(
+          contenedor,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', clearProps: 'transform' }
+        );
+      }
+      if (items.length) {
+        gsap.fromTo(
+          items,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.3, stagger: 0.012, ease: 'power2.out', overwrite: 'auto', clearProps: 'transform' }
+        );
+      }
+    } else if (fase === 'play-in') {
       const tabla = q('[data-gsap="tabla-playin"]')[0];
       const filas = q('[data-gsap="fila-playin"]');
       if (tabla) {

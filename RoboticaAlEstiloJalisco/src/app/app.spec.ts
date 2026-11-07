@@ -18,6 +18,7 @@ const expectedMenuUrls = [
   '/videos#webinars',
   '/videos#seccion-videos',
   '/videos#galeria',
+  '/novedades',
   '/registro',
 ];
 
@@ -86,7 +87,7 @@ describe('App', () => {
     expect(menuButton().getAttribute('aria-expanded')).toBe('false');
   });
 
-  it.each(['/documentacion', '/documentacion#premios', '/videos#webinars', '/registro'])(
+  it.each(['/documentacion', '/documentacion#premios', '/videos#webinars', '/novedades', '/registro'])(
     'navigates to %s and closes the mobile menu',
     async (url) => {
       const menu = openMobileMenu();

@@ -1,12 +1,12 @@
 
 <!-- Barra de navegación fija con franja naranja -->
-<header (keydown.escape)="closeMenu()" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-xs">
+<header (keydown.escape)="closeAllDropdowns()" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-xs">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
       <!-- Logo / Inicio -->
       <a
         [routerLink]="navigation.home.path"
-        (click)="closeMenu()"
+        (click)="closeAllDropdowns()"
         class="flex items-center text-ink transition-opacity hover:opacity-90"
         aria-label="Inicio"
       >
@@ -16,16 +16,28 @@
       </a>
 
       <!-- Ambos menús usan los destinos definidos en navigation.ts. -->
-      <div class="hidden md:flex items-center gap-8" data-navigation="desktop">
+      <div class="hidden xl:flex items-center gap-8" data-navigation="desktop">
         @for (group of navigation.groups; track group.path) {
-          <div class="relative group">
+          <div
+            class="relative group"
+            (mouseenter)="openDropdown(group.path)"
+            (mouseleave)="closeDropdown(group.path)"
+            (focusin)="openDropdown(group.path)"
+            (focusout)="onFocusOut($event, group.path)"
+          >
             <a
               [routerLink]="group.path"
-              class="text-lg text-ink group-hover:text-brand-orange transition-colors font-bold py-7 inline-flex items-center"
+              (click)="closeAllDropdowns(); $any($event.target).blur()"
+              class="text-lg text-ink hover:text-brand-orange transition-colors font-bold py-7 inline-flex items-center"
+              [class.text-brand-orange]="activeDropdown() === group.path"
             >
               {{ group.label }}
             </a>
-            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-64 opacity-0 -translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto transition-all duration-200 ease-out z-50">
+            @if (group.links.length > 0) {
+              <div
+                class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-64 transition-all duration-200 ease-out z-50"
+                [class]="activeDropdown() === group.path ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'"
+              >
               <div
                 class="bg-white rounded-md shadow-xl border border-gray-100 p-2 space-y-1"
                 [class.max-h-96]="group.scrollable"
@@ -35,6 +47,7 @@
                   <a
                     [routerLink]="link.path ?? group.path"
                     [fragment]="link.fragment"
+                    (click)="closeAllDropdowns(); $any($event.target).blur()"
                     class="block px-4 rounded-md hover:bg-orange-50/60 transition-colors"
                     [class]="group.compact ? 'py-2' : 'py-2.5'"
                   >
@@ -42,12 +55,14 @@
                   </a>
                 }
               </div>
-            </div>
+              </div>
+            }
           </div>
         }
 
         <a
           [routerLink]="navigation.registration.path"
+          (click)="closeAllDropdowns()"
           class="px-6 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-bold text-base shadow-xs inline-flex items-center justify-center"
         >
           {{ navigation.registration.label }}
@@ -55,7 +70,7 @@
       </div>
 
       <!-- Botón menú móvil -->
-      <div class="flex md:hidden">
+      <div class="flex xl:hidden">
         <button
           type="button"
           (click)="toggleMenu()"
@@ -83,8 +98,9 @@
 
   <!-- Menú desplegable para móviles -->
   @if (isMenuOpen()) {
-    <div id="mobile-navigation" data-navigation="mobile" class="md:hidden border-t border-gray-100 bg-white px-6 pt-4 pb-6 space-y-4 max-h-[80vh] overflow-y-auto">
+    <div id="mobile-navigation" data-navigation="mobile" class="xl:hidden border-t border-gray-100 bg-white px-6 pt-4 pb-6 space-y-4 max-h-[80vh] overflow-y-auto">
       @for (group of navigation.groups; track group.path) {
+        @if (group.links.length > 0) {
         <div>
           <a
             [routerLink]="group.path"
@@ -107,6 +123,15 @@
             }
           </div>
         </div>
+        } @else {
+          <a
+            [routerLink]="group.path"
+            (click)="closeMenu()"
+            class="block rounded-lg px-2 py-3 text-base text-ink hover:bg-orange-50/60 hover:text-brand-orange font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          >
+            {{ group.label }}
+          </a>
+        }
       }
 
       <div class="pt-2">
@@ -129,7 +154,7 @@
   </div>
 
   <!-- Sección Contacto compartida en la base del sitio (Texto libre y figuras variadas) -->
-  <section id="contacto" class="relative bg-gray-50/50 pt-32 pb-24 sm:pt-36 sm:pb-32 overflow-hidden">
+  <section id="contacto" class="relative bg-white pt-20 pb-24 sm:pt-28 sm:pb-32 overflow-hidden">
     <div class="absolute -left-10 top-10 w-44 h-44 bg-brand-orange/15 shape-hexagon animate-drift [--r:12deg] pointer-events-none" aria-hidden="true"></div>
     <div class="absolute right-12 bottom-10 w-32 h-32 bg-brand-red/15 shape-triangle animate-float-slow [--r:-16deg] pointer-events-none" aria-hidden="true"></div>
     <div class="absolute right-1/4 top-8 w-36 h-24 text-brand-orange/15 bg-tech-dots animate-float pointer-events-none" aria-hidden="true"></div>

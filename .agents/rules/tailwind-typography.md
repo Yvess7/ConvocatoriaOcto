@@ -50,3 +50,14 @@ description: Reglas obligatorias de Tailwind CSS y tipografía Gareth para el pr
   - Usar grillas equilibradas (`md:grid-cols-12` con `md:col-span-6` + `md:col-span-6` y `gap-12 lg:gap-20`) y tamaños de encabezado simétricos (`text-4xl sm:text-5xl lg:text-6xl`) para que palabras largas como `Documentación` o `Convocatoria` nunca invadan ni se encimen sobre la columna contigua.
 - **Variedad de figuras geométricas en movimiento**: En los fondos dinámicos, utilizar figuras geométricas variadas más allá de simples cuadrados (`shape-hexagon`, `shape-triangle`, `shape-diamond`, `shape-octagon`, `shape-parallelogram`, `shape-cross`, `bg-tech-dots`), animadas únicamente con propiedades aceleradas por GPU (`transform` y `opacity`).
 
+## 6. Transiciones entre secciones: Uso exclusivo de Ondas orgánicas diferenciadas (Sin triángulos)
+- **Uso exclusivo de Ondas (sin triángulos)**: Todas las transiciones entre secciones de color en el sitio deben construirse únicamente con ondas orgánicas SVG fluidas. No utilizar cortes triangulares ni chevrons (`section-triangle-both`, `section-triangle-bottom`, etc.).
+- **Variabilidad obligatoria en curvas de onda (SVG) ("ondas con diferencia")**:
+  - Cada onda debe tener una curvatura asimétrica única. Prohibido terminantemente reutilizar o copiar la misma trayectoria `d="..."` en diferentes secciones o vistas.
+  - Alternar el ritmo visual entre transiciones consecutivas: variar crestas a la izquierda, crestas a la derecha, senos amplios, dobles ondulaciones suaves y mesetas fluidas para que el sitio se sienta dinámico y fresco.
+  - No usar `rotate-180` sobre una misma trayectoria para fingir una onda distinta; definir un trazo nativo adaptado a la dirección del flujo de la página.
+- **Colores sólidos sin bandas translúcidas**:
+  - Toda transición de onda SVG debe usar el color sólido exacto de la sección adyacente (`fill-current` con clases como `text-brand-orange`, `text-brand-red`, `text-sky-600`, `text-purple-700`, `text-white`, `text-sky-50`, `text-purple-50`).
+  - Queda estrictamente prohibido usar clases con opacidades translúcidas (p. ej. `text-gray-50/50`) que generen franjas degradadas o tonos lila/grisáceos involuntarios.
+  - Usar siempre `-mb-px` y fondos coincidentes en el contenedor envolvente para prevenir líneas divisorias o saltos de píxeles.
+

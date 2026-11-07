@@ -53,6 +53,12 @@ export const navigation: {
         { label: 'Galería', fragment: 'galeria' },
       ],
     },
+    {
+      label: 'Novedades',
+      path: '/novedades',
+      compact: true,
+      links: [],
+    },
   ],
   registration: { label: 'Registro', path: '/registro' },
 };

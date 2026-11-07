@@ -51,12 +51,19 @@
   </div>
 </section>
 
-<!-- 2. Shorts (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
-<section id="shorts" class="relative z-10 bg-brand-orange overflow-hidden section-triangle-both">
+<!-- Transición ondulada superior hacia Shorts con trayectoria orgánica dinámica -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+    <path d="M0,50 C320,18 580,72 860,34 C1120,10 1320,58 1440,36 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- 2. Shorts (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Fondo naranja) -->
+<section id="shorts" class="relative z-10 bg-brand-orange overflow-hidden">
   <div class="absolute -left-10 top-20 w-44 h-44 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-10 bottom-20 w-32 h-32 bg-brand-red/35 shape-parallelogram animate-drift [--r:15deg] pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
       <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-red group">
         <img src="/images/hero-banner.webp" alt="Preview Reproductor Shorts" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
@@ -80,6 +87,13 @@
     </div>
   </div>
 </section>
+
+<!-- Transición ondulada inferior hacia Webinars con curva fluida -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,26 C260,66 520,20 800,38 C1080,56 1280,14 1440,40 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
 
 <!-- 3. Webinars (Alternado: Título + Descripción Izquierda / Preview de Video + Botón Derecha) -->
 <section id="webinars" class="relative bg-white overflow-hidden">
@@ -111,12 +125,19 @@
   </div>
 </section>
 
-<!-- 4. Videos (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Triángulo arriba y abajo) -->
-<section id="seccion-videos" class="relative z-10 bg-brand-red overflow-hidden section-triangle-both">
+<!-- Transición ondulada superior hacia Sección Videos con curvatura cinemática -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
+    <path d="M0,48 C300,16 560,72 840,40 C1120,8 1320,54 1440,28 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- 4. Videos (Alternado: Preview de Video + Botón Izquierda / Título + Descripción Derecha · Fondo rojo) -->
+<section id="seccion-videos" class="relative z-10 bg-brand-red overflow-hidden">
   <div class="absolute left-1/4 top-20 w-32 h-32 bg-white/15 shape-hexagon animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute -right-12 bottom-20 w-56 h-56 bg-brand-orange/40 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 sm:py-40 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
     <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
       <div class="apple-zoom delay-200 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-orange group">
         <img src="/images/hero-banner.webp" alt="Preview Repositorio de Videos" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
@@ -140,6 +161,13 @@
     </div>
   </div>
 </section>
+
+<!-- Transición ondulada inferior hacia Galería con curva fluida asimétrica -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,34 C240,64 480,16 760,42 C1040,68 1260,20 1440,44 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
 
 <!-- 5. Galería (Alternado: Título + Descripción Izquierda / Foto + Botón Derecha) -->
 <section id="galeria" class="relative bg-white overflow-hidden">

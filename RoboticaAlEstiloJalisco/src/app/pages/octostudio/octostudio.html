@@ -236,10 +236,10 @@
   </div>
 </section>
 
-<!-- Transición ondulada suave y natural hacia Clasificación (sin bordes pronunciados ni saltos de contraste) -->
+<!-- Transición ondulada suave y natural hacia Clasificación con curva abierta y serena -->
 <div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
   <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-10 sm:h-14 lg:h-16 text-purple-50 fill-current block" aria-hidden="true">
-    <path d="M0,24 C320,70 540,5 720,40 C900,75 1180,10 1440,48 L1440,80 L0,80 Z"></path>
+    <path d="M0,32 C260,58 480,56 740,34 C1000,12 1220,22 1440,38 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
 
@@ -271,21 +271,41 @@
   <!-- Sub-barra sticky debajo de la navbar principal (se retira automáticamente al terminar la sección) -->
   <div class="sticky top-21 z-30 bg-purple-50/95 backdrop-blur-md border-y border-purple-200/70 py-2.5">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-2 gap-3 max-w-md">
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 max-w-lg">
+        <button
+          type="button"
+          (click)="cambiarFaseClasificacion('participantes')"
+          class="text-left px-3 sm:px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
+          [class]="faseClasificacion() === 'participantes' ? 'bg-purple-700 border-purple-700 text-white shadow-xs' : 'bg-white border-purple-200 text-ink hover:border-purple-400'"
+        >
+          <span
+            class="block text-[10px] sm:text-xs uppercase tracking-widest font-normal leading-none"
+            [class]="faseClasificacion() === 'participantes' ? 'text-purple-200' : 'text-ink/60'"
+          >
+            LISTA
+          </span>
+          <span
+            class="block text-xs sm:text-base font-normal mt-0.5 leading-snug truncate"
+            [class]="faseClasificacion() === 'participantes' ? 'text-white' : 'text-ink'"
+          >
+            Participantes
+          </span>
+        </button>
+
         <button
           type="button"
           (click)="cambiarFaseClasificacion('play-in')"
-          class="text-left px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
+          class="text-left px-3 sm:px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
           [class]="faseClasificacion() === 'play-in' ? 'bg-purple-700 border-purple-700 text-white shadow-xs' : 'bg-white border-purple-200 text-ink hover:border-purple-400'"
         >
           <span
-            class="block text-xs uppercase tracking-widest font-normal leading-none"
+            class="block text-[10px] sm:text-xs uppercase tracking-widest font-normal leading-none"
             [class]="faseClasificacion() === 'play-in' ? 'text-purple-200' : 'text-ink/60'"
           >
             LLAVE
           </span>
           <span
-            class="block text-sm sm:text-base font-normal mt-0.5 leading-snug"
+            class="block text-xs sm:text-base font-normal mt-0.5 leading-snug truncate"
             [class]="faseClasificacion() === 'play-in' ? 'text-white' : 'text-ink'"
           >
             Play-Ins
@@ -295,17 +315,17 @@
         <button
           type="button"
           (click)="cambiarFaseClasificacion('eliminatorias')"
-          class="text-left px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
+          class="text-left px-3 sm:px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
           [class]="faseClasificacion() === 'eliminatorias' ? 'bg-purple-700 border-purple-700 text-white shadow-xs' : 'bg-white border-purple-200 text-ink hover:border-purple-400'"
         >
           <span
-            class="block text-xs uppercase tracking-widest font-normal leading-none"
+            class="block text-[10px] sm:text-xs uppercase tracking-widest font-normal leading-none"
             [class]="faseClasificacion() === 'eliminatorias' ? 'text-purple-200' : 'text-ink/60'"
           >
             LLAVE
           </span>
           <span
-            class="block text-sm sm:text-base font-normal mt-0.5 leading-snug"
+            class="block text-xs sm:text-base font-normal mt-0.5 leading-snug truncate"
             [class]="faseClasificacion() === 'eliminatorias' ? 'text-white' : 'text-ink'"
           >
             Eliminatorias
@@ -317,8 +337,40 @@
 
   <!-- Contenido de la llave seleccionada -->
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-8">
-    <!-- Vista 1: Lista de 32 equipos Play-Ins (pasan 16 en color y 16 en gris, todo Por definir en 0) -->
-    @if (faseClasificacion() === 'play-in') {
+    <!-- Vista 1: Lista de 32 Participantes (2 columnas de 16, solo escuela y equipo, sin puntajes) -->
+    @if (faseClasificacion() === 'participantes') {
+      <div data-gsap="tabla-participantes" class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-5xl">
+        <!-- Columna 1 (Equipos 1 al 16) -->
+        <div class="border border-purple-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
+          @for (equipo of participantesColumna1; track equipo.id) {
+            <div data-gsap="item-participante" class="px-4 py-3 flex items-center justify-between gap-3 hover:bg-purple-50/40 transition-colors">
+              <div class="min-w-0 flex-1">
+                <span class="block text-sm font-normal text-ink truncate">{{ equipo.nombre }}</span>
+                <span class="block text-xs text-ink/60 font-normal truncate mt-0.5">{{ equipo.escuela }}</span>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-purple-50 text-purple-800 shrink-0 font-normal border border-purple-100">
+                #{{ equipo.posicion < 10 ? '0' + equipo.posicion : equipo.posicion }}
+              </span>
+            </div>
+          }
+        </div>
+
+        <!-- Columna 2 (Equipos 17 al 32) -->
+        <div class="border border-purple-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
+          @for (equipo of participantesColumna2; track equipo.id) {
+            <div data-gsap="item-participante" class="px-4 py-3 flex items-center justify-between gap-3 hover:bg-purple-50/40 transition-colors">
+              <div class="min-w-0 flex-1">
+                <span class="block text-sm font-normal text-ink truncate">{{ equipo.nombre }}</span>
+                <span class="block text-xs text-ink/60 font-normal truncate mt-0.5">{{ equipo.escuela }}</span>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-purple-50 text-purple-800 shrink-0 font-normal border border-purple-100">
+                #{{ equipo.posicion }}
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    } @else if (faseClasificacion() === 'play-in') {
       <div data-gsap="tabla-playin" class="max-w-xl border border-purple-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
         @for (equipo of equiposPlayIn; track equipo.id) {
           <div data-gsap="fila-playin" class="transition-colors duration-200" [class]="esEquipoActivo(equipo.id) ? 'bg-purple-50/40' : 'bg-white'">
@@ -504,10 +556,10 @@
   </div>
 </section>
 
-<!-- Transición ondulada superior hacia la sección institucional OctoStudio -->
+<!-- Transición ondulada superior hacia la sección institucional OctoStudio con curva dinámica -->
 <div class="relative w-full overflow-hidden leading-none bg-purple-50 -mb-px z-20 pointer-events-none">
   <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
-    <path d="M0,24 C320,70 540,5 720,40 C900,75 1180,10 1440,48 L1440,80 L0,80 Z"></path>
+    <path d="M0,52 C200,24 380,14 620,28 C860,42 1080,68 1280,54 C1360,48 1400,36 1440,28 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
 
@@ -562,10 +614,10 @@
   </div>
 </section>
 
-<!-- Transición ondulada entre Convocatoria (rojo) y Anexos (blanco) -->
-<div class="relative w-full overflow-hidden leading-none -mt-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block rotate-180" aria-hidden="true">
-    <path d="M0,24 C320,70 540,5 720,40 C900,75 1180,10 1440,48 L1440,80 L0,80 Z"></path>
+<!-- Transición ondulada entre Convocatoria (rojo) y Anexos (blanco) con onda central orgánica -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,18 C240,16 420,62 660,58 C900,54 1140,20 1320,24 C1380,26 1415,34 1440,42 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
 
