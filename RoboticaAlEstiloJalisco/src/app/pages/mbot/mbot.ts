@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { RutaTorneoBase, TramoRuta } from '../shared/ruta-torneo';
+import {
+  DueloEliminatoria,
+  EquipoClasificacion,
+  RutaTorneoBase,
+  TramoRuta,
+} from '../shared/ruta-torneo';
 
 @Component({
   imports: [RouterLink],
@@ -21,8 +26,8 @@ export class MbotComponent extends RutaTorneoBase {
           titulo: 'Lanzamiento',
           resumen: 'Arranca la convocatoria oficial.',
           fecha: 'Fecha por confirmar',
-          ruta: '/documentacion',
-          fragmento: 'convocatoria',
+          ruta: '/mbot',
+          fragmento: 'convocatoria-mbot',
           enlace: 'Ir a la Convocatoria',
         },
         {
@@ -51,8 +56,8 @@ export class MbotComponent extends RutaTorneoBase {
           titulo: 'Etapa de selección',
           resumen: 'Prepara a tus participantes: cada escuela elige a sus alumnos.',
           fecha: 'Fecha por confirmar',
-          ruta: '/documentacion',
-          fragmento: 'reglamento',
+          ruta: '/mbot',
+          fragmento: 'reglamento-mbot',
           enlace: 'Ir al Reglamento',
         },
       ],
@@ -69,19 +74,19 @@ export class MbotComponent extends RutaTorneoBase {
           titulo: 'Registro de equipo',
           resumen: 'Inscribe a tu equipo.',
           fecha: 'Fecha por confirmar',
-          ruta: '/documentacion',
-          fragmento: 'registro',
+          ruta: '/registro',
+          fragmento: '',
           enlace: 'Ir al Registro',
         },
         {
           id: 'eliminatoria',
           etiqueta: 'Etapa 2',
           titulo: 'Eliminatoria',
-          resumen: 'Compite por un lugar en la final.',
+          resumen: 'Compite en el Play-In por un lugar en las llaves finales.',
           fecha: 'Fecha por confirmar',
-          ruta: '/documentacion',
-          fragmento: 'anexos',
-          enlace: 'Ir a Anexos',
+          ruta: '/mbot',
+          fragmento: 'clasificacion-mbot',
+          enlace: 'Ver Clasificación y Llaves',
         },
         {
           id: 'gran-final',
@@ -97,4 +102,88 @@ export class MbotComponent extends RutaTorneoBase {
       ],
     },
   ];
+
+  readonly equiposPlayIn: EquipoClasificacion[] = Array.from({ length: 32 }, (_, index) => ({
+    id: `eq-${index + 1}`,
+    posicion: index + 1,
+    nombre: 'Por definir',
+    escuela: 'Por definir',
+    municipio: 'Por definir',
+    nivel: 'Primaria',
+    puntosTotales: 0,
+    metricaExtra: 'Por definir',
+    estado: index < 16 ? 'Clasificado' : 'Eliminado',
+    resumen: 'Resultados pendientes de evaluación oficial.',
+    desglose: [
+      { concepto: 'Velocidad y Tramo en Pista', detalle: 'Por definir', puntos: 0, maximo: 40 },
+      { concepto: 'Librado de Obstáculos', detalle: 'Por definir', puntos: 0, maximo: 25 },
+      { concepto: 'Algoritmo y Bitácora', detalle: 'Por definir', puntos: 0, maximo: 25 },
+      { concepto: 'Ejecución sin Penalización', detalle: 'Por definir', puntos: 0, maximo: 10 },
+    ],
+  }));
+
+  readonly octavosFinal: DueloEliminatoria[] = Array.from({ length: 8 }, (_, index) => ({
+    id: `of-${index + 1}`,
+    codigo: `Octavos ${index + 1}`,
+    horario: 'Por definir',
+    competidorA: {
+      equipoId: `eq-${index + 1}`,
+      semilla: index + 1,
+      nombre: 'Por definir',
+      escuela: 'Por definir',
+      puntaje: '0',
+    },
+    competidorB: {
+      equipoId: `eq-${16 - index}`,
+      semilla: 16 - index,
+      nombre: 'Por definir',
+      escuela: 'Por definir',
+      puntaje: '0',
+    },
+  }));
+
+  readonly cuartosFinal: DueloEliminatoria[] = Array.from({ length: 4 }, (_, index) => ({
+    id: `qf-${index + 1}`,
+    codigo: `Cuartos ${index + 1}`,
+    horario: 'Por definir',
+    competidorA: {
+      equipoId: `eq-${index * 2 + 1}`,
+      semilla: index * 2 + 1,
+      nombre: 'Por definir',
+      escuela: 'Por definir',
+      puntaje: '0',
+    },
+    competidorB: {
+      equipoId: `eq-${index * 2 + 2}`,
+      semilla: index * 2 + 2,
+      nombre: 'Por definir',
+      escuela: 'Por definir',
+      puntaje: '0',
+    },
+  }));
+
+  readonly semifinales: DueloEliminatoria[] = [
+    {
+      id: 'sf-1',
+      codigo: 'Semifinal 1',
+      horario: 'Por definir',
+      competidorA: { equipoId: 'eq-1', semilla: 1, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
+      competidorB: { equipoId: 'eq-4', semilla: 4, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
+    },
+    {
+      id: 'sf-2',
+      codigo: 'Semifinal 2',
+      horario: 'Por definir',
+      competidorA: { equipoId: 'eq-2', semilla: 2, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
+      competidorB: { equipoId: 'eq-3', semilla: 3, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
+    },
+  ];
+
+  readonly granFinal: DueloEliminatoria = {
+    id: 'gf-1',
+    codigo: 'Gran Final',
+    horario: 'Por definir',
+    competidorA: { equipoId: 'eq-1', semilla: 1, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
+    competidorB: { equipoId: 'eq-2', semilla: 2, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
+  };
 }

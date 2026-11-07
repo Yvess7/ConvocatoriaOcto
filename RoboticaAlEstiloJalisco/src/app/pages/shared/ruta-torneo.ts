@@ -29,9 +29,59 @@ export interface TramoRuta {
   pasos: PasoRuta[];
 }
 
+/** Rubro individual del desglose de puntuación de un equipo. */
+export interface RubroPuntaje {
+  concepto: string;
+  detalle: string;
+  puntos: number;
+  maximo: number;
+}
+
+/** Equipo participante en la fase Play-In / Clasificación. */
+export interface EquipoClasificacion {
+  id: string;
+  posicion: number;
+  nombre: string;
+  escuela: string;
+  municipio: string;
+  nivel: string;
+  puntosTotales: number;
+  metricaExtra: string;
+  estado: 'Clasificado' | 'Play-In' | 'Eliminado';
+  resumen: string;
+  desglose: RubroPuntaje[];
+}
+
+/** Participante dentro de un duelo de eliminatoria. */
+export interface CompetidorDuelo {
+  equipoId: string;
+  semilla: number;
+  nombre: string;
+  escuela: string;
+  puntaje: string;
+  ganador?: boolean;
+}
+
+/** Enfrentamiento individual dentro del bracket de eliminatorias. */
+export interface DueloEliminatoria {
+  id: string;
+  codigo: string;
+  horario: string;
+  competidorA: CompetidorDuelo;
+  competidorB: CompetidorDuelo;
+}
+
 /** Lógica compartida por las páginas de mBot y OctoStudio. */
 export abstract class RutaTorneoBase {
   abstract readonly tramos: TramoRuta[];
+  abstract readonly equiposPlayIn: EquipoClasificacion[];
+  abstract readonly octavosFinal?: DueloEliminatoria[];
+  abstract readonly cuartosFinal: DueloEliminatoria[];
+  abstract readonly semifinales: DueloEliminatoria[];
+  abstract readonly granFinal: DueloEliminatoria;
+
+  readonly faseClasificacion = signal<'play-in' | 'eliminatorias'>('play-in');
+  readonly equipoSeleccionadoId = signal<string | null>(null);
 
   private readonly volteadas = signal<ReadonlySet<string>>(new Set());
   private pasosCache?: PasoRuta[];
@@ -51,6 +101,19 @@ export abstract class RutaTorneoBase {
       mm.add('(prefers-reduced-motion: no-preference)', () => {
         const q = gsap.utils.selector(this.host.nativeElement);
         const entrada = (el: Element) => ({ trigger: el, start: 'top 85%', once: true });
+
+        // Hero banner: animación de entrada escalonada
+        const heroBadge = q('[data-gsap="hero-badge"]')[0];
+        const heroTitulo = q('[data-gsap="hero-titulo"]')[0];
+        const heroTexto = q('[data-gsap="hero-texto"]')[0];
+        const heroBotones = q('[data-gsap="hero-botones"]')[0];
+        if (heroTitulo) {
+          const heroTl = gsap.timeline({ delay: 0.1 });
+          if (heroBadge) heroTl.from(heroBadge, { y: -20, opacity: 0, duration: 0.5, ease: 'back.out(1.8)' });
+          heroTl.from(heroTitulo, { y: 35, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.3');
+          if (heroTexto) heroTl.from(heroTexto, { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+          if (heroBotones) heroTl.from(heroBotones, { y: 15, opacity: 0, duration: 0.5, ease: 'back.out(1.5)' }, '-=0.3');
+        }
 
         q('[data-gsap="encabezado"]').forEach((el) =>
           gsap.from(el, { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: entrada(el) }),
@@ -283,6 +346,77 @@ export abstract class RutaTorneoBase {
             });
           });
         }
+
+        // Clasificación: encabezado
+        const clasifEncabezado = q('[data-gsap="clasif-encabezado"]')[0];
+        if (clasifEncabezado) {
+          gsap.from(clasifEncabezado, {
+            y: 35,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: entrada(clasifEncabezado),
+          });
+        }
+
+        const clasifSeccion = q('#clasificacion-mbot, #clasificacion-octostudio')[0];
+        if (clasifSeccion) {
+          ScrollTrigger.create({
+            trigger: clasifSeccion,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => this.animarFaseActiva(),
+          });
+        }
+
+        // Convocatoria: encabezado y capítulos
+        const convEncabezado = q('[data-gsap="convocatoria-encabezado"]')[0];
+        if (convEncabezado) {
+          gsap.from(convEncabezado, {
+            y: 35,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: entrada(convEncabezado),
+          });
+        }
+
+        const convBloques = q('[data-gsap="convocatoria-bloque"]');
+        if (convBloques.length) {
+          gsap.from(convBloques, {
+            y: 30,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: entrada(convBloques[0]),
+          });
+        }
+
+        // Anexos y Reglamentos: encabezado y fichas
+        const anexosEncabezado = q('[data-gsap="anexos-encabezado"]')[0];
+        if (anexosEncabezado) {
+          gsap.from(anexosEncabezado, {
+            y: 35,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: entrada(anexosEncabezado),
+          });
+        }
+
+        const anexosItems = q('[data-gsap="anexo-item"]');
+        if (anexosItems.length) {
+          anexosItems.forEach((item) => {
+            gsap.from(item, {
+              x: -25,
+              opacity: 0,
+              duration: 0.65,
+              ease: 'power3.out',
+              scrollTrigger: entrada(item),
+            });
+          });
+        }
       });
     }, this.host.nativeElement);
   }
@@ -328,5 +462,84 @@ export abstract class RutaTorneoBase {
 
   scrollTo(id: string): void {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  cambiarFaseClasificacion(fase: 'play-in' | 'eliminatorias'): void {
+    if (this.faseClasificacion() === fase) return;
+    this.faseClasificacion.set(fase);
+    requestAnimationFrame(() => {
+      this.animarFaseActiva();
+    });
+  }
+
+  animarFaseActiva(): void {
+    const q = gsap.utils.selector(this.host.nativeElement);
+    if (this.faseClasificacion() === 'play-in') {
+      const tabla = q('[data-gsap="tabla-playin"]')[0];
+      const filas = q('[data-gsap="fila-playin"]');
+      if (tabla) {
+        gsap.fromTo(
+          tabla,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', clearProps: 'transform' }
+        );
+      }
+      if (filas.length) {
+        gsap.fromTo(
+          filas,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.3, stagger: 0.012, ease: 'power2.out', overwrite: 'auto', clearProps: 'transform' }
+        );
+      }
+    } else {
+      const contenedor = q('[data-gsap="contenedor-bracket"]')[0];
+      const cols = q('[data-gsap="columna-bracket"]');
+      if (contenedor) {
+        gsap.fromTo(
+          contenedor,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', clearProps: 'transform' }
+        );
+      }
+      if (cols.length) {
+        gsap.fromTo(
+          cols,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out', overwrite: 'auto', clearProps: 'transform' }
+        );
+      }
+    }
+  }
+
+  seleccionarEquipo(id: string): void {
+    const anterior = this.equipoSeleccionadoId();
+    const nuevo = anterior === id ? null : id;
+    this.equipoSeleccionadoId.set(nuevo);
+
+    if (nuevo) {
+      requestAnimationFrame(() => {
+        const q = gsap.utils.selector(this.host.nativeElement);
+        const panel = q(`[data-gsap="desglose-${nuevo}"]`)[0];
+        if (panel) {
+          gsap.fromTo(
+            panel,
+            { opacity: 0, y: -10, scaleY: 0.95 },
+            { opacity: 1, y: 0, scaleY: 1, duration: 0.35, ease: 'power2.out', transformOrigin: 'top' }
+          );
+          const rubros = panel.querySelectorAll('[data-gsap="rubro-item"]');
+          if (rubros.length) {
+            gsap.fromTo(
+              rubros,
+              { opacity: 0, y: 8 },
+              { opacity: 1, y: 0, duration: 0.25, stagger: 0.04, ease: 'power2.out' }
+            );
+          }
+        }
+      });
+    }
+  }
+
+  esEquipoActivo(id: string): boolean {
+    return this.equipoSeleccionadoId() === id;
   }
 }

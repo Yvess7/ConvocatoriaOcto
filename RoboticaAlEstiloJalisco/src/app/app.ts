@@ -1,4 +1,4 @@
-import { afterNextRender, Component, computed, DestroyRef, inject, signal } from '@angular/core';
+import { afterNextRender, Component, DestroyRef, inject, signal } from '@angular/core';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -9,11 +9,11 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { navigation } from './navigation';
 
 @Component({
   imports: [RouterLink, RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
@@ -21,44 +21,27 @@ export class App {
   private readonly destroyRef = inject(DestroyRef);
   private observer?: IntersectionObserver;
 
+  readonly navigation = navigation;
   readonly isMenuOpen = signal(false);
-  readonly isNavigating = signal(false);
   readonly pageAnimating = signal(true);
-  readonly currentUrl = signal<string>(this.router.url);
-
-  readonly tournamentVariant = computed<'torneos' | 'mbot' | 'octostudio' | null>(() => {
-    const url = this.currentUrl();
-    if (url.includes('/mbot')) return 'mbot';
-    if (url.includes('/octostudio')) return 'octostudio';
-    if (url.includes('/torneos')) return 'torneos';
-    return null;
-  });
 
   constructor() {
     this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.isNavigating.set(true);
         this.pageAnimating.set(false);
       } else if (
         event instanceof NavigationEnd ||
         event instanceof NavigationCancel ||
         event instanceof NavigationError
       ) {
-        if (event instanceof NavigationEnd) {
-          this.currentUrl.set(event.urlAfterRedirects || event.url);
-        }
         requestAnimationFrame(() => {
           this.pageAnimating.set(true);
           this.setupScrollAnimations();
         });
-        setTimeout(() => {
-          this.isNavigating.set(false);
-        }, 420);
       }
     });
 
     afterNextRender(() => {
-      this.currentUrl.set(this.router.url);
       this.setupScrollAnimations();
     });
 
@@ -80,7 +63,7 @@ export class App {
       return;
     }
 
-    const selector = '.reveal, .reveal-left, .reveal-right, .apple-reveal, .apple-zoom';
+    const selector = '.reveal, .reveal-left, .reveal-right, .apple-zoom';
 
     if (!('IntersectionObserver' in window)) {
       document.querySelectorAll(selector).forEach((el) => el.classList.add('is-visible'));
@@ -102,7 +85,7 @@ export class App {
       {
         threshold: 0.05,
         rootMargin: '0px 0px -5% 0px',
-      }
+      },
     );
 
     // El DOM de la nueva ruta puede tardar en renderizarse: se observa varias veces

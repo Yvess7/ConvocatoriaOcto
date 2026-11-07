@@ -9,7 +9,7 @@ button, [role="button"] {
   cursor: pointer;
 }
 
-/* Tipografía oficial Garet / Gareth (Peso Regular 400) */
+/* Tipografía oficial Garet (Peso Regular 400) */
 @font-face {
   font-family: 'Garet';
   src: url('/fonts/garet/Garet-Book.woff2') format('woff2'),
@@ -21,31 +21,9 @@ button, [role="button"] {
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Gareth';
-  src: url('/fonts/garet/Garet-Book.woff2') format('woff2'),
-       url('/fonts/garet/Garet-Book.woff') format('woff'),
-       url('/fonts/garet/Garet-Book.ttf') format('truetype'),
-       url('/fonts/garet/Garet-Book.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Tipografía oficial Garet / Gareth (Peso Bold/Heavy 700-900) */
+/* Tipografía oficial Garet (Peso Bold/Heavy 700-900) */
 @font-face {
   font-family: 'Garet';
-  src: url('/fonts/garet/Garet-Heavy.woff2') format('woff2'),
-       url('/fonts/garet/Garet-Heavy.woff') format('woff'),
-       url('/fonts/garet/Garet-Heavy.ttf') format('truetype'),
-       url('/fonts/garet/Garet-Heavy.otf') format('opentype');
-  font-weight: 700 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gareth';
   src: url('/fonts/garet/Garet-Heavy.woff2') format('woff2'),
        url('/fonts/garet/Garet-Heavy.woff') format('woff'),
        url('/fonts/garet/Garet-Heavy.ttf') format('truetype'),
@@ -56,9 +34,7 @@ button, [role="button"] {
 }
 
 @theme {
-  --font-sans: 'Garet', 'Gareth', sans-serif;
-  --font-garet: 'Garet', 'Gareth', sans-serif;
-  --font-gareth: 'Gareth', 'Garet', sans-serif;
+  --font-sans: 'Garet', sans-serif;
 
   --color-brand-orange: #f6842b;
   --color-brand-red: #e81a4f;
@@ -70,17 +46,9 @@ button, [role="button"] {
   --animate-drift: drift 14s ease-in-out infinite alternate;
   --animate-spin-slow: spin 28s linear infinite;
   --animate-rise: apple-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-zoom: banner-zoom 18s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
-  --animate-marquee: marquee 28s linear infinite;
   --animate-pop: pop 2.4s ease-in-out infinite;
-  --animate-route-load: route-load 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-bob: bob 3.2s ease-in-out infinite;
   --animate-dash: dash-flow 1.4s linear infinite;
 
-  @keyframes bob {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -0.6rem, 0); }
-  }
   @keyframes dash-flow {
     to { stroke-dashoffset: -16px; }
   }
@@ -104,22 +72,9 @@ button, [role="button"] {
       transform: translateY(0) scale(1);
     }
   }
-  @keyframes banner-zoom {
-    from { transform: scale(1.02); }
-    to { transform: scale(1.16); }
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
   @keyframes pop {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.04); }
-  }
-  @keyframes route-load {
-    0% { transform: scaleX(0); opacity: 1; }
-    80% { transform: scaleX(0.92); opacity: 1; }
-    100% { transform: scaleX(1); opacity: 0; }
   }
 }
 
@@ -154,28 +109,25 @@ button, [role="button"] {
 }
 
 /* Sistema de revelado al hacer scroll estilo Apple (con IntersectionObserver) */
-.reveal {
+.reveal,
+.reveal-left,
+.reveal-right {
   opacity: 0;
-  transform: translateY(3.25rem) scale(0.96);
   transition:
     opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal {
+  transform: translateY(3.25rem) scale(0.96);
 }
 
 .reveal-left {
-  opacity: 0;
   transform: translate3d(-3.25rem, 1.25rem, 0) scale(0.95);
-  transition:
-    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-right {
-  opacity: 0;
   transform: translate3d(3.25rem, 1.25rem, 0) scale(0.95);
-  transition:
-    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-zoom {
@@ -232,47 +184,12 @@ button, [role="button"] {
   --fc: var(--color-brand-red);
 }
 
-.frame-sky,
-.frame-blue {
+.frame-sky {
   --fc: #0284c7;
-}
-
-.frame-sky-dark,
-.frame-blue-dark {
-  --fc: #075985;
-}
-
-.frame-purple {
-  --fc: #9333ea;
-}
-
-.frame-purple-dark {
-  --fc: #4c1d95;
 }
 
 .frame-white {
   --fc: #ffffff;
-}
-
-.frame-duo,
-.frame-indigo {
-  --fc: #6366f1;
-}
-
-.delay-100 {
-  transition-delay: 100ms;
-}
-
-.delay-150 {
-  transition-delay: 150ms;
-}
-
-.delay-200 {
-  transition-delay: 220ms;
-}
-
-.delay-300 {
-  transition-delay: 340ms;
 }
 
 /* Figuras geométricas variadas para fondos dinámicos (GPU-friendly) */
@@ -357,25 +274,72 @@ button, [role="button"] {
   }
 }
 
-/* Aplicación universal y exclusiva de la fuente Gareth / Garet */
-*,
-*::before,
-*::after {
-  font-family: 'Garet', 'Gareth', sans-serif !important;
+/* Clase Banner unificada: altura visual pareja basada en Torneos sin recortar contenido */
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  min-height: 28rem;
+  display: flex;
+  align-items: center;
 }
 
-html,
+@media (min-width: 640px) {
+  .banner {
+    min-height: 30rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .banner {
+    min-height: 32rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    min-height: 36rem;
+  }
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.banner-body {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.banner-inner {
+  position: relative;
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .banner-inner {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+    text-align: left;
+  }
+}
+
+/* La fuente se define en --font-sans y se hereda mediante Tailwind Preflight. */
 body {
-  font-family: 'Garet', 'Gareth', sans-serif !important;
   font-weight: 400;
   color: var(--color-ink);
   background-color: #ffffff;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: 'Garet', 'Gareth', sans-serif !important;
 }

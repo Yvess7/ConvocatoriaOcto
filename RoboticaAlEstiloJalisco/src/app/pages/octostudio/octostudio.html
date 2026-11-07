@@ -1,43 +1,42 @@
 <!-- Banner OctoStudio -->
 <section id="hero-banner" class="relative w-full overflow-hidden bg-[#7a59eb]">
-  <div class="relative w-full min-h-112 md:min-h-128 lg:min-h-144 overflow-hidden flex items-center">
+  <div class="banner">
     <img
-      src="/images/octo.png"
+      src="/images/octo.webp"
       alt="Torneo OctoStudio Convocatoria Robótica al Estilo Jalisco"
       class="absolute inset-0 w-full h-full object-cover object-right select-none z-0"
     />
     <!-- Filtro intermedio con z-10 para máxima legibilidad del texto -->
     <div
-      class="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/85 via-slate-950/50 to-slate-950/20 md:bg-gradient-to-r md:from-slate-950/85 md:via-slate-950/50 md:to-transparent pointer-events-none"
+      class="banner-overlay"
       aria-hidden="true"
     ></div>
-    <div class="parallax-img relative z-20 w-full">
-      <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-24 text-center md:text-left">
+    <div class="banner-body">
+      <div class="banner-inner">
         <div class="max-w-2xl mx-auto md:mx-0 space-y-6">
           <div class="space-y-3">
-            <span class="inline-block px-3.5 py-1 rounded-md bg-purple-950 text-white text-xs uppercase tracking-widest font-normal animate-rise">
+            <span data-gsap="hero-badge" class="inline-block px-3.5 py-1 rounded-md bg-purple-950 text-white text-xs uppercase tracking-widest font-normal">
               Edición 2026
             </span>
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl text-white font-bold tracking-tight leading-none animate-rise [animation-delay:150ms]">
+            <h1 data-gsap="hero-titulo" class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-white font-bold tracking-tight leading-tight">
               Torneo OctoStudio
             </h1>
           </div>
 
-          <p class="max-w-2xl mx-auto md:mx-0 text-lg sm:text-xl text-white font-normal leading-relaxed animate-rise [animation-delay:300ms]">
+          <p data-gsap="hero-texto" class="max-w-2xl mx-auto md:mx-0 text-lg sm:text-xl text-white font-normal leading-relaxed">
             Creatividad digital, narrativas interactivas y programación móvil. Conoce el mapa completo del torneo, de la fase previa a la gran final.
           </p>
 
-          <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-2 animate-rise [animation-delay:400ms]">
+          <div data-gsap="hero-botones" class="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <button
               type="button"
-              (click)="scrollTo('camino-etapas')"
+              (click)="scrollTo('convocatoria-octostudio')"
               class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-[#7a59eb] text-white hover:bg-[#6844df] hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg shadow-md cursor-pointer"
             >
-              Ver mapa
+              Convocatoria
             </button>
             <a
-              routerLink="/documentacion"
-              [fragment]="'registro'"
+              routerLink="/registro"
               class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-white text-purple-950 hover:bg-purple-100 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
             >
               Inscríbete
@@ -50,7 +49,7 @@
 </section>
 
 <!-- Mapa de camino al torneo (sección blanca debajo del banner · tarjetas que se voltean al hacer clic) -->
-<section id="camino-etapas" class="relative z-10 bg-white py-16 sm:py-24 lg:py-32 overflow-hidden">
+<section id="camino-etapas" class="relative z-10 bg-white pt-16 pb-10 sm:pt-24 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
   <!-- Fondo dinámico: figuras variadas y retículas de puntos en movimiento -->
   <div class="absolute -left-10 top-16 w-44 h-44 bg-purple-200/60 shape-octagon animate-float [--r:10deg] pointer-events-none" aria-hidden="true"></div>
   <div class="absolute right-10 top-24 w-28 h-28 bg-purple-300/50 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
@@ -110,7 +109,7 @@
         <div class="relative" data-gsap="sendero">
           <!-- Robot: pasa por detrás de las tarjetas (z-30) y por encima de los nodos (z-10) -->
           <div data-gsap="robot" class="absolute top-0 left-0 z-20 w-16 md:w-24 pointer-events-none" aria-hidden="true">
-            <img data-gsap="robot-img" src="images/octo-robot.png" alt="" class="w-full h-auto drop-shadow-md" />
+            <img data-gsap="robot-img" src="images/octo-robot.webp" alt="" class="w-full h-auto drop-shadow-md" />
             <span data-gsap="robot-sombra" class="absolute left-1/2 -bottom-1 h-3 w-3/4 -translate-x-1/2 rounded-full bg-ink/25 blur-sm" aria-hidden="true"></span>
           </div>
           @for (paso of tramo.pasos; track paso.id; let ultimo = $last; let i = $index) {
@@ -234,5 +233,464 @@
     <span class="relative block h-1.5 w-16 md:h-20 md:w-1.5 rounded-md bg-purple-100 overflow-hidden">
       <span data-gsap="progreso-barra" class="absolute inset-0 rounded-md bg-purple-600 origin-top-left"></span>
     </span>
+  </div>
+</section>
+
+<!-- Transición ondulada suave y natural hacia Clasificación (sin bordes pronunciados ni saltos de contraste) -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-10 sm:h-14 lg:h-16 text-purple-50 fill-current block" aria-hidden="true">
+    <path d="M0,24 C320,70 540,5 720,40 C900,75 1180,10 1440,48 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- Sección de Clasificación: Selector de Llaves (Play-Ins y Eliminatorias) sin cajas contenedoras -->
+<section id="clasificacion-octostudio" class="relative z-20 bg-purple-50 pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32">
+  <!-- Figuras geométricas dinámicas aisladas para permitir position: sticky en la sub-barra -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-44 h-44 bg-purple-200/50 shape-hexagon" aria-hidden="true"></div>
+    <div data-gsap="fondo" data-vel="0.4" class="absolute right-8 top-12 w-40 h-28 text-purple-300/60 bg-tech-dots" aria-hidden="true"></div>
+    <div data-gsap="fondo" data-vel="-0.4" class="absolute -right-10 bottom-20 w-48 h-48 bg-purple-200/40 shape-octagon" aria-hidden="true"></div>
+    <div data-gsap="fondo" data-vel="0.5" class="absolute left-1/3 bottom-10 w-28 h-28 bg-brand-red/15 shape-diamond" aria-hidden="true"></div>
+    <div data-gsap="fondo" data-vel="-0.2" class="absolute left-8 top-2/3 w-24 h-24 bg-purple-300/40 shape-cross" aria-hidden="true"></div>
+    <div data-gsap="fondo" data-vel="0.3" class="absolute right-1/4 top-1/2 w-32 h-32 bg-purple-200/40 shape-triangle" aria-hidden="true"></div>
+  </div>
+
+  <!-- Encabezado de Clasificación -->
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 mb-6">
+    <div class="max-w-3xl" data-gsap="clasif-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-purple-600 text-white text-xs uppercase tracking-widest font-normal mb-3">
+        Clasificación Oficial
+      </span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight leading-tight">
+        Clasificación OctoStudio
+      </h2>
+      <div class="mt-5 h-1.5 w-24 rounded-md bg-purple-600"></div>
+    </div>
+  </div>
+
+  <!-- Sub-barra sticky debajo de la navbar principal (se retira automáticamente al terminar la sección) -->
+  <div class="sticky top-21 z-30 bg-purple-50/95 backdrop-blur-md border-y border-purple-200/70 py-2.5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-3 max-w-md">
+        <button
+          type="button"
+          (click)="cambiarFaseClasificacion('play-in')"
+          class="text-left px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
+          [class]="faseClasificacion() === 'play-in' ? 'bg-purple-700 border-purple-700 text-white shadow-xs' : 'bg-white border-purple-200 text-ink hover:border-purple-400'"
+        >
+          <span
+            class="block text-xs uppercase tracking-widest font-normal leading-none"
+            [class]="faseClasificacion() === 'play-in' ? 'text-purple-200' : 'text-ink/60'"
+          >
+            LLAVE
+          </span>
+          <span
+            class="block text-sm sm:text-base font-normal mt-0.5 leading-snug"
+            [class]="faseClasificacion() === 'play-in' ? 'text-white' : 'text-ink'"
+          >
+            Play-Ins
+          </span>
+        </button>
+
+        <button
+          type="button"
+          (click)="cambiarFaseClasificacion('eliminatorias')"
+          class="text-left px-4 py-2 rounded-md border transition-colors duration-200 cursor-pointer"
+          [class]="faseClasificacion() === 'eliminatorias' ? 'bg-purple-700 border-purple-700 text-white shadow-xs' : 'bg-white border-purple-200 text-ink hover:border-purple-400'"
+        >
+          <span
+            class="block text-xs uppercase tracking-widest font-normal leading-none"
+            [class]="faseClasificacion() === 'eliminatorias' ? 'text-purple-200' : 'text-ink/60'"
+          >
+            LLAVE
+          </span>
+          <span
+            class="block text-sm sm:text-base font-normal mt-0.5 leading-snug"
+            [class]="faseClasificacion() === 'eliminatorias' ? 'text-white' : 'text-ink'"
+          >
+            Eliminatorias
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido de la llave seleccionada -->
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-8">
+    <!-- Vista 1: Lista de 32 equipos Play-Ins (pasan 16 en color y 16 en gris, todo Por definir en 0) -->
+    @if (faseClasificacion() === 'play-in') {
+      <div data-gsap="tabla-playin" class="max-w-xl border border-purple-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
+        @for (equipo of equiposPlayIn; track equipo.id) {
+          <div data-gsap="fila-playin" class="transition-colors duration-200" [class]="esEquipoActivo(equipo.id) ? 'bg-purple-50/40' : 'bg-white'">
+            <button
+              type="button"
+              (click)="seleccionarEquipo(equipo.id)"
+              class="w-full text-left px-4 py-2.5 hover:bg-purple-50/60 transition-colors flex items-center justify-between gap-3 border-l-4 cursor-pointer"
+              [class]="equipo.posicion <= 16 ? 'border-l-purple-600' : 'border-l-gray-300 bg-gray-50/40'"
+            >
+              <span
+                class="text-sm font-normal truncate"
+                [class]="equipo.posicion <= 16 ? 'text-ink' : 'text-ink/50'"
+              >
+                {{ equipo.nombre }}
+              </span>
+
+              <span
+                class="text-sm font-normal shrink-0"
+                [class]="equipo.posicion <= 16 ? 'text-purple-700' : 'text-ink/50'"
+              >
+                {{ equipo.puntosTotales }}
+              </span>
+            </button>
+
+            <!-- Desglose de puntuación al seleccionar la fila con animación suave GSAP -->
+            @if (esEquipoActivo(equipo.id)) {
+              <div [attr.data-gsap]="'desglose-' + equipo.id" class="px-4 py-3.5 bg-purple-50/70 border-t border-purple-100 space-y-2.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  @for (rubro of equipo.desglose; track rubro.concepto) {
+                    <div data-gsap="rubro-item" class="bg-white rounded-md px-3 py-2.5 border border-purple-100 flex items-center justify-between gap-2 shadow-2xs">
+                      <span class="text-xs text-ink font-normal truncate">{{ rubro.concepto }}</span>
+                      <span class="text-xs text-purple-800 font-normal shrink-0">
+                        {{ rubro.puntos }} / {{ rubro.maximo }}
+                      </span>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- Vista 2: Llaves de 16 equipos perfectamente alineadas con scroll horizontal exclusivo de la sección -->
+      <div data-gsap="contenedor-bracket" class="w-full overflow-x-auto pb-4">
+        <div class="w-max flex items-stretch">
+          <!-- Columna 1: Octavos de Final (8 llaves / 16 equipos) -->
+          <div data-gsap="columna-bracket" class="w-56 shrink-0 flex flex-col">
+            @for (duelo of octavosFinal; track duelo.id) {
+              <div class="h-24 flex items-center">
+                <div class="w-full rounded-md border border-purple-200 bg-white divide-y divide-purple-100 overflow-hidden shadow-xs hover:border-purple-400 transition-colors">
+                  <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                    <span class="text-sm text-ink font-normal truncate">
+                      {{ duelo.competidorA.nombre }}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                      {{ duelo.competidorA.puntaje }}
+                    </span>
+                  </div>
+
+                  <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                    <span class="text-sm text-ink font-normal truncate">
+                      {{ duelo.competidorB.nombre }}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                      {{ duelo.competidorB.puntaje }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Conector Octavos -> Cuartos (4 pares exactos al centro de cada llave) -->
+          <div data-gsap="columna-bracket" class="w-12 shrink-0 flex flex-col" aria-hidden="true">
+            @for (duelo of cuartosFinal; track duelo.id) {
+              <div class="flex-1 relative">
+                <div class="absolute left-0 w-1/2 top-1/4 bottom-1/4 border-y-2 border-r-2 border-purple-300 rounded-r-md"></div>
+                <div class="absolute right-0 w-1/2 top-1/2 -translate-y-1/2 border-t-2 border-purple-300"></div>
+              </div>
+            }
+          </div>
+
+          <!-- Columna 2: Cuartos de Final (4 llaves) -->
+          <div data-gsap="columna-bracket" class="w-56 shrink-0 flex flex-col">
+            @for (duelo of cuartosFinal; track duelo.id) {
+              <div class="flex-1 flex items-center">
+                <div class="w-full rounded-md border border-purple-200 bg-white divide-y divide-purple-100 overflow-hidden shadow-xs hover:border-purple-400 transition-colors">
+                  <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                    <span class="text-sm text-ink font-normal truncate">
+                      {{ duelo.competidorA.nombre }}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                      {{ duelo.competidorA.puntaje }}
+                    </span>
+                  </div>
+
+                  <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                    <span class="text-sm text-ink font-normal truncate">
+                      {{ duelo.competidorB.nombre }}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                      {{ duelo.competidorB.puntaje }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Conector Cuartos -> Semifinales (2 pares exactos al centro de cada llave) -->
+          <div data-gsap="columna-bracket" class="w-12 shrink-0 flex flex-col" aria-hidden="true">
+            @for (duelo of semifinales; track duelo.id) {
+              <div class="flex-1 relative">
+                <div class="absolute left-0 w-1/2 top-1/4 bottom-1/4 border-y-2 border-r-2 border-purple-300 rounded-r-md"></div>
+                <div class="absolute right-0 w-1/2 top-1/2 -translate-y-1/2 border-t-2 border-purple-300"></div>
+              </div>
+            }
+          </div>
+
+          <!-- Columna 3: Semifinales (2 llaves) -->
+          <div data-gsap="columna-bracket" class="w-56 shrink-0 flex flex-col">
+            @for (duelo of semifinales; track duelo.id) {
+              <div class="flex-1 flex items-center">
+                <div class="w-full rounded-md border border-purple-300 bg-white divide-y divide-purple-100 overflow-hidden shadow-xs hover:border-purple-500 transition-colors">
+                  <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                    <span class="text-sm text-ink font-normal truncate">
+                      {{ duelo.competidorA.nombre }}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                      {{ duelo.competidorA.puntaje }}
+                    </span>
+                  </div>
+
+                  <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                    <span class="text-sm text-ink font-normal truncate">
+                      {{ duelo.competidorB.nombre }}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                      {{ duelo.competidorB.puntaje }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Conector Semifinales -> Final (1 par exacto al centro de cada llave) -->
+          <div data-gsap="columna-bracket" class="w-12 shrink-0 flex flex-col" aria-hidden="true">
+            <div class="flex-1 relative">
+              <div class="absolute left-0 w-1/2 top-1/4 bottom-1/4 border-y-2 border-r-2 border-purple-400 rounded-r-md"></div>
+              <div class="absolute right-0 w-1/2 top-1/2 -translate-y-1/2 border-t-2 border-purple-400"></div>
+            </div>
+          </div>
+
+          <!-- Columna 4: Gran Final (1 llave) -->
+          <div data-gsap="columna-bracket" class="w-56 shrink-0 flex flex-col">
+            <div class="flex-1 flex items-center">
+              <div class="w-full rounded-md border-2 border-purple-600 bg-white divide-y divide-purple-100 overflow-hidden shadow-sm">
+                <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                  <span class="text-sm text-ink font-normal truncate">
+                    {{ granFinal.competidorA.nombre }}
+                  </span>
+                  <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                    {{ granFinal.competidorA.puntaje }}
+                  </span>
+                </div>
+
+                <div class="h-9 px-3.5 flex items-center justify-between gap-3 border-l-4 border-l-purple-600 bg-white">
+                  <span class="text-sm text-ink font-normal truncate">
+                    {{ granFinal.competidorB.nombre }}
+                  </span>
+                  <span class="text-xs px-2 py-0.5 rounded-sm bg-purple-50 text-purple-900 shrink-0 font-normal">
+                    {{ granFinal.competidorB.puntaje }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Transición ondulada superior hacia la sección institucional OctoStudio -->
+<div class="relative w-full overflow-hidden leading-none bg-purple-50 -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
+    <path d="M0,24 C320,70 540,5 720,40 C900,75 1180,10 1440,48 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- Sección 1: Convocatoria OctoStudio (Fondo rojo institucional con texto libre y figuras variadas) -->
+<section id="convocatoria-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    <!-- Encabezado editorial principal -->
+    <div class="max-w-3xl" data-gsap="convocatoria-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
+        Bases Oficiales 2026
+      </span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
+        Convocatoria Torneo OctoStudio
+      </h2>
+      <div class="mt-6 h-1.5 w-24 rounded-md bg-brand-orange"></div>
+      <p class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
+        La Secretaría de Educación del Estado de Jalisco convoca a las comunidades escolares a impulsar la creatividad digital, la animación interactiva y el pensamiento computacional a través de la herramienta OctoStudio.
+      </p>
+    </div>
+
+    <!-- Bases Generales de la Convocatoria (Texto libre, sin cajas) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-4 border-t border-white/20">
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Capítulo I</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">De la Participación Escolar</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          Podrán postularse equipos conformados por dos o tres estudiantes de primaria (4° a 6°) o secundaria, bajo la asesoría de un docente acreditado de su plantel. Se promoverá la integración colaborativa y multidisciplinaria en cada propuesta.
+        </p>
+        <p class="text-base text-white/80 font-normal leading-relaxed">
+          Cada proyecto deberá desarrollarse en dispositivos móviles (tabletas o smartphones) utilizando las funciones nativas del hardware para enriquecer la experiencia interactiva de la narrativa.
+        </p>
+      </div>
+
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Capítulo II</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">De los Ejes Temáticos</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          Las historias interactivas deberán enmarcarse en uno de los tres ejes oficiales: tradiciones y riqueza cultural de Jalisco, soluciones ecológicas comunitarias, o historias de innovación y ciencia ciudadana.
+        </p>
+        <p class="text-base text-white/80 font-normal leading-relaxed">
+          Los entregables comprenderán el paquete oficial exportado de la aplicación (`.octostudio`) acompañado de un resumen ejecutivo del propósito pedagógico del relato.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Transición ondulada entre Convocatoria (rojo) y Anexos (blanco) -->
+<div class="relative w-full overflow-hidden leading-none -mt-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block rotate-180" aria-hidden="true">
+    <path d="M0,24 C320,70 540,5 720,40 C900,75 1180,10 1440,48 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- Sección 2: Anexos y Reglamentos Oficiales OctoStudio (Fondo blanco segmentado, texto libre y figuras institucionales) -->
+<section id="anexos-octostudio" class="relative z-10 bg-white text-ink py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas en el fondo blanco con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-48 h-48 bg-brand-red/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-24 w-36 h-36 bg-brand-orange/10 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-12 w-40 h-28 text-brand-red/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-8 top-1/2 w-44 h-44 bg-purple-200/40 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-12 bottom-20 w-32 h-32 bg-brand-orange/15 shape-cross pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute right-1/4 bottom-12 w-44 h-32 text-brand-orange/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    <div class="max-w-3xl" data-gsap="anexos-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-3">
+        Documentos Técnicos Vinculantes
+      </span>
+      <h3 class="text-3xl sm:text-4xl lg:text-5xl text-ink font-bold tracking-tight">
+        Anexos y Reglamentos Específicos
+      </h3>
+      <div class="mt-4 h-1.5 w-20 rounded-md bg-brand-red"></div>
+      <p class="text-base sm:text-lg text-ink/75 font-normal leading-relaxed mt-4">
+        Cada anexo técnico detalla los lineamientos de software, requisitos de formato y normas de exposición obligatorias para la evaluación por parte del jurado calificador.
+      </p>
+    </div>
+
+    <!-- Anexo 1 con su Reglamento -->
+    <div id="reglamento-octostudio" data-gsap="anexo-item" class="space-y-6 pt-4 border-t border-gray-100">
+      <div class="border-l-4 border-brand-red pl-6 space-y-2">
+        <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Anexo Técnico 01</span>
+        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
+          Especificaciones Técnicas del Proyecto Digital
+        </h4>
+        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
+          Parámetros de compatibilidad con versiones de OctoStudio, resolución de pantalla, gestión de memoria y procedencia de activos audiovisuales.
+        </p>
+      </div>
+
+      <div class="space-y-4 pl-6 text-ink/80">
+        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
+          Reglamento del Anexo 1 · Normativa de Software y Recursos Digitales
+        </span>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 1.1 (Plataforma y versión):</strong> Todos los proyectos deben ser elaborados y probados en la versión oficial de OctoStudio 1.2 o superior, asegurando su portabilidad en sistemas Android e iOS.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 1.2 (Derechos de autor):</strong> Las ilustraciones, animaciones, sonidos y grabaciones deben ser de creación original del equipo o pertenecer al banco de libre uso de OctoStudio. Se penalizará el plagio o el uso no autorizado de marcas registradas.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 1.3 (Capacidad del archivo):</strong> El archivo del proyecto exportado no deberá superar los 50 megabytes para garantizar su ejecución fluida en los dispositivos de verificación del comité.
+        </p>
+      </div>
+    </div>
+
+    <!-- Anexo 2 con su Reglamento -->
+    <div data-gsap="anexo-item" class="space-y-6 pt-6 border-t border-gray-100">
+      <div class="border-l-4 border-brand-orange pl-6 space-y-2">
+        <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Anexo Técnico 02</span>
+        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
+          Dinámica de Exposición y Demostración en Vivo
+        </h4>
+        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
+          Protocolo de defensa oral, tiempo asignado ante el jurado, dinámica de interacción táctil y prueba de sensores físicos integrados.
+        </p>
+      </div>
+
+      <div class="space-y-4 pl-6 text-ink/80">
+        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
+          Reglamento del Anexo 2 · Protocolo de Pitch y Validación de Jurados
+        </span>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 2.1 (Duración de la presentación):</strong> Cada equipo contará con un lapso estricto de 5 minutos para exponer su propuesta, seguido de 3 minutos de interacción directa por parte de los jueces evaluadores.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 2.2 (Demostración interactiva):</strong> La prueba se realizará en el dispositivo registrado; el jurado tendrá acceso para accionar botones, inclinar el dispositivo y verificar la reactividad de los sensores incorporados.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 2.3 (Participación equitativa):</strong> Todos los integrantes del equipo deberán intervenir durante la exposición demostrando dominio del código y la narrativa construida.
+        </p>
+      </div>
+    </div>
+
+    <!-- Anexo 3 con su Reglamento -->
+    <div data-gsap="anexo-item" class="space-y-6 pt-6 border-t border-gray-100">
+      <div class="border-l-4 border-brand-red pl-6 space-y-2">
+        <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Anexo Técnico 03</span>
+        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
+          Rúbrica de Ponderación y Criterios Creativos
+        </h4>
+        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
+          Desglose porcentual de calificación en pensamiento computacional, diseño narrativo, estética visual y resolución de desempates.
+        </p>
+      </div>
+
+      <div class="space-y-4 pl-6 text-ink/80">
+        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
+          Reglamento del Anexo 3 · Ponderación y Dictamen del Comité
+        </span>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 3.1 (Rúbrica integral):</strong> La calificación final se desglosa en: 35% Lógica de Programación y Eventos, 30% Narrativa e Impacto en la Comunidad, 20% Originalidad Audiovisual, y 15% Claridad de la Exposición.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 3.2 (Resolución de empates):</strong> En caso de paridad en el puntaje global, el desempate se otorgará al proyecto con mayor complejidad en el uso armónico de sensores físicos y variables de código.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 3.3 (Inapelabilidad):</strong> La evaluación del jurado colegiado será inapelable y se publicará en el portal oficial al concluir el certamen estatal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Llamado a la acción final -->
+    <div class="pt-8 flex flex-wrap justify-center md:justify-start gap-4 border-t border-gray-100">
+      <a
+        routerLink="/registro"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-brand-orange text-white hover:bg-orange-600 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+      >
+        Inscribir proyecto al Torneo OctoStudio
+      </a>
+      <a
+        routerLink="/documentacion"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-gray-100 text-ink hover:bg-gray-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+      >
+        Ver Formatos Institucionales
+      </a>
+    </div>
   </div>
 </section>

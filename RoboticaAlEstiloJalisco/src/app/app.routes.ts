@@ -5,6 +5,7 @@ import { DocumentacionComponent } from './pages/documentacion/documentacion';
 import { VideosComponent } from './pages/videos/videos';
 import { MbotComponent } from './pages/mbot/mbot';
 import { OctostudioComponent } from './pages/octostudio/octostudio';
+import { RegistroComponent } from './pages/registro/registro';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'mbot', component: MbotComponent },
   { path: 'octostudio', component: OctostudioComponent },
   { path: 'documentacion', component: DocumentacionComponent },
+  { path: 'registro', component: RegistroComponent },
   { path: 'videos', component: VideosComponent },
   { path: '**', redirectTo: '' },
 ];
