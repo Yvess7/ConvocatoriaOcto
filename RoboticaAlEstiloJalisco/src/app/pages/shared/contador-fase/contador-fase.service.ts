@@ -17,11 +17,11 @@ export class ContadorFaseService {
   private router = inject(Router);
 
   // Configuración base de la fase
-  readonly fase = signal<string>('FASE ESTATAL');
+  readonly fase = signal<string>('Sesión Informativa');
   readonly inicio = signal<string>('2026-11-01T00:00:00-06:00');
   readonly fecha = signal<string>('2026-12-01T09:00:00-06:00');
-  readonly titulo = signal<string>('El reto comienza en');
-  readonly terminado = signal<string>('¡El reto ha comenzado!');
+  readonly titulo = signal<string>('La sesión informativa inicia en:');
+  readonly terminado = signal<string>('¡La sesión informativa ha comenzado!');
 
   // Valores calculados en tiempo real
   readonly dias = signal<string>('00');
