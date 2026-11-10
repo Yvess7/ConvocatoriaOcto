@@ -11,19 +11,19 @@ import { ContadorFaseService, DatosContador } from './contador-fase.service';
 export class ContadorFaseComponent implements OnInit {
   public contador = inject(ContadorFaseService);
 
-  @Input() set fase(val: string) {
+  @Input() set fase(val: string | undefined) {
     if (val) this.contador.configurarDesdeApi({ fase: val });
   }
-  @Input() set inicio(val: string) {
+  @Input() set inicio(val: string | undefined) {
     if (val) this.contador.configurarDesdeApi({ inicio: val });
   }
-  @Input() set fecha(val: string) {
+  @Input() set fecha(val: string | undefined) {
     if (val) this.contador.configurarDesdeApi({ fecha: val });
   }
-  @Input() set titulo(val: string) {
+  @Input() set titulo(val: string | undefined) {
     if (val) this.contador.configurarDesdeApi({ titulo: val });
   }
-  @Input() set terminado(val: string) {
+  @Input() set terminado(val: string | undefined) {
     if (val) this.contador.configurarDesdeApi({ terminado: val });
   }
 

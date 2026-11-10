@@ -1,12 +1,11 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { ContadorFaseService } from './contador-fase.service';
 
 @Component({
   selector: 'app-contador-fase-docked',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './contador-fase-docked.component.html',
 })
 export class ContadorFaseDockedComponent {
