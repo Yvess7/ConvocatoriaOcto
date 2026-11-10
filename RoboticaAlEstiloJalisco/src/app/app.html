@@ -7,12 +7,15 @@
       <a
         [routerLink]="navigation.home.path"
         (click)="closeAllDropdowns()"
-        class="flex items-center text-ink transition-opacity hover:opacity-90"
+        class="flex items-center transition-opacity hover:opacity-90"
         aria-label="Inicio"
       >
-        <span class="text-xl sm:text-2xl text-ink font-bold tracking-tight">
-          {{ navigation.home.label }}
-        </span>
+        <img
+          src="/images/logo-robotica-al-estilo-jalisco.webp"
+          alt="Robótica al Estilo Jalisco"
+          class="h-12 sm:h-14 w-auto object-contain select-none"
+        />
+        <span class="sr-only">{{ navigation.home.label }}</span>
       </a>
 
       <!-- Ambos menús usan los destinos definidos en navigation.ts. -->
