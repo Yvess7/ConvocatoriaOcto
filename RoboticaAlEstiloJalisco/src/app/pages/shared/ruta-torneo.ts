@@ -485,7 +485,9 @@ export abstract class RutaTorneoBase {
     const fase = this.faseClasificacion();
     if (fase === 'participantes') {
       const contenedor = q('[data-gsap="tabla-participantes"]')[0];
-      const items = q('[data-gsap="item-participante"]');
+      const items = q('[data-gsap="item-participante"]').filter(
+        (el) => (el as HTMLElement).offsetParent !== null,
+      );
       if (contenedor) {
         gsap.fromTo(
           contenedor,

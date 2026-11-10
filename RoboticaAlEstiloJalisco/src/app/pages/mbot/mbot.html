@@ -337,12 +337,12 @@
 
   <!-- Contenido de la llave seleccionada -->
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-8">
-    <!-- Vista 1: Lista de 32 Participantes (2 columnas de 16, solo escuela y equipo, sin puntajes) -->
+    <!-- Vista 1: Lista de 32 Participantes (Móvil: 1 sola lista continua sin dividir en 2 bloques · Desktop: 2 columnas de 16 una a un lado de otra) -->
     @if (faseClasificacion() === 'participantes') {
-      <div data-gsap="tabla-participantes" class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-5xl">
-        <!-- Columna 1 (Equipos 1 al 16) -->
-        <div class="border border-sky-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
-          @for (equipo of participantesColumna1; track equipo.id) {
+      <div data-gsap="tabla-participantes" class="max-w-5xl">
+        <!-- Móvil (<md): 1 sola lista continua de 32 participantes en una sola tarjeta sin dividir -->
+        <div class="block md:hidden border border-sky-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
+          @for (equipo of equiposPlayIn; track equipo.id) {
             <div data-gsap="item-participante" class="px-4 py-3 flex items-center justify-between gap-3 hover:bg-sky-50/40 transition-colors">
               <div class="min-w-0 flex-1">
                 <span class="block text-sm font-normal text-ink truncate">{{ equipo.nombre }}</span>
@@ -355,19 +355,37 @@
           }
         </div>
 
-        <!-- Columna 2 (Equipos 17 al 32) -->
-        <div class="border border-sky-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
-          @for (equipo of participantesColumna2; track equipo.id) {
-            <div data-gsap="item-participante" class="px-4 py-3 flex items-center justify-between gap-3 hover:bg-sky-50/40 transition-colors">
-              <div class="min-w-0 flex-1">
-                <span class="block text-sm font-normal text-ink truncate">{{ equipo.nombre }}</span>
-                <span class="block text-xs text-ink/60 font-normal truncate mt-0.5">{{ equipo.escuela }}</span>
+        <!-- Escritorio / Tablet (>=md): 2 columnas de 16 una al lado de otra -->
+        <div class="hidden md:grid md:grid-cols-2 gap-4 lg:gap-6">
+          <!-- Columna 1 (Equipos 1 al 16) -->
+          <div class="border border-sky-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
+            @for (equipo of participantesColumna1; track equipo.id) {
+              <div data-gsap="item-participante" class="px-4 py-3 flex items-center justify-between gap-3 hover:bg-sky-50/40 transition-colors">
+                <div class="min-w-0 flex-1">
+                  <span class="block text-sm font-normal text-ink truncate">{{ equipo.nombre }}</span>
+                  <span class="block text-xs text-ink/60 font-normal truncate mt-0.5">{{ equipo.escuela }}</span>
+                </div>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-sky-50 text-sky-800 shrink-0 font-normal border border-sky-100">
+                  #{{ equipo.posicion < 10 ? '0' + equipo.posicion : equipo.posicion }}
+                </span>
               </div>
-              <span class="text-xs px-2.5 py-1 rounded-md bg-sky-50 text-sky-800 shrink-0 font-normal border border-sky-100">
-                #{{ equipo.posicion }}
-              </span>
-            </div>
-          }
+            }
+          </div>
+
+          <!-- Columna 2 (Equipos 17 al 32) -->
+          <div class="border border-sky-200 rounded-lg bg-white divide-y divide-gray-100 overflow-hidden shadow-xs">
+            @for (equipo of participantesColumna2; track equipo.id) {
+              <div data-gsap="item-participante" class="px-4 py-3 flex items-center justify-between gap-3 hover:bg-sky-50/40 transition-colors">
+                <div class="min-w-0 flex-1">
+                  <span class="block text-sm font-normal text-ink truncate">{{ equipo.nombre }}</span>
+                  <span class="block text-xs text-ink/60 font-normal truncate mt-0.5">{{ equipo.escuela }}</span>
+                </div>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-sky-50 text-sky-800 shrink-0 font-normal border border-sky-100">
+                  #{{ equipo.posicion }}
+                </span>
+              </div>
+            }
+          </div>
         </div>
       </div>
     } @else if (faseClasificacion() === 'play-in') {

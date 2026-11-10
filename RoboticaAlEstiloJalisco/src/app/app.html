@@ -153,42 +153,114 @@
     <router-outlet></router-outlet>
   </div>
 
-  <!-- Sección Contacto compartida en la base del sitio (Texto libre y figuras variadas) -->
-  <section id="contacto" class="relative bg-white pt-20 pb-24 sm:pt-28 sm:pb-32 overflow-hidden">
-    <div class="absolute -left-10 top-10 w-44 h-44 bg-brand-orange/15 shape-hexagon animate-drift [--r:12deg] pointer-events-none" aria-hidden="true"></div>
-    <div class="absolute right-12 bottom-10 w-32 h-32 bg-brand-red/15 shape-triangle animate-float-slow [--r:-16deg] pointer-events-none" aria-hidden="true"></div>
-    <div class="absolute right-1/4 top-8 w-36 h-24 text-brand-orange/15 bg-tech-dots animate-float pointer-events-none" aria-hidden="true"></div>
+  <!-- Footer Institucional Convencional (Corte recto sin ondas, completamente naranja, dividido en 3 columnas) -->
+  <footer id="footer-institucional" class="relative z-20 bg-brand-orange text-white pt-12 pb-10 sm:pt-16 sm:pb-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 pb-10 border-b border-white/20">
 
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-      <div class="md:col-span-6 text-center md:text-left reveal-left">
-        <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Atención y Dudas</span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight leading-tight">Contacto</h2>
-        <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange mx-auto md:mx-0"></div>
-        <p class="text-lg sm:text-xl text-ink/80 mt-6 font-normal leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-        </p>
+        <!-- 1. Columna Izquierda: Logos en blanco y Redes Sociales con sus logotipos -->
+        <div class="space-y-6">
+          <div class="inline-block">
+            <img
+              src="/images/logo-educacion-jalisco-blanco.png"
+              alt="Secretaría de Educación del Estado de Jalisco"
+              class="h-12 sm:h-14 w-auto object-contain select-none"
+            />
+          </div>
+          <div class="space-y-3">
+            <span class="block text-xs uppercase tracking-widest text-white/80 font-normal">
+              Redes Sociales
+            </span>
+            <div class="flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/educacion.jalisco"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-black/15 hover:bg-black/25 flex items-center justify-center text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-2xs"
+                aria-label="Facebook Educación Jalisco"
+              >
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </a>
+              <a
+                href="https://x.com/SecEducacionJal"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-black/15 hover:bg-black/25 flex items-center justify-center text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-2xs"
+                aria-label="X Secretaría de Educación Jalisco"
+              >
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/@educacionjalisco"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-black/15 hover:bg-black/25 flex items-center justify-center text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-2xs"
+                aria-label="YouTube Educación Jalisco"
+              >
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Columna Centro: Avisos de Privacidad y Términos y Condiciones del portal web -->
+        <div class="space-y-4">
+          <span class="block text-xs uppercase tracking-widest text-white/80 font-normal">
+            Sitio y Legal
+          </span>
+          <ul class="space-y-2.5 text-sm sm:text-base font-normal">
+            <li>
+              <a
+                routerLink="/aviso-privacidad"
+                class="text-white hover:text-white/80 underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors"
+              >
+                Aviso de Privacidad
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/terminos-condiciones"
+                class="text-white hover:text-white/80 underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors"
+              >
+                Términos y Condiciones
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3. Columna Derecha: Contacto y Botón de contacto -->
+        <div class="space-y-4">
+          <span class="block text-xs uppercase tracking-widest text-white/80 font-normal">
+            Contacto
+          </span>
+          <div class="space-y-1.5 text-sm sm:text-base font-normal text-white/90">
+            <p class="break-all">contacto&#64;robotica.jalisco.gob.mx</p>
+            <p>Lunes a Viernes de 9:00 a 17:00 hrs</p>
+            <p>Guadalajara, Jalisco, México</p>
+          </div>
+          <div class="pt-2">
+            <a
+              href="mailto:contacto@robotica.jalisco.gob.mx"
+              class="inline-block px-5 py-2.5 rounded-md bg-brand-red text-white hover:bg-brand-red-dark transition-colors font-normal text-sm shadow-xs"
+            >
+              Contactar
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="md:col-span-6 reveal-right delay-150 space-y-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div class="apple-zoom delay-100 border-l-2 border-brand-orange pl-5 text-left max-w-sm mx-auto sm:max-w-none sm:mx-0">
-            <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Correo electrónico</span>
-            <span class="text-lg sm:text-xl text-ink font-normal mt-1 block break-all">contacto&#64;robotica.jalisco.gob.mx</span>
-          </div>
-          <div class="apple-zoom delay-200 border-l-2 border-brand-red pl-5 text-left max-w-sm mx-auto sm:max-w-none sm:mx-0">
-            <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Horario de atención</span>
-            <span class="text-lg sm:text-xl text-ink font-normal mt-1 block">Lunes a Viernes de 9:00 a 17:00 hrs</span>
-          </div>
-        </div>
-        <div class="pt-2 flex flex-wrap justify-center md:justify-start">
-          <a
-            href="mailto:contacto@robotica.jalisco.gob.mx"
-            class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-          >
-            Enviar Mensaje
-          </a>
-        </div>
+      <!-- Barra inferior de derechos de autor -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/75 font-normal">
+        <p>Secretaría de Educación del Estado de Jalisco © 2026. Todos los derechos reservados.</p>
+        <p>Gobierno del Estado de Jalisco</p>
       </div>
     </div>
-  </section>
+  </footer>
 </main>
