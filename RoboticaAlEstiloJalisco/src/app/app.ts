@@ -10,9 +10,10 @@ import {
 } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { navigation } from './navigation';
+import { ContadorFaseDockedComponent } from './pages/shared/contador-fase/contador-fase-docked.component';
 
 @Component({
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet, ContadorFaseDockedComponent],
   selector: 'app-root',
   templateUrl: './app.html',
 })
