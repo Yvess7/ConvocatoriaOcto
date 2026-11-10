@@ -402,16 +402,16 @@ export abstract class RutaTorneoBase {
         }
 
         // Anexos y Reglamentos: encabezado y fichas
-        const anexosEncabezado = q('[data-gsap="anexos-encabezado"], [data-gsap="reglamento-encabezado"]')[0];
-        if (anexosEncabezado) {
-          gsap.from(anexosEncabezado, {
+        const reglamentosEncabezados = q('[data-gsap="anexos-encabezado"], [data-gsap="reglamento-encabezado"], [data-gsap="conducta-encabezado"]');
+        reglamentosEncabezados.forEach((encabezado) => {
+          gsap.from(encabezado, {
             y: 35,
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
-            scrollTrigger: entrada(anexosEncabezado),
+            scrollTrigger: entrada(encabezado),
           });
-        }
+        });
 
         const anexosItems = q('[data-gsap="anexo-item"], [data-gsap="reglamento-item"]');
         if (anexosItems.length) {

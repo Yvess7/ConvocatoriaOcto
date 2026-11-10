@@ -35,13 +35,6 @@
             >
               Convocatoria
             </button>
-            <button
-              type="button"
-              (click)="scrollTo('reglamento-octostudio')"
-              class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-purple-900/80 text-white hover:bg-purple-900 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg shadow-md cursor-pointer"
-            >
-              Reglamento
-            </button>
             <a
               routerLink="/registro"
               class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-white text-purple-950 hover:bg-purple-100 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
@@ -653,15 +646,34 @@
         <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
           Los proyectos se programan y ejecutan de manera nativa en OctoStudio. No se requiere ni evalúa hardware externo, sensores ajenos ni compras dentro de la app: se garantiza absoluta equidad de oportunidades para cada centro escolar de Jalisco.
         </p>
-        <div class="pt-2">
-          <button
-            type="button"
-            (click)="scrollTo('reglamento-octostudio')"
-            class="text-sm underline underline-offset-4 decoration-white/60 hover:decoration-white hover:text-white transition-colors cursor-pointer"
-          >
-            Ver las 20 Bases Oficiales y Reglamento Completo ↓
-          </button>
-        </div>
+      </div>
+    </div>
+
+    <!-- Llamado a la acción destacado al pie de los pilares -->
+    <div class="pt-8 border-t border-white/20 flex flex-col md:flex-row md:items-center justify-between gap-6" data-gsap="convocatoria-bloque">
+      <div class="max-w-2xl space-y-2">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Documento Oficial Vigente</span>
+        <h4 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Documentación y Bases Normativas</h4>
+        <p class="text-base text-white/85 font-normal leading-relaxed">
+          Explora los 20 artículos, rúbricas de 100 puntos y criterios de desempate en la sección interactiva, o visualiza el archivo PDF original de la convocatoria.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 shrink-0">
+        <button
+          type="button"
+          (click)="scrollTo('reglamento-octostudio')"
+          class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-white text-brand-red hover:bg-orange-50 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-base sm:text-lg shadow-lg cursor-pointer tracking-wider"
+        >
+          LEER CONVOCATORIA COMPLETA
+        </button>
+        <a
+          href="/docs/OctoPDF.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-[#e0731f] hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-base sm:text-lg shadow-lg tracking-wider"
+        >
+          LEER PDF
+        </a>
       </div>
     </div>
   </div>
@@ -696,6 +708,9 @@
       <div class="mt-4 h-1.5 w-20 rounded-md bg-brand-red"></div>
       <p class="text-base sm:text-lg text-ink/75 font-normal leading-relaxed mt-4">
         Normativa oficial completa expedida por la Secretaría de Educación del Estado de Jalisco. La presente convocatoria rige con carácter vinculante todas las etapas del certamen estatal 2026-2027.
+      </p>
+      <p class="text-sm text-ink/65 font-normal leading-relaxed mt-3 italic border-l-2 border-brand-orange pl-4">
+        Cuando en la presente convocatoria se mencione de manera genérica a los docentes, estudiantes y participantes, se considerará dentro de la misma a las y los docentes, a las y los estudiantes y a las y los participantes; por lo que estas menciones plasmadas en un género se refieren, sin distinción alguna, a todas las personas físicas de todos los géneros, sin preferencia ni discriminación alguna.
       </p>
     </div>
 
@@ -967,85 +982,109 @@
         </p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- Transición ondulada entre Bases del Torneo (blanco) y Código de Conducta / Marco Institucional (rojo) -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
+    <path d="M0,64 C180,30 360,18 580,44 C800,70 1020,26 1240,48 C1340,58 1395,38 1440,22 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- Sección 3: Código de Conducta, Ética y Marco Institucional (Fondo rojo institucional) -->
+<section id="conducta-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/10 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Articulado de Bases 14 a 20 sobre fondo rojo con texto blanco -->
+    <div class="space-y-12 divide-y divide-white/20">
+
       <!-- Base 14 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Cuarta</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Código de Conducta y Juego Limpio</h4>
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8 first:pt-0">
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Cuarta</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">Del Código de Conducta y Juego Limpio</h4>
         </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
           Todos los participantes, docentes, directivos, familias y acompañantes deberán conducirse en todo momento bajo principios de honestidad, respeto, empatía, espíritu deportivo y colaboración. Queda estrictamente prohibida cualquier interferencia en el trabajo de otros equipos o falta de respeto hacia las evaluaciones.
         </p>
       </div>
 
       <!-- Base 15 -->
       <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Quinta</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Propiedad Intelectual y Derechos de Imagen</h4>
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Quinta</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Propiedad Intelectual y Derechos de Imagen</h4>
         </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
           La autoría intelectual de los códigos, historias y videojuegos desarrollados corresponderá a las y los estudiantes creadores. Los participantes otorgan a la Secretaría de Educación del Estado de Jalisco una licencia no exclusiva, gratuita y permanente para difundir, exhibir, publicar y reproducir los proyectos con fines exclusivamente educativos y de promoción cultural. El uso de la imagen estará condicionado a la entrega del formato de autorización firmado por el responsable legal conforme a las disposiciones vigentes.
         </p>
       </div>
 
       <!-- Base 16 -->
       <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Sexta</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Equidad, Inclusión y Accesibilidad</h4>
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Sexta</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Equidad, Inclusión y Accesibilidad</h4>
         </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
           La Secretaría de Educación del Estado de Jalisco garantizará la igualdad de oportunidades y la no discriminación en todas las fases del torneo. Los equipos que requieran ajustes razonables por condición de discapacidad o pertenencia a comunidades prioritarias podrán solicitar las adecuaciones pertinentes al Comité Organizador al momento de su registro.
         </p>
       </div>
 
       <!-- Base 17 -->
       <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Séptima</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Quejas e Inconformidades</h4>
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Séptima</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De las Quejas e Inconformidades</h4>
         </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
           En caso de surgir alguna inconformidad con relación a aspectos de procedimiento administrativo o incumplimiento de las bases, el docente asesor podrá ingresar una solicitud formal por escrito fundamentada y dirigida al Comité Organizador dentro de las 24 horas posteriores a la publicación del hecho. Los fallos del jurado calificador respecto a la puntuación técnica de los proyectos serán definitivos e inapelables.
         </p>
       </div>
 
       <!-- Base 18 -->
       <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Octava</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Aviso de Privacidad y Protección de Datos Personales</h4>
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Octava</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">Del Aviso de Privacidad y Protección de Datos Personales</h4>
         </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
           Los datos personales recabados (incluida la CURP y datos escolares) serán tratados de manera confidencial y protegidos de conformidad con la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Jalisco y sus Municipios. Su uso se limitará exclusivamente a la gestión operativa, validación de matrícula y reporte institucional de indicadores educativos del torneo.
         </p>
       </div>
 
       <!-- Base 19 -->
       <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Novena</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Gratuidad</h4>
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Novena</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Gratuidad</h4>
         </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
           Todas las actividades, capacitaciones, registros y participaciones en el Torneo de Programación al Estilo Jalisco OctoStudio son completamente gratuitas. Se prohíbe expresamente cualquier cobro o exigencia económica a las y los estudiantes, familias o escuelas participantes.
         </p>
       </div>
 
       <!-- Base 20 -->
       <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Vigésima</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De los Casos No Previstos, Vigencia y Transitorios</h4>
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Vigésima</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De los Casos No Previstos, Vigencia y Transitorios</h4>
         </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+        <div class="space-y-3 pl-5 text-base text-white/90 font-normal leading-relaxed">
           <p>Los casos o situaciones no contemplados en la presente Convocatoria serán analizados y resueltos de manera definitiva e inapelable por el Comité Organizador del Torneo.</p>
-          <p><strong class="font-normal text-ink">Transitorio Único:</strong> La presente Convocatoria entrará en vigor al día siguiente de su publicación oficial en los canales institucionales de la Secretaría de Educación del Estado de Jalisco.</p>
-          <div class="pt-6 border-t border-gray-100 text-sm text-ink/75 font-normal space-y-1">
+          <p><strong class="font-normal text-white">Transitorio Único:</strong> La presente Convocatoria entrará en vigor al día siguiente de su publicación oficial en los canales institucionales de la Secretaría de Educación del Estado de Jalisco.</p>
+          <div class="pt-6 border-t border-white/20 text-sm text-white/80 font-normal space-y-1">
             <p>Guadalajara, Jalisco, a 03 de noviembre de 2026</p>
             <p class="italic">"2026, Jalisco, Cuna de Identidad Nacional y el Mundial que nos Une"</p>
-            <p class="pt-2 text-ink">Mtro. Juan Carlos Flores Miramontes · Secretario de Educación del Estado de Jalisco</p>
+            <p class="pt-2 text-white">Mtro. Juan Carlos Flores Miramontes · Secretario de Educación del Estado de Jalisco</p>
           </div>
         </div>
       </div>
@@ -1053,7 +1092,7 @@
     </div>
 
     <!-- Llamado a la acción institucional -->
-    <div class="pt-10 flex flex-wrap justify-center md:justify-start gap-4 border-t border-gray-200">
+    <div class="pt-10 flex flex-wrap justify-center md:justify-start gap-4 border-t border-white/20">
       <a
         routerLink="/registro"
         class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-brand-orange text-white hover:bg-orange-600 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
@@ -1061,10 +1100,12 @@
         Inscribir Equipo al Torneo OctoStudio
       </a>
       <a
-        routerLink="/documentacion"
-        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-gray-100 text-ink hover:bg-gray-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+        href="/docs/OctoPDF.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-orange-50 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
       >
-        Ver Formatos y Permisos Institucionales
+        Descargar Convocatoria en PDF
       </a>
     </div>
   </div>
