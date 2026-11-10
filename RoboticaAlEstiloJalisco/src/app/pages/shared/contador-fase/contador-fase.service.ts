@@ -2,12 +2,19 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+export type EtapaTorneo = 'inscripcion' | 'preparacion' | 'competencia';
+
 export interface DatosContador {
   fase?: string;
   inicio?: string;
   fecha?: string;
   titulo?: string;
   terminado?: string;
+  etiquetaEvento?: string;
+  fechaTexto?: string;
+  horaTexto?: string;
+  modalidad?: string;
+  etapaActual?: EtapaTorneo;
 }
 
 @Injectable({
@@ -16,10 +23,16 @@ export interface DatosContador {
 export class ContadorFaseService {
   private router = inject(Router);
 
-  // Configuración base de la fase
-  readonly fase = signal<string>('Sesión Informativa');
+  // Configuración base de la fase y contexto real del evento
+  readonly etiquetaEvento = signal<string>('PRÓXIMO EVENTO');
+  readonly fase = signal<string>('Sesión informativa');
   readonly inicio = signal<string>('2026-11-01T00:00:00-06:00');
   readonly fecha = signal<string>('2026-12-01T09:00:00-06:00');
+  readonly subtituloEvento = signal<string>('Conoce la dinámica y resuelve tus dudas');
+  readonly fechaTexto = signal<string>('1 de diciembre, 2026');
+  readonly horaTexto = signal<string>('09:00 hrs');
+  readonly modalidad = signal<string>('Modalidad virtual en vivo');
+  readonly etapaActual = signal<EtapaTorneo>('inscripcion');
   readonly titulo = signal<string>('La sesión informativa inicia en:');
   readonly terminado = signal<string>('¡La sesión informativa ha comenzado!');
 
@@ -91,6 +104,11 @@ export class ContadorFaseService {
     if (datos.fecha !== undefined) this.fecha.set(datos.fecha);
     if (datos.titulo !== undefined) this.titulo.set(datos.titulo);
     if (datos.terminado !== undefined) this.terminado.set(datos.terminado);
+    if (datos.etiquetaEvento !== undefined) this.etiquetaEvento.set(datos.etiquetaEvento);
+    if (datos.fechaTexto !== undefined) this.fechaTexto.set(datos.fechaTexto);
+    if (datos.horaTexto !== undefined) this.horaTexto.set(datos.horaTexto);
+    if (datos.modalidad !== undefined) this.modalidad.set(datos.modalidad);
+    if (datos.etapaActual !== undefined) this.etapaActual.set(datos.etapaActual);
 
     this.actualizar();
     this.iniciarReloj();

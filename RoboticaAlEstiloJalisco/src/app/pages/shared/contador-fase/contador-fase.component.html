@@ -25,31 +25,35 @@
 <div
   id="contador-fase-widget"
   data-contador="hero-widget"
-  class="w-full select-none will-change-transform flex flex-col items-center"
+  class="relative w-full select-none will-change-transform flex flex-col items-center lg:items-end"
   role="region"
-  aria-label="Cuenta regresiva del reto"
+  aria-label="Cuenta regresiva del próximo evento"
 >
   <!-- ============================================================== -->
   <!-- 1. VISTA MÓVIL (< lg): 4 Tarjetas horizontales arriba del texto -->
   <!-- ============================================================== -->
-  <div class="block lg:hidden w-full max-w-sm sm:max-w-md mx-auto space-y-3">
-    <!-- Cabecera limpia con el nombre de la fase -->
+  <div class="block lg:hidden w-full max-w-sm sm:max-w-md mx-auto space-y-2.5">
+    <!-- Cabecera con etiqueta de Próximo evento y nombre de la fase -->
     <div class="flex justify-center" data-spaghetti-part="mobile-badge">
       <div
-        class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-xs text-center"
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-xl border border-white/60 shadow-[inset_0_0_14px_rgba(255,255,255,0.2)] text-center"
       >
-        <span class="text-[11px] sm:text-xs font-normal tracking-[0.22em] text-white uppercase leading-none">
+        <span class="text-[10px] font-normal tracking-[0.18em] text-white/90 uppercase leading-none">
+          {{ contador.etiquetaEvento() }}
+        </span>
+        <span class="w-1 h-1 rounded-full bg-white/70" aria-hidden="true"></span>
+        <span class="text-[11px] sm:text-xs font-bold tracking-wide text-white leading-none">
           {{ contador.fase() }}
         </span>
       </div>
     </div>
 
-    <!-- Fila de 4 tarjetas translúcidas idénticas a la imagen de referencia -->
+    <!-- Fila de 4 tarjetas cuadradas con acabado Glass esmerilado blanco -->
     <div class="w-full grid grid-cols-4 gap-2 sm:gap-3">
       <!-- Días -->
       <div
         data-spaghetti-part="mobile-card-0"
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-xl border-[1.5px] border-white/65 shadow-[0_12px_28px_rgba(0,0,0,0.16),inset_0_0_18px_rgba(255,255,255,0.22)] text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight">
           {{ contador.dias() }}
@@ -62,7 +66,7 @@
       <!-- Horas -->
       <div
         data-spaghetti-part="mobile-card-1"
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-xl border-[1.5px] border-white/65 shadow-[0_12px_28px_rgba(0,0,0,0.16),inset_0_0_18px_rgba(255,255,255,0.22)] text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight">
           {{ contador.horas() }}
@@ -75,7 +79,7 @@
       <!-- Minutos -->
       <div
         data-spaghetti-part="mobile-card-2"
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-xl border-[1.5px] border-white/65 shadow-[0_12px_28px_rgba(0,0,0,0.16),inset_0_0_18px_rgba(255,255,255,0.22)] text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight">
           {{ contador.minutos() }}
@@ -88,7 +92,7 @@
       <!-- Segundos -->
       <div
         data-spaghetti-part="mobile-card-3"
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-xl border-[1.5px] border-white/65 shadow-[0_12px_28px_rgba(0,0,0,0.16),inset_0_0_18px_rgba(255,255,255,0.22)] text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight text-white">
           {{ contador.segundos() }}
@@ -98,100 +102,120 @@
         </span>
       </div>
     </div>
+
+    <!-- Subtítulo en cursiva debajo de las tarjetas en móvil -->
+    <p class="italic text-xs text-white/95 text-center font-normal pt-2">
+      {{ contador.subtituloEvento() }}
+    </p>
   </div>
 
   <!-- ============================================================== -->
-  <!-- 2. VISTA ESCRITORIO (>= lg): Formato Circular Translúcido        -->
+  <!-- 2. VISTA ESCRITORIO (>= lg): Tarjeta Cuadrada Glass idéntica a la foto -->
   <!-- ============================================================== -->
-  <div class="hidden lg:flex flex-col items-center gap-3 w-full max-w-[340px] xl:max-w-[360px]">
-    <!-- Cabecera limpia con el nombre de la fase -->
+  <div
+    class="relative hidden lg:flex flex-col items-center w-full max-w-[390px] xl:max-w-[410px] rounded-[26px] bg-white/15 backdrop-blur-xl border-[1.5px] border-white/70 shadow-[0_24px_60px_rgba(0,0,0,0.22),inset_0_0_28px_rgba(255,255,255,0.22)] px-7 py-6 text-white overflow-hidden"
+  >
+    <!-- Sutil reflejo cálido únicamente en el borde izquierdo superior como en la imagen -->
+    <div
+      class="pointer-events-none absolute -top-10 -left-12 w-40 h-40 rounded-full bg-brand-orange/35 blur-2xl"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Cabecera: PRÓXIMO EVENTO + Sesión informativa -->
     <div
       data-spaghetti-part="desktop-badge"
-      class="inline-flex items-center justify-center px-5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-xs text-center will-change-transform"
+      class="relative z-10 w-full text-center will-change-transform"
     >
-      <span class="text-xs sm:text-sm font-normal tracking-[0.22em] text-white uppercase leading-none">
+      <span class="block text-xs font-normal tracking-[0.24em] text-white/95 uppercase leading-none">
+        {{ contador.etiquetaEvento() }}
+      </span>
+      <span class="block text-2xl xl:text-[1.65rem] font-bold tracking-tight text-white leading-tight mt-1.5">
         {{ contador.fase() }}
       </span>
     </div>
 
-    <!-- Contador circular con anillo SVG translúcido -->
+    <!-- Círculo central con doble aro blanco y arco naranja sobre el borde exterior -->
     <div
       data-spaghetti-part="desktop-ring"
-      class="relative w-[215px] h-[215px] xl:w-[225px] xl:h-[225px] flex items-center justify-center my-0.5 will-change-transform"
+      class="relative z-10 w-[166px] h-[166px] xl:w-[176px] xl:h-[176px] flex items-center justify-center my-4 will-change-transform"
       role="timer"
       [attr.aria-label]="contador.dias() + ' días restantes'"
     >
-      <!-- Disco circular translúcido difuminado -->
-      <div
-        class="absolute inset-2.5 rounded-full bg-white/20 backdrop-blur-xl border border-white/35 shadow-lg shadow-black/10"
-        aria-hidden="true"
-      ></div>
-
-      <!-- Anillos SVG circulares con rotación de inicio a las 12 en punto -->
+      <!-- Anillos SVG idénticos a la imagen -->
       <svg
         viewBox="0 0 200 200"
         class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
         aria-hidden="true"
       >
-        <circle cx="100" cy="100" r="83" fill="none" class="stroke-white/30 stroke-[0.8]" />
-        <circle cx="100" cy="100" r="92" fill="none" class="stroke-white/20 stroke-[5]" />
+        <!-- Banda translúcida entre el aro interior y el exterior -->
+        <circle cx="100" cy="100" r="88.5" fill="none" class="stroke-white/12 stroke-[9]" />
+        <!-- Aro interior blanco fino -->
+        <circle cx="100" cy="100" r="84" fill="none" class="stroke-white/40 stroke-[1]" />
+        <!-- Aro exterior blanco nítido -->
+        <circle cx="100" cy="100" r="93" fill="none" class="stroke-white/90 stroke-[1.8]" />
+        <!-- Arco de progreso naranja exactamente sobre el aro exterior -->
         <circle
           cx="100"
           cy="100"
-          r="92"
+          r="93"
           fill="none"
-          stroke="#f6842b"
-          stroke-width="7"
+          stroke="#ff9500"
+          stroke-width="6.5"
           stroke-linecap="round"
           pathLength="100"
           stroke-dasharray="100"
           [style.stroke-dashoffset]="contador.progresoOffset()"
-          class="transition-[stroke-dashoffset] duration-700 ease-out"
+          class="transition-[stroke-dashoffset] duration-1000 ease-out"
         />
       </svg>
 
       <!-- Valor numérico y etiqueta de días -->
-      <div data-spaghetti-part="desktop-digits" class="relative z-10 text-center px-4 py-2 will-change-transform">
-        <span class="block font-bold text-white tabular-nums tracking-tighter leading-none drop-shadow-md text-6xl xl:text-7xl">
+      <div data-spaghetti-part="desktop-digits" class="relative z-10 text-center px-4 py-1 will-change-transform">
+        <span class="block font-bold text-white tabular-nums tracking-tight leading-none text-5xl xl:text-6xl">
           {{ contador.dias() }}
         </span>
-        <span class="block text-xs font-normal tracking-[0.22em] text-white/90 uppercase mt-2">
+        <span class="block text-xs xl:text-sm font-normal tracking-[0.22em] text-white uppercase mt-2">
           {{ contador.etiquetaDias() }}
         </span>
       </div>
     </div>
 
-    <!-- Unidades inferiores: Horas, Minutos y Segundos -->
+    <!-- Cápsula inferior redondeada: 18 HORAS | 12 MIN | 47 SEG -->
     <div
       data-spaghetti-part="desktop-hms"
-      class="w-full grid grid-cols-3 divide-x divide-white/20 px-3 py-3 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/35 shadow-lg shadow-black/10 text-center will-change-transform"
+      class="relative z-10 w-full grid grid-cols-3 divide-x divide-white/40 px-3 py-3 rounded-2xl bg-white/16 backdrop-blur-md border border-white/55 shadow-[inset_0_0_16px_rgba(255,255,255,0.18)] text-center will-change-transform"
       aria-label="Horas, minutos y segundos"
     >
       <div class="px-2">
-        <span class="block text-2xl xl:text-3xl font-bold text-white tabular-nums leading-tight drop-shadow-sm">
+        <span class="block text-xl xl:text-2xl font-bold text-white tabular-nums leading-none">
           {{ contador.horas() }}
         </span>
-        <span class="block text-[10px] xl:text-[11px] font-normal tracking-wider text-white/80 uppercase mt-1">
+        <span class="block text-[10px] xl:text-[11px] font-normal tracking-[0.16em] text-white/95 uppercase mt-1.5">
           HORAS
         </span>
       </div>
       <div class="px-2">
-        <span class="block text-2xl xl:text-3xl font-bold text-white tabular-nums leading-tight drop-shadow-sm">
+        <span class="block text-xl xl:text-2xl font-bold text-white tabular-nums leading-none">
           {{ contador.minutos() }}
         </span>
-        <span class="block text-[10px] xl:text-[11px] font-normal tracking-wider text-white/80 uppercase mt-1">
+        <span class="block text-[10px] xl:text-[11px] font-normal tracking-[0.16em] text-white/95 uppercase mt-1.5">
           MIN
         </span>
       </div>
       <div class="px-2">
-        <span class="block text-2xl xl:text-3xl font-bold text-white tabular-nums leading-tight drop-shadow-sm">
+        <span class="block text-xl xl:text-2xl font-bold text-white tabular-nums leading-none">
           {{ contador.segundos() }}
         </span>
-        <span class="block text-[10px] xl:text-[11px] font-normal tracking-wider text-white/80 uppercase mt-1">
+        <span class="block text-[10px] xl:text-[11px] font-normal tracking-[0.16em] text-white/95 uppercase mt-1.5">
           SEG
         </span>
       </div>
     </div>
+
+    <!-- Frase inferior en cursiva dentro de la tarjeta con padding superior cómodo -->
+    <p class="relative z-10 w-full pt-4 pb-0.5 text-center italic text-xs xl:text-sm text-white/95 font-normal leading-snug">
+      {{ contador.subtituloEvento() }}
+    </p>
   </div>
 
   <!-- Aviso de error o estatus si aplica -->

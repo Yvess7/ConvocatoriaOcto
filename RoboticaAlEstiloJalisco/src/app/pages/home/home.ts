@@ -62,7 +62,7 @@ interface SpaghettiStrand {
 export class HomeComponent {
   private readonly host = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly contadorService = inject(ContadorFaseService);
+  public readonly contadorService = inject(ContadorFaseService);
   private ctx?: gsap.Context;
   private overlayCanvas?: HTMLCanvasElement;
   private rafId: number | null = null;
