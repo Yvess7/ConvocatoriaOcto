@@ -1,29 +1,40 @@
 <div
   id="contador-fase-docked"
   data-contador="docked-widget"
-  class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 select-none transition-all duration-500 ease-out"
-  [class.opacity-100]="visible()"
-  [class.scale-100]="visible()"
-  [class.translate-y-0]="visible()"
-  [class.pointer-events-auto]="visible()"
-  [class.opacity-0]="!visible()"
-  [class.scale-50]="!visible()"
-  [class.translate-y-12]="!visible()"
-  [class.pointer-events-none]="!visible()"
+  class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 select-none will-change-transform"
+  [class.pointer-events-auto]="progreso() > 0.8"
+  [class.pointer-events-none]="progreso() <= 0.8"
+  [style.opacity]="shellProgress()"
   role="complementary"
   aria-label="Contador de tiempo del torneo"
 >
   @if (!colapsado()) {
-    <!-- Versión compacta estándar que sigue en todas las páginas -->
+    <!-- Versión compacta estándar que se forja pieza por pieza en tiempo real -->
     <div
-      class="group relative flex items-center gap-3.5 pl-3.5 pr-2.5 py-2.5 rounded-2xl bg-neutral-950/90 backdrop-blur-xl border border-white/20 shadow-[0_12px_36px_rgba(0,0,0,0.45)] text-white hover:border-brand-orange/60 transition-all duration-300"
+      data-docked-target="capsule"
+      class="group relative flex items-center gap-3.5 pl-3.5 pr-2.5 py-2.5 rounded-2xl bg-neutral-950/90 backdrop-blur-xl border text-white transition-colors duration-300"
+      [class.border-brand-orange]="forjandoActivo()"
+      [class.border-white/20]="!forjandoActivo()"
+      [class.hover:border-brand-orange/60]="!forjandoActivo()"
+      [style.clip-path]="progreso() >= 0.98 ? 'none' : 'circle(' + (shellProgress() * 145) + '% at 28px 50%)'"
+      [style.box-shadow]="forjandoActivo() ? '0 0 28px rgba(246,132,43,0.55), 0 12px 36px rgba(0,0,0,0.45)' : '0 12px 36px rgba(0,0,0,0.45)'"
     >
       <!-- Mini Anillo SVG con Días restantes -->
-      <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
+      <div
+        data-docked-target="ring"
+        class="relative w-12 h-12 flex items-center justify-center shrink-0"
+      >
         <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90 pointer-events-none" aria-hidden="true">
           <!-- Fondo del anillo -->
-          <circle cx="50" cy="50" r="44" fill="none" class="stroke-white/15 stroke-6" />
-          <!-- Progreso dinámico en naranja -->
+          <circle
+            cx="50"
+            cy="50"
+            r="44"
+            fill="none"
+            class="stroke-white/15 stroke-6"
+            [style.opacity]="ringProgress()"
+          />
+          <!-- Progreso dinámico en naranja que se teje con las hebras de espagueti -->
           <circle
             cx="50"
             cy="50"
@@ -34,11 +45,14 @@
             stroke-linecap="round"
             pathLength="100"
             stroke-dasharray="100"
-            [style.stroke-dashoffset]="contador.progresoOffset()"
-            class="transition-[stroke-dashoffset] duration-500 ease-out"
+            [style.stroke-dashoffset]="ringOffsetDinamico()"
           />
         </svg>
-        <div class="absolute inset-0 flex flex-col items-center justify-center">
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center will-change-transform"
+          [style.opacity]="daysProgress()"
+          [style.transform]="'scale(' + (0.4 + 0.6 * daysProgress()) + ')'"
+        >
           <span class="text-sm font-bold text-white tabular-nums leading-none">
             {{ contador.dias() }}
           </span>
@@ -48,22 +62,41 @@
         </div>
       </div>
 
-      <!-- Datos de la Fase y Reloj Digital -->
+      <!-- Datos de la Fase y Reloj Digital que cristalizan de izquierda a derecha -->
       <div class="flex flex-col pr-2">
-        <span class="text-[10px] font-normal tracking-widest text-brand-orange uppercase leading-none mb-1">
+        <span
+          class="text-[10px] font-normal tracking-widest text-brand-orange uppercase leading-none mb-1 will-change-transform"
+          [style.opacity]="phaseProgress()"
+          [style.transform]="'translateX(' + ((1 - phaseProgress()) * -10) + 'px)'"
+        >
           {{ contador.fase() }}
         </span>
         <div class="flex items-center gap-1.5 text-sm sm:text-base font-bold text-white tabular-nums tracking-wider leading-none">
-          <span>{{ contador.horas() }}<small class="text-[9px] font-normal text-white/70 ml-0.5">H</small></span>
-          <span class="text-white/40">:</span>
-          <span>{{ contador.minutos() }}<small class="text-[9px] font-normal text-white/70 ml-0.5">M</small></span>
-          <span class="text-white/40">:</span>
-          <span class="text-brand-orange">{{ contador.segundos() }}<small class="text-[9px] font-normal text-white/70 ml-0.5">S</small></span>
+          <span
+            class="will-change-transform inline-block"
+            [style.opacity]="hProgress()"
+            [style.transform]="'translateY(' + ((1 - hProgress()) * -8) + 'px) scale(' + (0.6 + 0.4 * hProgress()) + ')'"
+          >{{ contador.horas() }}<small class="text-[9px] font-normal text-white/70 ml-0.5">H</small></span>
+          <span class="text-white/40" [style.opacity]="hProgress()">:</span>
+          <span
+            class="will-change-transform inline-block"
+            [style.opacity]="mProgress()"
+            [style.transform]="'translateY(' + ((1 - mProgress()) * -8) + 'px) scale(' + (0.6 + 0.4 * mProgress()) + ')'"
+          >{{ contador.minutos() }}<small class="text-[9px] font-normal text-white/70 ml-0.5">M</small></span>
+          <span class="text-white/40" [style.opacity]="mProgress()">:</span>
+          <span
+            class="text-brand-orange will-change-transform inline-block"
+            [style.opacity]="sProgress()"
+            [style.transform]="'translateY(' + ((1 - sProgress()) * -8) + 'px) scale(' + (0.6 + 0.4 * sProgress()) + ')'"
+          >{{ contador.segundos() }}<small class="text-[9px] font-normal text-white/70 ml-0.5">S</small></span>
         </div>
       </div>
 
       <!-- Botón de colapsar / minimizar -->
-      <div class="flex items-center border-l border-white/15 pl-1.5 shrink-0">
+      <div
+        class="flex items-center border-l border-white/15 pl-1.5 shrink-0"
+        [style.opacity]="sProgress()"
+      >
         <button
           type="button"
           (click)="alternarColapso()"
@@ -81,6 +114,7 @@
     <!-- Burbuja ultra-compacta cuando el usuario prefiere minimizarlo -->
     <button
       type="button"
+      data-docked-target="capsule"
       (click)="alternarColapso()"
       class="group relative w-12 h-12 flex items-center justify-center rounded-full bg-neutral-950/90 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:border-brand-orange hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
       title="Expandir contador"
@@ -98,7 +132,7 @@
           stroke-linecap="round"
           pathLength="100"
           stroke-dasharray="100"
-          [style.stroke-dashoffset]="contador.progresoOffset()"
+          [style.stroke-dashoffset]="ringOffsetDinamico()"
         />
       </svg>
       <div class="flex flex-col items-center justify-center leading-none">

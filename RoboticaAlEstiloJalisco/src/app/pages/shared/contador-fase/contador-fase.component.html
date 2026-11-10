@@ -1,3 +1,27 @@
+<!-- Filtro SVG de turbulencia y desplazamiento para efecto real de espaguetización y desintegración -->
+<svg class="fixed w-0 h-0 pointer-events-none overflow-hidden" aria-hidden="true">
+  <defs>
+    <filter id="spaghetti-disintegrate" x="-45%" y="-45%" width="190%" height="190%" color-interpolation-filters="sRGB">
+      <feTurbulence
+        id="spaghetti-turbulence"
+        type="fractalNoise"
+        baseFrequency="0.012 0.065"
+        numOctaves="3"
+        seed="11"
+        result="noise"
+      />
+      <feDisplacementMap
+        id="spaghetti-displacement"
+        in="SourceGraphic"
+        in2="noise"
+        scale="0"
+        xChannelSelector="R"
+        yChannelSelector="G"
+      />
+    </filter>
+  </defs>
+</svg>
+
 <div
   id="contador-fase-widget"
   data-contador="hero-widget"
@@ -10,7 +34,7 @@
   <!-- ============================================================== -->
   <div class="block lg:hidden w-full max-w-sm sm:max-w-md mx-auto space-y-3">
     <!-- Cabecera limpia con el nombre de la fase -->
-    <div class="flex justify-center">
+    <div class="flex justify-center" data-spaghetti-part="mobile-badge">
       <div
         class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-xs text-center"
       >
@@ -24,7 +48,8 @@
     <div class="w-full grid grid-cols-4 gap-2 sm:gap-3">
       <!-- Días -->
       <div
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center"
+        data-spaghetti-part="mobile-card-0"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight">
           {{ contador.dias() }}
@@ -36,7 +61,8 @@
 
       <!-- Horas -->
       <div
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center"
+        data-spaghetti-part="mobile-card-1"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight">
           {{ contador.horas() }}
@@ -48,7 +74,8 @@
 
       <!-- Minutos -->
       <div
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center"
+        data-spaghetti-part="mobile-card-2"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight">
           {{ contador.minutos() }}
@@ -60,7 +87,8 @@
 
       <!-- Segundos -->
       <div
-        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center"
+        data-spaghetti-part="mobile-card-3"
+        class="flex flex-col items-center justify-center aspect-square py-2.5 px-1 rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/10 text-white text-center will-change-transform"
       >
         <span class="block text-2xl sm:text-3xl font-bold tabular-nums leading-none tracking-tight text-white">
           {{ contador.segundos() }}
@@ -78,7 +106,8 @@
   <div class="hidden lg:flex flex-col items-center gap-3 w-full max-w-[340px] xl:max-w-[360px]">
     <!-- Cabecera limpia con el nombre de la fase -->
     <div
-      class="inline-flex items-center justify-center px-5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-xs text-center"
+      data-spaghetti-part="desktop-badge"
+      class="inline-flex items-center justify-center px-5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-xs text-center will-change-transform"
     >
       <span class="text-xs sm:text-sm font-normal tracking-[0.22em] text-white uppercase leading-none">
         {{ contador.fase() }}
@@ -87,7 +116,8 @@
 
     <!-- Contador circular con anillo SVG translúcido -->
     <div
-      class="relative w-[215px] h-[215px] xl:w-[225px] xl:h-[225px] flex items-center justify-center my-0.5"
+      data-spaghetti-part="desktop-ring"
+      class="relative w-[215px] h-[215px] xl:w-[225px] xl:h-[225px] flex items-center justify-center my-0.5 will-change-transform"
       role="timer"
       [attr.aria-label]="contador.dias() + ' días restantes'"
     >
@@ -121,7 +151,7 @@
       </svg>
 
       <!-- Valor numérico y etiqueta de días -->
-      <div class="relative z-10 text-center px-4 py-2">
+      <div data-spaghetti-part="desktop-digits" class="relative z-10 text-center px-4 py-2 will-change-transform">
         <span class="block font-bold text-white tabular-nums tracking-tighter leading-none drop-shadow-md text-6xl xl:text-7xl">
           {{ contador.dias() }}
         </span>
@@ -133,7 +163,8 @@
 
     <!-- Unidades inferiores: Horas, Minutos y Segundos -->
     <div
-      class="w-full grid grid-cols-3 divide-x divide-white/20 px-3 py-3 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/35 shadow-lg shadow-black/10 text-center"
+      data-spaghetti-part="desktop-hms"
+      class="w-full grid grid-cols-3 divide-x divide-white/20 px-3 py-3 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/35 shadow-lg shadow-black/10 text-center will-change-transform"
       aria-label="Horas, minutos y segundos"
     >
       <div class="px-2">

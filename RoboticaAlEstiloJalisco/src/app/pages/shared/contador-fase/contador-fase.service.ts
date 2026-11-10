@@ -37,6 +37,8 @@ export class ContadorFaseService {
   // Control de visualización global y por ruta
   readonly esRutaHome = signal<boolean>(true);
   readonly mostrarDocked = signal<boolean>(false);
+  // Progreso continuo (0 a 1) con el que el reloj flotante se ensambla en tiempo real
+  readonly progresoEnsamblaje = signal<number>(0);
 
   private intervalId: any = null;
 
@@ -58,15 +60,25 @@ export class ContadorFaseService {
     const esHome = limpia === '' || limpia === '/';
     this.esRutaHome.set(esHome);
 
-    // En cualquier página que no sea Inicio, el contador pequeño se acopla de inmediato
+    // En cualquier página que no sea Inicio, el contador pequeño se acopla al 100% de inmediato
     if (!esHome) {
       this.mostrarDocked.set(true);
+      this.progresoEnsamblaje.set(1);
     }
   }
 
   public setMostrarDockedEnHome(mostrar: boolean): void {
     if (this.esRutaHome()) {
       this.mostrarDocked.set(mostrar);
+      this.progresoEnsamblaje.set(mostrar ? 1 : 0);
+    }
+  }
+
+  public setProgresoEnsamblajeEnHome(progreso: number): void {
+    if (this.esRutaHome()) {
+      const clamped = Math.max(0, Math.min(1, progreso));
+      this.progresoEnsamblaje.set(clamped);
+      this.mostrarDocked.set(clamped > 0.01);
     }
   }
 
