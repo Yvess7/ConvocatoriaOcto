@@ -274,7 +274,7 @@ button, [role="button"] {
   }
 }
 
-/* Clase Banner unificada: altura visual pareja basada en Torneos sin recortar contenido */
+/* Clase Banner unificada: mismo tamaño proporcional del inicio para todas las páginas */
 .banner {
   position: relative;
   width: 100%;
@@ -298,7 +298,7 @@ button, [role="button"] {
 
 @media (min-width: 1024px) {
   .banner {
-    min-height: 36rem;
+    min-height: 35rem;
   }
 }
 
