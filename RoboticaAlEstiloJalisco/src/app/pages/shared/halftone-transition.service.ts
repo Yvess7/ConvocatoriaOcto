@@ -140,7 +140,8 @@ export class HalftoneTransitionService implements OnDestroy {
       hx.fillStyle = color;
       const maxD = Math.hypot(Math.max(X, W - X), Math.max(Y, H - Y));
       const band = maxD * 0.6;
-      const front = p * (maxD + band);
+      const progress = rev ? 1 - Math.pow(1 - p, 1.6) : p;
+      const front = progress * (maxD + band);
       hx.beginPath();
       for (let j = 0, y = -cell / 2; y < H + cell; j++, y += cell / 2) {
         for (let x = (j & 1) * (cell / 2) - cell; x < W + cell; x += cell) {
@@ -175,7 +176,8 @@ export class HalftoneTransitionService implements OnDestroy {
             .catch(() => undefined)
             .finally(() => {
               phase = 1;
-              t0 = performance.now();
+              t0 = performance.now() - T2 * 0.05;
+              draw(0.05, true);
               this.rafId = requestAnimationFrame(step);
             });
           return;

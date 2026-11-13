@@ -94,19 +94,12 @@ export class App {
       } else if (targetFragment) {
         await this.router.navigate([], { fragment: targetFragment });
       }
-      await new Promise<void>((resolve) => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            if (targetFragment) {
-              document.getElementById(targetFragment)?.scrollIntoView({ behavior: 'instant', block: 'start' });
-            } else {
-              window.scrollTo({ top: 0, behavior: 'instant' });
-            }
-            document.documentElement.style.scrollBehavior = '';
-            resolve();
-          });
-        });
-      });
+      if (targetFragment) {
+        document.getElementById(targetFragment)?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+      document.documentElement.style.scrollBehavior = '';
     });
   };
 
