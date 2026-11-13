@@ -11,6 +11,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { navigation } from './navigation';
 import { ContadorFaseDockedComponent } from './pages/shared/contador-fase/contador-fase-docked.component';
+import { HalftoneTransitionService } from './pages/shared/halftone-transition.service';
 
 @Component({
   imports: [RouterLink, RouterOutlet, ContadorFaseDockedComponent],
@@ -20,12 +21,94 @@ import { ContadorFaseDockedComponent } from './pages/shared/contador-fase/contad
 export class App {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly halftone = inject(HalftoneTransitionService);
   private observer?: IntersectionObserver;
 
   readonly navigation = navigation;
   readonly isMenuOpen = signal(false);
   readonly pageAnimating = signal(true);
   readonly activeDropdown = signal<string | null>(null);
+
+  private readonly onGlobalLinkClick = (event: MouseEvent): void => {
+    if (
+      event.defaultPrevented ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      event.button !== 0
+    ) {
+      return;
+    }
+
+    const anchor = (event.target as HTMLElement | null)?.closest('a[href]') as HTMLAnchorElement | null;
+    if (!anchor) return;
+
+    const targetAttr = anchor.getAttribute('target');
+    if (targetAttr && targetAttr !== '_self') return;
+    if (anchor.hasAttribute('download')) return;
+
+    const rawHref = anchor.getAttribute('href');
+    if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:') || rawHref.startsWith('javascript:')) {
+      return;
+    }
+
+    let url: URL;
+    try {
+      url = new URL(anchor.href, window.location.origin);
+    } catch {
+      return;
+    }
+
+    if (url.origin !== window.location.origin) return;
+    if (/\.pdf($|\?)/i.test(url.pathname)) return;
+
+    const targetPath = url.pathname;
+    const targetFragment = url.hash ? url.hash.slice(1) : null;
+    const currentPath = window.location.pathname;
+
+    if (targetPath === currentPath && !targetFragment && window.scrollY <= 10) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (this.halftone.isBusy) {
+      return;
+    }
+
+    this.closeAllDropdowns();
+    anchor.blur?.();
+
+    const rect = anchor.getBoundingClientRect();
+    const ox = rect.width > 0 ? rect.left + rect.width / 2 : event.clientX || window.innerWidth / 2;
+    const oy = rect.height > 0 ? rect.top + rect.height / 2 : event.clientY || window.innerHeight / 2;
+    const color = this.halftone.colorForTarget(targetPath, targetFragment);
+    const targetUrl = `${targetPath}${url.search}${targetFragment ? `#${targetFragment}` : ''}`;
+
+    this.halftone.run(ox, oy, color, async () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+      if (targetPath !== currentPath || url.search !== window.location.search) {
+        await this.router.navigateByUrl(targetUrl);
+      } else if (targetFragment) {
+        await this.router.navigate([], { fragment: targetFragment });
+      }
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (targetFragment) {
+              document.getElementById(targetFragment)?.scrollIntoView({ behavior: 'instant', block: 'start' });
+            } else {
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+            document.documentElement.style.scrollBehavior = '';
+            resolve();
+          });
+        });
+      });
+    });
+  };
 
   constructor() {
     this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event) => {
@@ -46,10 +129,14 @@ export class App {
 
     afterNextRender(() => {
       this.setupScrollAnimations();
+      document.addEventListener('click', this.onGlobalLinkClick, true);
     });
 
     this.destroyRef.onDestroy(() => {
       this.observer?.disconnect();
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('click', this.onGlobalLinkClick, true);
+      }
     });
   }
 

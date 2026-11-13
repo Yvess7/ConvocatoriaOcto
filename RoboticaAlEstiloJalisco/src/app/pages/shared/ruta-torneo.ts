@@ -2,6 +2,7 @@ import { afterNextRender, DestroyRef, ElementRef, inject, signal } from '@angula
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { HalftoneTransitionService } from './halftone-transition.service';
 
 /** Paso individual del mapa (fase previa o etapa del torneo). */
 export interface PasoRuta {
@@ -94,6 +95,7 @@ export abstract class RutaTorneoBase {
   private readonly volteadas = signal<ReadonlySet<string>>(new Set());
   private pasosCache?: PasoRuta[];
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly halftone = inject(HalftoneTransitionService);
   private ctx?: gsap.Context;
 
   constructor() {
@@ -469,7 +471,19 @@ export abstract class RutaTorneoBase {
   }
 
   scrollTo(id: string): void {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const active = document.activeElement as HTMLElement | null;
+    const rect = active && active !== document.body ? active.getBoundingClientRect() : null;
+    const ox = rect && rect.width > 0 ? rect.left + rect.width / 2 : window.innerWidth / 2;
+    const oy = rect && rect.height > 0 ? rect.top + rect.height / 2 : window.innerHeight / 2;
+    const color = this.halftone.colorForTarget(window.location.pathname, id);
+
+    this.halftone.run(ox, oy, color, () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+      document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      requestAnimationFrame(() => {
+        document.documentElement.style.scrollBehavior = '';
+      });
+    });
   }
 
   cambiarFaseClasificacion(fase: 'participantes' | 'play-in' | 'eliminatorias'): void {

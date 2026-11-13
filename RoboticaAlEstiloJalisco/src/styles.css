@@ -78,15 +78,19 @@ button, [role="button"] {
   }
 }
 
-/* Transición cinematográfica al cambiar de página (Fade-in + Zoom + Blur estilo Apple) */
+/* Transición suave al revelar cada vista tras la cortina de semitono */
 .page-enter-active {
-  animation: page-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: page-enter 0.35s ease both;
 }
 
 @keyframes page-enter {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(1rem);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
