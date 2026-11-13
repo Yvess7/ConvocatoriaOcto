@@ -162,44 +162,50 @@
             </p>
             <p data-gsap="etapa-item" class="mt-4 text-sm uppercase tracking-wider text-white/90">{{ e.paso.fecha }}</p>
 
-            <nav data-gsap="etapa-item" class="mt-8 flex items-start justify-center gap-4 md:justify-start" aria-label="Navegación entre etapas">
+            <nav data-gsap="etapa-item" class="mt-8 flex items-stretch justify-center gap-2.5 sm:gap-4 md:justify-start" aria-label="Navegación entre etapas">
               <button
                 #bAnterior
                 type="button"
-                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                class="flex flex-1 flex-col items-center rounded-lg bg-white/15 px-2.5 pt-2 pb-3 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white sm:w-36 sm:flex-none"
                 [class.invisible]="e.primera"
                 [attr.aria-label]="'Ir a la etapa anterior: ' + e.anterior"
                 (click)="irSuave(e.i - 1)"
                 (pointerenter)="hover(bAnterior, $event)"
                 (focus)="hover(bAnterior, $event)"
               >
-                <div data-spr data-k="anterior" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('anterior')"></div>
-                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">{{ e.anterior }}</span>
+                <span class="relative block h-18 w-full shrink-0 sm:h-20" aria-hidden="true">
+                  <span data-spr data-k="anterior" class="pointer-events-none absolute left-1/2 top-1/2 -ml-18 -mt-19 size-36 bg-no-repeat bg-size-[500%_400%] sm:-ml-22 sm:-mt-23 sm:size-44" [style.background-image]="imagenHoja('anterior')"></span>
+                </span>
+                <span class="relative z-10 mt-2.5 block text-center text-xs leading-snug text-white sm:mt-3">{{ e.anterior }}</span>
               </button>
               <button
                 #bMapa
                 type="button"
-                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                class="flex flex-1 flex-col items-center rounded-lg bg-white/15 px-2.5 pt-2 pb-3 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white sm:w-36 sm:flex-none"
                 aria-label="Volver al mapa"
                 (click)="saltar(-1, bMapa)"
                 (pointerenter)="hover(bMapa, $event)"
                 (focus)="hover(bMapa, $event)"
               >
-                <div data-spr data-k="casa" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('casa')"></div>
-                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">Mapa</span>
+                <span class="relative block h-18 w-full shrink-0 sm:h-20" aria-hidden="true">
+                  <span data-spr data-k="casa" class="pointer-events-none absolute left-1/2 top-1/2 -ml-18 -mt-19 size-36 bg-no-repeat bg-size-[500%_400%] sm:-ml-22 sm:-mt-23 sm:size-44" [style.background-image]="imagenHoja('casa')"></span>
+                </span>
+                <span class="relative z-10 mt-2.5 block text-center text-xs leading-snug text-white sm:mt-3">Mapa</span>
               </button>
               <button
                 #bSiguiente
                 type="button"
-                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                class="flex flex-1 flex-col items-center rounded-lg bg-white/15 px-2.5 pt-2 pb-3 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white sm:w-36 sm:flex-none"
                 [class.invisible]="e.ultima"
                 [attr.aria-label]="'Ir a la etapa siguiente: ' + e.siguiente"
                 (click)="irSuave(e.i + 1)"
                 (pointerenter)="hover(bSiguiente, $event)"
                 (focus)="hover(bSiguiente, $event)"
               >
-                <div data-spr data-k="siguiente" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('siguiente')"></div>
-                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">{{ e.siguiente }}</span>
+                <span class="relative block h-18 w-full shrink-0 sm:h-20" aria-hidden="true">
+                  <span data-spr data-k="siguiente" class="pointer-events-none absolute left-1/2 top-1/2 -ml-18 -mt-19 size-36 bg-no-repeat bg-size-[500%_400%] sm:-ml-22 sm:-mt-23 sm:size-44" [style.background-image]="imagenHoja('siguiente')"></span>
+                </span>
+                <span class="relative z-10 mt-2.5 block text-center text-xs leading-snug text-white sm:mt-3">{{ e.siguiente }}</span>
               </button>
             </nav>
           </div>
