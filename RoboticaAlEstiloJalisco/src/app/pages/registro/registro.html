@@ -299,3 +299,13 @@
   </div>
 </section>
 
+<!-- Transición ondulada inferior hacia el Footer naranja institucional -->
+<div
+  class="relative w-full overflow-hidden leading-none -mb-px z-20 pointer-events-none transition-colors duration-500"
+  [class]="modalidad() === 'mbot' ? 'bg-sky-50/30' : modalidad() === 'octostudio' ? 'bg-purple-50/30' : 'bg-white'"
+>
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+    <path d="M0,20 C270,58 530,66 810,34 C1090,10 1280,48 1440,32 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+

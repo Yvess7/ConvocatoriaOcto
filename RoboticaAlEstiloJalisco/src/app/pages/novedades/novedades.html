@@ -132,11 +132,19 @@
       </div>
     </section>
 
-    @if ($odd) {
+    @if ($odd && !$last) {
       <!-- Transición ondulada inferior hacia siguiente publicación -->
       <div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
         <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" class="w-full h-8 sm:h-12 text-white fill-current block" aria-hidden="true">
           <path d="M0,24 C280,50 560,18 840,42 C1100,60 1300,22 1440,34 L1440,60 L0,60 Z"></path>
+        </svg>
+      </div>
+    }
+    @if ($last && $even) {
+      <!-- Transición ondulada inferior hacia el Footer naranja institucional -->
+      <div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+        <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+          <path d="M0,28 C310,66 590,22 890,34 C1150,44 1320,16 1440,50 L1440,80 L0,80 Z"></path>
         </svg>
       </div>
     }
@@ -150,5 +158,12 @@
         </p>
       </div>
     </section>
+
+    <!-- Transición ondulada inferior hacia el Footer naranja institucional -->
+    <div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+      <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+        <path d="M0,44 C260,14 520,60 800,30 C1080,10 1280,56 1440,34 L1440,80 L0,80 Z"></path>
+      </svg>
+    </div>
   }
 </div>

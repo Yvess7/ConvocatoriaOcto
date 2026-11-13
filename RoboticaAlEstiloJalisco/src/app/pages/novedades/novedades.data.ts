@@ -76,7 +76,7 @@ export const novedades: readonly Novedad[] = [
     ],
     imagen: '/images/mbot.webp',
     imagenAlt: 'Ilustración del torneo de robótica mBot',
-    enlace: { texto: 'Consultar torneos', ruta: '/torneos' },
+    enlace: { texto: 'Consultar torneo mBot', ruta: '/mbot' },
   },
   {
     id: 'documentacion-torneo',

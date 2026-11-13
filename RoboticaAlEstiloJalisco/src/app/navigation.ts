@@ -21,15 +21,6 @@ export const navigation: {
   home: { label: 'Robótica al Estilo Jalisco', path: '/' },
   groups: [
     {
-      label: 'Torneos',
-      path: '/torneos',
-      compact: false,
-      links: [
-        { label: 'mBot', path: '/mbot' },
-        { label: 'OctoStudio', path: '/octostudio' },
-      ],
-    },
-    {
       label: 'Documentación',
       path: '/documentacion',
       compact: true,

@@ -11,47 +11,29 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ContadorFaseComponent } from '../shared/contador-fase/contador-fase.component';
 import { ContadorFaseService } from '../shared/contador-fase/contador-fase.service';
 
-interface DustParticle {
-  // Posición normalizada de origen dentro del widget del banner (-0.5 a 0.5)
+type ShapeKind = 'hexagon' | 'diamond' | 'triangle' | 'cross';
+
+interface GeoParticle {
   ox: number;
   oy: number;
-  // Tipo de origen: 'ring' (anillo), 'core' (dígitos centrales), 'sub' (barra inferior / tarjetas)
   zone: 'ring' | 'core' | 'sub';
+  kind: ShapeKind;
   angle: number;
-  // Ventana de tiempo dentro del progreso (0..1)
+  spinSpeed: number;
   tStart: number;
   tDuration: number;
-  // Curvatura y turbulencia individual
   curveSpread: number;
   swirlFreq: number;
   swirlAmp: number;
   phase: number;
-  // Destino en el reloj flotante ('ring' o 'digits')
-  targetZone: 'ring' | 'digits';
+  targetZone: 'ring' | 'capsule';
   targetAngle: number;
   targetOffsetX: number;
   targetOffsetY: number;
-  // Apariencia
   size: number;
   color: string;
+  strokeColor: string;
   alpha: number;
-}
-
-interface SpaghettiStrand {
-  ox: number;
-  oy: number;
-  tStart: number;
-  tDuration: number;
-  curveBendX: number;
-  curveBendY: number;
-  targetAngle: number;
-  targetZone: 'ring' | 'digits';
-  width: number;
-  color: string;
-  stretchFactor: number;
-  waveFreq: number;
-  waveAmp: number;
-  phase: number;
 }
 
 @Component({
@@ -132,19 +114,20 @@ export class HomeComponent {
         this.resizeListener = actualizarDimensionesCanvas;
         window.addEventListener('resize', actualizarDimensionesCanvas, { passive: true });
 
-        // 2. Generar banco de partículas de polvo (420 granos) y filamentos de espagueti (85 hebras)
+        // 2. Generar únicamente partículas geométricas nítidas del sitio (sin cintas ni filtros pesados)
         const palette = [
-          '#ffffff',
-          '#ffffff',
+          '#f6842b', // brand-orange
+          '#e81a4f', // brand-red
+          '#b8143d', // brand-red-dark
           '#f6842b',
-          '#f6842b',
-          '#ffaa55',
-          '#ffe4c4',
-          '#ff4d79',
+          '#e81a4f',
+          '#3a3a3a', // ink
+          '#ffffff',
         ];
+        const shapeKinds: ShapeKind[] = ['hexagon', 'diamond', 'triangle', 'cross'];
 
-        const particles: DustParticle[] = [];
-        const numParticles = 420;
+        const particles: GeoParticle[] = [];
+        const numParticles = 100;
         for (let i = 0; i < numParticles; i++) {
           const rand = Math.random();
           const zone: 'ring' | 'core' | 'sub' =
@@ -165,71 +148,39 @@ export class HomeComponent {
             oy = 0.32 + (Math.random() - 0.5) * 0.22;
           }
 
-          // Las partículas inferiores/derechas se desprenden primero hacia el agujero negro
           const spatialOrder = Math.max(0, Math.min(1, (ox + oy + 1) * 0.45));
-          const tStart = 0.01 + (1 - spatialOrder) * 0.24 + Math.random() * 0.16;
-          const tDuration = 0.44 + Math.random() * 0.18;
-
-          const targetZone: 'ring' | 'digits' =
-            zone === 'ring' || Math.random() < 0.45 ? 'ring' : 'digits';
+          const tStart = 0.01 + (1 - spatialOrder) * 0.22 + Math.random() * 0.14;
+          const tDuration = 0.48 + Math.random() * 0.2;
+          const color =
+            zone === 'ring' && Math.random() < 0.6
+              ? '#f6842b'
+              : palette[Math.floor(Math.random() * palette.length)];
 
           particles.push({
             ox,
             oy,
             zone,
+            kind: shapeKinds[i % shapeKinds.length],
             angle,
-            tStart,
-            tDuration: Math.min(0.98 - tStart, tDuration),
-            curveSpread: (Math.random() - 0.35) * 260,
-            swirlFreq: 2.5 + Math.random() * 4.5,
-            swirlAmp: 14 + Math.random() * 38,
-            phase: Math.random() * Math.PI * 2,
-            targetZone,
-            targetAngle: Math.random() * Math.PI * 2,
-            targetOffsetX: Math.random() * 115,
-            targetOffsetY: (Math.random() - 0.5) * 24,
-            size: 1.1 + Math.random() * 2.6,
-            color:
-              zone === 'ring' && Math.random() < 0.65
-                ? '#f6842b'
-                : palette[Math.floor(Math.random() * palette.length)],
-            alpha: 0.65 + Math.random() * 0.35,
-          });
-        }
-
-        const strands: SpaghettiStrand[] = [];
-        const numStrands = 85;
-        for (let i = 0; i < numStrands; i++) {
-          const angle = (i / numStrands) * Math.PI * 2 + Math.random() * 0.2;
-          const r = 0.15 + Math.random() * 0.35;
-          const ox = Math.cos(angle) * r;
-          const oy = Math.sin(angle) * r;
-          const tStart = 0.02 + Math.random() * 0.32;
-          const tDuration = 0.46 + Math.random() * 0.18;
-
-          strands.push({
-            ox,
-            oy,
+            spinSpeed: (Math.random() - 0.5) * 5.5,
             tStart,
             tDuration: Math.min(0.96 - tStart, tDuration),
-            curveBendX: (Math.random() - 0.25) * 280,
-            curveBendY: 80 + Math.random() * 190,
-            targetAngle: angle + Math.PI * (1.5 + Math.random()),
-            targetZone: i % 3 === 0 ? 'digits' : 'ring',
-            width: 1.0 + Math.random() * 2.2,
-            color: i % 2 === 0 ? '#f6842b' : i % 5 === 0 ? '#ffaa55' : '#ffffff',
-            stretchFactor: 0.16 + Math.random() * 0.14,
-            waveFreq: 3 + Math.random() * 4,
-            waveAmp: 8 + Math.random() * 22,
+            curveSpread: (Math.random() - 0.4) * 260,
+            swirlFreq: 2.2 + Math.random() * 3.4,
+            swirlAmp: 12 + Math.random() * 28,
             phase: Math.random() * Math.PI * 2,
+            targetZone: zone === 'ring' || Math.random() < 0.5 ? 'ring' : 'capsule',
+            targetAngle: Math.random() * Math.PI * 2,
+            targetOffsetX: Math.random() * 170,
+            targetOffsetY: (Math.random() - 0.5) * 34,
+            size: 4.8 + Math.random() * 6.8,
+            color,
+            strokeColor: color === '#ffffff' ? '#e81a4f' : '#ffffff',
+            alpha: 0.85 + Math.random() * 0.15,
           });
         }
 
-        // Elementos DOM individuales del contador y filtro SVG
-        const displacementEl = document.getElementById(
-          'spaghetti-displacement'
-        ) as SVGFEDisplacementMapElement | null;
-
+        // Elementos DOM individuales del contador
         const desktopBadge = widget.querySelector(
           '[data-spaghetti-part="desktop-badge"]'
         ) as HTMLElement | null;
@@ -255,18 +206,39 @@ export class HomeComponent {
           )
           .filter((el): el is HTMLElement => !!el);
 
-        // Coordenadas cacheadas de origen para que no se pierdan al deformar los hijos
-        let baseHeroRect = widget.getBoundingClientRect();
+        // Coordenadas cacheadas de origen y destino para evitar lecturas de layout en cada frame
+        const heroContainer =
+          (root.querySelector('#contador-hero-container') as HTMLElement) || widget;
+        let baseHeroRect = heroContainer.getBoundingClientRect();
         let currentProgress = 0;
 
-        const actualizarRectBase = () => {
-          // Obtenemos el contenedor envolvente que no sufre deformaciones extremas
-          const container =
-            (root.querySelector('#contador-hero-container') as HTMLElement) || widget;
-          baseHeroRect = container.getBoundingClientRect();
+        const calcularGeometriaDestino = () => {
+          const isSmUp = vw >= 640;
+          const margin = isSmUp ? 24 : 16;
+          const capsuleEl = document.querySelector(
+            '[data-docked-target="capsule"]'
+          ) as HTMLElement | null;
+          const dstW =
+            capsuleEl && capsuleEl.offsetWidth > 40 ? capsuleEl.offsetWidth : 356;
+          const dstH =
+            capsuleEl && capsuleEl.offsetHeight > 30 ? capsuleEl.offsetHeight : 102;
+          const dstLeft = vw - margin - dstW;
+          const dstTop = vh - margin - dstH;
+          const dstCx = dstLeft + dstW * 0.5;
+          const dstCy = dstTop + dstH * 0.5;
+          const ringTargetX = dstLeft + 52;
+          const ringTargetY = dstCy;
+          return { dstCx, dstCy, ringTargetX, ringTargetY };
         };
 
-        // Función matemática de Bezier cúbica
+        let cachedDst = calcularGeometriaDestino();
+
+        const actualizarRects = () => {
+          baseHeroRect = heroContainer.getBoundingClientRect();
+          cachedDst = calcularGeometriaDestino();
+        };
+
+        // Funciones matemáticas y helpers de dibujo en Canvas 2D
         const cubicBezier = (
           t: number,
           p0: number,
@@ -289,7 +261,68 @@ export class HomeComponent {
           return t * t * (3 - 2 * t);
         };
 
-        // 3. Renderizador en tiempo real del flujo de espaguetización, polvo y vórtice de forjado
+        const drawPolygonPath = (
+          c: CanvasRenderingContext2D,
+          cx: number,
+          cy: number,
+          radius: number,
+          sides: number,
+          rotation: number
+        ) => {
+          c.beginPath();
+          for (let i = 0; i < sides; i++) {
+            const theta = rotation + (i * Math.PI * 2) / sides;
+            const x = cx + Math.cos(theta) * radius;
+            const y = cy + Math.sin(theta) * radius;
+            if (i === 0) c.moveTo(x, y);
+            else c.lineTo(x, y);
+          }
+          c.closePath();
+        };
+
+        const drawGeoShape = (
+          c: CanvasRenderingContext2D,
+          kind: ShapeKind,
+          cx: number,
+          cy: number,
+          radius: number,
+          rotation: number
+        ) => {
+          if (kind === 'hexagon') {
+            drawPolygonPath(c, cx, cy, radius, 6, rotation);
+            return;
+          }
+          if (kind === 'diamond') {
+            drawPolygonPath(c, cx, cy, radius, 4, rotation);
+            return;
+          }
+          if (kind === 'triangle') {
+            drawPolygonPath(c, cx, cy, radius, 3, rotation - Math.PI / 2);
+            return;
+          }
+          // Cross geométrica alineada al centro
+          const arm = radius * 0.36;
+          c.save();
+          c.translate(cx, cy);
+          c.rotate(rotation);
+          c.beginPath();
+          c.moveTo(-arm, -radius);
+          c.lineTo(arm, -radius);
+          c.lineTo(arm, -arm);
+          c.lineTo(radius, -arm);
+          c.lineTo(radius, arm);
+          c.lineTo(arm, arm);
+          c.lineTo(arm, radius);
+          c.lineTo(-arm, radius);
+          c.lineTo(-arm, arm);
+          c.lineTo(-radius, arm);
+          c.lineTo(-radius, -arm);
+          c.lineTo(-arm, -arm);
+          c.closePath();
+          c.restore();
+        };
+
+        // 3. Renderizador ligero en tiempo real: únicamente partículas geométricas hacia la esquina
         const renderFrame = (timeMs: number) => {
           if (!ctx2d) return;
           ctx2d.clearRect(0, 0, vw, vh);
@@ -300,212 +333,84 @@ export class HomeComponent {
             return;
           }
 
-          actualizarRectBase();
-
-          // Centro y dimensiones actuales del contador del banner en pantalla
-          const srcW = Math.max(220, baseHeroRect.width);
-          const srcH = Math.max(120, baseHeroRect.height);
-          const srcCx = baseHeroRect.left + srcW * 0.5;
-          // Compensamos ligeramente la subida del scroll para que la desintegración ocurra a la vista
-          const scrollHoldY = Math.min(180, p * 210);
-          const srcCy = baseHeroRect.top + srcH * 0.5 + scrollHoldY;
-
-          // Coordenadas exactas del reloj flotante en la esquina inferior derecha
-          const dockedEl = document.getElementById('contador-fase-docked');
-          const dockedRect = dockedEl?.getBoundingClientRect();
-          const dstRight = dockedRect && dockedRect.width > 20 ? dockedRect.left : vw - 235;
-          const dstTop = dockedRect && dockedRect.height > 20 ? dockedRect.top : vh - 82;
-          const ringTargetX = dstRight + 32;
-          const ringTargetY = dstTop + 32;
-
+          const { dstCx, dstCy, ringTargetX, ringTargetY } = cachedDst;
+          const srcW = Math.min(410, Math.max(240, baseHeroRect.width));
+          const srcH = Math.min(410, Math.max(150, baseHeroRect.height));
+          const srcCx = baseHeroRect.left + baseHeroRect.width * 0.5;
+          const scrollHoldY = Math.min(180, p * 200);
+          const srcCy = Math.max(96, baseHeroRect.top + baseHeroRect.height * 0.5 + scrollHoldY);
           const timeSec = timeMs * 0.001;
 
           ctx2d.save();
-          ctx2d.globalCompositeOperation = 'lighter';
+          ctx2d.globalCompositeOperation = 'source-over';
 
-          // A. Vórtice gravitacional / disco de acreción en la esquina inferior derecha mientras se forja el reloj
-          const vortexIntensity =
-            smoothstep(0.18, 0.55, p) * (1 - smoothstep(0.84, 0.99, p));
-          if (vortexIntensity > 0.01) {
-            const vortexRadius = 46 * (0.65 + 0.35 * Math.sin(p * Math.PI));
-            const grad = ctx2d.createRadialGradient(
-              ringTargetX,
-              ringTargetY,
-              2,
-              ringTargetX,
-              ringTargetY,
-              vortexRadius
-            );
-            grad.addColorStop(0, `rgba(255, 255, 255, ${0.55 * vortexIntensity})`);
-            grad.addColorStop(0.35, `rgba(246, 132, 43, ${0.48 * vortexIntensity})`);
-            grad.addColorStop(0.7, `rgba(232, 26, 79, ${0.22 * vortexIntensity})`);
-            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-            ctx2d.fillStyle = grad;
-            ctx2d.beginPath();
-            ctx2d.arc(ringTargetX, ringTargetY, vortexRadius, 0, Math.PI * 2);
-            ctx2d.fill();
-
-            // Anillos espirales de acreción girando en tiempo real alrededor del nuevo reloj
-            for (let s = 0; s < 3; s++) {
-              const rot = timeSec * 5.5 + s * ((Math.PI * 2) / 3) + p * 12;
-              const rOrbit = 22 + s * 5 * (1 - p * 0.5);
-              ctx2d.strokeStyle =
-                s % 2 === 0
-                  ? `rgba(246, 132, 43, ${0.65 * vortexIntensity})`
-                  : `rgba(255, 255, 255, ${0.55 * vortexIntensity})`;
-              ctx2d.lineWidth = 1.8;
-              ctx2d.beginPath();
-              ctx2d.arc(ringTargetX, ringTargetY, rOrbit, rot, rot + 1.8);
-              ctx2d.stroke();
-            }
-          }
-
-          // B. Hebras de espaguetización (Spaghetti Filaments) estirándose hacia el agujero negro
-          for (let i = 0; i < strands.length; i++) {
-            const st = strands[i];
-            const localP = (p - st.tStart) / st.tDuration;
-            if (localP <= 0 || localP >= 1) continue;
-
-            // La cabeza de la hebra avanza más rápido que la cola para estirarse como espagueti
-            const headT = clamp01(Math.pow(localP, 0.72));
-            const tailT = clamp01(
-              Math.pow(Math.max(0, localP - st.stretchFactor), 1.35)
-            );
-
-            const startX = srcCx + st.ox * srcW;
-            const startY = srcCy + st.oy * srcH;
-
-            const endX =
-              st.targetZone === 'ring'
-                ? ringTargetX + Math.cos(st.targetAngle + p * 8) * 20
-                : ringTargetX + 42 + (i % 5) * 18;
-            const endY =
-              st.targetZone === 'ring'
-                ? ringTargetY + Math.sin(st.targetAngle + p * 8) * 20
-                : ringTargetY + ((i % 3) - 1) * 7;
-
-            // Puntos de control que crean el embudo gravitacional en curva S
-            const cp1x = startX + st.curveBendX * 0.5 + (endX - startX) * 0.25;
-            const cp1y = startY + st.curveBendY + (endY - startY) * 0.15;
-            const cp2x = endX - st.curveBendX * 0.35;
-            const cp2y = endY - 95;
-
-            const fade =
-              smoothstep(0, 0.12, localP) * (1 - smoothstep(0.86, 1.0, localP));
-            if (fade <= 0.01) continue;
-
-            ctx2d.strokeStyle = st.color;
-            ctx2d.lineWidth = st.width * (0.6 + 0.7 * Math.sin(localP * Math.PI));
-            ctx2d.lineCap = 'round';
-            ctx2d.globalAlpha = fade * 0.85;
-
-            ctx2d.beginPath();
-            const steps = 7;
-            for (let s = 0; s <= steps; s++) {
-              const segT = tailT + (headT - tailT) * (s / steps);
-              const bx = cubicBezier(segT, startX, cp1x, cp2x, endX);
-              const by = cubicBezier(segT, startY, cp1y, cp2y, endY);
-              const waveEnv = Math.sin(segT * Math.PI);
-              const wx =
-                Math.cos(segT * st.waveFreq + timeSec * 4 + st.phase) *
-                st.waveAmp *
-                waveEnv;
-              const wy =
-                Math.sin(segT * st.waveFreq + timeSec * 4 + st.phase) *
-                st.waveAmp *
-                waveEnv;
-
-              if (s === 0) {
-                ctx2d.moveTo(bx + wx, by + wy);
-              } else {
-                ctx2d.lineTo(bx + wx, by + wy);
-              }
-            }
-            ctx2d.stroke();
-          }
-
-          // C. Nube densa de polvo luminoso que se desprende del contador y construye el reloj inferior
           for (let i = 0; i < particles.length; i++) {
             const pt = particles[i];
             const rawT = (p - pt.tStart) / pt.tDuration;
             if (rawT <= 0 || rawT >= 1) continue;
 
-            // Curva de aceleración gravitacional
-            const t = rawT < 0.5
-              ? 2 * rawT * rawT
-              : 1 - Math.pow(-2 * rawT + 2, 2) / 2;
+            const t =
+              rawT < 0.5
+                ? 2 * rawT * rawT
+                : 1 - Math.pow(-2 * rawT + 2, 2) / 2;
 
             const startX = srcCx + pt.ox * srcW;
             const startY = srcCy + pt.oy * srcH;
 
-            // Espiral final al llegar al reloj de la esquina
-            const spiralAngle = pt.targetAngle + (1 - t) * 7.5 + timeSec * 2.5;
+            const spiralAngle = pt.targetAngle + (1 - t) * 7.0 + timeSec * 2.4;
             const endX =
               pt.targetZone === 'ring'
-                ? ringTargetX + Math.cos(spiralAngle) * 20
-                : ringTargetX + 36 + pt.targetOffsetX;
+                ? ringTargetX + Math.cos(spiralAngle) * 28
+                : dstCx + (pt.targetOffsetX - 85);
             const endY =
               pt.targetZone === 'ring'
-                ? ringTargetY + Math.sin(spiralAngle) * 20
-                : ringTargetY + pt.targetOffsetY;
+                ? ringTargetY + Math.sin(spiralAngle) * 28
+                : dstCy + pt.targetOffsetY;
 
-            const cp1x = startX + pt.curveSpread * 0.65;
-            const cp1y = startY + 110 + Math.abs(pt.curveSpread) * 0.35;
-            const cp2x = endX - pt.curveSpread * 0.4;
-            const cp2y = endY - 110;
+            const cp1x = startX + pt.curveSpread * 0.6;
+            const cp1y = startY + 95 + Math.abs(pt.curveSpread) * 0.3;
+            const cp2x = endX - pt.curveSpread * 0.38;
+            const cp2y = endY - 95;
 
             const bx = cubicBezier(t, startX, cp1x, cp2x, endX);
             const by = cubicBezier(t, startY, cp1y, cp2y, endY);
 
-            // Turbulencia de polvo en el aire que converge a 0 al ensamblar la pieza final
-            const turbEnvelope = Math.sin(t * Math.PI) * (1 - t * 0.45);
+            const turbEnvelope = Math.sin(t * Math.PI) * (1 - t * 0.4);
             const tx =
-              Math.cos(t * pt.swirlFreq + timeSec * 3.2 + pt.phase) *
+              Math.cos(t * pt.swirlFreq + timeSec * 3.0 + pt.phase) *
               pt.swirlAmp *
               turbEnvelope;
             const ty =
-              Math.sin(t * pt.swirlFreq * 1.3 + timeSec * 3.2 + pt.phase) *
+              Math.sin(t * pt.swirlFreq * 1.3 + timeSec * 3.0 + pt.phase) *
               pt.swirlAmp *
               turbEnvelope;
 
             const px = bx + tx;
             const py = by + ty;
 
-            // Posición ligeramente anterior para estela de velocidad (spaghetti micro-streak)
-            const prevT = Math.max(0, t - 0.045 * Math.sin(t * Math.PI));
-            const pbx = cubicBezier(prevT, startX, cp1x, cp2x, endX);
-            const pby = cubicBezier(prevT, startY, cp1y, cp2y, endY);
-            const ptx =
-              Math.cos(prevT * pt.swirlFreq + timeSec * 3.2 + pt.phase) *
-              pt.swirlAmp *
-              Math.sin(prevT * Math.PI) *
-              (1 - prevT * 0.45);
-            const pty =
-              Math.sin(prevT * pt.swirlFreq * 1.3 + timeSec * 3.2 + pt.phase) *
-              pt.swirlAmp *
-              Math.sin(prevT * Math.PI) *
-              (1 - prevT * 0.45);
-
             const alpha =
               pt.alpha *
-              smoothstep(0, 0.08, rawT) *
-              (1 - smoothstep(0.88, 1.0, rawT));
+              smoothstep(0, 0.1, rawT) *
+              (1 - smoothstep(0.84, 1.0, rawT));
+            if (alpha <= 0.02) continue;
+
+            const currentSize = pt.size * (0.7 + 0.5 * Math.sin(rawT * Math.PI));
+            const rot = pt.angle + timeSec * pt.spinSpeed + rawT * 5;
 
             ctx2d.globalAlpha = alpha;
-            ctx2d.strokeStyle = pt.color;
-            ctx2d.lineWidth = pt.size;
-            ctx2d.lineCap = 'round';
+            ctx2d.fillStyle = pt.color;
+            drawGeoShape(ctx2d, pt.kind, px, py, currentSize, rot);
+            ctx2d.fill();
 
-            ctx2d.beginPath();
-            ctx2d.moveTo(pbx + ptx, pby + pty);
-            ctx2d.lineTo(px, py);
-            ctx2d.stroke();
+            if (pt.color === '#ffffff') {
+              ctx2d.lineWidth = 1.25;
+              ctx2d.strokeStyle = pt.strokeColor;
+              ctx2d.stroke();
+            }
           }
 
           ctx2d.restore();
 
-          // Mantener vivo el flujo turbulento mientras la transición está activa a mitad del scroll
           if (currentProgress > 0.005 && currentProgress < 0.99) {
             this.rafId = requestAnimationFrame(renderFrame);
           } else {
@@ -519,41 +424,38 @@ export class HomeComponent {
           }
         };
 
-        // 4. Sincronización en tiempo real del DOM del Hero + Filtro SVG + Ensamblaje del Docked Widget
+        // 4. Sincronización en tiempo real del DOM del Hero + Proyección direccional + Ensamblaje de esquina
         const aplicarEstadoProgreso = (p: number) => {
           currentProgress = p;
 
-          // El reloj de la esquina inferior se va ensamblando en tiempo real entre p = 0.28 y p = 0.95
-          const progresoForjado = clamp01((p - 0.28) / 0.67);
+          const progresoForjado = clamp01((p - 0.42) / 0.54);
           this.contadorService.setProgresoEnsamblajeEnHome(progresoForjado);
 
-          // Filtro SVG de turbulencia / desintegración en el contador principal
-          if (displacementEl) {
-            const dispScale = p <= 0.008 ? 0 : Math.round(Math.pow(clamp01(p / 0.55), 1.4) * 145);
-            displacementEl.setAttribute('scale', String(dispScale));
-          }
+          actualizarRects();
+          const { dstCx, dstCy } = cachedDst;
+          const srcCx = baseHeroRect.left + baseHeroRect.width * 0.5;
+          const srcCy = baseHeroRect.top + baseHeroRect.height * 0.5;
+          const vecX = dstCx - srcCx;
+          const vecY = Math.max(120, dstCy - srcCy);
 
           if (p <= 0.008) {
-            widget.style.filter = 'none';
             widget.style.opacity = '1';
             widget.style.transform = 'translate3d(0,0,0)';
           } else {
-            const heroFade = 1 - smoothstep(0.18, 0.56, p);
-            const holdY = Math.min(180, p * 210);
-            widget.style.filter =
-              heroFade > 0.01 ? 'url(#spaghetti-disintegrate)' : 'none';
+            const heroFade = 1 - smoothstep(0.14, 0.52, p);
+            const holdY = Math.min(180, p * 200);
             widget.style.opacity = String(heroFade);
             widget.style.transform = `translate3d(0, ${holdY}px, 0)`;
           }
 
-          // Estiramiento individual de cada sub-pieza hacia la esquina inferior derecha (efecto espagueti)
-          const deformarPieza = (
+          // Proyección direccional escalonada hacia la esquina inferior derecha
+          const proyectarPieza = (
             el: HTMLElement | null,
             startP: number,
             endP: number,
-            pullX: number,
-            pullY: number,
-            skew: number
+            factorVec: number,
+            skew: number,
+            rotDeg: number
           ) => {
             if (!el) return;
             if (p <= startP) {
@@ -563,31 +465,33 @@ export class HomeComponent {
             }
             const lp = clamp01((p - startP) / (endP - startP));
             const easeLp = lp * lp;
-            const tx = easeLp * pullX;
-            const ty = easeLp * pullY;
-            const sx = 1 - easeLp * 0.55;
-            const sy = 1 + easeLp * 1.35;
+            const tx = easeLp * vecX * factorVec;
+            const ty = easeLp * vecY * factorVec;
+            const sc = 1 - easeLp * 0.42;
+            const sx = sc * (1 - easeLp * 0.18);
+            const sy = sc * (1 + easeLp * 0.25);
             const sk = easeLp * skew;
-            const op = 1 - smoothstep(0.25, 0.95, lp);
-            el.style.transform = `translate3d(${tx}px, ${ty}px, 0) skewX(${sk}deg) scale(${sx}, ${sy})`;
+            const rot = easeLp * rotDeg;
+            const op = 1 - smoothstep(0.22, 0.92, lp);
+            el.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg) skewX(${sk}deg) scale(${sx}, ${sy})`;
             el.style.opacity = String(op);
           };
 
-          // Deformación escalonada en Desktop (de abajo hacia arriba hacia el vórtice)
-          deformarPieza(desktopHms, 0.01, 0.42, 95, 135, -18);
-          deformarPieza(desktopDigits, 0.04, 0.48, 115, 165, -24);
-          deformarPieza(desktopRing, 0.06, 0.52, 130, 185, -22);
-          deformarPieza(desktopBadge, 0.1, 0.55, 145, 210, -26);
+          // Deformación escalonada en Desktop proyectada hacia el vector de la esquina
+          proyectarPieza(desktopHms, 0.01, 0.4, 0.34, -14, 6);
+          proyectarPieza(desktopDigits, 0.03, 0.44, 0.42, -18, 8);
+          proyectarPieza(desktopRing, 0.05, 0.48, 0.48, -16, 10);
+          proyectarPieza(desktopBadge, 0.08, 0.5, 0.54, -20, 12);
 
-          // Deformación escalonada en Mobile (las 4 tarjetas se estiran en cascada hacia la esquina inferior derecha)
+          // Deformación escalonada en Mobile proyectada en abanico hacia la esquina inferior derecha
           mobileCards.forEach((card, idx) => {
             const reverseIdx = 3 - idx;
-            const start = 0.01 + reverseIdx * 0.04;
-            const end = 0.42 + reverseIdx * 0.04;
-            const pullX = (2 - idx) * 45 + 60;
-            deformarPieza(card, start, end, pullX, 175, -20);
+            const start = 0.01 + reverseIdx * 0.035;
+            const end = 0.42 + reverseIdx * 0.035;
+            const factor = 0.36 + (3 - idx) * 0.06;
+            proyectarPieza(card, start, end, factor, -16, 8);
           });
-          deformarPieza(mobileBadge, 0.08, 0.5, 85, 190, -18);
+          proyectarPieza(mobileBadge, 0.06, 0.48, 0.46, -15, 10);
 
           if (p <= 0.004 || p >= 0.995) {
             if (ctx2d) ctx2d.clearRect(0, 0, vw, vh);
@@ -601,23 +505,14 @@ export class HomeComponent {
           aplicarEstadoProgreso(0);
         }
 
-        // 5. ScrollTrigger que gobierna la física de espaguetización y ensamblaje
+        // 5. ScrollTrigger con recorrido amplio y scrub suave para evitar saltos al scrollear rápido
         ScrollTrigger.create({
           trigger: banner,
           start: 'top -35px',
-          end: '+=520',
-          scrub: 0.45,
+          end: '+=950',
+          scrub: 1.5,
           onUpdate: (self) => {
             aplicarEstadoProgreso(self.progress);
-          },
-          onLeave: () => {
-            aplicarEstadoProgreso(1);
-          },
-          onEnterBack: (self) => {
-            aplicarEstadoProgreso(self.progress);
-          },
-          onLeaveBack: () => {
-            aplicarEstadoProgreso(0);
           },
         });
 

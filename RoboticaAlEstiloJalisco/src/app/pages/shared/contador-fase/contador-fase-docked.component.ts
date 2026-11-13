@@ -39,10 +39,29 @@ export class ContadorFaseDockedComponent {
     return 100 - (100 - targetOffset) * rp;
   });
 
-  // Resplandor de acreción mientras las partículas están forjando el reloj
+  // Resplandor y marco activo mientras las piezas geométricas forjan el reloj
   readonly forjandoActivo = computed(() => {
     const p = this.progreso();
     return p > 0.02 && p < 0.98;
+  });
+
+  // Desplazamiento elástico y rotación de entrada hasta acoplarse en la esquina inferior derecha
+  readonly capsuleTransform = computed(() => {
+    const p = this.progreso();
+    if (p <= 0.01) {
+      return 'translate3d(-36px, -54px, 0) scale(0.72) rotate(-6deg)';
+    }
+    if (p >= 0.99) {
+      return 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+    }
+    const inv = 1 - p;
+    const easeOut = 1 - inv * inv * inv;
+    const wave = Math.sin(p * Math.PI);
+    const tx = -36 * (1 - easeOut);
+    const ty = -54 * (1 - easeOut) + wave * 6;
+    const scale = 0.72 + 0.28 * easeOut + wave * 0.05;
+    const rot = -6 * (1 - easeOut);
+    return `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0) scale(${scale.toFixed(3)}) rotate(${rot.toFixed(2)}deg)`;
   });
 
   alternarColapso(): void {

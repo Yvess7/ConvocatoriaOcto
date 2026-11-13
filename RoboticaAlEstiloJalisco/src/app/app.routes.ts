@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home';
-import { TorneosComponent } from './pages/torneos/torneos';
 import { DocumentacionComponent } from './pages/documentacion/documentacion';
 import { VideosComponent } from './pages/videos/videos';
 import { MbotComponent } from './pages/mbot/mbot';
@@ -12,9 +11,9 @@ import { TerminosCondicionesComponent } from './pages/terminos-condiciones/termi
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'torneos', component: TorneosComponent },
-  { path: 'torneos/mbot', component: MbotComponent },
-  { path: 'torneos/octostudio', component: OctostudioComponent },
+  { path: 'torneos', redirectTo: '', pathMatch: 'full' },
+  { path: 'torneos/mbot', redirectTo: 'mbot', pathMatch: 'full' },
+  { path: 'torneos/octostudio', redirectTo: 'octostudio', pathMatch: 'full' },
   { path: 'mbot', component: MbotComponent },
   { path: 'octostudio', component: OctostudioComponent },
   { path: 'documentacion', component: DocumentacionComponent },
