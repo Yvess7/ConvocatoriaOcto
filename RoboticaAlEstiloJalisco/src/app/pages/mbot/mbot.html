@@ -38,201 +38,365 @@
   </div>
 </section>
 
-<!-- Mapa de camino al torneo (sección blanca debajo del banner · tarjetas que se voltean al hacer clic) -->
-<section id="camino-etapas" class="relative z-10 bg-white pt-16 pb-10 sm:pt-24 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
-  <!-- Fondo dinámico: figuras variadas y retículas de puntos en movimiento -->
-  <div class="absolute -left-10 top-16 w-44 h-44 bg-sky-200/60 shape-hexagon animate-float [--r:10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-10 top-24 w-28 h-28 bg-sky-300/50 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-6 top-1/4 w-40 h-28 text-sky-300/60 bg-tech-dots animate-drift pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -right-8 top-1/3 w-36 h-36 bg-sky-200/70 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-10 top-1/2 w-24 h-24 bg-sky-300/50 shape-cross animate-float-slow [--r:20deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-12 top-1/2 w-40 h-28 text-sky-300/60 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -left-8 top-2/3 w-36 h-36 bg-sky-200/60 shape-parallelogram animate-drift [--r:-10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-6 top-3/4 w-28 h-28 bg-sky-300/50 shape-triangle animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-1/4 bottom-16 w-32 h-32 bg-sky-200/60 shape-diamond animate-drift pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-1/4 bottom-6 w-24 h-24 bg-sky-300/50 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+<!-- Mapa 3D del camino al torneo: cada estación lleva a su etapa dentro de esta misma vista -->
+<section
+  #seccionMapa
+  id="camino-etapas"
+  class="relative z-10 overflow-hidden bg-white pt-16 pb-6 sm:pt-24 lg:pt-32"
+>
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 size-44 shape-hexagon animate-float [--r:10deg] pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-10 top-24 size-28 shape-diamond animate-spin-slow pointer-events-none" [class]="estilo().figuraB" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-6 top-1/4 w-40 h-28 bg-tech-dots animate-drift pointer-events-none" [class]="estilo().puntos" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute -right-8 top-1/3 size-36 shape-octagon animate-spin-slow pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 top-1/2 size-24 shape-cross animate-float-slow [--r:20deg] pointer-events-none" [class]="estilo().figuraB" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.2" class="absolute right-12 top-1/2 w-40 h-28 bg-tech-dots animate-float-slow pointer-events-none" [class]="estilo().puntos" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.35" class="absolute -left-8 top-2/3 size-36 shape-parallelogram animate-drift [--r:-10deg] pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.45" class="absolute right-6 top-3/4 size-28 shape-triangle animate-float [--r:15deg] pointer-events-none" [class]="estilo().figuraB" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.25" class="absolute left-1/4 bottom-16 size-32 shape-diamond animate-drift pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
 
-  <!-- Fondo extra animado con GSAP (parallax al hacer scroll + flotación) -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute left-1/4 top-12 w-16 h-16 shape-triangle bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-1/3 top-1/6 w-20 h-20 shape-cross bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.5" class="absolute left-1/3 top-1/5 w-14 h-14 shape-diamond bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.3" class="absolute right-4 top-2/5 w-24 h-24 shape-parallelogram bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-2 top-2/5 w-20 h-20 shape-hexagon bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.6" class="absolute left-1/5 top-1/2 w-12 h-12 shape-octagon bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.5" class="absolute right-1/5 top-3/5 w-16 h-16 shape-triangle bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.2" class="absolute right-1/3 top-3/5 w-40 h-28 bg-tech-dots text-sky-300/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.3" class="absolute left-4 top-3/5 w-28 h-28 shape-diamond bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-1/3 top-4/5 w-20 h-20 shape-cross bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute right-8 top-4/5 w-24 h-24 shape-octagon bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-2 top-5/6 w-40 h-28 bg-tech-dots text-sky-300/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.7" class="absolute right-1/2 top-1/3 w-10 h-10 shape-hexagon bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.7" class="absolute left-1/2 top-2/3 w-10 h-10 shape-triangle bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute left-1/2 top-1/12 w-12 h-12 shape-diamond bg-sky-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.6" class="absolute right-1/2 bottom-1/12 w-14 h-14 shape-cross bg-sky-200/60 pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-16 sm:mb-20" data-gsap="encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-sky-600 text-white text-xs uppercase tracking-widest font-normal mb-3">
-        Mapa del torneo
-      </span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight">
-        Camino al torneo mBot
-      </h2>
-      <div class="mt-4 mx-auto h-1.5 w-20 rounded-md bg-sky-600"></div>
-      <p class="text-lg text-ink/70 font-normal mt-4 max-w-xl mx-auto">
-        Toca una tarjeta para voltearla y ver el detalle. Desde ahí puedes ir directo a la sección correspondiente del sitio.
-      </p>
-    </div>
-
-    @for (tramo of tramos; track tramo.id) {
-      <div class="mb-20 sm:mb-28 last:mb-0" data-gsap="bloque">
-        <!-- Encabezado del tramo -->
-        <div class="max-w-md mx-auto mb-16 text-center" data-gsap="tramo">
-          <div class="bg-sky-600 text-white rounded-2xl p-5 border-b-6 border-sky-900 shadow-lg hover:-translate-y-1 transition-transform duration-300">
-            <span class="text-xs uppercase tracking-widest text-sky-100 font-normal">{{ tramo.insignia }}</span>
-            <h3 class="text-2xl font-bold mt-1">{{ tramo.titulo }}</h3>
-            <p class="text-sm text-sky-100 font-normal mt-1.5">{{ tramo.subtitulo }}</p>
-          </div>
-        </div>
-
-        <!-- Sendero sinuoso: los pasos se alternan a izquierda y derecha y se unen con curvas -->
-        <div class="relative" data-gsap="sendero">
-          <!-- Robot: pasa por detrás de las tarjetas (z-30) y por encima de los nodos (z-10) -->
-          <div data-gsap="robot" class="absolute top-0 left-0 z-20 w-20 md:w-28 pointer-events-none" aria-hidden="true">
-            <img data-gsap="robot-img" src="images/mbot-robot.webp" alt="" class="w-full h-auto drop-shadow-md" />
-            <span data-gsap="robot-sombra" class="absolute left-1/2 -bottom-1 h-3 w-3/4 -translate-x-1/2 rounded-full bg-ink/25 blur-sm" aria-hidden="true"></span>
-          </div>
-          @for (paso of tramo.pasos; track paso.id; let ultimo = $last; let i = $index) {
-            <div
-              class="relative flex flex-row items-start gap-4 md:flex-col md:items-center md:gap-0 md:w-1/2"
-              [class]="esIzquierda(paso.id) ? 'md:mr-auto' : 'md:ml-auto'"
-            >
-              <!-- Línea vertical punteada y rastro hacia el siguiente paso (móvil) -->
-              @if (!ultimo) {
-                <div class="md:hidden absolute left-5.5 top-6 -bottom-10 w-1 border-l-4 border-dashed border-sky-300" aria-hidden="true"></div>
-                <span data-gsap="rastro-m" class="md:hidden absolute left-5.5 top-6 -bottom-10 w-1 bg-sky-600 origin-top" aria-hidden="true"></span>
-              }
-
-              <!-- Curva punteada animada hacia el siguiente paso (escritorio) -->
-              @if (!ultimo) {
-                <svg
-                  data-gsap="curva" class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
-                  [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    [attr.d]="esIzquierda(paso.id) ? 'M0 0 C0 50 100 50 100 100' : 'M100 0 C100 50 0 50 0 100'"
-                    class="fill-none stroke-sky-300 stroke-4 animate-dash [vector-effect:non-scaling-stroke]"
-                    stroke-dasharray="2 14"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                <svg
-                  data-gsap="rastro" class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
-                  [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    [attr.d]="esIzquierda(paso.id) ? 'M0 0 C0 50 100 50 100 100' : 'M100 0 C100 50 0 50 0 100'"
-                    class="fill-none stroke-sky-600 stroke-4 [vector-effect:non-scaling-stroke]"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              }
-
-              <!-- Nodo numerado: aparece con zoom, late con un anillo y flota suavemente -->
-              <div data-gsap="nodo" class="relative z-10 shrink-0 w-12 h-12 md:w-16 md:h-16">
-                <span class="absolute inset-0 rounded-full bg-sky-400/60 animate-ping" aria-hidden="true"></span>
-                <button
-                  type="button"
-                  (click)="alternar(paso.id)"
-                  [attr.aria-label]="'Voltear tarjeta: ' + paso.titulo"
-                  class="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-sky-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-base md:text-xl hover:scale-110 active:scale-95 transition-[scale,background-color,color,border-color,box-shadow] duration-300 cursor-pointer data-[estado=futuro]:bg-white data-[estado=futuro]:text-sky-700 data-[estado=futuro]:border-sky-300 data-[estado=actual]:bg-sky-600 data-[estado=actual]:ring-4 data-[estado=actual]:ring-sky-300"
-                >
-                  0{{ i + 1 }}
-                </button>
-              </div>
-
-              <!-- Tarjeta con volteo 3D -->
-              <div
-                data-gsap="tarjeta" [attr.data-lado]="esIzquierda(paso.id) ? -1 : 1" class="relative z-30 flex-1 min-w-0 w-full max-w-sm mt-0 md:mt-4 md:flex-none"
-              >
-                <div class="perspective-distant">
-                  <div
-                    role="button"
-                    tabindex="0"
-                    [attr.aria-pressed]="esVolteada(paso.id)"
-                    (click)="alternar(paso.id)"
-                    (keydown.enter)="alternar(paso.id)"
-                    (keydown.space)="alternar(paso.id); $event.preventDefault()"
-                    class="group relative h-60 md:h-64 w-full transform-3d cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-sky-300 rounded-2xl"
-                    [attr.data-paso]="paso.id" data-gsap="giro"
-                  >
-                    <!-- Cara frontal -->
-                    <div class="absolute inset-0 backface-hidden rounded-2xl bg-white border-2 border-sky-200 border-b-6 border-b-sky-600 p-4 md:p-6 flex flex-col justify-between shadow-md group-hover:shadow-xl transition-shadow duration-300">
-                      <div>
-                        <span class="inline-block px-2.5 py-0.5 rounded-md bg-sky-100 text-sky-800 text-xs font-normal uppercase tracking-wider">
-                          {{ paso.etiqueta }}
-                        </span>
-                        <h4 class="text-xl md:text-2xl text-ink font-normal tracking-tight mt-3 leading-tight">{{ paso.titulo }}</h4>
-                        <p class="text-sm sm:text-base text-sky-700 font-normal mt-3 uppercase tracking-wider">{{ paso.fecha }}</p>
-                      </div>
-                      <span class="text-xs uppercase tracking-wider text-sky-700 font-normal">Toca para ver el detalle</span>
-                    </div>
-
-                    <!-- Cara posterior -->
-                    <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-sky-700 border-b-6 border-sky-950 p-4 md:p-6 flex flex-col justify-between text-white shadow-xl">
-                      <div>
-                        <span class="text-xs uppercase tracking-widest text-sky-200 font-normal">{{ paso.etiqueta }} · Detalle</span>
-                        <p class="text-sm sm:text-lg font-normal leading-relaxed mt-2">{{ paso.resumen }}</p>
-                      </div>
-                      <div>
-                        <a
-                          [routerLink]="paso.ruta"
-                          [fragment]="paso.fragmento"
-                          (click)="$event.stopPropagation()"
-                          class="text-base underline underline-offset-4 decoration-2 hover:text-sky-200 transition-colors"
-                        >
-                          {{ paso.enlace }}
-                        </a>
-                        <p class="text-xs uppercase tracking-wider text-sky-200 font-normal mt-3">Toca la tarjeta para volver</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Separación entre pasos (línea punteada solo en móvil) -->
-            @if (!ultimo) {
-              <div class="h-10 md:h-16" aria-hidden="true"></div>
-            }
-          }
-        </div>
-      </div>
-    }
+  <div class="relative z-10 mx-auto mb-14 max-w-3xl px-6 text-center sm:mb-20" data-gsap="encabezado">
+    <span class="mb-3 inline-block rounded-md px-3.5 py-1 text-xs font-normal uppercase tracking-widest text-white" [class]="estilo().etiqueta">
+      Mapa del torneo
+    </span>
+    <h2 class="text-4xl font-normal tracking-tight text-ink sm:text-5xl lg:text-6xl">Camino al torneo mBot</h2>
+    <div class="mx-auto mt-4 h-1.5 w-20 rounded-md" [class]="estilo().barra"></div>
+    <p class="mx-auto mt-4 max-w-xl text-lg font-normal text-ink/70">Elige una estación para saltar a su etapa, o sigue desplazándote: cada etapa continúa a la anterior, de la fase previa a la gran final.</p>
   </div>
 
-  <!-- Indicador de progreso fijo (aparece mientras el mapa está en pantalla) -->
-  <div data-gsap="progreso" class="invisible opacity-0 fixed z-40 right-3 bottom-3 md:right-6 md:top-1/2 md:bottom-auto md:-translate-y-1/2 flex items-center gap-3 px-3 py-2 rounded-md bg-white/90 backdrop-blur shadow-md pointer-events-none" aria-hidden="true">
-    <span data-gsap="progreso-texto" class="text-xs sm:text-sm text-ink uppercase tracking-wider font-normal">Paso 1</span>
-    <span class="relative block h-1.5 w-16 md:h-20 md:w-1.5 rounded-md bg-sky-100 overflow-hidden">
-      <span data-gsap="progreso-barra" class="absolute inset-0 rounded-md bg-sky-600 origin-top-left"></span>
-    </span>
+  <div #ruta class="relative z-10 mx-auto w-full max-w-170 pb-10">
+    <svg class="pointer-events-none absolute inset-0 size-full overflow-visible" aria-hidden="true">
+      <path #trazoBase class="fill-none stroke-brand-orange/20 stroke-14 [stroke-linecap:round]" />
+      <path #trazoProgreso class="fill-none stroke-14 [stroke-linecap:round] drop-shadow-lg" [class]="estilo().trazo" />
+      <path #trazoPunteado class="fill-none stroke-white stroke-3 opacity-90 [stroke-dasharray:9_11] [stroke-linecap:round]" />
+    </svg>
+
+    @for (e of etapas(); track e.paso.id) {
+      <button
+        #estacion
+        type="button"
+        data-gsap="estacion"
+        class="group/est absolute -m-16 size-32 rounded-lg outline-none focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
+        [attr.aria-label]="'Etapa ' + e.etiquetaNumero + ': ' + e.paso.titulo"
+        (click)="activar(e.i)"
+        (pointerenter)="hover(estacion, $event)"
+        (focus)="hover(estacion, $event)"
+      >
+        <div
+          data-spr
+          data-gsap="estacion-spr"
+          [attr.data-k]="e.icono"
+          class="pointer-events-none absolute left-1/2 top-1/2 -ml-29.5 -mt-29.5 size-59 bg-no-repeat bg-size-[500%_400%] drop-shadow-xl"
+          [style.background-image]="imagenHoja(e.icono)"
+        ></div>
+        <span
+          class="absolute -bottom-2 left-1/2 z-10 min-w-11 -translate-x-1/2 rounded-md border-2 border-white px-2.5 py-1 text-center text-sm leading-tight text-white shadow-md group-data-[hecha]/est:ring-4 group-data-[hecha]/est:ring-brand-orange/35"
+          [style.background-color]="e.color"
+        >
+          <span data-gsap="estacion-num" class="block">{{ e.etiquetaNumero }}</span>
+        </span>
+        <span
+          class="absolute top-1/2 block w-max max-w-[30vw] -translate-y-1/2 text-base leading-tight text-ink transition-colors group-hover/est:text-brand-orange group-focus-visible/est:text-brand-orange group-data-[lado=l]/est:right-full group-data-[lado=l]/est:mr-6 group-data-[lado=l]/est:text-right group-data-[lado=r]/est:left-full group-data-[lado=r]/est:ml-6 sm:max-w-48 sm:text-xl"
+        >
+          <span data-gsap="estacion-lbl" class="block">{{ e.paso.titulo }}</span>
+        </span>
+      </button>
+    }
+
+    <div
+      #personaje
+      data-spr
+      data-k="personaje"
+      class="pointer-events-none absolute z-30 -ml-18.75 -mt-26 size-37.5 bg-no-repeat bg-size-[500%_400%] drop-shadow-xl"
+      [style.background-image]="imagenHoja('personaje')"
+      aria-hidden="true"
+    ></div>
   </div>
 </section>
 
-<!-- Transición ondulada suave hacia Clasificación con ritmo fluido de doble cresta -->
-<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-10 sm:h-14 lg:h-16 text-sky-50 fill-current block" aria-hidden="true">
-    <path d="M0,40 C180,20 340,16 520,32 C700,48 880,52 1060,30 C1180,16 1320,26 1440,44 L1440,80 L0,80 Z"></path>
+<!-- Etapas encadenadas, en orden, dentro de la misma vista -->
+@for (e of etapas(); track e.paso.id) {
+  <section #seccion [id]="'etapa-' + e.paso.id" [attr.data-i]="e.i" class="group/stage relative scroll-mt-21">
+    <!-- Onda de entrada (trazo único) -->
+    <div class="pointer-events-none relative -mb-px w-full overflow-hidden leading-none" [style.background-color]="e.fondoAnterior" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block h-12 w-full fill-current sm:h-16 lg:h-20" [style.color]="e.color">
+        <path [attr.d]="e.ondaSuperior"></path>
+      </svg>
+    </div>
+
+    <!-- Banda de color: icono 3D junto al título -->
+    <div #banda data-gsap="etapa-banda" class="relative overflow-hidden py-10 text-white sm:py-14" [style.background-color]="e.color">
+      <div data-gsap="fondo" data-vel="-0.25" class="pointer-events-none absolute -left-10 top-6 size-40 bg-white/10 shape-hexagon animate-drift" aria-hidden="true"></div>
+      <div data-gsap="fondo" data-vel="0.3" class="pointer-events-none absolute -right-8 bottom-4 size-32 bg-white/10 shape-octagon animate-spin-slow" aria-hidden="true"></div>
+      <div data-gsap="fondo" data-vel="-0.15" class="pointer-events-none absolute right-1/4 top-4 w-40 h-24 text-white/20 bg-tech-dots animate-float-slow" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-12 md:gap-12 md:text-left lg:gap-20">
+          <div class="md:col-span-5" [class.md:order-2]="e.invertida" data-gsap="etapa-icono">
+            <button
+              #grande
+              type="button"
+              class="relative mx-auto block size-50 rounded-lg outline-none focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-white sm:size-60"
+              [attr.aria-label]="'Animar icono 3D de ' + e.paso.titulo"
+              (click)="clicIconoGrande(grande)"
+              (pointerenter)="hover(grande, $event)"
+              (focus)="hover(grande, $event)"
+            >
+              <div
+                data-spr
+                [attr.data-k]="e.icono"
+                class="pointer-events-none absolute left-1/2 top-1/2 -ml-37.5 -mt-37.5 size-75 bg-no-repeat bg-size-[500%_400%] drop-shadow-2xl sm:-ml-47.5 sm:-mt-47.5 sm:size-95"
+                [style.background-image]="imagenHoja(e.icono)"
+              ></div>
+            </button>
+          </div>
+
+          <div class="md:col-span-7" [class.md:order-1]="e.invertida">
+            <span data-gsap="etapa-item" class="inline-block rounded-md bg-white/20 px-3.5 py-1.5 text-xs uppercase tracking-widest text-white">
+              {{ e.paso.etiqueta }} · {{ e.etiquetaNumero }} de {{ etapas().length < 10 ? '0' + etapas().length : etapas().length }}
+            </span>
+            <h2 data-gsap="etapa-item" class="mt-4 text-4xl font-normal leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              {{ e.paso.titulo }}
+            </h2>
+            <p data-gsap="etapa-item" class="mx-auto mt-5 max-w-xl border-white text-lg leading-relaxed text-white md:mx-0 md:border-l-4 md:pl-5 sm:text-xl">
+              {{ e.paso.resumen }}
+            </p>
+            <p data-gsap="etapa-item" class="mt-4 text-sm uppercase tracking-wider text-white/90">{{ e.paso.fecha }}</p>
+
+            <nav data-gsap="etapa-item" class="mt-8 flex items-start justify-center gap-4 md:justify-start" aria-label="Navegación entre etapas">
+              <button
+                #bAnterior
+                type="button"
+                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                [class.invisible]="e.primera"
+                [attr.aria-label]="'Ir a la etapa anterior: ' + e.anterior"
+                (click)="irSuave(e.i - 1)"
+                (pointerenter)="hover(bAnterior, $event)"
+                (focus)="hover(bAnterior, $event)"
+              >
+                <div data-spr data-k="anterior" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('anterior')"></div>
+                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">{{ e.anterior }}</span>
+              </button>
+              <button
+                #bMapa
+                type="button"
+                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                aria-label="Volver al mapa"
+                (click)="saltar(-1, bMapa)"
+                (pointerenter)="hover(bMapa, $event)"
+                (focus)="hover(bMapa, $event)"
+              >
+                <div data-spr data-k="casa" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('casa')"></div>
+                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">Mapa</span>
+              </button>
+              <button
+                #bSiguiente
+                type="button"
+                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                [class.invisible]="e.ultima"
+                [attr.aria-label]="'Ir a la etapa siguiente: ' + e.siguiente"
+                (click)="irSuave(e.i + 1)"
+                (pointerenter)="hover(bSiguiente, $event)"
+                (focus)="hover(bSiguiente, $event)"
+              >
+                <div data-spr data-k="siguiente" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('siguiente')"></div>
+                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">{{ e.siguiente }}</span>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onda de salida hacia el contenido de la etapa (trazo único) -->
+    <div class="pointer-events-none relative -mb-px w-full overflow-hidden leading-none" [style.background-color]="e.color" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block h-12 w-full fill-current sm:h-16 lg:h-20" [style.color]="e.fondoInicio">
+        <path [attr.d]="e.ondaInferior"></path>
+      </svg>
+    </div>
+
+    @if (e.paso.id === 'lanzamiento') {
+<!-- Sección 1: Convocatoria mBot (Fondo naranja institucional con texto libre y figuras variadas) -->
+<section id="convocatoria-mbot" class="relative z-10 bg-brand-orange text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-red/35 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-red/30 shape-cross pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    <!-- Encabezado editorial principal -->
+    <div class="max-w-3xl" data-gsap="convocatoria-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
+        Bases Oficiales 2026
+      </span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
+        Convocatoria Torneo mBot
+      </h2>
+      <div class="mt-6 h-1.5 w-24 rounded-md bg-white"></div>
+      <p class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
+        La Secretaría de Educación del Estado de Jalisco convoca a las instituciones públicas y privadas de educación básica a conformar sus representativos para el desafío estatal de robótica autónoma mBot.
+      </p>
+    </div>
+
+    <!-- Bases Generales de la Convocatoria (Texto libre, sin cajas) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-4 border-t border-white/20">
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Capítulo I</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">De los Participantes y Asesores</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          Podrán inscribirse equipos integrados por hasta tres estudiantes regulares matriculados en los niveles de primaria alta (4° a 6°) o secundaria técnica y general (1° a 3°), acompañados obligatoriamente por un docente asesor titular debidamente adscrito al centro de trabajo escolar.
+        </p>
+        <p class="text-base text-white/80 font-normal leading-relaxed">
+          Cada escuela participante podrá postular un máximo de dos representativos por turno, asegurando equidad de género en la integración de las escuadras y compromiso con el código ético del certamen.
+        </p>
+      </div>
+
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Capítulo II</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Del Calendario y Etapas</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          El proceso clasificatorio se desarrollará en tres fases concatenadas: registro formal digital en plataforma oficial, eliminatoria regional por zonas educativas del estado y el magno torneo presencial de campeones en el Área Metropolitana de Guadalajara.
+        </p>
+        <p class="text-base text-white/80 font-normal leading-relaxed">
+          Las fechas de calibración en sitio, sorteo de pistas y publicación de listas definitivas serán notificadas directamente a las direcciones institucionales de las escuelas acreditadas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Transición ondulada entre Convocatoria (naranja) y Anexos (blanco) con meseta suave orgánica -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,46 C240,62 480,58 720,36 C960,14 1180,18 1340,26 C1380,28 1415,30 1440,32 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
+<!-- Sección 2: Anexos y Reglamentos Oficiales mBot (Fondo blanco segmentado, texto libre y figuras institucionales) -->
+<section id="anexos-mbot" class="relative z-10 bg-white text-ink py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas en el fondo blanco con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-48 h-48 bg-brand-orange/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-24 w-36 h-36 bg-brand-red/10 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-12 w-40 h-28 text-brand-orange/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-8 top-1/2 w-44 h-44 bg-sky-200/40 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-12 bottom-20 w-32 h-32 bg-brand-red/10 shape-cross pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute right-1/4 bottom-12 w-44 h-32 text-brand-red/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
 
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    <div class="max-w-3xl" data-gsap="anexos-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-3">
+        Documentos Técnicos Vinculantes
+      </span>
+      <h3 class="text-3xl sm:text-4xl lg:text-5xl text-ink font-bold tracking-tight">
+        Anexos y Reglamentos Específicos
+      </h3>
+      <div class="mt-4 h-1.5 w-20 rounded-md bg-brand-orange"></div>
+      <p class="text-base sm:text-lg text-ink/75 font-normal leading-relaxed mt-4">
+        Cada anexo técnico constituye una extensión normativa de la convocatoria general y contiene el reglamento técnico de observancia obligatoria para todos los equipos en pista.
+      </p>
+    </div>
+
+    <!-- Anexo 1 con su Reglamento -->
+    <div id="reglamento-mbot" data-gsap="anexo-item" class="space-y-6 pt-4 border-t border-gray-100">
+      <div class="border-l-4 border-brand-orange pl-6 space-y-2">
+        <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Anexo Técnico 01</span>
+        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
+          Especificaciones Técnicas del Robot y Pista
+        </h4>
+        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
+          Parámetros oficiales del chasis, componentes electrónicos avalados y arquitectura dimensional de los circuitos de destreza y laberinto.
+        </p>
+      </div>
+
+      <div class="space-y-4 pl-6 text-ink/80">
+        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
+          Reglamento del Anexo 1 · Normativa de Hardware y Sensores
+        </span>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 1.1 (Dimensiones):</strong> El robot mBot no podrá exceder 200 mm de largo, 170 mm de ancho y 130 mm de alto en ningún momento de la prueba. El peso bruto máximo autorizado es de 650 gramos incluyendo baterías.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 1.2 (Controladores y Motores):</strong> Se permite exclusivamente el uso de la tarjeta principal mCore original de Makeblock y los dos motorreductores DC provistos de serie. Queda estrictamente prohibido el uso de motores de competencia externa o reductores no comerciales.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 1.3 (Sensores autorizados):</strong> Se autoriza el módulo seguidor de líneas de 2 canales, sensor ultrasónico frontal y emisores LED integrados. No se permiten sensores LIDAR externos ni dispositivos de telemetría remota activa durante la corrida.
+        </p>
+      </div>
+    </div>
+
+    <!-- Anexo 2 con su Reglamento -->
+    <div data-gsap="anexo-item" class="space-y-6 pt-6 border-t border-gray-100">
+      <div class="border-l-4 border-brand-red pl-6 space-y-2">
+        <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Anexo Técnico 02</span>
+        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
+          Dinámica de Rondas, Arbitraje y Penalizaciones
+        </h4>
+        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
+          Protocolo de inicio de ronda, tiempos máximos cronometrados, zonas de salvamento y criterios sancionatorios por falta técnica.
+        </p>
+      </div>
+
+      <div class="space-y-4 pl-6 text-ink/80">
+        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
+          Reglamento del Anexo 2 · Protocolo de Carrera y Criterios de Jueces
+        </span>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 2.1 (Tiempos de ronda):</strong> Cada representativo escolar dispondrá de dos intentos independientes con un cronómetro límite de 120 segundos por intento para completar el trazado autónomo.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 2.2 (Salidas y reinicios):</strong> La salida total de las ruedas del robot fuera del contorno de lona causará la detención inmediata del intento. Se permite un único reinicio desde el punto de control previo con penalización de 5 segundos acumulados.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 2.3 (Intervención humana):</strong> Ningún alumno o asesor podrá tocar el robot una vez accionado el pulsador de arranque sin la indicación expresa del juez de mesa designado.
+        </p>
+      </div>
+    </div>
+
+    <!-- Anexo 3 con su Reglamento -->
+    <div data-gsap="anexo-item" class="space-y-6 pt-6 border-t border-gray-100">
+      <div class="border-l-4 border-brand-orange pl-6 space-y-2">
+        <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Anexo Técnico 03</span>
+        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
+          Criterios de Evaluación y Dictamen Final
+        </h4>
+        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
+          Mecanismo de sumatoria de puntos, rúbrica de programación por bloques y desempate técnico en la tabla general de posiciones.
+        </p>
+      </div>
+
+      <div class="space-y-4 pl-6 text-ink/80">
+        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
+          Reglamento del Anexo 3 · Ponderación y Dictamen del Comité
+        </span>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 3.1 (Ponderación final):</strong> El puntaje global se calculará otorgando 60% al mejor tiempo cronometrado en circuito limpio y 40% a la estructura lógica del código en mBlock y bitácora técnica de ingeniería.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 3.2 (Resolución de empates):</strong> En caso de igualdad de tiempos netos, el criterio de desempate favorecerá al equipo con menor número de reinicios y mayor consistencia entre su primera y segunda manga.
+        </p>
+        <p class="text-base font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Artículo 3.3 (Inapelabilidad):</strong> Las deliberaciones del cuerpo arbitral serán definitivas una vez asentadas en el acta oficial firmada por el capitán del equipo.
+        </p>
+      </div>
+    </div>
+
+    <!-- Llamado a la acción final -->
+    <div class="pt-8 flex flex-wrap justify-center md:justify-start gap-4 border-t border-gray-100">
+      <a
+        routerLink="/registro"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+      >
+        Inscribir equipo al Torneo mBot
+      </a>
+      <a
+        routerLink="/documentacion"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-gray-100 text-ink hover:bg-gray-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+      >
+        Ver Formatos Institucionales
+      </a>
+    </div>
+  </div>
+</section>
+    } @else if (e.paso.id === 'eliminatoria') {
 <!-- Sección de Clasificación: Selector de Llaves (Play-Ins y Eliminatorias) sin cajas contenedoras -->
 <section id="clasificacion-mbot" class="relative z-20 bg-sky-50 pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32">
   <!-- Figuras geométricas dinámicas aisladas para permitir position: sticky en la sub-barra -->
@@ -563,197 +727,61 @@
     }
   </div>
 </section>
+    } @else {
+      <div class="relative overflow-hidden bg-white py-14 sm:py-20">
+        <div data-gsap="fondo" data-vel="-0.25" class="pointer-events-none absolute -right-8 top-6 size-36 shape-hexagon animate-drift bg-current opacity-10" [style.color]="e.color" aria-hidden="true"></div>
+        <div class="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
+          <div data-gsap="etapa-detalle" class="max-w-xl border-l-4 pl-6" [style.border-color]="e.color">
+            <span class="mb-2 block text-xs uppercase tracking-widest" [style.color]="e.color">Fecha</span>
+            <p class="text-xl text-ink sm:text-2xl">{{ e.paso.fecha }}</p>
+            <p class="mt-3 text-base leading-relaxed text-ink/75">{{ e.paso.resumen }}</p>
+            <a
+              [routerLink]="e.paso.ruta"
+              [fragment]="e.paso.fragmento || undefined"
+              class="mt-6 inline-block rounded-md bg-brand-red px-8 py-4 text-lg font-normal text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-brand-red-dark hover:shadow-lg active:translate-y-0"
+            >
+              {{ e.paso.enlace }}
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </section>
+}
 
-<!-- Transición ondulada superior hacia la sección institucional mBot con seno amplio asimétrico -->
-<div class="relative w-full overflow-hidden leading-none bg-sky-50 -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
-    <path d="M0,16 C200,12 400,64 620,62 C840,60 1020,18 1220,22 C1320,24 1390,36 1440,48 L1440,80 L0,80 Z"></path>
-  </svg>
+<!-- Elementos fijos: se mueven al <body> para que ninguna animación del contenedor de la página los desplace -->
+<div #flotantes class="contents">
+<!-- Riel de progreso: el icono de la etapa actual despliega su título al lado -->
+<aside
+  class="fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-2 transition-opacity duration-300 lg:flex"
+  [class.opacity-100]="enCamino()"
+  [class.opacity-0]="!enCamino()"
+  [class.pointer-events-none]="!enCamino()"
+  aria-label="Progreso de etapas"
+>
+  @for (e of etapas(); track e.paso.id) {
+    <button
+      type="button"
+      class="group flex items-center rounded-lg p-1.5 shadow-md outline-none transition-colors duration-300 focus-visible:outline-3 focus-visible:outline-brand-orange"
+      [style.background-color]="actual() === e.i ? e.color : '#ffffff'"
+      [attr.aria-current]="actual() === e.i ? 'step' : null"
+      [attr.aria-label]="'Ir a ' + e.paso.titulo"
+      (click)="saltar(e.i, $any($event.currentTarget))"
+    >
+      <span
+        [class]="'overflow-hidden whitespace-nowrap text-sm transition-all duration-300 group-hover:max-w-56 group-hover:pl-2 group-hover:pr-3 group-hover:opacity-100 group-focus-visible:max-w-56 group-focus-visible:pl-2 group-focus-visible:pr-3 group-focus-visible:opacity-100 ' + (actual() === e.i ? 'max-w-56 pl-2 pr-3 text-white opacity-100' : 'max-w-0 text-ink opacity-0')"
+      >
+        {{ e.paso.titulo }}
+      </span>
+      <span
+        [class]="'block size-10 rounded-md bg-white/0 bg-center bg-no-repeat bg-size-[150%] transition-opacity ' + (actual() === e.i ? 'opacity-100' : 'opacity-60 group-hover:opacity-100')"
+        [style.background-image]="imagenIcono(e.icono)"
+      ></span>
+    </button>
+  }
+</aside>
 </div>
 
-<!-- Sección 1: Convocatoria mBot (Fondo naranja institucional con texto libre y figuras variadas) -->
-<section id="convocatoria-mbot" class="relative z-10 bg-brand-orange text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
-  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-red/35 shape-diamond pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-red/30 shape-cross pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
-    <!-- Encabezado editorial principal -->
-    <div class="max-w-3xl" data-gsap="convocatoria-encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
-        Bases Oficiales 2026
-      </span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
-        Convocatoria Torneo mBot
-      </h2>
-      <div class="mt-6 h-1.5 w-24 rounded-md bg-white"></div>
-      <p class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
-        La Secretaría de Educación del Estado de Jalisco convoca a las instituciones públicas y privadas de educación básica a conformar sus representativos para el desafío estatal de robótica autónoma mBot.
-      </p>
-    </div>
-
-    <!-- Bases Generales de la Convocatoria (Texto libre, sin cajas) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-4 border-t border-white/20">
-      <div class="space-y-4" data-gsap="convocatoria-bloque">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Capítulo I</span>
-        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">De los Participantes y Asesores</h3>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          Podrán inscribirse equipos integrados por hasta tres estudiantes regulares matriculados en los niveles de primaria alta (4° a 6°) o secundaria técnica y general (1° a 3°), acompañados obligatoriamente por un docente asesor titular debidamente adscrito al centro de trabajo escolar.
-        </p>
-        <p class="text-base text-white/80 font-normal leading-relaxed">
-          Cada escuela participante podrá postular un máximo de dos representativos por turno, asegurando equidad de género en la integración de las escuadras y compromiso con el código ético del certamen.
-        </p>
-      </div>
-
-      <div class="space-y-4" data-gsap="convocatoria-bloque">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Capítulo II</span>
-        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Del Calendario y Etapas</h3>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          El proceso clasificatorio se desarrollará en tres fases concatenadas: registro formal digital en plataforma oficial, eliminatoria regional por zonas educativas del estado y el magno torneo presencial de campeones en el Área Metropolitana de Guadalajara.
-        </p>
-        <p class="text-base text-white/80 font-normal leading-relaxed">
-          Las fechas de calibración en sitio, sorteo de pistas y publicación de listas definitivas serán notificadas directamente a las direcciones institucionales de las escuelas acreditadas.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Transición ondulada entre Convocatoria (naranja) y Anexos (blanco) con meseta suave orgánica -->
-<div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
-    <path d="M0,46 C240,62 480,58 720,36 C960,14 1180,18 1340,26 C1380,28 1415,30 1440,32 L1440,80 L0,80 Z"></path>
-  </svg>
-</div>
-
-<!-- Sección 2: Anexos y Reglamentos Oficiales mBot (Fondo blanco segmentado, texto libre y figuras institucionales) -->
-<section id="anexos-mbot" class="relative z-10 bg-white text-ink py-20 sm:py-28 lg:py-36 overflow-hidden">
-  <!-- Figuras geométricas en el fondo blanco con GSAP Parallax y Flotación -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-48 h-48 bg-brand-orange/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-24 w-36 h-36 bg-brand-red/10 shape-diamond pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-12 w-40 h-28 text-brand-orange/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-8 top-1/2 w-44 h-44 bg-sky-200/40 shape-hexagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-12 bottom-20 w-32 h-32 bg-brand-red/10 shape-cross pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.3" class="absolute right-1/4 bottom-12 w-44 h-32 text-brand-red/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
-    <div class="max-w-3xl" data-gsap="anexos-encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-3">
-        Documentos Técnicos Vinculantes
-      </span>
-      <h3 class="text-3xl sm:text-4xl lg:text-5xl text-ink font-bold tracking-tight">
-        Anexos y Reglamentos Específicos
-      </h3>
-      <div class="mt-4 h-1.5 w-20 rounded-md bg-brand-orange"></div>
-      <p class="text-base sm:text-lg text-ink/75 font-normal leading-relaxed mt-4">
-        Cada anexo técnico constituye una extensión normativa de la convocatoria general y contiene el reglamento técnico de observancia obligatoria para todos los equipos en pista.
-      </p>
-    </div>
-
-    <!-- Anexo 1 con su Reglamento -->
-    <div id="reglamento-mbot" data-gsap="anexo-item" class="space-y-6 pt-4 border-t border-gray-100">
-      <div class="border-l-4 border-brand-orange pl-6 space-y-2">
-        <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Anexo Técnico 01</span>
-        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
-          Especificaciones Técnicas del Robot y Pista
-        </h4>
-        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
-          Parámetros oficiales del chasis, componentes electrónicos avalados y arquitectura dimensional de los circuitos de destreza y laberinto.
-        </p>
-      </div>
-
-      <div class="space-y-4 pl-6 text-ink/80">
-        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
-          Reglamento del Anexo 1 · Normativa de Hardware y Sensores
-        </span>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 1.1 (Dimensiones):</strong> El robot mBot no podrá exceder 200 mm de largo, 170 mm de ancho y 130 mm de alto en ningún momento de la prueba. El peso bruto máximo autorizado es de 650 gramos incluyendo baterías.
-        </p>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 1.2 (Controladores y Motores):</strong> Se permite exclusivamente el uso de la tarjeta principal mCore original de Makeblock y los dos motorreductores DC provistos de serie. Queda estrictamente prohibido el uso de motores de competencia externa o reductores no comerciales.
-        </p>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 1.3 (Sensores autorizados):</strong> Se autoriza el módulo seguidor de líneas de 2 canales, sensor ultrasónico frontal y emisores LED integrados. No se permiten sensores LIDAR externos ni dispositivos de telemetría remota activa durante la corrida.
-        </p>
-      </div>
-    </div>
-
-    <!-- Anexo 2 con su Reglamento -->
-    <div data-gsap="anexo-item" class="space-y-6 pt-6 border-t border-gray-100">
-      <div class="border-l-4 border-brand-red pl-6 space-y-2">
-        <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Anexo Técnico 02</span>
-        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
-          Dinámica de Rondas, Arbitraje y Penalizaciones
-        </h4>
-        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
-          Protocolo de inicio de ronda, tiempos máximos cronometrados, zonas de salvamento y criterios sancionatorios por falta técnica.
-        </p>
-      </div>
-
-      <div class="space-y-4 pl-6 text-ink/80">
-        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
-          Reglamento del Anexo 2 · Protocolo de Carrera y Criterios de Jueces
-        </span>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 2.1 (Tiempos de ronda):</strong> Cada representativo escolar dispondrá de dos intentos independientes con un cronómetro límite de 120 segundos por intento para completar el trazado autónomo.
-        </p>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 2.2 (Salidas y reinicios):</strong> La salida total de las ruedas del robot fuera del contorno de lona causará la detención inmediata del intento. Se permite un único reinicio desde el punto de control previo con penalización de 5 segundos acumulados.
-        </p>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 2.3 (Intervención humana):</strong> Ningún alumno o asesor podrá tocar el robot una vez accionado el pulsador de arranque sin la indicación expresa del juez de mesa designado.
-        </p>
-      </div>
-    </div>
-
-    <!-- Anexo 3 con su Reglamento -->
-    <div data-gsap="anexo-item" class="space-y-6 pt-6 border-t border-gray-100">
-      <div class="border-l-4 border-brand-orange pl-6 space-y-2">
-        <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Anexo Técnico 03</span>
-        <h4 class="text-2xl sm:text-3xl text-ink font-bold tracking-tight">
-          Criterios de Evaluación y Dictamen Final
-        </h4>
-        <p class="text-base sm:text-lg text-ink/70 font-normal leading-relaxed">
-          Mecanismo de sumatoria de puntos, rúbrica de programación por bloques y desempate técnico en la tabla general de posiciones.
-        </p>
-      </div>
-
-      <div class="space-y-4 pl-6 text-ink/80">
-        <span class="text-sm uppercase tracking-wider text-ink font-normal block border-b border-gray-100 pb-2">
-          Reglamento del Anexo 3 · Ponderación y Dictamen del Comité
-        </span>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 3.1 (Ponderación final):</strong> El puntaje global se calculará otorgando 60% al mejor tiempo cronometrado en circuito limpio y 40% a la estructura lógica del código en mBlock y bitácora técnica de ingeniería.
-        </p>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 3.2 (Resolución de empates):</strong> En caso de igualdad de tiempos netos, el criterio de desempate favorecerá al equipo con menor número de reinicios y mayor consistencia entre su primera y segunda manga.
-        </p>
-        <p class="text-base font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Artículo 3.3 (Inapelabilidad):</strong> Las deliberaciones del cuerpo arbitral serán definitivas una vez asentadas en el acta oficial firmada por el capitán del equipo.
-        </p>
-      </div>
-    </div>
-
-    <!-- Llamado a la acción final -->
-    <div class="pt-8 flex flex-wrap justify-center md:justify-start gap-4 border-t border-gray-100">
-      <a
-        routerLink="/registro"
-        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-      >
-        Inscribir equipo al Torneo mBot
-      </a>
-      <a
-        routerLink="/documentacion"
-        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-gray-100 text-ink hover:bg-gray-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-      >
-        Ver Formatos Institucionales
-      </a>
-    </div>
-  </div>
-</section>
 
 <!-- Transición ondulada inferior hacia el Footer naranja institucional -->
 <div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">

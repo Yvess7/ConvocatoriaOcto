@@ -120,8 +120,8 @@ a{text-decoration:none}
   .site-header-inner{padding:0 16px}
 }
 
-.view{display:none}
-.view.on{display:block;animation:fade .35s ease both}
+
+
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ---------- Banner rectangular limpio (sin figuras geométricas) ---------- */
@@ -328,119 +328,114 @@ a{text-decoration:none}
   font-size:14px;
 }
 
-/* ---------- Vista de etapa híbrida ---------- */
-.stage-hero{
-  background:var(--c2);
-  color:#ffffff;
-  padding:32px 24px 64px;
-}
-.stage-hero-inner{
-  max-width:1120px;
-  margin:0 auto;
-}
-.dots{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:36px}
-.dots button{
-  width:44px;height:44px;border-radius:8px;background-size:150%;background-position:center;
-  background-repeat:no-repeat;background-color:rgba(255,255,255,.14);opacity:.55;
-  transition:opacity .2s,transform .2s,background-color .2s;
-}
-.dots button:hover{opacity:.9;transform:translateY(-2px)}
-.dots button.cur{opacity:1;background-color:rgba(255,255,255,.28);outline:2px solid #ffffff}
-.stage-grid{
-  display:grid;
-  grid-template-columns:minmax(240px,340px) 1fr;
-  gap:40px;
-  align-items:center;
-}
-@media (max-width:780px){
-  .stage-grid{grid-template-columns:1fr;text-align:center;gap:24px}
-}
-.bigbtn{
-  position:relative;display:block;width:240px;height:240px;margin:0 auto;border-radius:12px;
-}
-.bigbtn .spr{width:380px;height:380px;margin:-190px 0 0 -190px;filter:drop-shadow(0 16px 18px rgba(0,0,0,.22))}
-.kicker{
-  display:inline-block;
-  padding:6px 14px;
-  border-radius:6px;
-  background:rgba(255,255,255,.2);
-  color:#ffffff;
-  letter-spacing:.14em;
-  font-size:12px;
-  font-weight:400;
-  text-transform:uppercase;
-}
-.stage-hero h2{
-  font-weight:700;
-  font-size:clamp(32px,5.5vw,52px);
-  margin:14px 0 18px;
-  line-height:1.1;
-  color:#ffffff;
-}
-.stage-lead{
-  border-left:4px solid #ffffff;
-  padding-left:20px;
-  font-size:clamp(17px,2vw,20px);
-  line-height:1.6;
-  color:#ffffff;
-  max-width:56ch;
-}
-@media (max-width:780px){
-  .stage-lead{border-left:0;padding-left:0;margin:0 auto}
-}
-.stage-lead p{margin:0}
 
-.stage-white{
-  position:relative;
-  background:#ffffff;
-  padding:64px 24px 80px;
-  overflow:hidden;
+/* ---------- Hero, ruta ---------- */
+.hero-banner{position:relative;width:100%;min-height:360px;background:var(--brand-orange);display:flex;align-items:center;overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hero-scrim{position:absolute;inset:0;background:rgba(246,132,43,.78);z-index:1}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:56px 24px}
+.hero-badge{display:inline-block;padding:6px 14px;border-radius:6px;background:var(--brand-red);color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.hero-banner h1{margin:0;color:#fff;font-weight:400;font-size:clamp(34px,5.5vw,60px);line-height:1.08;letter-spacing:-.02em;max-width:16ch;text-shadow:0 2px 10px rgba(0,0,0,.22)}
+.hero-banner p{margin:18px 0 0;color:#fff;font-size:clamp(16px,2vw,19px);line-height:1.6;max-width:52ch;text-shadow:0 1px 6px rgba(0,0,0,.22)}
+
+.route-section{position:relative;background:#fff;padding:72px 24px 24px;overflow:hidden}
+.section-head{position:relative;z-index:2;max-width:720px;margin:0 auto 48px;text-align:center}
+.section-tag{display:inline-block;padding:5px 14px;border-radius:6px;background:#fff4eb;color:var(--brand-orange);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.section-head h2{margin:0;color:var(--ink);font-weight:400;font-size:clamp(30px,4.5vw,48px);line-height:1.14;letter-spacing:-.02em}
+.section-bar{width:80px;height:6px;border-radius:6px;background:var(--brand-orange);margin:20px auto}
+.sub{color:rgba(58,58,58,.78);margin:0 auto;font-size:17px;line-height:1.6;max-width:50ch}
+
+.geo-shape{position:absolute;pointer-events:none;z-index:0;will-change:transform}
+.shape-hexagon{clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0% 50%)}
+.shape-diamond{clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+.shape-triangle{clip-path:polygon(50% 0%,0% 100%,100% 100%)}
+.shape-octagon{clip-path:polygon(30% 0%,70% 0%,100% 30%,100% 70%,70% 100%,30% 100%,0% 70%,0% 30%)}
+.shape-parallelogram{clip-path:polygon(22% 0%,100% 0%,78% 100%,0% 100%)}
+.shape-cross{clip-path:polygon(36% 0%,64% 0%,64% 36%,100% 36%,100% 64%,64% 64%,64% 100%,36% 100%,36% 64%,0% 64%,0% 36%,36% 36%)}
+.bg-tech-dots{background-image:radial-gradient(currentColor 1.75px,transparent 1.75px);background-size:22px 22px}
+@keyframes floatGeo{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(0,-20px,0) rotate(8deg)}}
+@keyframes driftGeo{0%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(22px,-16px,0) rotate(-8deg)}100%{transform:translate3d(-16px,18px,0) rotate(10deg)}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+.anim-float{animation:floatGeo 7s ease-in-out infinite}
+.anim-drift{animation:driftGeo 13s ease-in-out infinite alternate}
+.anim-spin{animation:spinSlow 28s linear infinite}
+
+.route{position:relative;z-index:2;width:min(680px,100%);margin:0 auto;padding-bottom:40px}
+.route svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.p-base{fill:none;stroke:rgba(246,132,43,.22);stroke-width:14;stroke-linecap:round}
+.p-prog{fill:none;stroke:var(--brand-red);stroke-width:14;stroke-linecap:round;filter:drop-shadow(0 6px 10px rgba(232,26,79,.22))}
+.p-dash{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-dasharray:9 11;opacity:.92}
+.st{position:absolute;width:128px;height:128px;margin:-64px 0 0 -64px;border-radius:12px;-webkit-tap-highlight-color:transparent}
+.st:focus-visible,.nav button:focus-visible,.rail button:focus-visible,.bigbtn:focus-visible{outline:3px solid var(--brand-orange);outline-offset:4px}
+.spr{position:absolute;left:50%;top:50%;width:236px;height:236px;margin:-118px 0 0 -118px;background-repeat:no-repeat;background-size:500% 400%;pointer-events:none;filter:drop-shadow(0 12px 12px rgba(58,58,58,.22))}
+.st .num{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);z-index:2;min-width:44px;padding:4px 10px;border-radius:6px;border:2px solid #fff;font-size:14px;line-height:1.2;background:var(--brand-orange);color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.14)}
+.st:nth-of-type(even) .num{background:var(--brand-red)}
+.st.done .num{box-shadow:0 0 0 4px rgba(246,132,43,.35),0 4px 10px rgba(0,0,0,.14)}
+.lbl{position:absolute;top:50%;transform:translateY(-50%);width:max-content;max-width:min(190px,30vw);font-size:clamp(15px,3.2vw,20px);line-height:1.25;text-align:left;color:var(--ink);transition:color .2s}
+.st.r .lbl{left:calc(100% + 26px)}
+.st.l .lbl{right:calc(100% + 26px);text-align:right}
+.st:last-of-type .lbl{color:var(--brand-red);font-size:clamp(18px,4vw,24px)}
+.st:hover .lbl,.st:focus-visible .lbl{color:var(--brand-orange)}
+#hero{position:absolute;width:150px;height:150px;margin:-104px 0 0 -75px;z-index:5;pointer-events:none;background-repeat:no-repeat;background-size:500% 400%;filter:drop-shadow(0 10px 8px rgba(58,58,58,.28))}
+
+/* ---------- Ondas ---------- */
+.wave-divider{position:relative;width:100%;overflow:hidden;line-height:0;margin-bottom:-1px;pointer-events:none}
+.wave-divider svg{display:block;width:100%;height:72px}
+.site-footer{background:var(--brand-orange);color:#fff;padding:48px 24px 40px}
+.site-footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;font-size:14px}
+
+/* ---------- Etapas encadenadas en una sola vista ---------- */
+.stage{position:relative;scroll-margin-top:84px}
+.stage-band{position:relative;background:var(--c2);color:#fff;padding:40px 24px 24px;overflow:hidden}
+.stage-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto}
+.stage-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;text-align:center}
+@media (min-width:781px){
+  .stage-grid{grid-template-columns:minmax(240px,340px) 1fr;gap:48px;text-align:left}
+  .stage.rev .stage-grid{grid-template-columns:1fr minmax(240px,340px)}
+  .stage.rev .bigcol{order:2}
 }
-.stage-white-inner{
-  position:relative;
-  z-index:2;
-  max-width:960px;
-  margin:0 auto;
-}
-.editorial-block{
-  border-left:4px solid var(--c2);
-  padding-left:22px;
-  max-width:64ch;
-  margin:0 auto 48px;
-}
-.editorial-label{
-  display:inline-block;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--c2);
-  margin-bottom:8px;
-}
-.editorial-block p{
-  margin:0;
-  font-size:17px;
-  line-height:1.65;
-  color:rgba(58,58,58,.86);
-}
-.nav{display:flex;justify-content:center;align-items:flex-start;gap:clamp(16px,5vw,48px);margin-top:20px}
-.nav button{
-  position:relative;width:128px;height:104px;border-radius:8px;
-  background:#fafafa;border:1px solid #ededed;
-  transition:transform .2s,border-color .2s;
-}
+.bigbtn{position:relative;display:block;width:240px;height:240px;margin:0 auto;border-radius:12px}
+.bigbtn .spr{width:380px;height:380px;margin:-190px 0 0 -190px;filter:drop-shadow(0 16px 18px rgba(0,0,0,.22))}
+@media (max-width:520px){.bigbtn{width:200px;height:200px}.bigbtn .spr{width:300px;height:300px;margin:-150px 0 0 -150px}}
+.kicker{display:inline-block;padding:6px 14px;border-radius:6px;background:rgba(255,255,255,.2);color:#fff;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
+.stage-band h2{font-weight:400;font-size:clamp(32px,5.5vw,56px);margin:14px 0 18px;line-height:1.1;color:#fff;letter-spacing:-.02em}
+.stage-lead{border-left:4px solid #fff;padding-left:20px;font-size:clamp(17px,2vw,20px);line-height:1.6;color:#fff;max-width:56ch}
+.stage-lead p{margin:0}
+@media (max-width:780px){.stage-lead{border-left:0;padding-left:0;margin:0 auto}}
+
+.stage-white{position:relative;background:#fff;padding:48px 24px 56px;overflow:hidden}
+.stage-white-inner{position:relative;z-index:2;max-width:960px;margin:0 auto}
+.editorial-block{border-left:4px solid var(--c2);padding-left:22px;max-width:64ch;margin:0 auto 36px}
+.editorial-label{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c2);margin-bottom:8px}
+.editorial-block p{margin:0;font-size:17px;line-height:1.65;color:rgba(58,58,58,.86)}
+.nav{display:flex;justify-content:center;align-items:flex-start;gap:clamp(16px,5vw,48px)}
+.nav button{position:relative;width:128px;height:104px;border-radius:8px;background:#fafafa;border:1px solid #ededed;transition:transform .2s,border-color .2s}
 .nav button:hover{transform:translateY(-3px);border-color:var(--c2)}
 .nav button .spr{width:176px;height:176px;margin:-104px 0 0 -88px}
-.nav button span{
-  position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:max-content;max-width:118px;
-  font-size:13px;font-weight:400;color:var(--ink);line-height:1.2;text-align:center;
-}
+.nav button span{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:max-content;max-width:118px;font-size:13px;color:var(--ink);line-height:1.2;text-align:center}
 .nav button[hidden]{display:block;visibility:hidden}
+
+/* Entrada animada por orden al hacer scroll */
+.stage .rv{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.stage .bigcol{opacity:0;transform:scale(.7) rotate(-8deg);transition:opacity .6s ease,transform .8s cubic-bezier(.2,1.3,.4,1)}
+.stage.in .rv,.stage.in .bigcol{opacity:1;transform:none}
+.stage.in .rv:nth-child(2){transition-delay:.12s}
+.stage.in .rv:nth-child(3){transition-delay:.24s}
+.stage.snap .rv,.stage.snap .bigcol{transition:none!important}
+
+/* Riel de progreso lateral */
+.rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:35;display:none;flex-direction:column;gap:8px;padding:8px;border-radius:10px;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.14)}
+@media (min-width:1100px){.rail{display:flex}}
+.rail button{width:38px;height:38px;border-radius:8px;background-size:150%;background-position:center;background-repeat:no-repeat;background-color:#f4f4f4;opacity:.5;transition:opacity .2s,transform .2s}
+.rail button:hover{opacity:.9;transform:translateX(-3px)}
+.rail button.cur{opacity:1;outline:2px solid var(--rc,#f6842b);outline-offset:1px}
 
 #ht{position:fixed;inset:0;width:100%;height:100%;z-index:80;pointer-events:none;display:none}
 .spr.fly{position:fixed;z-index:90;filter:drop-shadow(0 16px 14px rgba(0,0,0,.3))}
 @media (prefers-reduced-motion:reduce){
-  .view.on,.anim-float,.anim-drift,.anim-spin{animation:none}
+  .anim-float,.anim-drift,.anim-spin{animation:none}
   html{scroll-behavior:auto}
+  .stage .rv,.stage .bigcol{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
@@ -449,16 +444,11 @@ a{text-decoration:none}
 <header class="site-header">
   <div class="site-header-inner">
     <a href="#inicio" id="nav-home" class="brand-link" aria-label="Inicio Robótica al Estilo Jalisco">
-      <img
-        src="file:///Users/yves/Documents/Sep/ConvocatoriaOcto/RoboticaAlEstiloJalisco/public/images/logo-robotica-al-estilo-jalisco.png"
-        alt="Robótica al Estilo Jalisco"
-        class="brand-logo"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'"
-      />
+      <img src="file:///Users/yves/Documents/Sep/ConvocatoriaOcto/RoboticaAlEstiloJalisco/public/images/logo-robotica-al-estilo-jalisco.png" alt="Robótica al Estilo Jalisco" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" />
       <span class="brand-fallback" style="display:none">Robótica al Estilo Jalisco</span>
     </a>
     <nav class="header-nav" aria-label="Navegación de etapas">
-      <a href="#inicio" id="nav-ruta" class="header-link">Mapa 3D</a>
+      <a href="#ruta" id="nav-ruta" class="header-link">Mapa 3D</a>
       <a href="#etapa-1" id="nav-conv" class="header-link">Convocatoria</a>
       <a href="#etapa-9" id="nav-final" class="header-link">Gran Final</a>
       <a href="#etapa-7" id="nav-reg" class="header-cta">Registro</a>
@@ -467,19 +457,14 @@ a{text-decoration:none}
   <div class="header-stripe"></div>
 </header>
 
-<main id="inicio" class="view">
+<main id="inicio">
   <section class="hero-banner">
-    <img
-      src="file:///Users/yves/Documents/Sep/ConvocatoriaOcto/RoboticaAlEstiloJalisco/public/images/bgMain.webp"
-      alt=""
-      class="hero-bg-img"
-      onerror="this.style.display='none'"
-    />
+    <img src="file:///Users/yves/Documents/Sep/ConvocatoriaOcto/RoboticaAlEstiloJalisco/public/images/bgMain.webp" alt="" class="hero-bg-img" onerror="this.style.display='none'" />
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-inner">
       <span class="hero-badge">Convocatoria Estatal 2026</span>
       <h1>Camino a la gran final</h1>
-      <p>Explora el recorrido interactivo en 3D con la identidad visual de Robótica al Estilo Jalisco. Desplázate por la ruta o selecciona cualquier estación para abrir su etapa.</p>
+      <p>Explora el recorrido interactivo en 3D. Elige una estación o sigue desplazándote: todas las etapas continúan en orden, en una sola vista.</p>
     </div>
   </section>
 
@@ -496,7 +481,7 @@ a{text-decoration:none}
       <span class="section-tag">Recorrido Interactivo 3D</span>
       <h2>Ruta del Torneo</h2>
       <div class="section-bar"></div>
-      <p class="sub">Elige una estación para activar su animación 3D y revelar el detalle de la etapa con transición de semitono.</p>
+      <p class="sub">Elige una estación para saltar a su etapa con animación, o continúa hacia abajo: cada etapa sigue a la anterior.</p>
     </div>
 
     <div class="route" id="route">
@@ -505,10 +490,10 @@ a{text-decoration:none}
     </div>
   </section>
 
+  <div id="stages"></div>
+
   <div class="wave-divider" style="background:#ffffff" aria-hidden="true">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path fill="#f6842b" d="M0,52 C240,18 460,68 780,38 C1080,10 1280,58 1440,30 L1440,80 L0,80 Z"></path>
-    </svg>
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#f6842b" d="M0,26 C280,64 540,16 840,46 C1120,72 1300,24 1440,42 L1440,80 L0,80 Z"></path></svg>
   </div>
   <footer class="site-footer">
     <div class="site-footer-inner">
@@ -518,51 +503,7 @@ a{text-decoration:none}
   </footer>
 </main>
 
-<main id="etapa" class="view">
-  <section class="stage-hero">
-    <div class="stage-hero-inner">
-      <div class="dots" id="dots" aria-label="Etapas"></div>
-      <div class="stage-grid">
-        <button class="bigbtn" id="big" aria-label="Animar icono 3D"><div class="spr"></div></button>
-        <div>
-          <span class="kicker" id="kicker"></span>
-          <h2 id="titulo"></h2>
-          <div class="stage-lead">
-            <p id="desc"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stage-white">
-    <div class="geo-shape shape-hexagon anim-drift" style="right:-30px;top:24px;width:150px;height:150px;background:rgba(246,132,43,.10)" aria-hidden="true"></div>
-    <div class="geo-shape shape-triangle anim-float" style="left:24px;bottom:28px;width:110px;height:110px;background:rgba(232,26,79,.09)" aria-hidden="true"></div>
-    <div class="stage-white-inner">
-      <div class="editorial-block">
-        <span class="editorial-label">Información de Etapa</span>
-        <p>Aquí se integran las fechas oficiales, requisitos de participación, enlace al reglamento técnico y documentos descargables correspondientes a esta fase del certamen.</p>
-      </div>
-      <nav class="nav" aria-label="Navegación entre etapas">
-        <button id="prev" data-k="anterior"><div class="spr"></div><span></span></button>
-        <button id="home" data-k="casa"><div class="spr"></div><span>Inicio</span></button>
-        <button id="next" data-k="siguiente"><div class="spr"></div><span></span></button>
-      </nav>
-    </div>
-  </section>
-
-  <div class="wave-divider" style="background:#ffffff" aria-hidden="true">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path fill="#f6842b" d="M0,26 C280,64 540,16 840,46 C1120,72 1300,24 1440,42 L1440,80 L0,80 Z"></path>
-    </svg>
-  </div>
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <span>Robótica al Estilo Jalisco · Propuesta Híbrida 3D</span>
-      <span>Secretaría de Educación del Estado de Jalisco</span>
-    </div>
-  </footer>
-</main>
+<aside class="rail" id="rail" aria-label="Progreso de etapas"></aside>
 <canvas id="ht" aria-hidden="true"></canvas>
 
 <script>
@@ -579,17 +520,28 @@ const E = [
   {k:"banderines",c:["#7a59eb","#7a59eb"], t:"Eliminatoria regional",      d:"Los equipos compiten por un lugar en la final."},
   {k:"trofeo",c:["#b8143d","#e81a4f"],     t:"Gran final",                 d:"Los mejores equipos se enfrentan por el primer lugar."}
 ];
-const XS = [.30,.46,.58,.70,.62,.42,.30,.44,.58];      // posicion horizontal de cada estacion
-const GAP = 218, TOP = 110, FRAMES = 20, FPS = 14;
-const HOME = ["#ffffff","#f6842b"];
+const XS = [.30,.46,.58,.70,.62,.42,.30,.44,.58];
+const GAP = 218, TOP = 110, FRAMES = 20, FPS = 14, HEADER = 84;
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = s => document.querySelector(s);
 const pad = n => String(n).padStart(2,"0");
+const ease = t => t*t*(3-2*t);
 
-// precarga de hojas de sprites
-[...E.map(e=>e.k),"casa","anterior","siguiente","personaje"].forEach(k=>{
-  ["hover","click"].forEach(s=>{ if(s==="click" && !E.some(e=>e.k===k)) return; const i=new Image(); i.src=A(k+"_"+s+".webp"); });
-});
+/* ---------- ondas únicas: cada una con trazo propio ---------- */
+function wavePath(seed){
+  let s = (seed*2654435761)>>>0;
+  const rnd = () => (s = (s*1664525+1013904223)>>>0, s/4294967296);
+  const n = 3 + (seed%3);                       // 3 a 5 tramos
+  const xs=[0]; for(let i=1;i<n;i++) xs.push(Math.round(1440*i/n + (rnd()-.5)*1440/n*.6)); xs.push(1440);
+  const ys=xs.map(()=>Math.round(12+rnd()*48));
+  let d=`M0,${ys[0]}`;
+  for(let i=0;i<n;i++){
+    const w=(xs[i+1]-xs[i]), k=.35+rnd()*.3;
+    d+=` C${Math.round(xs[i]+w*k)},${ys[i]} ${Math.round(xs[i+1]-w*k)},${ys[i+1]} ${xs[i+1]},${ys[i+1]}`;
+  }
+  return d+" L1440,80 L0,80 Z";
+}
+const wave = (bg,fill,seed) => `<div class="wave-divider" style="background:${bg}" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${fill}" d="${wavePath(seed)}"></path></svg></div>`;
 
 /* ---------- sprites ---------- */
 function setFrame(el,f){ el.style.backgroundPosition = `${(f%5)*25}% ${Math.floor(f/5)*33.3333}%`; }
@@ -620,11 +572,67 @@ function wireHover(btn,spr){
   btn.addEventListener("focus",()=>{ if(btn.matches(":focus-visible")) go(); });
 }
 
+/* ---------- construir las 9 etapas, una tras otra ---------- */
+const stagesEl=$("#stages"), rail=$("#rail");
+const NAV_KEYS={prev:"anterior",home:"casa",next:"siguiente"};
+const geo=[
+  `<div class="geo-shape shape-hexagon anim-drift" style="right:-30px;top:24px;width:150px;height:150px;background:rgba(246,132,43,.10)" aria-hidden="true"></div><div class="geo-shape shape-triangle anim-float" style="left:24px;bottom:28px;width:110px;height:110px;background:rgba(232,26,79,.09)" aria-hidden="true"></div>`,
+  `<div class="geo-shape shape-diamond anim-float" style="left:-20px;top:30px;width:120px;height:120px;background:rgba(2,132,199,.10)" aria-hidden="true"></div><div class="geo-shape shape-cross anim-spin" style="right:32px;bottom:24px;width:90px;height:90px;background:rgba(122,89,235,.10)" aria-hidden="true"></div>`,
+  `<div class="geo-shape shape-octagon anim-spin" style="right:-24px;top:20px;width:140px;height:140px;background:rgba(232,26,79,.08)" aria-hidden="true"></div><div class="geo-shape bg-tech-dots anim-drift" style="left:5%;bottom:20px;width:150px;height:100px;color:rgba(246,132,43,.2)" aria-hidden="true"></div>`
+];
+const bands=[], bigs=[], secs=[];
+E.forEach((e,i)=>{
+  const n=i+1, col=e.c[1], first=i===0;
+  const sec=document.createElement("section");
+  sec.className="stage"+(i%2?" rev":""); sec.id="etapa-"+n; sec.style.setProperty("--c2",col); sec.dataset.i=i;
+  sec.innerHTML=`
+    ${wave("#ffffff",col,i*2+1)}
+    <div class="stage-band">
+      <div class="stage-inner"><div class="stage-grid">
+        <div class="bigcol"><button class="bigbtn" aria-label="Animar icono 3D de ${e.t}"><div class="spr"></div></button></div>
+        <div>
+          <span class="kicker rv">ETAPA ${pad(n)} DE ${pad(E.length)}</span>
+          <h2 class="rv">${e.t}</h2>
+          <div class="stage-lead rv"><p>${e.d}</p></div>
+        </div>
+      </div></div>
+    </div>
+    ${wave(col,"#ffffff",i*2+2)}
+    <div class="stage-white">
+      ${geo[i%3]}
+      <div class="stage-white-inner">
+        <div class="editorial-block rv"><span class="editorial-label">Información de Etapa</span>
+          <p>Aquí se integran las fechas oficiales, requisitos de participación, enlace al reglamento técnico y documentos descargables correspondientes a esta fase del certamen.</p></div>
+        <nav class="nav rv" aria-label="Navegación entre etapas">
+          <button data-a="prev" ${i===0?"hidden":""}><div class="spr"></div><span>${i>0?E[i-1].t:""}</span></button>
+          <button data-a="home"><div class="spr"></div><span>Mapa</span></button>
+          <button data-a="next" ${i===E.length-1?"hidden":""}><div class="spr"></div><span>${i<E.length-1?E[i+1].t:""}</span></button>
+        </nav>
+      </div>
+    </div>`;
+  stagesEl.appendChild(sec); secs.push(sec); bands.push(sec.querySelector(".stage-band"));
+  const bigBtn=sec.querySelector(".bigbtn"), bs=bigBtn.firstElementChild; bigs.push(bs);
+  wireHover(bigBtn,bs); bigBtn.addEventListener("click",()=>play(bs,"click"));
+  sec.querySelectorAll(".nav button").forEach(b=>{ wireHover(b,b.firstElementChild); });
+  sec.querySelector('[data-a="prev"]').addEventListener("click",()=>smoothTo(i-1));
+  sec.querySelector('[data-a="next"]').addEventListener("click",()=>smoothTo(i+1));
+  sec.querySelector('[data-a="home"]').addEventListener("click",ev=>jump(-1,ev.currentTarget));
+  // riel
+  const r=document.createElement("button");
+  r.style.backgroundImage=`url(${A(e.k+".png")})`; r.title=`${pad(n)} · ${e.t}`; r.setAttribute("aria-label",r.title);
+  r.addEventListener("click",()=>jump(i,r)); rail.appendChild(r);
+});
+function ensureSprites(i){
+  const sec=secs[i];
+  if(!bigs[i].dataset.k) initSprite(bigs[i],E[i].k);
+  sec.querySelectorAll(".nav button").forEach(b=>{ const s=b.firstElementChild; if(!s.dataset.k) initSprite(s,NAV_KEYS[b.dataset.a]); });
+}
+
 /* ---------- ruta ---------- */
 const route=$("#route"), hero=$("#hero"), svg=route.querySelector("svg");
 hero.style.backgroundImage=`url(${A("personaje_hover.webp")})`;
 const [pBase,pProg,pDash]=svg.querySelectorAll("path");
-let stations=[], lens=[], total=0, cur=0, target=0, lastX=0, visited=0;
+let stations=[], lens=[], total=0, cur=0, target=0, lastX=0, curStage=-1;
 
 E.forEach((e,i)=>{
   const b=document.createElement("button");
@@ -641,21 +649,21 @@ function layout(){
   route.style.height=(TOP+(E.length-1)*GAP+90)+"px";
   stations.forEach((b,i)=>{ b.style.left=pts[i][0]+"px"; b.style.top=pts[i][1]+"px"; });
   let d=`M${pts[0][0]},${pts[0][1]}`;
-  for(let i=0;i<pts.length-1;i++){                       // curva suave con manijas verticales
+  for(let i=0;i<pts.length-1;i++){
     const [x0,y0]=pts[i],[x1,y1]=pts[i+1], h=GAP*.55;
     d+=` C${x0},${y0+h} ${x1},${y1-h} ${x1},${y1}`;
   }
   [pBase,pProg,pDash].forEach(p=>p.setAttribute("d",d));
   total=pBase.getTotalLength();
   lens=[]; let s=0;
-  pts.forEach(([x,y])=>{                                  // longitud del trazo en cada estacion
+  pts.forEach(([x,y])=>{
     let best=s,bd=1e9;
     for(let l=s;l<=Math.min(total,s+GAP*2.2);l+=2){ const p=pBase.getPointAtLength(l); const q=(p.x-x)**2+(p.y-y)**2; if(q<bd){bd=q;best=l;} }
     lens.push(best); s=best;
   });
   pProg.style.strokeDasharray=total; place(true);
 }
-function place(force){
+function place(){
   const i=Math.min(E.length-2,Math.floor(cur)), fr=cur-i;
   const L=lens[i]+(lens[i+1]-lens[i])*fr, p=pBase.getPointAtLength(L);
   const moving=Math.abs(target-cur)>.002;
@@ -669,7 +677,7 @@ function place(force){
 let last=performance.now();
 function tick(now){
   const dt=Math.min(.05,(now-last)/1000); last=now;
-  if($("#inicio").classList.contains("on") && Math.abs(target-cur)>.002){
+  if(Math.abs(target-cur)>.002){
     const sp=Math.max(1.6,Math.abs(target-cur)*2.2)*dt;
     cur = REDUCED ? target : cur+Math.sign(target-cur)*Math.min(sp,Math.abs(target-cur));
     place();
@@ -677,74 +685,53 @@ function tick(now){
   hero._moving=Math.abs(target-cur)>.002;
   requestAnimationFrame(tick);
 }
-function onScroll(){                                       // el personaje baja conforme avanzas
-  if(!$("#inicio").classList.contains("on")) return;
-  const mid=innerHeight*.5; let best=0,bd=1e9;
+
+/* ---------- scroll: etapa actual, riel, personaje ---------- */
+const routeSec=$("#route-section");
+function onScroll(){
+  const mid=innerHeight*.5, rr=routeSec.getBoundingClientRect();
+  let stage=-1;
+  if(rr.bottom<=mid){
+    secs.forEach((s,i)=>{ const r=s.getBoundingClientRect(); if(r.top<=mid) stage=i; });
+  }
+  if(stage!==curStage){
+    curStage=stage;
+    [...rail.children].forEach((b,j)=>{ b.classList.toggle("cur",j===stage); if(j===stage) rail.style.setProperty("--rc",E[j].c[1]); });
+    document.title = stage<0 ? "Camino a la gran final · Robótica al Estilo Jalisco" : `${E[stage].t} · Camino a la gran final`;
+    history.replaceState(null,"", stage<0 ? location.pathname+location.search : "#etapa-"+(stage+1));
+  }
+  if(stage>=0){ target=stage; return; }
+  let best=0,bd=1e9;
   stations.forEach((b,i)=>{ const r=b.getBoundingClientRect(); const d=Math.abs(r.top+r.height/2-mid); if(d<bd){bd=d;best=i;} });
   if(scrollY<20) best=0;
-  if(innerHeight+scrollY>=document.documentElement.scrollHeight-20) best=E.length-1;
   target=best;
 }
 addEventListener("scroll",onScroll,{passive:true});
 addEventListener("resize",layout);
 
-/* ---------- paginas de etapa ---------- */
-const big=$("#big"), bigSpr=big.firstElementChild, dots=$("#dots");
-wireHover(big,bigSpr);
-big.addEventListener("click",()=>play(bigSpr,"click"));
-E.forEach((e,i)=>{
-  const b=document.createElement("button");
-  b.style.backgroundImage=`url(${A(e.k+".png")})`; b.title=`${pad(i+1)} · ${e.t}`; b.setAttribute("aria-label",b.title);
-  b.addEventListener("click",()=>go("#etapa-"+(i+1),b)); dots.appendChild(b);
-});
-["prev","home","next"].forEach(id=>{ const b=$("#"+id), s=b.firstElementChild; initSprite(s,b.dataset.k); wireHover(b,s); });
-$("#home").addEventListener("click",e=>go("#inicio",e.currentTarget));
-$("#prev").addEventListener("click",e=>{ if(visited>0) go("#etapa-"+visited,e.currentTarget); });
-$("#next").addEventListener("click",e=>{ if(visited<E.length-1) go("#etapa-"+(visited+2),e.currentTarget); });
-$("#nav-home").addEventListener("click",e=>{ e.preventDefault(); if(shown==="#inicio"){ scrollTo({top:0,behavior:"smooth"}); } else { go("#inicio",e.currentTarget); } });
-$("#nav-ruta").addEventListener("click",e=>{ e.preventDefault(); if(shown==="#inicio"){ $("#route-section").scrollIntoView({behavior:"smooth"}); } else { go("#inicio",e.currentTarget); } });
-$("#nav-conv").addEventListener("click",e=>{ e.preventDefault(); go("#etapa-1",e.currentTarget); });
-$("#nav-final").addEventListener("click",e=>{ e.preventDefault(); go("#etapa-9",e.currentTarget); });
-$("#nav-reg").addEventListener("click",e=>{ e.preventDefault(); go("#etapa-7",e.currentTarget); });
-
-function show(hash,opts={}){
-  const m=/^#etapa-(\d)$/.exec(hash), n=m?+m[1]:0;
-  if(n){
-    const i=n-1, e=E[i]; visited=i;
-    $("#inicio").classList.remove("on"); $("#etapa").classList.remove("on"); void $("#etapa").offsetWidth; $("#etapa").classList.add("on");
-    cancelAnimationFrame(bigSpr._raf); bigSpr._playing=bigSpr._lock=false; initSprite(bigSpr,e.k);
-    $("#kicker").textContent=`ETAPA ${pad(n)} DE ${pad(E.length)}`;
-    $("#titulo").textContent=e.t; $("#desc").textContent=e.d;
-    [...dots.children].forEach((b,j)=>b.classList.toggle("cur",j===i));
-    const pv=$("#prev"), nx=$("#next");
-    pv.hidden=i===0; nx.hidden=i===E.length-1;
-    pv.lastElementChild.textContent=i>0?E[i-1].t:""; nx.lastElementChild.textContent=i<E.length-1?E[i+1].t:"";
-    document.title=`${e.t} · Camino a la gran final`;
-    scrollTo({top:0,behavior:"instant"});
-    if(opts.fly) bigSpr.style.visibility="hidden"; else { bigSpr.style.visibility=""; play(bigSpr,"hover"); }
-  } else {
-    $("#etapa").classList.remove("on"); $("#inicio").classList.add("on");
-    document.title="Camino a la gran final · Robótica al Estilo Jalisco";
-    layout(); cur=target=visited; place(true);
-    const r=stations[visited].getBoundingClientRect();
-    scrollTo({top:Math.max(0,scrollY+r.top-innerHeight*.45),behavior:"instant"});
+/* entrada animada: cada etapa aparece en orden al llegar a ella */
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  const i=+en.target.dataset.i;
+  if(en.isIntersecting){
+    ensureSprites(i);
+    if(!en.target.classList.contains("in")){
+      en.target.classList.add("in");
+      if(!bigs[i]._hold) setTimeout(()=>play(bigs[i],"hover"),350);
+    }
   }
-}
+}),{threshold:.25});
+const ioNear=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting) ensureSprites(+en.target.dataset.i); }),{rootMargin:"900px 0px"});
+secs.forEach(s=>{ io.observe(s); ioNear.observe(s); });
 
-/* ---------- navegacion con transicion ---------- */
-const norm=h=>/^#etapa-[1-9]$/.test(h)?h:"#inicio";
-const colorsFor=h=>{ const m=/^#etapa-(\d)$/.exec(h); return m?E[m[1]-1].c:HOME; };
-const ease=t=>t*t*(3-2*t);
-let busy=false, shown=null;
-function commit(hash,opts){
-  shown=hash;
-  if(norm(location.hash)!==hash) location.hash=hash;
-  const c=colorsFor(hash), st=document.documentElement.style;
-  st.setProperty("--c1",c[0]); st.setProperty("--c2",c[1]);
-  show(hash,opts);
+/* ---------- navegación ---------- */
+function yFor(i){
+  const el = i<0 ? routeSec : bands[i];
+  return Math.max(0, el.getBoundingClientRect().top+scrollY-HEADER);
 }
+function smoothTo(i){ if(i<0||i>=E.length) return; scrollTo({top:yFor(i),behavior:REDUCED?"instant":"smooth"}); }
+function instantTo(i){ scrollTo({top:yFor(i),behavior:"instant"}); }
 
-/* cortina de semitono: los puntos crecen desde el origen con el color nuevo y luego se encogen */
+/* cortina de semitono */
 const ht=$("#ht"), hx=ht.getContext("2d");
 function halftone(ox,oy,color,onMid,onEnd,o={}){
   const dpr=Math.min(1.5,devicePixelRatio||1), W=innerWidth, H=innerHeight;
@@ -777,49 +764,70 @@ function halftone(ox,oy,color,onMid,onEnd,o={}){
   })(t0);
 }
 
-function go(hash,el,opts){
-  if(busy || hash===shown) return;
-  if(REDUCED){ commit(hash,opts); return; }
+let busy=false;
+const colorOf = i => i<0 ? "#f6842b" : E[i].c[1];
+/* salto con semitono entre mapa y etapas, todo dentro de la misma vista */
+function jump(i,el){
+  if(busy) return;
+  if(i>=0) { ensureSprites(i); }
+  if(REDUCED){ instantTo(i); return; }
   busy=true;
   const r=el?el.getBoundingClientRect():null;
-  halftone(r?r.left+r.width/2:innerWidth/2, r?r.top+r.height/2:innerHeight/2,
-           colorsFor(hash)[1], ()=>commit(hash,opts), ()=>{ busy=false; });
+  halftone(r?r.left+r.width/2:innerWidth/2, r?r.top+r.height/2:innerHeight/2, colorOf(i),
+    ()=>{ if(i>=0) secs[i].classList.add("snap","in"); instantTo(i); onScroll(); },
+    ()=>{ busy=false; if(i>=0) secs[i].classList.remove("snap"); });
 }
 
-/* el icono activado hace su efecto, despega de la ruta y viaja hasta su pagina */
+/* el icono activado hace su efecto, despega de la ruta y viaja a su etapa */
 function activate(i){
   if(busy) return;
-  const hash="#etapa-"+(i+1), spr=stations[i].firstChild; target=i;
-  if(REDUCED){ commit(hash); return; }
+  const spr=stations[i].firstChild, bigSpr=bigs[i]; target=i;
+  ensureSprites(i);
+  if(REDUCED){ instantTo(i); return; }
   busy=true;
   const r=spr.getBoundingClientRect(), fly=document.createElement("div");
   fly.className="spr fly"; initSprite(fly,E[i].k);
   const put=(x,y,z)=>{ fly.style.left=x+"px"; fly.style.top=y+"px"; fly.style.width=fly.style.height=z+"px"; fly.style.margin=(-z/2)+"px 0 0 "+(-z/2)+"px"; };
   const x0=r.left+r.width/2, y0=r.top+r.height/2, s0=r.width;
   put(x0,y0,s0); document.body.appendChild(fly); spr.style.visibility="hidden";
-  play(fly,"click",()=>{                                   // 1) efecto propio, en su lugar
+  play(fly,"click",()=>{
     let x1=innerWidth/2, y1=Math.min(230,innerHeight*.3), s1=380, real=null;
     const D=1200, t0=performance.now();
     const cx=(x0+x1)/2+(x0<innerWidth/2?-1:1)*Math.min(260,innerWidth*.3), cy=Math.min(y0,y1)-110;
     fly.style.backgroundImage=`url(${A(E[i].k+"_hover.webp")})`;
-    halftone(x0,y0,E[i].c[1],()=>{                          // 2) semitono al color de la etapa
-      commit(hash,{fly:true});
+    halftone(x0,y0,E[i].c[1],()=>{
+      secs[i].classList.add("snap","in"); bigSpr._hold=true;
+      instantTo(i); onScroll();
+      bigSpr.style.visibility="hidden";
       const b=bigSpr.getBoundingClientRect(); real=[b.left+b.width/2,b.top+b.height/2,b.width];
     },null,{t1:470,t2:560,reveal:()=>[real[0],real[1]]});
-    (function step(now){                                    // 3) vuelo en curva hasta la pagina
+    (function step(now){
       const t=Math.min(1,(now-t0)/D), e=ease(t), u=1-e;
       if(real){ x1+=(real[0]-x1)*.2; y1+=(real[1]-y1)*.2; s1+=(real[2]-s1)*.2; }
       put(u*u*x0+2*u*e*cx+e*e*x1, u*u*y0+2*u*e*cy+e*e*y1, s0+(s1-s0)*e);
       setFrame(fly,Math.min(FRAMES-1,Math.floor(t*FRAMES)));
       if(t<1){ requestAnimationFrame(step); return; }
-      bigSpr.style.visibility=""; setFrame(bigSpr,0); fly.remove(); spr.style.visibility=""; busy=false;
+      bigSpr.style.visibility=""; bigSpr._hold=false; initSprite(bigSpr,E[i].k);
+      fly.remove(); spr.style.visibility=""; secs[i].classList.remove("snap"); busy=false;
     })(t0);
   },{fps:16,hold:true});
 }
 
-addEventListener("hashchange",()=>{ const h=norm(location.hash); if(h===shown) return; if(busy) commit(h); else go(h,null); });
-commit(norm(location.hash)); requestAnimationFrame(tick);
-if(document.fonts) document.fonts.ready.then(()=>{ if($("#inicio").classList.contains("on")) layout(); });
+/* menú superior */
+const link=(id,fn)=>$(id).addEventListener("click",e=>{ e.preventDefault(); fn(e.currentTarget); });
+link("#nav-home",el=>{ scrollTo({top:0,behavior:REDUCED?"instant":"smooth"}); });
+link("#nav-ruta",el=>jump(-1,el));
+link("#nav-conv",el=>jump(0,el));
+link("#nav-final",el=>jump(8,el));
+link("#nav-reg",el=>jump(6,el));
+
+layout(); requestAnimationFrame(tick);
+if(document.fonts) document.fonts.ready.then(()=>{ layout(); onScroll(); });
+{
+  const m=/^#etapa-([1-9])$/.exec(location.hash);
+  if(m){ const i=+m[1]-1; secs[i].classList.add("snap","in"); ensureSprites(i); requestAnimationFrame(()=>{ instantTo(i); onScroll(); cur=target=i; place(); setTimeout(()=>secs[i].classList.remove("snap"),50); }); }
+  else onScroll();
+}
 </script>
 </body>
 </html>

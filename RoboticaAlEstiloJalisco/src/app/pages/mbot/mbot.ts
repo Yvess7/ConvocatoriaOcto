@@ -6,6 +6,7 @@ import {
   RutaTorneoBase,
   TramoRuta,
 } from '../shared/ruta-torneo';
+import { FondoDetalle } from '../shared/camino-base';
 
 @Component({
   imports: [RouterLink],
@@ -13,6 +14,18 @@ import {
   templateUrl: './mbot.html',
 })
 export class MbotComponent extends RutaTorneoBase {
+  readonly acento = 'sky' as const;
+  readonly semilla = 3;
+
+  /** Colores de las bandas de cada etapa del camino. */
+  readonly colores = ['#e81a4f', '#0284c7', '#f6842b', '#0284c7', '#e81a4f', '#f6842b', '#e81a4f'];
+
+  /** Etapas con contenido propio y el color de fondo con el que empiezan y terminan. */
+  readonly fondos: Record<string, FondoDetalle> = {
+    lanzamiento: { inicio: '#f6842b', fin: '#ffffff' },
+    eliminatoria: { inicio: '#f0f9ff', fin: '#f0f9ff' },
+  };
+
   readonly tramos: TramoRuta[] = [
     {
       id: 'previo',
@@ -23,7 +36,7 @@ export class MbotComponent extends RutaTorneoBase {
         {
           id: 'lanzamiento',
           etiqueta: 'Previo · 01',
-          titulo: 'Lanzamiento',
+          titulo: 'Convocatoria',
           resumen: 'Arranca la convocatoria oficial.',
           fecha: 'Fecha por confirmar',
           ruta: '/mbot',

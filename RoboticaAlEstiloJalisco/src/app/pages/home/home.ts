@@ -500,23 +500,68 @@ export class HomeComponent {
           }
         };
 
-        // Estado inicial según la posición de scroll al cargar
-        if (window.scrollY < 45) {
-          aplicarEstadoProgreso(0);
-        }
+        // 5. Trigger al pasar la primera sección (banner) que ejecuta la animación completa por tiempo
+        const animState = { progress: 0 };
+        let activeTween: gsap.core.Tween | null = null;
+        let inicializando = true;
 
-        // 5. ScrollTrigger con recorrido amplio y scrub suave para evitar saltos al scrollear rápido
-        ScrollTrigger.create({
+        const animarHacia = (destino: number, duracionBase: number) => {
+          activeTween?.kill();
+          const distancia = Math.abs(destino - animState.progress);
+          if (distancia < 0.001) {
+            animState.progress = destino;
+            aplicarEstadoProgreso(destino);
+            return;
+          }
+
+          activeTween = gsap.to(animState, {
+            progress: destino,
+            duration: Math.max(0.25, duracionBase * distancia),
+            ease: 'none',
+            onUpdate: () => {
+              aplicarEstadoProgreso(animState.progress);
+            },
+            onComplete: () => {
+              activeTween = null;
+              animState.progress = destino;
+              aplicarEstadoProgreso(destino);
+            },
+          });
+        };
+
+        const triggerAnim = ScrollTrigger.create({
           trigger: banner,
-          start: 'top -35px',
-          end: '+=950',
-          scrub: 1.5,
-          onUpdate: (self) => {
-            aplicarEstadoProgreso(self.progress);
+          start: 'bottom 300px',
+          end: 'max',
+          onEnter: () => {
+            if (inicializando) {
+              animState.progress = 1;
+              aplicarEstadoProgreso(1);
+              return;
+            }
+            animarHacia(1, 1.15);
+          },
+          onLeaveBack: () => {
+            if (inicializando) {
+              animState.progress = 0;
+              aplicarEstadoProgreso(0);
+              return;
+            }
+            animarHacia(0, 0.85);
           },
         });
 
         ScrollTrigger.refresh();
+        inicializando = false;
+
+        // Estado inicial según la posición de scroll al cargar
+        if (triggerAnim.isActive) {
+          animState.progress = 1;
+          aplicarEstadoProgreso(1);
+        } else {
+          animState.progress = 0;
+          aplicarEstadoProgreso(0);
+        }
       });
     }, this.host.nativeElement);
   }

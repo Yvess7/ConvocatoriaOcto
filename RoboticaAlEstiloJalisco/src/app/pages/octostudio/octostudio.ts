@@ -6,6 +6,7 @@ import {
   RutaTorneoBase,
   TramoRuta,
 } from '../shared/ruta-torneo';
+import { FondoDetalle } from '../shared/camino-base';
 
 @Component({
   imports: [RouterLink],
@@ -13,6 +14,18 @@ import {
   templateUrl: './octostudio.html',
 })
 export class OctostudioComponent extends RutaTorneoBase {
+  readonly acento = 'purple' as const;
+  readonly semilla = 21;
+
+  /** Colores de las bandas de cada etapa del camino. */
+  readonly colores = ['#7a59eb', '#f6842b', '#7a59eb', '#e81a4f', '#7a59eb', '#f6842b', '#e81a4f'];
+
+  /** Etapas con contenido propio y el color de fondo con el que empiezan y terminan. */
+  readonly fondos: Record<string, FondoDetalle> = {
+    lanzamiento: { inicio: '#e81a4f', fin: '#e81a4f' },
+    eliminatoria: { inicio: '#faf5ff', fin: '#faf5ff' },
+  };
+
   readonly tramos: TramoRuta[] = [
     {
       id: 'previo',
@@ -23,7 +36,7 @@ export class OctostudioComponent extends RutaTorneoBase {
         {
           id: 'lanzamiento',
           etiqueta: 'Previo · 01',
-          titulo: 'Lanzamiento oficial',
+          titulo: 'Convocatoria',
           resumen: 'Publicación de la convocatoria estatal e inicio de difusión institucional.',
           fecha: '03 de noviembre de 2026',
           ruta: '/octostudio',

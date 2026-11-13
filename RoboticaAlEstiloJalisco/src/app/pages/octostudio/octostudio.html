@@ -38,201 +38,709 @@
   </div>
 </section>
 
-<!-- Mapa de camino al torneo (sección blanca debajo del banner · tarjetas que se voltean al hacer clic) -->
-<section id="camino-etapas" class="relative z-10 bg-white pt-16 pb-10 sm:pt-24 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
-  <!-- Fondo dinámico: figuras variadas y retículas de puntos en movimiento -->
-  <div class="absolute -left-10 top-16 w-44 h-44 bg-purple-200/60 shape-octagon animate-float [--r:10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-10 top-24 w-28 h-28 bg-purple-300/50 shape-diamond animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-6 top-1/4 w-40 h-28 text-purple-300/60 bg-tech-dots animate-drift pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -right-8 top-1/3 w-36 h-36 bg-purple-200/70 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-10 top-1/2 w-24 h-24 bg-purple-300/50 shape-cross animate-float-slow [--r:20deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-12 top-1/2 w-40 h-28 text-purple-300/60 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -left-8 top-2/3 w-36 h-36 bg-purple-200/60 shape-parallelogram animate-drift [--r:-10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-6 top-3/4 w-28 h-28 bg-purple-300/50 shape-triangle animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-1/4 bottom-16 w-32 h-32 bg-purple-200/60 shape-diamond animate-drift pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-1/4 bottom-6 w-24 h-24 bg-purple-300/50 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+<!-- Mapa 3D del camino al torneo: cada estación lleva a su etapa dentro de esta misma vista -->
+<section
+  #seccionMapa
+  id="camino-etapas"
+  class="relative z-10 overflow-hidden bg-white pt-16 pb-6 sm:pt-24 lg:pt-32"
+>
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 size-44 shape-hexagon animate-float [--r:10deg] pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-10 top-24 size-28 shape-diamond animate-spin-slow pointer-events-none" [class]="estilo().figuraB" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-6 top-1/4 w-40 h-28 bg-tech-dots animate-drift pointer-events-none" [class]="estilo().puntos" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute -right-8 top-1/3 size-36 shape-octagon animate-spin-slow pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 top-1/2 size-24 shape-cross animate-float-slow [--r:20deg] pointer-events-none" [class]="estilo().figuraB" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.2" class="absolute right-12 top-1/2 w-40 h-28 bg-tech-dots animate-float-slow pointer-events-none" [class]="estilo().puntos" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.35" class="absolute -left-8 top-2/3 size-36 shape-parallelogram animate-drift [--r:-10deg] pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.45" class="absolute right-6 top-3/4 size-28 shape-triangle animate-float [--r:15deg] pointer-events-none" [class]="estilo().figuraB" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.25" class="absolute left-1/4 bottom-16 size-32 shape-diamond animate-drift pointer-events-none" [class]="estilo().figuraA" aria-hidden="true"></div>
 
-  <!-- Fondo extra animado con GSAP (parallax al hacer scroll + flotación) -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute left-1/4 top-12 w-16 h-16 shape-triangle bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-1/3 top-1/6 w-20 h-20 shape-cross bg-purple-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.5" class="absolute left-1/3 top-1/5 w-14 h-14 shape-diamond bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.3" class="absolute right-4 top-2/5 w-24 h-24 shape-parallelogram bg-purple-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-2 top-2/5 w-20 h-20 shape-hexagon bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.6" class="absolute left-1/5 top-1/2 w-12 h-12 shape-octagon bg-purple-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.5" class="absolute right-1/5 top-3/5 w-16 h-16 shape-triangle bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.2" class="absolute right-1/3 top-3/5 w-40 h-28 bg-tech-dots text-purple-300/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.3" class="absolute left-4 top-3/5 w-28 h-28 shape-diamond bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-1/3 top-4/5 w-20 h-20 shape-cross bg-purple-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute right-8 top-4/5 w-24 h-24 shape-octagon bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-2 top-5/6 w-40 h-28 bg-tech-dots text-purple-300/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.7" class="absolute right-1/2 top-1/3 w-10 h-10 shape-hexagon bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.7" class="absolute left-1/2 top-2/3 w-10 h-10 shape-triangle bg-purple-200/60 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute left-1/2 top-1/12 w-12 h-12 shape-diamond bg-purple-300/40 pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.6" class="absolute right-1/2 bottom-1/12 w-14 h-14 shape-cross bg-purple-200/60 pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-16 sm:mb-20" data-gsap="encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-purple-600 text-white text-xs uppercase tracking-widest font-normal mb-3">
-        Mapa del torneo
-      </span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-bold tracking-tight">
-        Camino al torneo OctoStudio
-      </h2>
-      <div class="mt-4 mx-auto h-1.5 w-20 rounded-md bg-purple-600"></div>
-      <p class="text-lg text-ink/70 font-normal mt-4 max-w-xl mx-auto">
-        Toca una tarjeta para voltearla y ver el detalle. Desde ahí puedes ir directo a la sección correspondiente del sitio.
-      </p>
-    </div>
-
-    @for (tramo of tramos; track tramo.id) {
-      <div class="mb-20 sm:mb-28 last:mb-0" data-gsap="bloque">
-        <!-- Encabezado del tramo -->
-        <div class="max-w-md mx-auto mb-16 text-center" data-gsap="tramo">
-          <div class="bg-purple-600 text-white rounded-2xl p-5 border-b-6 border-purple-900 shadow-lg hover:-translate-y-1 transition-transform duration-300">
-            <span class="text-xs uppercase tracking-widest text-purple-100 font-normal">{{ tramo.insignia }}</span>
-            <h3 class="text-2xl font-bold mt-1">{{ tramo.titulo }}</h3>
-            <p class="text-sm text-purple-100 font-normal mt-1.5">{{ tramo.subtitulo }}</p>
-          </div>
-        </div>
-
-        <!-- Sendero sinuoso: los pasos se alternan a izquierda y derecha y se unen con curvas -->
-        <div class="relative" data-gsap="sendero">
-          <!-- Robot: pasa por detrás de las tarjetas (z-30) y por encima de los nodos (z-10) -->
-          <div data-gsap="robot" class="absolute top-0 left-0 z-20 w-16 md:w-24 pointer-events-none" aria-hidden="true">
-            <img data-gsap="robot-img" src="images/octo-robot.webp" alt="" class="w-full h-auto drop-shadow-md" />
-            <span data-gsap="robot-sombra" class="absolute left-1/2 -bottom-1 h-3 w-3/4 -translate-x-1/2 rounded-full bg-ink/25 blur-sm" aria-hidden="true"></span>
-          </div>
-          @for (paso of tramo.pasos; track paso.id; let ultimo = $last; let i = $index) {
-            <div
-              class="relative flex flex-row items-start gap-4 md:flex-col md:items-center md:gap-0 md:w-1/2"
-              [class]="esIzquierda(paso.id) ? 'md:mr-auto' : 'md:ml-auto'"
-            >
-              <!-- Línea vertical punteada y rastro hacia el siguiente paso (móvil) -->
-              @if (!ultimo) {
-                <div class="md:hidden absolute left-5.5 top-6 -bottom-10 w-1 border-l-4 border-dashed border-purple-300" aria-hidden="true"></div>
-                <span data-gsap="rastro-m" class="md:hidden absolute left-5.5 top-6 -bottom-10 w-1 bg-purple-600 origin-top" aria-hidden="true"></span>
-              }
-
-              <!-- Curva punteada animada hacia el siguiente paso (escritorio) -->
-              @if (!ultimo) {
-                <svg
-                  data-gsap="curva" class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
-                  [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    [attr.d]="esIzquierda(paso.id) ? 'M0 0 C0 50 100 50 100 100' : 'M100 0 C100 50 0 50 0 100'"
-                    class="fill-none stroke-purple-300 stroke-4 animate-dash [vector-effect:non-scaling-stroke]"
-                    stroke-dasharray="2 14"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                <svg
-                  data-gsap="rastro" class="hidden md:block absolute top-8 h-100 w-full overflow-visible pointer-events-none"
-                  [class]="esIzquierda(paso.id) ? 'left-1/2' : 'right-1/2'"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    [attr.d]="esIzquierda(paso.id) ? 'M0 0 C0 50 100 50 100 100' : 'M100 0 C100 50 0 50 0 100'"
-                    class="fill-none stroke-purple-600 stroke-4 [vector-effect:non-scaling-stroke]"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              }
-
-              <!-- Nodo numerado: aparece con zoom, late con un anillo y flota suavemente -->
-              <div data-gsap="nodo" class="relative z-10 shrink-0 w-12 h-12 md:w-16 md:h-16">
-                <span class="absolute inset-0 rounded-full bg-purple-400/60 animate-ping" aria-hidden="true"></span>
-                <button
-                  type="button"
-                  (click)="alternar(paso.id)"
-                  [attr.aria-label]="'Voltear tarjeta: ' + paso.titulo"
-                  class="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-purple-700 border-4 border-white shadow-lg flex items-center justify-center text-white text-base md:text-xl hover:scale-110 active:scale-95 transition-[scale,background-color,color,border-color,box-shadow] duration-300 cursor-pointer data-[estado=futuro]:bg-white data-[estado=futuro]:text-purple-700 data-[estado=futuro]:border-purple-300 data-[estado=actual]:bg-purple-600 data-[estado=actual]:ring-4 data-[estado=actual]:ring-purple-300"
-                >
-                  0{{ i + 1 }}
-                </button>
-              </div>
-
-              <!-- Tarjeta con volteo 3D -->
-              <div
-                data-gsap="tarjeta" [attr.data-lado]="esIzquierda(paso.id) ? -1 : 1" class="relative z-30 flex-1 min-w-0 w-full max-w-sm mt-0 md:mt-4 md:flex-none"
-              >
-                <div class="perspective-distant">
-                  <div
-                    role="button"
-                    tabindex="0"
-                    [attr.aria-pressed]="esVolteada(paso.id)"
-                    (click)="alternar(paso.id)"
-                    (keydown.enter)="alternar(paso.id)"
-                    (keydown.space)="alternar(paso.id); $event.preventDefault()"
-                    class="group relative h-60 md:h-64 w-full transform-3d cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-purple-300 rounded-2xl"
-                    [attr.data-paso]="paso.id" data-gsap="giro"
-                  >
-                    <!-- Cara frontal -->
-                    <div class="absolute inset-0 backface-hidden rounded-2xl bg-white border-2 border-purple-200 border-b-6 border-b-purple-600 p-4 md:p-6 flex flex-col justify-between shadow-md group-hover:shadow-xl transition-shadow duration-300">
-                      <div>
-                        <span class="inline-block px-2.5 py-0.5 rounded-md bg-purple-100 text-purple-800 text-xs font-normal uppercase tracking-wider">
-                          {{ paso.etiqueta }}
-                        </span>
-                        <h4 class="text-xl md:text-2xl text-ink font-normal tracking-tight mt-3 leading-tight">{{ paso.titulo }}</h4>
-                        <p class="text-sm sm:text-base text-purple-700 font-normal mt-3 uppercase tracking-wider">{{ paso.fecha }}</p>
-                      </div>
-                      <span class="text-xs uppercase tracking-wider text-purple-700 font-normal">Toca para ver el detalle</span>
-                    </div>
-
-                    <!-- Cara posterior -->
-                    <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-purple-700 border-b-6 border-purple-950 p-4 md:p-6 flex flex-col justify-between text-white shadow-xl">
-                      <div>
-                        <span class="text-xs uppercase tracking-widest text-purple-200 font-normal">{{ paso.etiqueta }} · Detalle</span>
-                        <p class="text-sm sm:text-lg font-normal leading-relaxed mt-2">{{ paso.resumen }}</p>
-                      </div>
-                      <div>
-                        <a
-                          [routerLink]="paso.ruta"
-                          [fragment]="paso.fragmento"
-                          (click)="$event.stopPropagation()"
-                          class="text-base underline underline-offset-4 decoration-2 hover:text-purple-200 transition-colors"
-                        >
-                          {{ paso.enlace }}
-                        </a>
-                        <p class="text-xs uppercase tracking-wider text-purple-200 font-normal mt-3">Toca la tarjeta para volver</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Separación entre pasos (línea punteada solo en móvil) -->
-            @if (!ultimo) {
-              <div class="h-10 md:h-16" aria-hidden="true"></div>
-            }
-          }
-        </div>
-      </div>
-    }
+  <div class="relative z-10 mx-auto mb-14 max-w-3xl px-6 text-center sm:mb-20" data-gsap="encabezado">
+    <span class="mb-3 inline-block rounded-md px-3.5 py-1 text-xs font-normal uppercase tracking-widest text-white" [class]="estilo().etiqueta">
+      Mapa del torneo
+    </span>
+    <h2 class="text-4xl font-normal tracking-tight text-ink sm:text-5xl lg:text-6xl">Camino al torneo OctoStudio</h2>
+    <div class="mx-auto mt-4 h-1.5 w-20 rounded-md" [class]="estilo().barra"></div>
+    <p class="mx-auto mt-4 max-w-xl text-lg font-normal text-ink/70">Elige una estación para saltar a su etapa, o sigue desplazándote: cada etapa continúa a la anterior, de la fase previa a la gran final.</p>
   </div>
 
-  <!-- Indicador de progreso fijo (aparece mientras el mapa está en pantalla) -->
-  <div data-gsap="progreso" class="invisible opacity-0 fixed z-40 right-3 bottom-3 md:right-6 md:top-1/2 md:bottom-auto md:-translate-y-1/2 flex items-center gap-3 px-3 py-2 rounded-md bg-white/90 backdrop-blur shadow-md pointer-events-none" aria-hidden="true">
-    <span data-gsap="progreso-texto" class="text-xs sm:text-sm text-ink uppercase tracking-wider font-normal">Paso 1</span>
-    <span class="relative block h-1.5 w-16 md:h-20 md:w-1.5 rounded-md bg-purple-100 overflow-hidden">
-      <span data-gsap="progreso-barra" class="absolute inset-0 rounded-md bg-purple-600 origin-top-left"></span>
-    </span>
+  <div #ruta class="relative z-10 mx-auto w-full max-w-170 pb-10">
+    <svg class="pointer-events-none absolute inset-0 size-full overflow-visible" aria-hidden="true">
+      <path #trazoBase class="fill-none stroke-brand-orange/20 stroke-14 [stroke-linecap:round]" />
+      <path #trazoProgreso class="fill-none stroke-14 [stroke-linecap:round] drop-shadow-lg" [class]="estilo().trazo" />
+      <path #trazoPunteado class="fill-none stroke-white stroke-3 opacity-90 [stroke-dasharray:9_11] [stroke-linecap:round]" />
+    </svg>
+
+    @for (e of etapas(); track e.paso.id) {
+      <button
+        #estacion
+        type="button"
+        data-gsap="estacion"
+        class="group/est absolute -m-16 size-32 rounded-lg outline-none focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
+        [attr.aria-label]="'Etapa ' + e.etiquetaNumero + ': ' + e.paso.titulo"
+        (click)="activar(e.i)"
+        (pointerenter)="hover(estacion, $event)"
+        (focus)="hover(estacion, $event)"
+      >
+        <div
+          data-spr
+          data-gsap="estacion-spr"
+          [attr.data-k]="e.icono"
+          class="pointer-events-none absolute left-1/2 top-1/2 -ml-29.5 -mt-29.5 size-59 bg-no-repeat bg-size-[500%_400%] drop-shadow-xl"
+          [style.background-image]="imagenHoja(e.icono)"
+        ></div>
+        <span
+          class="absolute -bottom-2 left-1/2 z-10 min-w-11 -translate-x-1/2 rounded-md border-2 border-white px-2.5 py-1 text-center text-sm leading-tight text-white shadow-md group-data-[hecha]/est:ring-4 group-data-[hecha]/est:ring-brand-orange/35"
+          [style.background-color]="e.color"
+        >
+          <span data-gsap="estacion-num" class="block">{{ e.etiquetaNumero }}</span>
+        </span>
+        <span
+          class="absolute top-1/2 block w-max max-w-[30vw] -translate-y-1/2 text-base leading-tight text-ink transition-colors group-hover/est:text-brand-orange group-focus-visible/est:text-brand-orange group-data-[lado=l]/est:right-full group-data-[lado=l]/est:mr-6 group-data-[lado=l]/est:text-right group-data-[lado=r]/est:left-full group-data-[lado=r]/est:ml-6 sm:max-w-48 sm:text-xl"
+        >
+          <span data-gsap="estacion-lbl" class="block">{{ e.paso.titulo }}</span>
+        </span>
+      </button>
+    }
+
+    <div
+      #personaje
+      data-spr
+      data-k="personaje"
+      class="pointer-events-none absolute z-30 -ml-18.75 -mt-26 size-37.5 bg-no-repeat bg-size-[500%_400%] drop-shadow-xl"
+      [style.background-image]="imagenHoja('personaje')"
+      aria-hidden="true"
+    ></div>
   </div>
 </section>
 
-<!-- Transición ondulada suave y natural hacia Clasificación con curva abierta y serena -->
-<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-10 sm:h-14 lg:h-16 text-purple-50 fill-current block" aria-hidden="true">
-    <path d="M0,32 C260,58 480,56 740,34 C1000,12 1220,22 1440,38 L1440,80 L0,80 Z"></path>
+<!-- Etapas encadenadas, en orden, dentro de la misma vista -->
+@for (e of etapas(); track e.paso.id) {
+  <section #seccion [id]="'etapa-' + e.paso.id" [attr.data-i]="e.i" class="group/stage relative scroll-mt-21">
+    <!-- Onda de entrada (trazo único) -->
+    <div class="pointer-events-none relative -mb-px w-full overflow-hidden leading-none" [style.background-color]="e.fondoAnterior" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block h-12 w-full fill-current sm:h-16 lg:h-20" [style.color]="e.color">
+        <path [attr.d]="e.ondaSuperior"></path>
+      </svg>
+    </div>
+
+    <!-- Banda de color: icono 3D junto al título -->
+    <div #banda data-gsap="etapa-banda" class="relative overflow-hidden py-10 text-white sm:py-14" [style.background-color]="e.color">
+      <div data-gsap="fondo" data-vel="-0.25" class="pointer-events-none absolute -left-10 top-6 size-40 bg-white/10 shape-hexagon animate-drift" aria-hidden="true"></div>
+      <div data-gsap="fondo" data-vel="0.3" class="pointer-events-none absolute -right-8 bottom-4 size-32 bg-white/10 shape-octagon animate-spin-slow" aria-hidden="true"></div>
+      <div data-gsap="fondo" data-vel="-0.15" class="pointer-events-none absolute right-1/4 top-4 w-40 h-24 text-white/20 bg-tech-dots animate-float-slow" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-12 md:gap-12 md:text-left lg:gap-20">
+          <div class="md:col-span-5" [class.md:order-2]="e.invertida" data-gsap="etapa-icono">
+            <button
+              #grande
+              type="button"
+              class="relative mx-auto block size-50 rounded-lg outline-none focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-white sm:size-60"
+              [attr.aria-label]="'Animar icono 3D de ' + e.paso.titulo"
+              (click)="clicIconoGrande(grande)"
+              (pointerenter)="hover(grande, $event)"
+              (focus)="hover(grande, $event)"
+            >
+              <div
+                data-spr
+                [attr.data-k]="e.icono"
+                class="pointer-events-none absolute left-1/2 top-1/2 -ml-37.5 -mt-37.5 size-75 bg-no-repeat bg-size-[500%_400%] drop-shadow-2xl sm:-ml-47.5 sm:-mt-47.5 sm:size-95"
+                [style.background-image]="imagenHoja(e.icono)"
+              ></div>
+            </button>
+          </div>
+
+          <div class="md:col-span-7" [class.md:order-1]="e.invertida">
+            <span data-gsap="etapa-item" class="inline-block rounded-md bg-white/20 px-3.5 py-1.5 text-xs uppercase tracking-widest text-white">
+              {{ e.paso.etiqueta }} · {{ e.etiquetaNumero }} de {{ etapas().length < 10 ? '0' + etapas().length : etapas().length }}
+            </span>
+            <h2 data-gsap="etapa-item" class="mt-4 text-4xl font-normal leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              {{ e.paso.titulo }}
+            </h2>
+            <p data-gsap="etapa-item" class="mx-auto mt-5 max-w-xl border-white text-lg leading-relaxed text-white md:mx-0 md:border-l-4 md:pl-5 sm:text-xl">
+              {{ e.paso.resumen }}
+            </p>
+            <p data-gsap="etapa-item" class="mt-4 text-sm uppercase tracking-wider text-white/90">{{ e.paso.fecha }}</p>
+
+            <nav data-gsap="etapa-item" class="mt-8 flex items-start justify-center gap-4 md:justify-start" aria-label="Navegación entre etapas">
+              <button
+                #bAnterior
+                type="button"
+                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                [class.invisible]="e.primera"
+                [attr.aria-label]="'Ir a la etapa anterior: ' + e.anterior"
+                (click)="irSuave(e.i - 1)"
+                (pointerenter)="hover(bAnterior, $event)"
+                (focus)="hover(bAnterior, $event)"
+              >
+                <div data-spr data-k="anterior" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('anterior')"></div>
+                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">{{ e.anterior }}</span>
+              </button>
+              <button
+                #bMapa
+                type="button"
+                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                aria-label="Volver al mapa"
+                (click)="saltar(-1, bMapa)"
+                (pointerenter)="hover(bMapa, $event)"
+                (focus)="hover(bMapa, $event)"
+              >
+                <div data-spr data-k="casa" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('casa')"></div>
+                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">Mapa</span>
+              </button>
+              <button
+                #bSiguiente
+                type="button"
+                class="relative h-26 w-32 rounded-lg bg-white/15 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white"
+                [class.invisible]="e.ultima"
+                [attr.aria-label]="'Ir a la etapa siguiente: ' + e.siguiente"
+                (click)="irSuave(e.i + 1)"
+                (pointerenter)="hover(bSiguiente, $event)"
+                (focus)="hover(bSiguiente, $event)"
+              >
+                <div data-spr data-k="siguiente" class="pointer-events-none absolute left-1/2 top-1/2 -ml-22 -mt-26 size-44 bg-no-repeat bg-size-[500%_400%]" [style.background-image]="imagenHoja('siguiente')"></div>
+                <span class="absolute inset-x-1 bottom-2 text-center text-xs leading-tight text-white">{{ e.siguiente }}</span>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onda de salida hacia el contenido de la etapa (trazo único) -->
+    <div class="pointer-events-none relative -mb-px w-full overflow-hidden leading-none" [style.background-color]="e.color" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block h-12 w-full fill-current sm:h-16 lg:h-20" [style.color]="e.fondoInicio">
+        <path [attr.d]="e.ondaInferior"></path>
+      </svg>
+    </div>
+
+    @if (e.paso.id === 'lanzamiento') {
+<!-- Sección 1: Convocatoria Oficial OctoStudio (Fondo rojo institucional con texto libre y figuras variadas) -->
+<section id="convocatoria-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    <!-- Encabezado editorial principal -->
+    <div class="max-w-3xl" data-gsap="convocatoria-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
+        Convocatoria Estatal Oficial 2026-2027
+      </span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
+        Torneo de Programación al Estilo Jalisco OctoStudio
+      </h2>
+      <div class="mt-6 h-1.5 w-24 rounded-md bg-brand-orange"></div>
+      <p class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
+        La Secretaría de Educación del Estado de Jalisco, a través de la Subsecretaría de Educación Básica, la Dirección General de Programas Estratégicos, la Dirección de Articulación y la Dirección de Alfabetización Digital, convoca a estudiantes y docentes de educación primaria alta y secundaria de escuelas públicas y particulares a participar bajo el eje temático unificado «Jalisco Verde y Sustentable».
+      </p>
+    </div>
+
+    <!-- 4 Pilares Institucionales de la Convocatoria (Texto libre, sin cajas) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-4 border-t border-white/20">
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Eje Temático Unificado</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Jalisco Verde y Sustentable</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          Los proyectos deberán proponer soluciones creativas a problemáticas ambientales prioritarias de Jalisco: conservación de ecosistemas locales, manejo y reciclaje de residuos sólidos urbanos, protección de flora y fauna autóctona, y cuidado y aprovechamiento responsable del agua.
+        </p>
+        <p class="text-base text-white/80 font-normal leading-relaxed">
+          Todas las propuestas se plasmarán en la aplicación móvil gratuita OctoStudio en formato de cuentos interactivos o videojuegos educativos.
+        </p>
+      </div>
+
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Categorías de Participación</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Primaria Alta y Secundaria</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          <strong class="font-normal text-white">Categoría A – Primaria Alta:</strong> Alumnado de 4.º, 5.º o 6.º de primaria. Modalidad: Cuentos Interactivos y Narrativas Digitales.
+        </p>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          <strong class="font-normal text-white">Categoría B – Secundaria:</strong> Alumnado de 1.º, 2.º o 3.º de secundaria. Modalidad: Videojuegos Educativos y Simulaciones Interactivas.
+        </p>
+      </div>
+
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Integración y Equidad</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Equipos Mixtos de 3 Integrantes</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          Cada equipo competitivo estará integrado por exactamente tres (3) estudiantes del mismo plantel educativo y la misma categoría, acompañados por un docente asesor acreditado en el CCT.
+        </p>
+        <p class="text-base text-white/80 font-normal leading-relaxed">
+          Para impulsar la participación en áreas STEM, todos los equipos serán obligatoriamente mixtos (integrando al menos una alumna y un alumno en planteles de matrícula mixta).
+        </p>
+      </div>
+
+      <div class="space-y-4" data-gsap="convocatoria-bloque">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Igualdad Tecnológica</span>
+        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">100% Gratuito y Móvil Nativo</h3>
+        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
+          Los proyectos se programan y ejecutan de manera nativa en OctoStudio. No se requiere ni evalúa hardware externo, sensores ajenos ni compras dentro de la app: se garantiza absoluta equidad de oportunidades para cada centro escolar de Jalisco.
+        </p>
+      </div>
+    </div>
+
+    <!-- Llamado a la acción destacado al pie de los pilares -->
+    <div class="pt-8 border-t border-white/20 flex flex-col md:flex-row md:items-center justify-between gap-6" data-gsap="convocatoria-bloque">
+      <div class="max-w-2xl space-y-2">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Documento Oficial Vigente</span>
+        <h4 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Documentación y Bases Normativas</h4>
+        <p class="text-base text-white/85 font-normal leading-relaxed">
+          Explora los 20 artículos, rúbricas de 100 puntos y criterios de desempate en la sección interactiva, o visualiza el archivo PDF original de la convocatoria.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 shrink-0">
+        <button
+          type="button"
+          (click)="scrollTo('reglamento-octostudio')"
+          class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-white text-brand-red hover:bg-orange-50 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-base sm:text-lg shadow-lg cursor-pointer tracking-wider"
+        >
+          LEER CONVOCATORIA COMPLETA
+        </button>
+        <a
+          href="/docs/OctoPDF.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-[#e0731f] hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-base sm:text-lg shadow-lg tracking-wider"
+        >
+          LEER PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Transición ondulada entre Convocatoria (rojo) y Reglamento (blanco) con onda orgánica continua -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,18 C240,16 420,62 660,58 C900,54 1140,20 1320,24 C1380,26 1415,34 1440,42 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
+<!-- Sección 2: Bases Oficiales y Reglamento Completo OctoStudio (Fondo blanco editorial, sin anexos y con articulado íntegro) -->
+<section id="reglamento-octostudio" class="relative z-10 bg-white text-ink py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas dinámicas en el fondo blanco con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-48 h-48 bg-brand-red/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-24 w-36 h-36 bg-brand-orange/10 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-12 w-40 h-28 text-brand-red/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-8 top-1/2 w-44 h-44 bg-purple-200/40 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-12 bottom-20 w-32 h-32 bg-brand-orange/15 shape-cross pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.3" class="absolute right-1/4 bottom-12 w-44 h-32 text-brand-orange/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
 
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    <!-- Encabezado editorial del Reglamento Completo -->
+    <div class="max-w-3xl" data-gsap="reglamento-encabezado">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-3">
+        Reglamento Oficial y Normativa Vigente
+      </span>
+      <h3 class="text-3xl sm:text-4xl lg:text-5xl text-ink font-bold tracking-tight">
+        Bases y Reglamento del Torneo OctoStudio
+      </h3>
+      <div class="mt-4 h-1.5 w-20 rounded-md bg-brand-red"></div>
+      <p class="text-base sm:text-lg text-ink/75 font-normal leading-relaxed mt-4">
+        Normativa oficial completa expedida por la Secretaría de Educación del Estado de Jalisco. La presente convocatoria rige con carácter vinculante todas las etapas del certamen estatal 2026-2027.
+      </p>
+      <p class="text-sm text-ink/65 font-normal leading-relaxed mt-3 italic border-l-2 border-brand-orange pl-4">
+        Cuando en la presente convocatoria se mencione de manera genérica a los docentes, estudiantes y participantes, se considerará dentro de la misma a las y los docentes, a las y los estudiantes y a las y los participantes; por lo que estas menciones plasmadas en un género se refieren, sin distinción alguna, a todas las personas físicas de todos los géneros, sin preferencia ni discriminación alguna.
+      </p>
+    </div>
+
+    <!-- Articulado íntegro de las 20 Bases -->
+    <div class="space-y-12 divide-y divide-gray-100">
+
+      <!-- Base 1 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8 first:pt-0">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Primera</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Objetivo del Torneo</h4>
+        </div>
+        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+          El Torneo de Programación al Estilo Jalisco OctoStudio 2026-2027 tiene como objetivo fundamental fomentar el pensamiento computacional, el razonamiento lógico, la creatividad narrativa y el desarrollo de competencias digitales en las y los estudiantes de educación primaria alta y secundaria del Estado de Jalisco. A través de la creación de cuentos interactivos y videojuegos educativos desarrollados en la aplicación móvil gratuita OctoStudio, las y los participantes abordarán y propondrán soluciones creativas a problemáticas ambientales bajo el eje temático unificado «Jalisco Verde y Sustentable», promoviendo el trabajo en equipo, la inclusión, el pensamiento crítico y el impacto comunitario sustentable.
+        </p>
+      </div>
+
+      <!-- Base 2 -->
+      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Segunda</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De los Participantes y Asesores</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p><strong class="font-normal text-ink">1. Requisitos de las instituciones educativas:</strong> Podrán inscribirse escuelas de Educación Primaria Alta (4.º, 5.º y 6.º grado) y Educación Secundaria (1.º, 2.º y 3.º grado), públicas y particulares, que cuenten con Clave del Centro de Trabajo (CCT) oficial y registro vigente ante la Secretaría de Educación del Estado de Jalisco o la Secretaría de Educación Pública.</p>
+          <p><strong class="font-normal text-ink">2. Requisitos de las y los estudiantes:</strong> Deberán estar formalmente inscritos y cursando regularmente el ciclo escolar vigente en la institución educativa que representan. La participación será voluntaria e incluyente, favoreciendo la incorporación de estudiantes sin importar si cuentan con experiencia previa en programación.</p>
+          <p><strong class="font-normal text-ink">3. Conformación de los equipos:</strong> Cada equipo competitivo estará integrado por exactamente tres (3) estudiantes pertenecientes al mismo plantel educativo y a la misma categoría (Primaria Alta o Secundaria). No se admitirán equipos con menor ni mayor número de integrantes. Las y los integrantes del equipo elegirán entre sí a quien asumirá la función de capitán/a.</p>
+          <p><strong class="font-normal text-ink">4. Equidad e inclusión de género:</strong> Con el propósito de impulsar la equidad de género y la participación activa en las disciplinas STEM, todos los equipos serán obligatoriamente mixtos, debiendo integrar al menos a una alumna y a un alumno en escuelas con matrícula mixta. Este requisito aplicará obligatoriamente desde la fase de selección escolar y durante todas las etapas del torneo.</p>
+          <p><strong class="font-normal text-ink">5. Exclusividad de participación:</strong> Cada estudiante formará parte de un único equipo competitivo y deberá elegir participar en un solo torneo de robótica y/o programación convocados por la Dirección de Alfabetización Digital si estos ocurren simultáneamente. Esta restricción aplica exclusivamente a la competencia y no impide recibir los talleres y actividades formativas.</p>
+          <p><strong class="font-normal text-ink">6. Sustitución de integrantes:</strong> En caso de requerir la sustitución de algún integrante por causa justificada antes de las fases eliminatorias, el docente asesor deberá notificar formalmente al Comité Organizador, manteniendo estrictamente el criterio de equidad de género.</p>
+          <p><strong class="font-normal text-ink">7. Rol y límites del docente asesor:</strong> Cada equipo estará acompañado por un asesor o asesora en activo en el mismo plantel (docente, directivo o personal con adscripción comprobable en el CCT). El asesor podrá guiar y orientar metodológicamente, pero bajo ninguna circunstancia podrá programar el proyecto, modificar el código en OctoStudio ni responder preguntas del jurado durante las evaluaciones. La autoría intelectual y la defensa técnica corresponde exclusivamente al alumnado.</p>
+        </div>
+      </div>
+
+      <!-- Base 3 -->
+      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Tercera</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Categorías y Modalidades de Proyecto</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p><strong class="font-normal text-ink">1. Categorías de participación:</strong> Categoría A – Primaria Alta (4.º, 5.º o 6.º grado) y Categoría B – Secundaria (1.º, 2.º o 3.º grado).</p>
+          <p><strong class="font-normal text-ink">2. Modalidades de proyecto en OctoStudio:</strong> Los equipos desarrollarán: a) Cuento interactivo (narrativa digital animada donde el usuario interactúa con personajes y escenarios mediante bloques) o b) Videojuego educativo (experiencia interactiva con mecánicas de juego, retos y concientización ambiental). Ambas representan modalidades de desarrollo creativo dentro de cada categoría y no constituirán categorías de premiación separadas.</p>
+          <p><strong class="font-normal text-ink">3. Eje temático unificado «Jalisco Verde y Sustentable»:</strong> Los contenidos deberán abordar prioritariamente uno o más de los siguientes ejes de acción: conservación del medio ambiente y ecosistemas locales de Jalisco; separación, reducción y reciclaje de residuos sólidos urbanos; protección y conservación de flora y fauna autóctona; y uso responsable, cuidado, captación y conservación de recursos hídricos.</p>
+          <p><strong class="font-normal text-ink">4. Especificaciones tecnológicas de igualdad:</strong> Los proyectos se programarán y ejecutarán de manera nativa en OctoStudio. Para garantizar equidad, no se requerirá ni evaluará el uso de sensores externos, robótica física ni compras integradas. La calificación se centrará en programación, lógica, narrativa y mensaje social.</p>
+        </div>
+      </div>
+
+      <!-- Base 4 -->
+      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Cuarta</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Etapas del Torneo y Cronograma General</h4>
+        </div>
+        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+          El torneo se desarrollará a través de un trayecto progresivo estructurado en cinco fases de formación, selección y competencia:
+        </p>
+        <div class="pl-5 overflow-x-auto">
+          <table class="w-full text-left text-sm border border-gray-200 rounded-md overflow-hidden">
+            <thead class="bg-gray-50 border-b border-gray-200 text-ink">
+              <tr>
+                <th class="p-3 font-normal">Etapa / Actividad</th>
+                <th class="p-3 font-normal">Modalidad y Descripción</th>
+                <th class="p-3 font-normal">Periodo Oficial</th>
+                <th class="p-3 font-normal">Participación</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-ink/80">
+              <tr>
+                <td class="p-3 text-ink">Sesión informativa previa</td>
+                <td class="p-3">Sesión virtual obligatoria informativa para directivos, docentes y personal.</td>
+                <td class="p-3">24 de noviembre 2026</td>
+                <td class="p-3">Abierta a planteles interesados</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Sesión de preparación</td>
+                <td class="p-3">Sesión virtual obligatoria de capacitación técnica y pedagógica en OctoStudio.</td>
+                <td class="p-3">01 de diciembre de 2026</td>
+                <td class="p-3">Asesores y participantes inscritos</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Etapa 1: Selección escolar interna</td>
+                <td class="p-3">Muestra interna en cada plantel; selección de 1 equipo por nivel educativo.</td>
+                <td class="p-3">02 dic 2026 al 25 ene 2027</td>
+                <td class="p-3">Comunidad de cada centro escolar</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Registro oficial de equipo</td>
+                <td class="p-3">Carga digital del expediente y padrón MIR en el portal institucional.</td>
+                <td class="p-3">02 dic 2026 al 25 ene 2027</td>
+                <td class="p-3">Docente asesor del equipo ganador escolar</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Etapa 2: Eliminatoria regional</td>
+                <td class="p-3">Evaluación asíncrona regional (archivo .octostudio, bitácora de 1 pág y video de 3 min).</td>
+                <td class="p-3">02 feb al 05 marzo 2027</td>
+                <td class="p-3">Equipos clasificados de la etapa escolar</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Perfeccionamiento</td>
+                <td class="p-3">Acompañamiento pedagógico y refinamiento de propuestas clasificadas.</td>
+                <td class="p-3">09 al 26 de marzo 2027</td>
+                <td class="p-3">Equipos finalistas estatales</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Etapa 3: Gran Final Estatal</td>
+                <td class="p-3">Muestra presencial, pitch oral de 3 min, interrogatorio del jurado de 2 min y premiación.</td>
+                <td class="p-3">31 mar, 01 y 02 abril 2027</td>
+                <td class="p-3">12 equipos de Primaria y 12 de Secundaria</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Base 5 -->
+      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Quinta</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Comité Evaluador y Criterios de Evaluación</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p><strong class="font-normal text-ink">1. Integración del jurado y doble evaluación:</strong> En la Etapa Escolar el jurado estará integrado por hasta 3 docentes no asesores. En las Etapas Regional y Estatal la evaluación estará a cargo de especialistas designados por el Comité Organizador sin relación laboral con los planteles evaluados. Cada proyecto será evaluado de forma independiente por dos jueces y la calificación final será el promedio. Si existe discrepancia mayor a 15 puntos, un tercer juez independiente resolverá, tomándose la mediana.</p>
+          <p><strong class="font-normal text-ink">2. Rúbrica unificada de evaluación (100 puntos):</strong></p>
+        </div>
+        <div class="pl-5 overflow-x-auto">
+          <table class="w-full text-left text-sm border border-gray-200 rounded-md overflow-hidden">
+            <thead class="bg-gray-50 border-b border-gray-200 text-ink">
+              <tr>
+                <th class="p-3 font-normal">Criterio de Evaluación</th>
+                <th class="p-3 font-normal">Indicadores de Desempeño</th>
+                <th class="p-3 font-normal text-right">Puntaje Máximo</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-ink/80">
+              <tr>
+                <td class="p-3 text-ink">Innovación y Creatividad</td>
+                <td class="p-3">Propuesta original, decisiones creativas propias, narrativa y mecánicas interactivas novedosas frente a plantillas estándar.</td>
+                <td class="p-3 text-right text-brand-red">25 Puntos</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Impacto Social / Comunitario</td>
+                <td class="p-3">Vinculación profunda con «Jalisco Verde y Sustentable»; claridad de la problemática ambiental y viabilidad del mensaje reflexivo.</td>
+                <td class="p-3 text-right text-brand-red">25 Puntos</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Calidad Técnica</td>
+                <td class="p-3">Lógica de programación funcional en OctoStudio; uso correcto de eventos, secuencias, bucles e interacción; ausencia de errores de ejecución.</td>
+                <td class="p-3 text-right text-brand-red">25 Puntos</td>
+              </tr>
+              <tr>
+                <td class="p-3 text-ink">Bitácora y Exposición (Pitch)</td>
+                <td class="p-3">Memoria escrita de 1 página clara (proceso, retos y soluciones); fluidez oral en pitch de 3 min y solidez ante el jurado en 2 min de preguntas.</td>
+                <td class="p-3 text-right text-brand-red">25 Puntos</td>
+              </tr>
+              <tr class="bg-gray-50/70 font-normal text-ink">
+                <td colspan="2" class="p-3 text-right">Puntuación Total de la Evaluación:</td>
+                <td class="p-3 text-right text-brand-red">100 Puntos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pl-5 text-sm text-ink/75 font-normal leading-relaxed">
+          <strong class="font-normal text-ink">Criterios de desempate en orden de prelación:</strong> 1. Mayor puntaje en Calidad Técnica. 2. Mayor puntaje en Innovación y Creatividad. 3. Mayor puntaje en Impacto Social / Comunitario. De prevalecer el empate, un tercer juez evaluará a ciegas.
+        </p>
+      </div>
+
+      <!-- Base 6 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Sexta</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Sedes y Fechas de Participación</h4>
+        </div>
+        <div class="space-y-2 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p>• <strong class="font-normal text-ink">Etapa 1 (Selección interna escolar):</strong> Instalaciones de cada Centro de Trabajo (CCT) inscrito, del 02 de diciembre 2026 al 25 de enero de 2027.</p>
+          <p>• <strong class="font-normal text-ink">Etapa 2 (Eliminatoria regional):</strong> Plataforma digital oficial habilitada por la Dirección de Alfabetización Digital (modalidad virtual asíncrona), del 02 de febrero al 05 de marzo de 2027.</p>
+          <p>• <strong class="font-normal text-ink">Perfeccionamiento de proyectos clasificados:</strong> Modalidad híbrida y virtual, del 09 al 26 de marzo de 2027.</p>
+          <p>• <strong class="font-normal text-ink">Etapa 3 (Gran Final Estatal Presencial):</strong> Sede estatal institucional en Guadalajara, Jalisco, en el marco del Festival Educativo Estatal, del 31 de marzo, 01 y 02 de abril de 2027.</p>
+        </div>
+      </div>
+
+      <!-- Base 7 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Séptima</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Registro de Inscripción y Requisitos Obligatorios</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p>El proceso de inscripción es totalmente gratuito y se realizará exclusivamente en el portal oficial por conducto del docente asesor.</p>
+          <p><strong class="font-normal text-ink">Padrón obligatorio para la Matriz de Indicadores para Resultados (MIR):</strong> Como requisito de validación institucional, cada escuela inscrita deberá subir una relación nominal consolidada que incluya la CURP de cada estudiante participante y del docente asesor, CCT oficial, formato de Autorización de Uso de Imagen firmado por el responsable legal, copia de identificación oficial vigente del firmante y Carta Compromiso Institucional con firma y sello de la dirección escolar.</p>
+        </div>
+      </div>
+
+      <!-- Base 8 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Octava</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Sistema de Selección y Avance Regional</h4>
+        </div>
+        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+          En la Etapa 1 (Escolar), cada CCT realizará su muestra interna y registrará al equipo ganador de cada categoría. En la Etapa 2 (Regional), los proyectos competirán dentro de su respectiva región educativa. Avanzan a la Gran Final Estatal Presencial los equipos que obtengan el primer lugar regional en cada categoría, asegurando un cupo estatal de hasta 12 equipos de Primaria Alta y hasta 12 equipos de Secundaria de las distintas regiones de Jalisco.
+        </p>
+      </div>
+
+      <!-- Base 9 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Novena</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Dinámica de Evaluación y Entregables</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p>Para la evaluación de la Etapa Regional, el docente asesor deberá cargar en la plataforma institucional tres entregables obligatorios:</p>
+          <p>1. <strong class="font-normal text-ink">Archivo fuente ejecutable:</strong> Proyecto guardado con la extensión nativa <code>.octostudio</code>.</p>
+          <p>2. <strong class="font-normal text-ink">Memoria del Proyecto (Bitácora):</strong> Documento de una página en PDF que sintetice la problemática ambiental abordada, la descripción del cuento o juego, la lógica de bloques empleada, los retos superados y los aprendizajes obtenidos.</p>
+          <p>3. <strong class="font-normal text-ink">Video de demostración:</strong> Enlace a un video de máximo 3 minutos donde se aprecie la ejecución continua del programa y la explicación de viva voz de las y los estudiantes integrantes del equipo.</p>
+          <p>En la Gran Final Estatal Presencial, los equipos realizarán un pitch oral de 3 minutos ante el jurado, seguido de 2 minutos de preguntas y respuestas técnicas.</p>
+        </div>
+      </div>
+
+      <!-- Base 10 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Causas de Descalificación</h4>
+        </div>
+        <div class="space-y-2 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p>Serán motivos de descalificación inapelable en cualquier etapa del torneo:</p>
+          <p>a) La falta de originalidad o copia del código de programación de proyectos ajenos o plantillas preexistentes.</p>
+          <p>b) La intervención directa o programación realizada por personas ajenas al equipo de 3 estudiantes.</p>
+          <p>c) La inconsistencia o falsedad en la información entregada o documentos del expediente escolar.</p>
+          <p>d) El incumplimiento del criterio obligatorio de equidad de género (equipo mixto con al menos una alumna y un alumno).</p>
+          <p>e) La sustitución no autorizada de integrantes del equipo durante el torneo.</p>
+          <p>f) Incumplir el Código de Conducta o incurrir en faltas de respeto hacia otros equipos, jurados u organizadores.</p>
+        </div>
+      </div>
+
+      <!-- Base 11 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Primera</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Publicación de Resultados</h4>
+        </div>
+        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+          Los dictámenes del jurado y la lista de folios y escuelas clasificadas se publicarán oficialmente en el portal institucional de la Secretaría de Educación del Estado de Jalisco conforme al calendario oficial. Los resultados serán definitivos en sus aspectos técnicos. La información personal se protegerá omitiendo nombres en listados públicos, identificándose únicamente por folio y CCT.
+        </p>
+      </div>
+
+      <!-- Base 12 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Segunda</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De los Reconocimientos y Premiación Oficial</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
+          <p><strong class="font-normal text-ink">1. Reconocimientos de participación:</strong> Se emitirá una constancia digital oficial de participación para todas las y los estudiantes, docentes asesores y directivos que completen satisfactoriamente el trayecto formativo y las entregas del torneo.</p>
+          <p><strong class="font-normal text-ink">2. Premiación de la Etapa Regional (Equipamiento para el CCT):</strong> Los planteles educativos cuyos equipos resulten ganadores en la etapa regional recibirán equipamiento tecnológico institucional: Categoría A (Primaria Alta) con robots programables Codey Rocky para el aula de computación (1.er lugar: 5 unidades; 2.º lugar: 3 unidades; 3.er lugar: 2 unidades); Categoría B (Secundaria) con Kits de Robótica e Internet de las Cosas (IoT).</p>
+          <p><strong class="font-normal text-ink">3. Premiación de la Gran Final Estatal (Equipamiento, Medallas y Trofeos):</strong> En la Gran Final Estatal Presencial, las escuelas recibirán Visores de Realidad Virtual Meta Quest 2 asignados al CCT escolar (1.er lugar estatal: 5 visores; 2.º lugar: 3 visores; 3.er lugar: 2 visores), además de Medallas de Honor (oro, plata y bronce) y trofeos conmemorativos para las y los 3 estudiantes y el docente asesor.</p>
+        </div>
+      </div>
+
+      <!-- Base 13 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-red pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Tercera</span>
+          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Comité Organizador</h4>
+        </div>
+        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
+          El Comité Organizador estará integrado por las autoridades de la Secretaría de Educación del Estado de Jalisco representadas en la Dirección General de Programas Estratégicos, la Dirección de Articulación, la Dirección de Alfabetización Digital y la Coordinación de Robótica Educativa. El Comité tendrá las atribuciones de planear, operar, supervisar y resolver los aspectos logísticos, pedagógicos y administrativos del torneo.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Transición ondulada entre Bases del Torneo (blanco) y Código de Conducta / Marco Institucional (rojo) -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
+    <path d="M0,64 C180,30 360,18 580,44 C800,70 1020,26 1240,48 C1340,58 1395,38 1440,22 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+<!-- Sección 3: Código de Conducta, Ética y Marco Institucional (Fondo rojo institucional) -->
+<section id="conducta-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/10 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Articulado de Bases 14 a 20 sobre fondo rojo con texto blanco -->
+    <div class="space-y-12 divide-y divide-white/20">
+
+      <!-- Base 14 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8 first:pt-0">
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Cuarta</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">Del Código de Conducta y Juego Limpio</h4>
+        </div>
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
+          Todos los participantes, docentes, directivos, familias y acompañantes deberán conducirse en todo momento bajo principios de honestidad, respeto, empatía, espíritu deportivo y colaboración. Queda estrictamente prohibida cualquier interferencia en el trabajo de otros equipos o falta de respeto hacia las evaluaciones.
+        </p>
+      </div>
+
+      <!-- Base 15 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Quinta</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Propiedad Intelectual y Derechos de Imagen</h4>
+        </div>
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
+          La autoría intelectual de los códigos, historias y videojuegos desarrollados corresponderá a las y los estudiantes creadores. Los participantes otorgan a la Secretaría de Educación del Estado de Jalisco una licencia no exclusiva, gratuita y permanente para difundir, exhibir, publicar y reproducir los proyectos con fines exclusivamente educativos y de promoción cultural. El uso de la imagen estará condicionado a la entrega del formato de autorización firmado por el responsable legal conforme a las disposiciones vigentes.
+        </p>
+      </div>
+
+      <!-- Base 16 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Sexta</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Equidad, Inclusión y Accesibilidad</h4>
+        </div>
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
+          La Secretaría de Educación del Estado de Jalisco garantizará la igualdad de oportunidades y la no discriminación en todas las fases del torneo. Los equipos que requieran ajustes razonables por condición de discapacidad o pertenencia a comunidades prioritarias podrán solicitar las adecuaciones pertinentes al Comité Organizador al momento de su registro.
+        </p>
+      </div>
+
+      <!-- Base 17 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Séptima</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De las Quejas e Inconformidades</h4>
+        </div>
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
+          En caso de surgir alguna inconformidad con relación a aspectos de procedimiento administrativo o incumplimiento de las bases, el docente asesor podrá ingresar una solicitud formal por escrito fundamentada y dirigida al Comité Organizador dentro de las 24 horas posteriores a la publicación del hecho. Los fallos del jurado calificador respecto a la puntuación técnica de los proyectos serán definitivos e inapelables.
+        </p>
+      </div>
+
+      <!-- Base 18 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Octava</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">Del Aviso de Privacidad y Protección de Datos Personales</h4>
+        </div>
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
+          Los datos personales recabados (incluida la CURP y datos escolares) serán tratados de manera confidencial y protegidos de conformidad con la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Jalisco y sus Municipios. Su uso se limitará exclusivamente a la gestión operativa, validación de matrícula y reporte institucional de indicadores educativos del torneo.
+        </p>
+      </div>
+
+      <!-- Base 19 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Novena</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Gratuidad</h4>
+        </div>
+        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
+          Todas las actividades, capacitaciones, registros y participaciones en el Torneo de Programación al Estilo Jalisco OctoStudio son completamente gratuitas. Se prohíbe expresamente cualquier cobro o exigencia económica a las y los estudiantes, familias o escuelas participantes.
+        </p>
+      </div>
+
+      <!-- Base 20 -->
+      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
+        <div class="border-l-4 border-white pl-5 space-y-1">
+          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Vigésima</span>
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De los Casos No Previstos, Vigencia y Transitorios</h4>
+        </div>
+        <div class="space-y-3 pl-5 text-base text-white/90 font-normal leading-relaxed">
+          <p>Los casos o situaciones no contemplados en la presente Convocatoria serán analizados y resueltos de manera definitiva e inapelable por el Comité Organizador del Torneo.</p>
+          <p><strong class="font-normal text-white">Transitorio Único:</strong> La presente Convocatoria entrará en vigor al día siguiente de su publicación oficial en los canales institucionales de la Secretaría de Educación del Estado de Jalisco.</p>
+          <div class="pt-6 border-t border-white/20 text-sm text-white/80 font-normal space-y-1">
+            <p>Guadalajara, Jalisco, a 03 de noviembre de 2026</p>
+            <p class="italic">"2026, Jalisco, Cuna de Identidad Nacional y el Mundial que nos Une"</p>
+            <p class="pt-2 text-white">Mtro. Juan Carlos Flores Miramontes · Secretario de Educación del Estado de Jalisco</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Llamado a la acción institucional -->
+    <div class="pt-10 flex flex-wrap justify-center md:justify-start gap-4 border-t border-white/20">
+      <a
+        routerLink="/registro"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-brand-orange text-white hover:bg-orange-600 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+      >
+        Inscribir Equipo al Torneo OctoStudio
+      </a>
+      <a
+        href="/docs/OctoPDF.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-orange-50 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
+      >
+        Descargar Convocatoria en PDF
+      </a>
+    </div>
+  </div>
+</section>
+    } @else if (e.paso.id === 'eliminatoria') {
 <!-- Sección de Clasificación: Selector de Llaves (Play-Ins y Eliminatorias) sin cajas contenedoras -->
 <section id="clasificacion-octostudio" class="relative z-20 bg-purple-50 pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32">
   <!-- Figuras geométricas dinámicas aisladas para permitir position: sticky en la sub-barra -->
@@ -563,546 +1071,64 @@
     }
   </div>
 </section>
-
-<!-- Transición ondulada superior hacia la sección institucional OctoStudio con curva dinámica -->
-<div class="relative w-full overflow-hidden leading-none bg-purple-50 -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
-    <path d="M0,52 C200,24 380,14 620,28 C860,42 1080,68 1280,54 C1360,48 1400,36 1440,28 L1440,80 L0,80 Z"></path>
-  </svg>
-</div>
-
-<!-- Sección 1: Convocatoria Oficial OctoStudio (Fondo rojo institucional con texto libre y figuras variadas) -->
-<section id="convocatoria-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
-  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
-    <!-- Encabezado editorial principal -->
-    <div class="max-w-3xl" data-gsap="convocatoria-encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
-        Convocatoria Estatal Oficial 2026-2027
-      </span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
-        Torneo de Programación al Estilo Jalisco OctoStudio
-      </h2>
-      <div class="mt-6 h-1.5 w-24 rounded-md bg-brand-orange"></div>
-      <p class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
-        La Secretaría de Educación del Estado de Jalisco, a través de la Subsecretaría de Educación Básica, la Dirección General de Programas Estratégicos, la Dirección de Articulación y la Dirección de Alfabetización Digital, convoca a estudiantes y docentes de educación primaria alta y secundaria de escuelas públicas y particulares a participar bajo el eje temático unificado «Jalisco Verde y Sustentable».
-      </p>
-    </div>
-
-    <!-- 4 Pilares Institucionales de la Convocatoria (Texto libre, sin cajas) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-4 border-t border-white/20">
-      <div class="space-y-4" data-gsap="convocatoria-bloque">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Eje Temático Unificado</span>
-        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Jalisco Verde y Sustentable</h3>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          Los proyectos deberán proponer soluciones creativas a problemáticas ambientales prioritarias de Jalisco: conservación de ecosistemas locales, manejo y reciclaje de residuos sólidos urbanos, protección de flora y fauna autóctona, y cuidado y aprovechamiento responsable del agua.
-        </p>
-        <p class="text-base text-white/80 font-normal leading-relaxed">
-          Todas las propuestas se plasmarán en la aplicación móvil gratuita OctoStudio en formato de cuentos interactivos o videojuegos educativos.
-        </p>
-      </div>
-
-      <div class="space-y-4" data-gsap="convocatoria-bloque">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Categorías de Participación</span>
-        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Primaria Alta y Secundaria</h3>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          <strong class="font-normal text-white">Categoría A – Primaria Alta:</strong> Alumnado de 4.º, 5.º o 6.º de primaria. Modalidad: Cuentos Interactivos y Narrativas Digitales.
-        </p>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          <strong class="font-normal text-white">Categoría B – Secundaria:</strong> Alumnado de 1.º, 2.º o 3.º de secundaria. Modalidad: Videojuegos Educativos y Simulaciones Interactivas.
-        </p>
-      </div>
-
-      <div class="space-y-4" data-gsap="convocatoria-bloque">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Integración y Equidad</span>
-        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Equipos Mixtos de 3 Integrantes</h3>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          Cada equipo competitivo estará integrado por exactamente tres (3) estudiantes del mismo plantel educativo y la misma categoría, acompañados por un docente asesor acreditado en el CCT.
-        </p>
-        <p class="text-base text-white/80 font-normal leading-relaxed">
-          Para impulsar la participación en áreas STEM, todos los equipos serán obligatoriamente mixtos (integrando al menos una alumna y un alumno en planteles de matrícula mixta).
-        </p>
-      </div>
-
-      <div class="space-y-4" data-gsap="convocatoria-bloque">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Igualdad Tecnológica</span>
-        <h3 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">100% Gratuito y Móvil Nativo</h3>
-        <p class="text-base sm:text-lg text-white/85 font-normal leading-relaxed">
-          Los proyectos se programan y ejecutan de manera nativa en OctoStudio. No se requiere ni evalúa hardware externo, sensores ajenos ni compras dentro de la app: se garantiza absoluta equidad de oportunidades para cada centro escolar de Jalisco.
-        </p>
-      </div>
-    </div>
-
-    <!-- Llamado a la acción destacado al pie de los pilares -->
-    <div class="pt-8 border-t border-white/20 flex flex-col md:flex-row md:items-center justify-between gap-6" data-gsap="convocatoria-bloque">
-      <div class="max-w-2xl space-y-2">
-        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Documento Oficial Vigente</span>
-        <h4 class="text-2xl sm:text-3xl text-white font-bold tracking-tight">Documentación y Bases Normativas</h4>
-        <p class="text-base text-white/85 font-normal leading-relaxed">
-          Explora los 20 artículos, rúbricas de 100 puntos y criterios de desempate en la sección interactiva, o visualiza el archivo PDF original de la convocatoria.
-        </p>
-      </div>
-      <div class="flex flex-wrap items-center gap-4 shrink-0">
-        <button
-          type="button"
-          (click)="scrollTo('reglamento-octostudio')"
-          class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-white text-brand-red hover:bg-orange-50 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-base sm:text-lg shadow-lg cursor-pointer tracking-wider"
-        >
-          LEER CONVOCATORIA COMPLETA
-        </button>
-        <a
-          href="/docs/OctoPDF.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full sm:w-auto text-center px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-[#e0731f] hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-base sm:text-lg shadow-lg tracking-wider"
-        >
-          LEER PDF
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Transición ondulada entre Convocatoria (rojo) y Reglamento (blanco) con onda orgánica continua -->
-<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
-    <path d="M0,18 C240,16 420,62 660,58 C900,54 1140,20 1320,24 C1380,26 1415,34 1440,42 L1440,80 L0,80 Z"></path>
-  </svg>
-</div>
-
-<!-- Sección 2: Bases Oficiales y Reglamento Completo OctoStudio (Fondo blanco editorial, sin anexos y con articulado íntegro) -->
-<section id="reglamento-octostudio" class="relative z-10 bg-white text-ink py-20 sm:py-28 lg:py-36 overflow-hidden">
-  <!-- Figuras geométricas dinámicas en el fondo blanco con GSAP Parallax y Flotación -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-48 h-48 bg-brand-red/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-24 w-36 h-36 bg-brand-orange/10 shape-diamond pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-12 w-40 h-28 text-brand-red/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-8 top-1/2 w-44 h-44 bg-purple-200/40 shape-hexagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-12 bottom-20 w-32 h-32 bg-brand-orange/15 shape-cross pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.3" class="absolute right-1/4 bottom-12 w-44 h-32 text-brand-orange/15 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
-    <!-- Encabezado editorial del Reglamento Completo -->
-    <div class="max-w-3xl" data-gsap="reglamento-encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-3">
-        Reglamento Oficial y Normativa Vigente
-      </span>
-      <h3 class="text-3xl sm:text-4xl lg:text-5xl text-ink font-bold tracking-tight">
-        Bases y Reglamento del Torneo OctoStudio
-      </h3>
-      <div class="mt-4 h-1.5 w-20 rounded-md bg-brand-red"></div>
-      <p class="text-base sm:text-lg text-ink/75 font-normal leading-relaxed mt-4">
-        Normativa oficial completa expedida por la Secretaría de Educación del Estado de Jalisco. La presente convocatoria rige con carácter vinculante todas las etapas del certamen estatal 2026-2027.
-      </p>
-      <p class="text-sm text-ink/65 font-normal leading-relaxed mt-3 italic border-l-2 border-brand-orange pl-4">
-        Cuando en la presente convocatoria se mencione de manera genérica a los docentes, estudiantes y participantes, se considerará dentro de la misma a las y los docentes, a las y los estudiantes y a las y los participantes; por lo que estas menciones plasmadas en un género se refieren, sin distinción alguna, a todas las personas físicas de todos los géneros, sin preferencia ni discriminación alguna.
-      </p>
-    </div>
-
-    <!-- Articulado íntegro de las 20 Bases -->
-    <div class="space-y-12 divide-y divide-gray-100">
-
-      <!-- Base 1 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8 first:pt-0">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Primera</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Objetivo del Torneo</h4>
-        </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
-          El Torneo de Programación al Estilo Jalisco OctoStudio 2026-2027 tiene como objetivo fundamental fomentar el pensamiento computacional, el razonamiento lógico, la creatividad narrativa y el desarrollo de competencias digitales en las y los estudiantes de educación primaria alta y secundaria del Estado de Jalisco. A través de la creación de cuentos interactivos y videojuegos educativos desarrollados en la aplicación móvil gratuita OctoStudio, las y los participantes abordarán y propondrán soluciones creativas a problemáticas ambientales bajo el eje temático unificado «Jalisco Verde y Sustentable», promoviendo el trabajo en equipo, la inclusión, el pensamiento crítico y el impacto comunitario sustentable.
-        </p>
-      </div>
-
-      <!-- Base 2 -->
-      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Segunda</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De los Participantes y Asesores</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p><strong class="font-normal text-ink">1. Requisitos de las instituciones educativas:</strong> Podrán inscribirse escuelas de Educación Primaria Alta (4.º, 5.º y 6.º grado) y Educación Secundaria (1.º, 2.º y 3.º grado), públicas y particulares, que cuenten con Clave del Centro de Trabajo (CCT) oficial y registro vigente ante la Secretaría de Educación del Estado de Jalisco o la Secretaría de Educación Pública.</p>
-          <p><strong class="font-normal text-ink">2. Requisitos de las y los estudiantes:</strong> Deberán estar formalmente inscritos y cursando regularmente el ciclo escolar vigente en la institución educativa que representan. La participación será voluntaria e incluyente, favoreciendo la incorporación de estudiantes sin importar si cuentan con experiencia previa en programación.</p>
-          <p><strong class="font-normal text-ink">3. Conformación de los equipos:</strong> Cada equipo competitivo estará integrado por exactamente tres (3) estudiantes pertenecientes al mismo plantel educativo y a la misma categoría (Primaria Alta o Secundaria). No se admitirán equipos con menor ni mayor número de integrantes. Las y los integrantes del equipo elegirán entre sí a quien asumirá la función de capitán/a.</p>
-          <p><strong class="font-normal text-ink">4. Equidad e inclusión de género:</strong> Con el propósito de impulsar la equidad de género y la participación activa en las disciplinas STEM, todos los equipos serán obligatoriamente mixtos, debiendo integrar al menos a una alumna y a un alumno en escuelas con matrícula mixta. Este requisito aplicará obligatoriamente desde la fase de selección escolar y durante todas las etapas del torneo.</p>
-          <p><strong class="font-normal text-ink">5. Exclusividad de participación:</strong> Cada estudiante formará parte de un único equipo competitivo y deberá elegir participar en un solo torneo de robótica y/o programación convocados por la Dirección de Alfabetización Digital si estos ocurren simultáneamente. Esta restricción aplica exclusivamente a la competencia y no impide recibir los talleres y actividades formativas.</p>
-          <p><strong class="font-normal text-ink">6. Sustitución de integrantes:</strong> En caso de requerir la sustitución de algún integrante por causa justificada antes de las fases eliminatorias, el docente asesor deberá notificar formalmente al Comité Organizador, manteniendo estrictamente el criterio de equidad de género.</p>
-          <p><strong class="font-normal text-ink">7. Rol y límites del docente asesor:</strong> Cada equipo estará acompañado por un asesor o asesora en activo en el mismo plantel (docente, directivo o personal con adscripción comprobable en el CCT). El asesor podrá guiar y orientar metodológicamente, pero bajo ninguna circunstancia podrá programar el proyecto, modificar el código en OctoStudio ni responder preguntas del jurado durante las evaluaciones. La autoría intelectual y la defensa técnica corresponde exclusivamente al alumnado.</p>
-        </div>
-      </div>
-
-      <!-- Base 3 -->
-      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Tercera</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Categorías y Modalidades de Proyecto</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p><strong class="font-normal text-ink">1. Categorías de participación:</strong> Categoría A – Primaria Alta (4.º, 5.º o 6.º grado) y Categoría B – Secundaria (1.º, 2.º o 3.º grado).</p>
-          <p><strong class="font-normal text-ink">2. Modalidades de proyecto en OctoStudio:</strong> Los equipos desarrollarán: a) Cuento interactivo (narrativa digital animada donde el usuario interactúa con personajes y escenarios mediante bloques) o b) Videojuego educativo (experiencia interactiva con mecánicas de juego, retos y concientización ambiental). Ambas representan modalidades de desarrollo creativo dentro de cada categoría y no constituirán categorías de premiación separadas.</p>
-          <p><strong class="font-normal text-ink">3. Eje temático unificado «Jalisco Verde y Sustentable»:</strong> Los contenidos deberán abordar prioritariamente uno o más de los siguientes ejes de acción: conservación del medio ambiente y ecosistemas locales de Jalisco; separación, reducción y reciclaje de residuos sólidos urbanos; protección y conservación de flora y fauna autóctona; y uso responsable, cuidado, captación y conservación de recursos hídricos.</p>
-          <p><strong class="font-normal text-ink">4. Especificaciones tecnológicas de igualdad:</strong> Los proyectos se programarán y ejecutarán de manera nativa en OctoStudio. Para garantizar equidad, no se requerirá ni evaluará el uso de sensores externos, robótica física ni compras integradas. La calificación se centrará en programación, lógica, narrativa y mensaje social.</p>
-        </div>
-      </div>
-
-      <!-- Base 4 -->
-      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Cuarta</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Etapas del Torneo y Cronograma General</h4>
-        </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
-          El torneo se desarrollará a través de un trayecto progresivo estructurado en cinco fases de formación, selección y competencia:
-        </p>
-        <div class="pl-5 overflow-x-auto">
-          <table class="w-full text-left text-sm border border-gray-200 rounded-md overflow-hidden">
-            <thead class="bg-gray-50 border-b border-gray-200 text-ink">
-              <tr>
-                <th class="p-3 font-normal">Etapa / Actividad</th>
-                <th class="p-3 font-normal">Modalidad y Descripción</th>
-                <th class="p-3 font-normal">Periodo Oficial</th>
-                <th class="p-3 font-normal">Participación</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100 text-ink/80">
-              <tr>
-                <td class="p-3 text-ink">Sesión informativa previa</td>
-                <td class="p-3">Sesión virtual obligatoria informativa para directivos, docentes y personal.</td>
-                <td class="p-3">24 de noviembre 2026</td>
-                <td class="p-3">Abierta a planteles interesados</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Sesión de preparación</td>
-                <td class="p-3">Sesión virtual obligatoria de capacitación técnica y pedagógica en OctoStudio.</td>
-                <td class="p-3">01 de diciembre de 2026</td>
-                <td class="p-3">Asesores y participantes inscritos</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Etapa 1: Selección escolar interna</td>
-                <td class="p-3">Muestra interna en cada plantel; selección de 1 equipo por nivel educativo.</td>
-                <td class="p-3">02 dic 2026 al 25 ene 2027</td>
-                <td class="p-3">Comunidad de cada centro escolar</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Registro oficial de equipo</td>
-                <td class="p-3">Carga digital del expediente y padrón MIR en el portal institucional.</td>
-                <td class="p-3">02 dic 2026 al 25 ene 2027</td>
-                <td class="p-3">Docente asesor del equipo ganador escolar</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Etapa 2: Eliminatoria regional</td>
-                <td class="p-3">Evaluación asíncrona regional (archivo .octostudio, bitácora de 1 pág y video de 3 min).</td>
-                <td class="p-3">02 feb al 05 marzo 2027</td>
-                <td class="p-3">Equipos clasificados de la etapa escolar</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Perfeccionamiento</td>
-                <td class="p-3">Acompañamiento pedagógico y refinamiento de propuestas clasificadas.</td>
-                <td class="p-3">09 al 26 de marzo 2027</td>
-                <td class="p-3">Equipos finalistas estatales</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Etapa 3: Gran Final Estatal</td>
-                <td class="p-3">Muestra presencial, pitch oral de 3 min, interrogatorio del jurado de 2 min y premiación.</td>
-                <td class="p-3">31 mar, 01 y 02 abril 2027</td>
-                <td class="p-3">12 equipos de Primaria y 12 de Secundaria</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Base 5 -->
-      <div data-gsap="reglamento-item" class="space-y-5 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Quinta</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Comité Evaluador y Criterios de Evaluación</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p><strong class="font-normal text-ink">1. Integración del jurado y doble evaluación:</strong> En la Etapa Escolar el jurado estará integrado por hasta 3 docentes no asesores. En las Etapas Regional y Estatal la evaluación estará a cargo de especialistas designados por el Comité Organizador sin relación laboral con los planteles evaluados. Cada proyecto será evaluado de forma independiente por dos jueces y la calificación final será el promedio. Si existe discrepancia mayor a 15 puntos, un tercer juez independiente resolverá, tomándose la mediana.</p>
-          <p><strong class="font-normal text-ink">2. Rúbrica unificada de evaluación (100 puntos):</strong></p>
-        </div>
-        <div class="pl-5 overflow-x-auto">
-          <table class="w-full text-left text-sm border border-gray-200 rounded-md overflow-hidden">
-            <thead class="bg-gray-50 border-b border-gray-200 text-ink">
-              <tr>
-                <th class="p-3 font-normal">Criterio de Evaluación</th>
-                <th class="p-3 font-normal">Indicadores de Desempeño</th>
-                <th class="p-3 font-normal text-right">Puntaje Máximo</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100 text-ink/80">
-              <tr>
-                <td class="p-3 text-ink">Innovación y Creatividad</td>
-                <td class="p-3">Propuesta original, decisiones creativas propias, narrativa y mecánicas interactivas novedosas frente a plantillas estándar.</td>
-                <td class="p-3 text-right text-brand-red">25 Puntos</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Impacto Social / Comunitario</td>
-                <td class="p-3">Vinculación profunda con «Jalisco Verde y Sustentable»; claridad de la problemática ambiental y viabilidad del mensaje reflexivo.</td>
-                <td class="p-3 text-right text-brand-red">25 Puntos</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Calidad Técnica</td>
-                <td class="p-3">Lógica de programación funcional en OctoStudio; uso correcto de eventos, secuencias, bucles e interacción; ausencia de errores de ejecución.</td>
-                <td class="p-3 text-right text-brand-red">25 Puntos</td>
-              </tr>
-              <tr>
-                <td class="p-3 text-ink">Bitácora y Exposición (Pitch)</td>
-                <td class="p-3">Memoria escrita de 1 página clara (proceso, retos y soluciones); fluidez oral en pitch de 3 min y solidez ante el jurado en 2 min de preguntas.</td>
-                <td class="p-3 text-right text-brand-red">25 Puntos</td>
-              </tr>
-              <tr class="bg-gray-50/70 font-normal text-ink">
-                <td colspan="2" class="p-3 text-right">Puntuación Total de la Evaluación:</td>
-                <td class="p-3 text-right text-brand-red">100 Puntos</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pl-5 text-sm text-ink/75 font-normal leading-relaxed">
-          <strong class="font-normal text-ink">Criterios de desempate en orden de prelación:</strong> 1. Mayor puntaje en Calidad Técnica. 2. Mayor puntaje en Innovación y Creatividad. 3. Mayor puntaje en Impacto Social / Comunitario. De prevalecer el empate, un tercer juez evaluará a ciegas.
-        </p>
-      </div>
-
-      <!-- Base 6 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Sexta</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Sedes y Fechas de Participación</h4>
-        </div>
-        <div class="space-y-2 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p>• <strong class="font-normal text-ink">Etapa 1 (Selección interna escolar):</strong> Instalaciones de cada Centro de Trabajo (CCT) inscrito, del 02 de diciembre 2026 al 25 de enero de 2027.</p>
-          <p>• <strong class="font-normal text-ink">Etapa 2 (Eliminatoria regional):</strong> Plataforma digital oficial habilitada por la Dirección de Alfabetización Digital (modalidad virtual asíncrona), del 02 de febrero al 05 de marzo de 2027.</p>
-          <p>• <strong class="font-normal text-ink">Perfeccionamiento de proyectos clasificados:</strong> Modalidad híbrida y virtual, del 09 al 26 de marzo de 2027.</p>
-          <p>• <strong class="font-normal text-ink">Etapa 3 (Gran Final Estatal Presencial):</strong> Sede estatal institucional en Guadalajara, Jalisco, en el marco del Festival Educativo Estatal, del 31 de marzo, 01 y 02 de abril de 2027.</p>
-        </div>
-      </div>
-
-      <!-- Base 7 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Séptima</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Registro de Inscripción y Requisitos Obligatorios</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p>El proceso de inscripción es totalmente gratuito y se realizará exclusivamente en el portal oficial por conducto del docente asesor.</p>
-          <p><strong class="font-normal text-ink">Padrón obligatorio para la Matriz de Indicadores para Resultados (MIR):</strong> Como requisito de validación institucional, cada escuela inscrita deberá subir una relación nominal consolidada que incluya la CURP de cada estudiante participante y del docente asesor, CCT oficial, formato de Autorización de Uso de Imagen firmado por el responsable legal, copia de identificación oficial vigente del firmante y Carta Compromiso Institucional con firma y sello de la dirección escolar.</p>
-        </div>
-      </div>
-
-      <!-- Base 8 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Octava</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Sistema de Selección y Avance Regional</h4>
-        </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
-          En la Etapa 1 (Escolar), cada CCT realizará su muestra interna y registrará al equipo ganador de cada categoría. En la Etapa 2 (Regional), los proyectos competirán dentro de su respectiva región educativa. Avanzan a la Gran Final Estatal Presencial los equipos que obtengan el primer lugar regional en cada categoría, asegurando un cupo estatal de hasta 12 equipos de Primaria Alta y hasta 12 equipos de Secundaria de las distintas regiones de Jalisco.
-        </p>
-      </div>
-
-      <!-- Base 9 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Novena</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Dinámica de Evaluación y Entregables</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p>Para la evaluación de la Etapa Regional, el docente asesor deberá cargar en la plataforma institucional tres entregables obligatorios:</p>
-          <p>1. <strong class="font-normal text-ink">Archivo fuente ejecutable:</strong> Proyecto guardado con la extensión nativa <code>.octostudio</code>.</p>
-          <p>2. <strong class="font-normal text-ink">Memoria del Proyecto (Bitácora):</strong> Documento de una página en PDF que sintetice la problemática ambiental abordada, la descripción del cuento o juego, la lógica de bloques empleada, los retos superados y los aprendizajes obtenidos.</p>
-          <p>3. <strong class="font-normal text-ink">Video de demostración:</strong> Enlace a un video de máximo 3 minutos donde se aprecie la ejecución continua del programa y la explicación de viva voz de las y los estudiantes integrantes del equipo.</p>
-          <p>En la Gran Final Estatal Presencial, los equipos realizarán un pitch oral de 3 minutos ante el jurado, seguido de 2 minutos de preguntas y respuestas técnicas.</p>
-        </div>
-      </div>
-
-      <!-- Base 10 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De las Causas de Descalificación</h4>
-        </div>
-        <div class="space-y-2 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p>Serán motivos de descalificación inapelable en cualquier etapa del torneo:</p>
-          <p>a) La falta de originalidad o copia del código de programación de proyectos ajenos o plantillas preexistentes.</p>
-          <p>b) La intervención directa o programación realizada por personas ajenas al equipo de 3 estudiantes.</p>
-          <p>c) La inconsistencia o falsedad en la información entregada o documentos del expediente escolar.</p>
-          <p>d) El incumplimiento del criterio obligatorio de equidad de género (equipo mixto con al menos una alumna y un alumno).</p>
-          <p>e) La sustitución no autorizada de integrantes del equipo durante el torneo.</p>
-          <p>f) Incumplir el Código de Conducta o incurrir en faltas de respeto hacia otros equipos, jurados u organizadores.</p>
-        </div>
-      </div>
-
-      <!-- Base 11 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Primera</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De la Publicación de Resultados</h4>
-        </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
-          Los dictámenes del jurado y la lista de folios y escuelas clasificadas se publicarán oficialmente en el portal institucional de la Secretaría de Educación del Estado de Jalisco conforme al calendario oficial. Los resultados serán definitivos en sus aspectos técnicos. La información personal se protegerá omitiendo nombres en listados públicos, identificándose únicamente por folio y CCT.
-        </p>
-      </div>
-
-      <!-- Base 12 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Segunda</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">De los Reconocimientos y Premiación Oficial</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-ink/80 font-normal leading-relaxed">
-          <p><strong class="font-normal text-ink">1. Reconocimientos de participación:</strong> Se emitirá una constancia digital oficial de participación para todas las y los estudiantes, docentes asesores y directivos que completen satisfactoriamente el trayecto formativo y las entregas del torneo.</p>
-          <p><strong class="font-normal text-ink">2. Premiación de la Etapa Regional (Equipamiento para el CCT):</strong> Los planteles educativos cuyos equipos resulten ganadores en la etapa regional recibirán equipamiento tecnológico institucional: Categoría A (Primaria Alta) con robots programables Codey Rocky para el aula de computación (1.er lugar: 5 unidades; 2.º lugar: 3 unidades; 3.er lugar: 2 unidades); Categoría B (Secundaria) con Kits de Robótica e Internet de las Cosas (IoT).</p>
-          <p><strong class="font-normal text-ink">3. Premiación de la Gran Final Estatal (Equipamiento, Medallas y Trofeos):</strong> En la Gran Final Estatal Presencial, las escuelas recibirán Visores de Realidad Virtual Meta Quest 2 asignados al CCT escolar (1.er lugar estatal: 5 visores; 2.º lugar: 3 visores; 3.er lugar: 2 visores), además de Medallas de Honor (oro, plata y bronce) y trofeos conmemorativos para las y los 3 estudiantes y el docente asesor.</p>
-        </div>
-      </div>
-
-      <!-- Base 13 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-red pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-red font-normal block">Base Décima Tercera</span>
-          <h4 class="text-xl sm:text-2xl text-ink font-bold tracking-tight">Del Comité Organizador</h4>
-        </div>
-        <p class="text-base text-ink/80 font-normal leading-relaxed pl-5">
-          El Comité Organizador estará integrado por las autoridades de la Secretaría de Educación del Estado de Jalisco representadas en la Dirección General de Programas Estratégicos, la Dirección de Articulación, la Dirección de Alfabetización Digital y la Coordinación de Robótica Educativa. El Comité tendrá las atribuciones de planear, operar, supervisar y resolver los aspectos logísticos, pedagógicos y administrativos del torneo.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Transición ondulada entre Bases del Torneo (blanco) y Código de Conducta / Marco Institucional (rojo) -->
-<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
-    <path d="M0,64 C180,30 360,18 580,44 C800,70 1020,26 1240,48 C1340,58 1395,38 1440,22 L1440,80 L0,80 Z"></path>
-  </svg>
-</div>
-
-<!-- Sección 3: Código de Conducta, Ética y Marco Institucional (Fondo rojo institucional) -->
-<section id="conducta-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
-  <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
-  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/10 shape-hexagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.2" class="absolute left-1/3 top-16 w-44 h-28 text-white/20 bg-tech-dots pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="0.5" class="absolute -right-10 bottom-20 w-48 h-48 bg-white/10 shape-octagon pointer-events-none" aria-hidden="true"></div>
-  <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
-
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-    <!-- Articulado de Bases 14 a 20 sobre fondo rojo con texto blanco -->
-    <div class="space-y-12 divide-y divide-white/20">
-
-      <!-- Base 14 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8 first:pt-0">
-        <div class="border-l-4 border-white pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Cuarta</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">Del Código de Conducta y Juego Limpio</h4>
-        </div>
-        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
-          Todos los participantes, docentes, directivos, familias y acompañantes deberán conducirse en todo momento bajo principios de honestidad, respeto, empatía, espíritu deportivo y colaboración. Queda estrictamente prohibida cualquier interferencia en el trabajo de otros equipos o falta de respeto hacia las evaluaciones.
-        </p>
-      </div>
-
-      <!-- Base 15 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Quinta</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Propiedad Intelectual y Derechos de Imagen</h4>
-        </div>
-        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
-          La autoría intelectual de los códigos, historias y videojuegos desarrollados corresponderá a las y los estudiantes creadores. Los participantes otorgan a la Secretaría de Educación del Estado de Jalisco una licencia no exclusiva, gratuita y permanente para difundir, exhibir, publicar y reproducir los proyectos con fines exclusivamente educativos y de promoción cultural. El uso de la imagen estará condicionado a la entrega del formato de autorización firmado por el responsable legal conforme a las disposiciones vigentes.
-        </p>
-      </div>
-
-      <!-- Base 16 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-white pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Sexta</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Equidad, Inclusión y Accesibilidad</h4>
-        </div>
-        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
-          La Secretaría de Educación del Estado de Jalisco garantizará la igualdad de oportunidades y la no discriminación en todas las fases del torneo. Los equipos que requieran ajustes razonables por condición de discapacidad o pertenencia a comunidades prioritarias podrán solicitar las adecuaciones pertinentes al Comité Organizador al momento de su registro.
-        </p>
-      </div>
-
-      <!-- Base 17 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Séptima</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De las Quejas e Inconformidades</h4>
-        </div>
-        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
-          En caso de surgir alguna inconformidad con relación a aspectos de procedimiento administrativo o incumplimiento de las bases, el docente asesor podrá ingresar una solicitud formal por escrito fundamentada y dirigida al Comité Organizador dentro de las 24 horas posteriores a la publicación del hecho. Los fallos del jurado calificador respecto a la puntuación técnica de los proyectos serán definitivos e inapelables.
-        </p>
-      </div>
-
-      <!-- Base 18 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-white pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Décima Octava</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">Del Aviso de Privacidad y Protección de Datos Personales</h4>
-        </div>
-        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
-          Los datos personales recabados (incluida la CURP y datos escolares) serán tratados de manera confidencial y protegidos de conformidad con la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Jalisco y sus Municipios. Su uso se limitará exclusivamente a la gestión operativa, validación de matrícula y reporte institucional de indicadores educativos del torneo.
-        </p>
-      </div>
-
-      <!-- Base 19 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-brand-orange pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-brand-orange font-normal block">Base Décima Novena</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De la Gratuidad</h4>
-        </div>
-        <p class="text-base text-white/90 font-normal leading-relaxed pl-5">
-          Todas las actividades, capacitaciones, registros y participaciones en el Torneo de Programación al Estilo Jalisco OctoStudio son completamente gratuitas. Se prohíbe expresamente cualquier cobro o exigencia económica a las y los estudiantes, familias o escuelas participantes.
-        </p>
-      </div>
-
-      <!-- Base 20 -->
-      <div data-gsap="reglamento-item" class="space-y-4 pt-8">
-        <div class="border-l-4 border-white pl-5 space-y-1">
-          <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Base Vigésima</span>
-          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">De los Casos No Previstos, Vigencia y Transitorios</h4>
-        </div>
-        <div class="space-y-3 pl-5 text-base text-white/90 font-normal leading-relaxed">
-          <p>Los casos o situaciones no contemplados en la presente Convocatoria serán analizados y resueltos de manera definitiva e inapelable por el Comité Organizador del Torneo.</p>
-          <p><strong class="font-normal text-white">Transitorio Único:</strong> La presente Convocatoria entrará en vigor al día siguiente de su publicación oficial en los canales institucionales de la Secretaría de Educación del Estado de Jalisco.</p>
-          <div class="pt-6 border-t border-white/20 text-sm text-white/80 font-normal space-y-1">
-            <p>Guadalajara, Jalisco, a 03 de noviembre de 2026</p>
-            <p class="italic">"2026, Jalisco, Cuna de Identidad Nacional y el Mundial que nos Une"</p>
-            <p class="pt-2 text-white">Mtro. Juan Carlos Flores Miramontes · Secretario de Educación del Estado de Jalisco</p>
+    } @else {
+      <div class="relative overflow-hidden bg-white py-14 sm:py-20">
+        <div data-gsap="fondo" data-vel="-0.25" class="pointer-events-none absolute -right-8 top-6 size-36 shape-hexagon animate-drift bg-current opacity-10" [style.color]="e.color" aria-hidden="true"></div>
+        <div class="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
+          <div data-gsap="etapa-detalle" class="max-w-xl border-l-4 pl-6" [style.border-color]="e.color">
+            <span class="mb-2 block text-xs uppercase tracking-widest" [style.color]="e.color">Fecha</span>
+            <p class="text-xl text-ink sm:text-2xl">{{ e.paso.fecha }}</p>
+            <p class="mt-3 text-base leading-relaxed text-ink/75">{{ e.paso.resumen }}</p>
+            <a
+              [routerLink]="e.paso.ruta"
+              [fragment]="e.paso.fragmento || undefined"
+              class="mt-6 inline-block rounded-md bg-brand-red px-8 py-4 text-lg font-normal text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-brand-red-dark hover:shadow-lg active:translate-y-0"
+            >
+              {{ e.paso.enlace }}
+            </a>
           </div>
         </div>
       </div>
+    }
+  </section>
+}
 
-    </div>
+<!-- Elementos fijos: se mueven al <body> para que ninguna animación del contenedor de la página los desplace -->
+<div #flotantes class="contents">
+<!-- Riel de progreso: el icono de la etapa actual despliega su título al lado -->
+<aside
+  class="fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-2 transition-opacity duration-300 lg:flex"
+  [class.opacity-100]="enCamino()"
+  [class.opacity-0]="!enCamino()"
+  [class.pointer-events-none]="!enCamino()"
+  aria-label="Progreso de etapas"
+>
+  @for (e of etapas(); track e.paso.id) {
+    <button
+      type="button"
+      class="group flex items-center rounded-lg p-1.5 shadow-md outline-none transition-colors duration-300 focus-visible:outline-3 focus-visible:outline-brand-orange"
+      [style.background-color]="actual() === e.i ? e.color : '#ffffff'"
+      [attr.aria-current]="actual() === e.i ? 'step' : null"
+      [attr.aria-label]="'Ir a ' + e.paso.titulo"
+      (click)="saltar(e.i, $any($event.currentTarget))"
+    >
+      <span
+        [class]="'overflow-hidden whitespace-nowrap text-sm transition-all duration-300 group-hover:max-w-56 group-hover:pl-2 group-hover:pr-3 group-hover:opacity-100 group-focus-visible:max-w-56 group-focus-visible:pl-2 group-focus-visible:pr-3 group-focus-visible:opacity-100 ' + (actual() === e.i ? 'max-w-56 pl-2 pr-3 text-white opacity-100' : 'max-w-0 text-ink opacity-0')"
+      >
+        {{ e.paso.titulo }}
+      </span>
+      <span
+        [class]="'block size-10 rounded-md bg-white/0 bg-center bg-no-repeat bg-size-[150%] transition-opacity ' + (actual() === e.i ? 'opacity-100' : 'opacity-60 group-hover:opacity-100')"
+        [style.background-image]="imagenIcono(e.icono)"
+      ></span>
+    </button>
+  }
+</aside>
+</div>
 
-    <!-- Llamado a la acción institucional -->
-    <div class="pt-10 flex flex-wrap justify-center md:justify-start gap-4 border-t border-white/20">
-      <a
-        routerLink="/registro"
-        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-brand-orange text-white hover:bg-orange-600 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-      >
-        Inscribir Equipo al Torneo OctoStudio
-      </a>
-      <a
-        href="/docs/OctoPDF.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full sm:w-auto text-center px-8 py-4 rounded-lg bg-white text-brand-red hover:bg-orange-50 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg"
-      >
-        Descargar Convocatoria en PDF
-      </a>
-    </div>
-  </div>
-</section>
 
 <!-- Transición ondulada inferior hacia el Footer naranja institucional -->
-<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
   <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
     <path d="M0,24 C290,56 540,12 830,36 C1110,58 1290,14 1440,46 L1440,80 L0,80 Z"></path>
   </svg>

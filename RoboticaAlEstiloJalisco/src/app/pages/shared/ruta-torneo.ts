@@ -2,6 +2,7 @@ import { afterNextRender, DestroyRef, ElementRef, inject, signal } from '@angula
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { CaminoBase } from './camino-base';
 import { HalftoneTransitionService } from './halftone-transition.service';
 
 /** Paso individual del mapa (fase previa o etapa del torneo). */
@@ -73,8 +74,7 @@ export interface DueloEliminatoria {
 }
 
 /** Lógica compartida por las páginas de mBot y OctoStudio. */
-export abstract class RutaTorneoBase {
-  abstract readonly tramos: TramoRuta[];
+export abstract class RutaTorneoBase extends CaminoBase {
   abstract readonly equiposPlayIn: EquipoClasificacion[];
   abstract readonly octavosFinal?: DueloEliminatoria[];
   abstract readonly cuartosFinal: DueloEliminatoria[];
@@ -99,6 +99,7 @@ export abstract class RutaTorneoBase {
   private ctx?: gsap.Context;
 
   constructor() {
+    super();
     afterNextRender(() => this.animarMapa());
     inject(DestroyRef).onDestroy(() => this.ctx?.revert());
   }
@@ -126,8 +127,105 @@ export abstract class RutaTorneoBase {
         }
 
         q('[data-gsap="encabezado"]').forEach((el) =>
-          gsap.from(el, { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: entrada(el) }),
+          gsap.from(el, {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: entrada(el),
+          }),
         );
+
+        // Estaciones del mapa 3D: aparecen gradualmente al hacer scroll
+        q('[data-gsap="estacion"]').forEach((el) => {
+          const spr = el.querySelector('[data-gsap="estacion-spr"]');
+          const num = el.querySelector('[data-gsap="estacion-num"]');
+          const lbl = el.querySelector('[data-gsap="estacion-lbl"]');
+          const lado = el.getAttribute('data-lado') === 'r' ? 1 : -1;
+          const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+          if (spr) {
+            tl.from(spr, {
+              scale: 0.45,
+              rotation: -16,
+              opacity: 0,
+              duration: 0.55,
+              ease: 'back.out(1.6)',
+              clearProps: 'transform,opacity',
+            });
+          }
+          if (num) {
+            tl.from(
+              num,
+              {
+                y: 12,
+                scale: 0.7,
+                opacity: 0,
+                duration: 0.35,
+                ease: 'back.out(1.6)',
+                clearProps: 'transform,opacity',
+              },
+              '-=0.3',
+            );
+          }
+          if (lbl) {
+            tl.from(
+              lbl,
+              {
+                x: lado * 24,
+                opacity: 0,
+                duration: 0.45,
+                ease: 'power3.out',
+                clearProps: 'transform,opacity',
+              },
+              '-=0.25',
+            );
+          }
+        });
+
+        // Bandas de cada etapa: icono 3D y textos en cascada gradual al entrar
+        q('[data-gsap="etapa-banda"]').forEach((banda) => {
+          const icono = banda.querySelector('[data-gsap="etapa-icono"]');
+          const items = banda.querySelectorAll('[data-gsap="etapa-item"]');
+          const tl = gsap.timeline({ scrollTrigger: { trigger: banda, start: 'top 86%', once: true } });
+          if (icono) {
+            tl.from(icono, {
+              scale: 0.75,
+              rotation: -8,
+              opacity: 0,
+              duration: 0.7,
+              ease: 'back.out(1.4)',
+              clearProps: 'transform,opacity',
+            });
+          }
+          if (items.length) {
+            tl.from(
+              items,
+              {
+                y: 28,
+                opacity: 0,
+                duration: 0.65,
+                stagger: 0.1,
+                ease: 'power3.out',
+                clearProps: 'transform,opacity',
+              },
+              icono ? '-=0.45' : 0,
+            );
+          }
+        });
+
+        // Detalle estándar de las etapas sin sección propia
+        q('[data-gsap="etapa-detalle"]').forEach((el) =>
+          gsap.from(el, {
+            y: 30,
+            opacity: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: entrada(el),
+          }),
+        );
+
         q('[data-gsap="tramo"]').forEach((el) =>
           gsap.from(el, { scale: 0.8, y: 30, opacity: 0, duration: 0.7, ease: 'back.out(1.6)', scrollTrigger: entrada(el) }),
         );
@@ -150,16 +248,17 @@ export abstract class RutaTorneoBase {
             );
           }
         });
-        // Fondo: aparece con zoom, hace parallax con el scroll y flota/gira sin parar
+        // Fondo: aparece con zoom al entrar la sección, hace parallax con el scroll y flota/gira sin parar
         q('[data-gsap="fondo"]').forEach((el, i) => {
           const vel = Number(el.getAttribute('data-vel') ?? 0.3);
           gsap.from(el, {
             scale: 0,
             opacity: 0,
             rotate: gsap.utils.random(-180, 180),
-            duration: 1.2,
+            duration: 1.1,
             ease: 'back.out(1.7)',
-            delay: (i % 6) * 0.1,
+            delay: (i % 5) * 0.08,
+            scrollTrigger: { trigger: el.parentElement, start: 'top 95%', once: true },
           });
           gsap.to(el, {
             yPercent: vel * -120,
@@ -365,6 +464,7 @@ export abstract class RutaTorneoBase {
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: entrada(clasifEncabezado),
           });
         }
@@ -387,21 +487,22 @@ export abstract class RutaTorneoBase {
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: entrada(convEncabezado),
           });
         }
 
-        const convBloques = q('[data-gsap="convocatoria-bloque"]');
-        if (convBloques.length) {
-          gsap.from(convBloques, {
+        q('[data-gsap="convocatoria-bloque"]').forEach((bloque, idx) => {
+          gsap.from(bloque, {
             y: 30,
             opacity: 0,
             duration: 0.7,
-            stagger: 0.15,
+            delay: (idx % 2) * 0.12,
             ease: 'power3.out',
-            scrollTrigger: entrada(convBloques[0]),
+            clearProps: 'transform,opacity',
+            scrollTrigger: entrada(bloque),
           });
-        }
+        });
 
         // Anexos y Reglamentos: encabezado y fichas
         const reglamentosEncabezados = q('[data-gsap="anexos-encabezado"], [data-gsap="reglamento-encabezado"], [data-gsap="conducta-encabezado"]');
@@ -411,6 +512,7 @@ export abstract class RutaTorneoBase {
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: entrada(encabezado),
           });
         });
@@ -423,10 +525,13 @@ export abstract class RutaTorneoBase {
               opacity: 0,
               duration: 0.65,
               ease: 'power3.out',
+              clearProps: 'transform,opacity',
               scrollTrigger: entrada(item),
             });
           });
         }
+
+        ScrollTrigger.refresh();
       });
     }, this.host.nativeElement);
   }
