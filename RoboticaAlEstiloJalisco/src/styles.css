@@ -410,3 +410,49 @@ body {
   color: var(--color-ink);
   background-color: #ffffff;
 }
+
+/* Animaciones del contador de inicio: letras con onda y cifras que "laten" al cambiar */
+@keyframes letra-onda {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-0.18em) rotate(-3deg); }
+  60% { transform: translateY(0.06em) rotate(2deg); }
+}
+@keyframes cifra-tick {
+  0% { transform: scale(1.35) translateY(-0.08em); opacity: 0.4; }
+  60% { transform: scale(0.96); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes sticker-balanceo {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(-8px); }
+}
+.animate-letra-onda { animation: letra-onda 2.4s ease-in-out infinite; display: inline-block; }
+.animate-cifra-tick { animation: cifra-tick 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both; display: inline-block; }
+.animate-sticker { animation: sticker-balanceo 6s ease-in-out infinite; }
+@keyframes circuito-fluir {
+  from { stroke-dashoffset: 326; }
+  to { stroke-dashoffset: 0; }
+}
+.animate-circuito { animation: circuito-fluir 3.2s linear infinite; }
+@keyframes asoma {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-asoma { animation: asoma 3.4s ease-in-out infinite; }
+@keyframes brillo {
+  0% { transform: translateX(0) skewX(-12deg); }
+  60%, 100% { transform: translateX(520%) skewX(-12deg); }
+}
+.animate-brillo { animation: brillo 5s ease-in-out infinite; }
+@keyframes bote {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(-2deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-5px) rotate(2deg); }
+}
+.animate-bote { animation: bote 2.8s ease-in-out infinite; }
+@keyframes chispa {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.4) rotate(90deg); }
+}
+.animate-chispa { animation: chispa 2.2s ease-in-out infinite; }

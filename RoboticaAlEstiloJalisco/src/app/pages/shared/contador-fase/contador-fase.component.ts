@@ -38,6 +38,15 @@ export class ContadorFaseComponent implements OnInit {
     return this.etapas[etapa] ?? etapa;
   }
 
+  get etapaPalabras(): { letras: string[]; inicio: number }[] {
+    let acumulado = 0;
+    return this.etapaTitulo.split(' ').map((p) => {
+      const palabra = { letras: Array.from(p), inicio: acumulado };
+      acumulado += p.length + 1;
+      return palabra;
+    });
+  }
+
   ngOnInit(): void {}
 
   public configurarTiempo(datos: DatosContador): void {
