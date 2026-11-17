@@ -3,8 +3,14 @@ export type CategoriaNovedad = 'inscripciones' | 'webinars' | 'fases' | 'avisos'
 export interface Novedad {
   readonly id: string;
   readonly categoria: CategoriaNovedad;
-  /** Fecha de publicación en formato YYYY-MM-DD. */
+  /** Fecha de publicación mostrada en la tarjeta en formato YYYY-MM-DD. */
   readonly fecha: string;
+  /** Fecha opcional a partir de la cual se publica automáticamente (ISO o YYYY-MM-DD). */
+  readonly publicarDesde?: string;
+  /** Fecha opcional después de la cual se oculta automáticamente (ISO o YYYY-MM-DD). */
+  readonly bajaEn?: string;
+  /** Interruptor opcional para ocultar manualmente desde config.json sin borrar el bloque. */
+  readonly visible?: boolean;
   readonly titulo: string;
   readonly resumen: string;
   readonly contenido: readonly string[];
@@ -14,6 +20,7 @@ export interface Novedad {
     readonly texto: string;
     readonly ruta: string;
     readonly fragmento?: string;
+    readonly externo?: boolean;
   };
 }
 

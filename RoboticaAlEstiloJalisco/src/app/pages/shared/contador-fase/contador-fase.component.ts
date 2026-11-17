@@ -27,6 +27,17 @@ export class ContadorFaseComponent implements OnInit {
     if (val) this.contador.configurarDesdeApi({ terminado: val });
   }
 
+  private readonly etapas: Record<string, string> = {
+    inscripcion: 'Etapa de inscripción',
+    preparacion: 'Etapa de preparación',
+    competencia: 'Etapa de competencia',
+  };
+
+  get etapaTitulo(): string {
+    const etapa = this.contador.etapaActual();
+    return this.etapas[etapa] ?? etapa;
+  }
+
   ngOnInit(): void {}
 
   public configurarTiempo(datos: DatosContador): void {

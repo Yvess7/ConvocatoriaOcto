@@ -113,13 +113,32 @@ button, [role="button"] {
 }
 
 /* Sistema de revelado al hacer scroll estilo Apple (con IntersectionObserver) */
+.delay-100 {
+  --reveal-delay: 100ms;
+}
+
+.delay-150 {
+  --reveal-delay: 150ms;
+}
+
+.delay-200 {
+  --reveal-delay: 200ms;
+}
+
 .reveal,
 .reveal-left,
 .reveal-right {
+  --reveal-duration: 0.95s;
   opacity: 0;
   transition:
-    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    translate 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    scale 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s;
 }
 
 .reveal {
@@ -135,11 +154,18 @@ button, [role="button"] {
 }
 
 .apple-zoom {
+  --reveal-duration: 1s;
   opacity: 0;
   transform: translate3d(0, 2rem, 0) scale(0.88);
   transition:
-    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    translate 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    scale 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s;
 }
 
 .reveal.is-visible,
@@ -148,6 +174,51 @@ button, [role="button"] {
 .apple-zoom.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Animación global fluida y elástica para todos los botones y enlaces tipo botón */
+:where(button, a[class*='rounded-'][class*='px-'], #footer-institucional a[class*='rounded-']):not(
+  [aria-controls='mobile-navigation'],
+  [data-navigation] a:not([class*='bg-brand-']),
+  [data-gsap='estacion'],
+  :has(> [data-spr]:only-child),
+  [data-docked-target]
+) {
+  translate: 0 0;
+  scale: 1;
+  transition:
+    opacity var(--reveal-duration, 0.28s) cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    transform var(--reveal-duration, 0.36s) cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    translate 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    scale 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1) 0s;
+}
+
+:where(button, a[class*='rounded-'][class*='px-'], #footer-institucional a[class*='rounded-']):not(
+  [aria-controls='mobile-navigation'],
+  [data-navigation] a:not([class*='bg-brand-']),
+  [data-gsap='estacion'],
+  :has(> [data-spr]:only-child),
+  [data-docked-target]
+):hover:not(:disabled) {
+  translate: 0 -0.25rem;
+  scale: 1.05;
+  box-shadow: 0 12px 26px -6px rgba(0, 0, 0, 0.24), 0 4px 10px -3px rgba(0, 0, 0, 0.12);
+}
+
+:where(button, a[class*='rounded-'][class*='px-'], #footer-institucional a[class*='rounded-']):not(
+  [aria-controls='mobile-navigation'],
+  [data-navigation] a:not([class*='bg-brand-']),
+  [data-gsap='estacion'],
+  :has(> [data-spr]:only-child),
+  [data-docked-target]
+):active:not(:disabled) {
+  translate: 0 0;
+  scale: 0.98;
+  transition-duration: 0.12s;
 }
 
 /* Marco de color desplazado (sólido, sin desenfoque) para las fotos del sitio */

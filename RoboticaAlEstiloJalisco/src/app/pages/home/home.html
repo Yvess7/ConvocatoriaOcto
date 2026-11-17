@@ -7,51 +7,108 @@
       class="absolute inset-0 w-full h-full object-cover object-center select-none z-0"
     />
 
-    <!-- Texto, tarjeta de próximo evento y franja de etapas sobre el banner -->
+    <!-- Contador centrado como protagonista del banner -->
     <div class="banner-body">
       <div class="banner-inner">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          <!-- En Mobile: Arriba del texto (order-1). En Desktop: Lado derecho (lg:order-2) -->
-          <div id="contador-hero-container" class="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 w-full mb-2 lg:mb-0">
-            <app-contador-fase></app-contador-fase>
-          </div>
-
-          <!-- Columna izquierda -->
-          <div class="lg:col-span-7 xl:col-span-7 text-center lg:text-left order-2 lg:order-1">
-            <!-- Título en 2 líneas -->
-            <h1 class="text-4xl sm:text-5xl lg:text-[3.65rem] xl:text-[4.15rem] text-white font-bold tracking-tight leading-[1.06] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] animate-rise">
-              Robótica al<br class="hidden sm:inline" /> Estilo Jalisco
-            </h1>
-
-            <!-- Descripción -->
-            <p class="max-w-lg mx-auto lg:mx-0 text-base sm:text-lg lg:text-[1.15rem] text-white mt-5 font-normal leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] animate-rise [animation-delay:200ms]">
-              Impulsamos el talento científico, creativo y tecnológico de niñas, niños y jóvenes de Jalisco.
-            </p>
-          </div>
+        <h1 class="sr-only">Robótica al Estilo Jalisco</h1>
+        <p class="sr-only">Impulsamos el talento científico, creativo y tecnológico de niñas, niños y jóvenes de Jalisco.</p>
+        <div id="contador-hero-container" class="flex justify-center w-full">
+          <app-contador-fase></app-contador-fase>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 1. Sección blanca debajo del banner: Torneo mBot (Título + Descripción Izquierda / Foto + Botones Derecha) -->
-<section id="mbot" class="relative bg-white overflow-hidden">
-  <div class="absolute top-10 right-10 w-48 h-48 text-brand-orange/15 bg-tech-dots animate-drift pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -top-6 right-1/4 w-36 h-36 bg-brand-orange/15 shape-hexagon animate-float [--r:14deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute bottom-8 left-12 w-32 h-32 bg-brand-red/15 shape-parallelogram animate-float-slow [--r:-15deg] pointer-events-none" aria-hidden="true"></div>
+<!-- 1. Sección blanca actualizable debajo del banner: Convocatoria (Texto + Botones Izquierda / Foto Derecha) -->
+<section id="convocatoria" class="relative bg-white overflow-hidden">
+  <div class="absolute top-12 right-12 w-48 h-48 text-brand-orange/15 bg-tech-dots animate-drift pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -top-6 right-1/3 w-36 h-36 bg-brand-red/10 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-10 left-12 w-28 h-28 bg-brand-orange/15 shape-cross animate-float-slow [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <div class="md:col-span-6 text-center md:text-left reveal-left">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Robótica Física</span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Torneo mBot</h2>
+    <div [class]="destacadoService.imagen() ? 'md:col-span-6 text-center md:text-left reveal-left' : 'md:col-span-10 lg:col-span-8 text-center md:text-left reveal-left'">
+      @if (destacadoService.etiqueta()) {
+        <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">
+          {{ destacadoService.etiqueta() }}
+        </span>
+      }
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">
+        {{ destacadoService.titulo() }}
+      </h2>
       <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange mx-auto md:mx-0"></div>
       <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
-        Modalidad enfocada en robótica móvil autónoma y programación por bloques donde los equipos de primaria y secundaria superan circuitos, pistas de destreza y retos en vivo.
+        {{ destacadoService.descripcion() }}
       </p>
+      @if (destacadoService.destaque()) {
+        <p class="mt-6 border-l-4 border-brand-red pl-4 text-base sm:text-lg text-ink/75 font-normal leading-relaxed text-left">
+          {{ destacadoService.destaque() }}
+        </p>
+      }
+      @if (destacadoService.acciones().length > 0) {
+        <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
+          @for (accion of destacadoService.acciones(); track accion.etiqueta) {
+            @if (accion.externo) {
+              <a
+                [href]="accion.ruta"
+                target="_blank"
+                rel="noopener noreferrer"
+                [class]="accion.variante === 'naranja'
+                  ? 'apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg'
+                  : accion.variante === 'blanco'
+                    ? 'apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md border border-brand-red bg-white text-brand-red hover:bg-brand-red-dark hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg'
+                    : 'apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg'"
+              >
+                {{ accion.etiqueta }}
+              </a>
+            } @else {
+              <a
+                [routerLink]="accion.ruta"
+                [fragment]="accion.fragmento"
+                [class]="accion.variante === 'naranja'
+                  ? 'apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg'
+                  : accion.variante === 'blanco'
+                    ? 'apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md border border-brand-red bg-white text-brand-red hover:bg-brand-red-dark hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg'
+                    : 'apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg'"
+              >
+                {{ accion.etiqueta }}
+              </a>
+            }
+          }
+        </div>
+      }
     </div>
 
-    <div class="md:col-span-6 reveal-right delay-150 space-y-10 sm:space-y-12">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-orange group">
+    @if (destacadoService.imagen()) {
+      <div class="md:col-span-6 reveal-right delay-150">
+        <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden photo-frame frame-orange group">
+          <img
+            [src]="destacadoService.imagen()"
+            [alt]="destacadoService.imagenAlt()"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Transición ondulada superior hacia Torneo mBot -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+    <path d="M0,48 C210,16 440,70 720,44 C980,20 1230,68 1440,30 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>
+
+<!-- 2. Torneo mBot (Foto + Botones Izquierda / Título + Descripción Derecha · Fondo naranja) -->
+<section id="mbot" class="relative z-10 bg-brand-orange overflow-hidden">
+  <div class="absolute -left-10 top-16 w-48 h-48 bg-white/15 shape-hexagon animate-float [--r:14deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-1/3 top-14 w-36 h-36 bg-brand-red/30 shape-parallelogram animate-drift [--r:-15deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-12 bottom-16 w-44 h-44 text-white/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-red group">
         <img
           src="/images/mbot.webp"
           alt="Vista previa Torneo mBot"
@@ -67,31 +124,49 @@
         </a>
         <a
           routerLink="/registro"
-          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-white text-brand-red hover:bg-brand-red-dark hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Inscribirse
         </a>
       </div>
     </div>
+
+    <div class="md:col-span-6 order-1 md:order-2 text-center md:text-right reveal-right">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Robótica Física</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Torneo mBot</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-white mx-auto md:mr-0 md:ml-auto"></div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
+        Modalidad enfocada en robótica móvil autónoma y programación por bloques donde los equipos de primaria y secundaria superan circuitos, pistas de destreza y retos en vivo.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- Transición ondulada superior hacia Torneo OctoStudio con cresta fluida -->
-<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
-    <path d="M0,56 C220,76 480,20 760,34 C1040,48 1260,12 1440,42 L1440,80 L0,80 Z"></path>
+<!-- Transición ondulada superior hacia Torneo OctoStudio -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,26 C260,64 510,14 810,36 C1090,56 1280,18 1440,52 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
 
-<!-- 2. Torneo OctoStudio (Foto + Botones Izquierda / Título + Descripción Derecha · Fondo naranja) -->
-<section id="octostudio" class="relative z-10 bg-brand-orange overflow-hidden">
-  <div class="absolute -left-10 top-20 w-52 h-52 bg-white/15 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-1/3 top-16 w-36 h-36 bg-brand-red/35 shape-triangle animate-drift [--r:12deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute right-10 bottom-20 w-36 h-36 bg-white/15 shape-diamond animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+<!-- 3. Torneo OctoStudio (Título + Descripción Izquierda / Foto + Botones Derecha · Fondo blanco) -->
+<section id="octostudio" class="relative bg-white overflow-hidden">
+  <div class="absolute right-12 top-16 w-36 h-36 bg-brand-red/10 shape-diamond animate-float [--r:15deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-1/4 top-10 w-32 h-32 bg-brand-orange/15 shape-triangle animate-drift [--r:12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-10 bottom-14 w-28 h-28 bg-brand-red/10 shape-cross animate-float-slow [--r:-18deg] pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-red group">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 text-center md:text-left reveal-left">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-4">Creatividad Digital</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Torneo OctoStudio</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red mx-auto md:mx-0"></div>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
+        Modalidad de programación móvil creativa donde estudiantes desarrollan cuentos interactivos, animaciones y videojuegos educativos bajo el eje Jalisco Verde y Sustentable.
+      </p>
+    </div>
+
+    <div class="md:col-span-6 reveal-right delay-150 space-y-10 sm:space-y-12">
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-red group">
         <img
           src="/images/octo.webp"
           alt="Vista previa Torneo OctoStudio"
@@ -107,49 +182,31 @@
         </a>
         <a
           routerLink="/registro"
-          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-white text-brand-red hover:bg-brand-red-dark hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-orange text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Inscribirse
         </a>
       </div>
     </div>
-
-    <div class="md:col-span-6 order-1 md:order-2 text-center md:text-right reveal-right">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-red text-white text-xs uppercase tracking-widest font-normal mb-4">Creatividad Digital</span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Torneo OctoStudio</h2>
-      <div class="mt-6 h-1.5 w-20 rounded-md bg-white mx-auto md:mr-0 md:ml-auto"></div>
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
-        Modalidad de programación móvil creativa donde estudiantes desarrollan cuentos interactivos, animaciones y videojuegos educativos bajo el eje Jalisco Verde y Sustentable.
-      </p>
-    </div>
   </div>
 </section>
 
-<!-- Transición ondulada inferior hacia Documentación con curva orgánica única -->
-<div class="relative w-full overflow-hidden leading-none bg-brand-orange -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
-    <path d="M0,22 C280,10 520,66 820,54 C1120,42 1300,16 1440,36 L1440,80 L0,80 Z"></path>
+<!-- Transición ondulada superior hacia Documentación -->
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
+    <path d="M0,58 C190,30 470,12 750,48 C1020,82 1260,26 1440,40 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
 
-<!-- 3. Documentación (Título + Descripción Izquierda / Foto + Botón Derecha · Fondo blanco) -->
-<section id="documentacion" class="relative bg-white overflow-hidden">
-  <div class="absolute right-10 top-10 w-48 h-48 bg-brand-red/10 shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-10 bottom-10 w-32 h-32 bg-brand-orange/15 shape-triangle-inv animate-float [--r:20deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-1/4 top-8 w-40 h-28 text-brand-red/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
+<!-- 4. Documentación (Foto + Botón Izquierda / Título + Descripción Derecha · Fondo rojo) -->
+<section id="documentacion" class="relative z-10 bg-brand-red overflow-hidden">
+  <div class="absolute right-10 top-12 w-48 h-48 bg-white/15 shape-hexagon animate-drift [--r:-12deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-12 bottom-14 w-32 h-32 bg-brand-orange/35 shape-triangle-inv animate-float [--r:20deg] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-1/3 top-14 w-36 h-36 bg-white/15 shape-diamond animate-float-slow [--r:10deg] pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <div class="md:col-span-6 text-center md:text-left reveal-left">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-red-50 text-brand-red text-xs uppercase tracking-widest font-normal mb-4">Requisitos</span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Documentación</h2>
-      <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-red mx-auto md:mx-0"></div>
-      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
-        Consulta reglamentos, formatos de registro, autorizaciones de uso de imagen, código de conducta y avisos oficiales para completar tu inscripción.
-      </p>
-    </div>
-
-    <div class="md:col-span-6 reveal-right delay-150 space-y-10 sm:space-y-12">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-red group">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-orange group">
         <img
           src="/images/documentacion.webp"
           alt="Vista previa Documentación Oficial"
@@ -159,31 +216,49 @@
       <div class="flex flex-wrap justify-center md:justify-start gap-4">
         <a
           routerLink="/documentacion"
-          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Revisar Documentos
         </a>
       </div>
     </div>
+
+    <div class="md:col-span-6 order-1 md:order-2 text-center md:text-right reveal-right">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Requisitos</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Documentación</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-white mx-auto md:mr-0 md:ml-auto"></div>
+      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
+        Consulta reglamentos, formatos de registro, autorizaciones de uso de imagen, código de conducta y avisos oficiales para completar tu inscripción.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- Transición ondulada superior hacia Videos con cresta dinámica -->
-<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
-  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-red fill-current block" aria-hidden="true">
-    <path d="M0,38 C240,68 500,18 780,26 C1060,34 1240,62 1440,24 L1440,80 L0,80 Z"></path>
+<!-- Transición ondulada superior hacia Videos -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-white fill-current block" aria-hidden="true">
+    <path d="M0,20 C290,52 540,72 850,32 C1110,2 1290,56 1440,28 L1440,80 L0,80 Z"></path>
   </svg>
 </div>
 
-<!-- 4. Videos (Preview + Botón Izquierda / Título + Descripción Derecha · Fondo rojo) -->
-<section id="videos" class="relative z-10 bg-brand-red overflow-hidden">
-  <div class="absolute left-1/4 top-20 w-36 h-36 bg-white/15 shape-diamond animate-drift [--r:10deg] pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -right-10 bottom-20 w-56 h-56 bg-brand-orange/40 shape-hexagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute left-10 bottom-20 w-28 h-28 bg-white/15 shape-triangle animate-float-slow [--r:-20deg] pointer-events-none" aria-hidden="true"></div>
+<!-- 5. Videos (Título + Descripción Izquierda / Preview + Botón Derecha · Fondo blanco) -->
+<section id="videos" class="relative bg-white overflow-hidden">
+  <div class="absolute left-1/4 top-16 w-40 h-28 text-brand-orange/15 bg-tech-dots animate-float-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute right-10 bottom-16 w-44 h-44 bg-brand-red/10 shape-octagon animate-spin-slow pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute left-10 bottom-16 w-32 h-32 bg-brand-orange/15 shape-parallelogram animate-drift [--r:-15deg] pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-    <div class="md:col-span-6 order-2 md:order-1 reveal-left delay-150 space-y-10 sm:space-y-12">
-      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame photo-frame-l frame-orange group">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24 lg:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-6 text-center md:text-left reveal-left">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-orange-50 text-brand-orange text-xs uppercase tracking-widest font-normal mb-4">Multimedia</span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-ink font-normal tracking-tight leading-tight">Videos</h2>
+      <div class="mt-6 h-1.5 w-20 rounded-md bg-brand-orange mx-auto md:mx-0"></div>
+      <p class="text-lg sm:text-xl text-ink/80 font-normal leading-relaxed mt-6">
+        Sigue las transmisiones en vivo del evento, explora cápsulas cortas, sesiones de webinars grabadas y la galería fotográfica.
+      </p>
+    </div>
+
+    <div class="md:col-span-6 reveal-right delay-150 space-y-10 sm:space-y-12">
+      <div class="apple-zoom delay-100 relative w-full h-64 sm:h-72 rounded-xl overflow-hidden photo-frame frame-orange group">
         <img
           src="/images/videos.webp"
           alt="Preview de Videos y Transmisiones"
@@ -193,27 +268,18 @@
       <div class="flex flex-wrap justify-center md:justify-start gap-4">
         <a
           routerLink="/videos"
-          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-white text-brand-red hover:bg-brand-orange hover:text-white hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
+          class="apple-zoom delay-200 w-full sm:w-auto text-center inline-block px-8 py-4 rounded-md bg-brand-red text-white hover:bg-brand-red-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 font-normal text-lg"
         >
           Ir a Videos
         </a>
       </div>
     </div>
-
-    <div class="md:col-span-6 order-1 md:order-2 text-center md:text-right reveal-right">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-brand-orange text-white text-xs uppercase tracking-widest font-normal mb-4">Multimedia</span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">Videos</h2>
-      <div class="mt-6 h-1.5 w-20 rounded-md bg-white mx-auto md:mr-0 md:ml-auto"></div>
-      <p class="text-lg sm:text-xl text-white font-normal leading-relaxed mt-6">
-        Sigue las transmisiones en vivo del evento, explora cápsulas cortas, sesiones de webinars grabadas y la galería fotográfica.
-      </p>
-    </div>
   </div>
 </section>
 
 <!-- Transición ondulada inferior hacia el Footer naranja institucional -->
-<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+<div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
   <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
-    <path d="M0,30 C300,62 560,14 860,44 C1120,70 1300,20 1440,38 L1440,80 L0,80 Z"></path>
+    <path d="M0,42 C240,74 520,18 820,52 C1080,80 1290,22 1440,46 L1440,80 L0,80 Z"></path>
   </svg>
 </div>

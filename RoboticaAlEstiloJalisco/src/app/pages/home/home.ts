@@ -10,6 +10,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ContadorFaseComponent } from '../shared/contador-fase/contador-fase.component';
 import { ContadorFaseService } from '../shared/contador-fase/contador-fase.service';
+import { DestacadoInicioService } from '../shared/destacado-inicio.service';
 
 type ShapeKind = 'hexagon' | 'diamond' | 'triangle' | 'cross';
 
@@ -45,6 +46,7 @@ export class HomeComponent {
   private readonly host = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
   public readonly contadorService = inject(ContadorFaseService);
+  public readonly destacadoService = inject(DestacadoInicioService);
   private ctx?: gsap.Context;
   private overlayCanvas?: HTMLCanvasElement;
   private rafId: number | null = null;
@@ -190,9 +192,9 @@ export class HomeComponent {
         const desktopDigits = widget.querySelector(
           '[data-spaghetti-part="desktop-digits"]'
         ) as HTMLElement | null;
-        const desktopHms = widget.querySelector(
-          '[data-spaghetti-part="desktop-hms"]'
-        ) as HTMLElement | null;
+        const desktopHmsList = Array.from(
+          widget.querySelectorAll('[data-spaghetti-part="desktop-hms"]')
+        ) as HTMLElement[];
 
         const mobileBadge = widget.querySelector(
           '[data-spaghetti-part="mobile-badge"]'
@@ -478,7 +480,10 @@ export class HomeComponent {
           };
 
           // Deformación escalonada en Desktop proyectada hacia el vector de la esquina
-          proyectarPieza(desktopHms, 0.01, 0.4, 0.34, -14, 6);
+          desktopHmsList.forEach((el, idx) => {
+            const rev = desktopHmsList.length - 1 - idx;
+            proyectarPieza(el, 0.01 + rev * 0.02, 0.4 + rev * 0.02, 0.3 + rev * 0.05, -14, 6 + idx * 2);
+          });
           proyectarPieza(desktopDigits, 0.03, 0.44, 0.42, -18, 8);
           proyectarPieza(desktopRing, 0.05, 0.48, 0.48, -16, 10);
           proyectarPieza(desktopBadge, 0.08, 0.5, 0.54, -20, 12);
@@ -531,7 +536,7 @@ export class HomeComponent {
 
         const triggerAnim = ScrollTrigger.create({
           trigger: banner,
-          start: 'bottom 300px',
+          start: 'top top-=60',
           end: 'max',
           onEnter: () => {
             if (inicializando) {

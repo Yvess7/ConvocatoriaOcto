@@ -29,7 +29,7 @@
 <!-- Cada noticia sigue las columnas alternadas y los marcos del sitio.
      En móvil se lee primero el texto y después la imagen y el botón. -->
 <div id="publicaciones">
-  @if (esContenidoDeEjemplo) {
+  @if (esContenidoDeEjemplo()) {
     <div class="bg-white">
       <p class="max-w-7xl mx-auto px-6 lg:px-8 pt-10 text-center md:text-left text-base text-ink/80 font-normal leading-relaxed">
         Publicaciones de ejemplo: los anuncios y sus fechas son ilustrativos. Los comunicados confirmados se publicarán aquí.
@@ -37,7 +37,7 @@
     </div>
   }
 
-  @for (noticia of publicaciones; track noticia.id) {
+  @for (noticia of publicaciones(); track noticia.id) {
     @if ($odd) {
       <!-- Transición ondulada superior hacia noticia destacada -->
       <div class="relative w-full overflow-hidden leading-none bg-white -mb-px z-20 pointer-events-none">
@@ -119,14 +119,26 @@
             />
           </div>
           <div class="flex flex-wrap justify-center md:justify-start gap-4">
-            <a
-              [routerLink]="noticia.enlace.ruta"
-              [fragment]="noticia.enlace.fragmento"
-              class="w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
-              [class]="$odd ? 'bg-white text-brand-red hover:bg-orange-50' : 'bg-brand-red text-white hover:bg-brand-red-dark'"
-            >
-              {{ noticia.enlace.texto }}
-            </a>
+            @if (noticia.enlace.externo) {
+              <a
+                [href]="noticia.enlace.ruta"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+                [class]="$odd ? 'bg-white text-brand-red hover:bg-orange-50' : 'bg-brand-red text-white hover:bg-brand-red-dark'"
+              >
+                {{ noticia.enlace.texto }}
+              </a>
+            } @else {
+              <a
+                [routerLink]="noticia.enlace.ruta"
+                [fragment]="noticia.enlace.fragmento"
+                class="w-full sm:w-auto text-center inline-block px-8 py-4 rounded-lg hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl active:translate-y-0 transition-all duration-300 font-normal text-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+                [class]="$odd ? 'bg-white text-brand-red hover:bg-orange-50' : 'bg-brand-red text-white hover:bg-brand-red-dark'"
+              >
+                {{ noticia.enlace.texto }}
+              </a>
+            }
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { parseFechaConfig } from '../fecha-vigencia';
 
-export type EtapaTorneo = 'inscripcion' | 'preparacion' | 'competencia';
+export type EtapaTorneo = string;
 
 export interface DatosContador {
   fase?: string;
@@ -11,10 +12,15 @@ export interface DatosContador {
   titulo?: string;
   terminado?: string;
   etiquetaEvento?: string;
+  subtituloEvento?: string;
   fechaTexto?: string;
   horaTexto?: string;
   modalidad?: string;
   etapaActual?: EtapaTorneo;
+}
+
+export interface DatosFaseProgramada extends DatosContador {
+  id?: string;
 }
 
 @Injectable({
@@ -28,11 +34,11 @@ export class ContadorFaseService {
   readonly fase = signal<string>('Sesión informativa');
   readonly inicio = signal<string>('2026-11-01T00:00:00-06:00');
   readonly fecha = signal<string>('2026-12-01T09:00:00-06:00');
-  readonly subtituloEvento = signal<string>('Conoce la dinámica y resuelve tus dudas');
+  readonly subtituloEvento = signal<string>('');
   readonly fechaTexto = signal<string>('1 de diciembre, 2026');
   readonly horaTexto = signal<string>('09:00 hrs');
   readonly modalidad = signal<string>('Modalidad virtual en vivo');
-  readonly etapaActual = signal<EtapaTorneo>('inscripcion');
+  readonly etapaActual = signal<EtapaTorneo>('Etapa de inscripción');
   readonly titulo = signal<string>('La sesión informativa inicia en:');
   readonly terminado = signal<string>('¡La sesión informativa ha comenzado!');
 
@@ -95,6 +101,59 @@ export class ContadorFaseService {
     }
   }
 
+  private fasesProgramadas: DatosFaseProgramada[] = [];
+  private faseActivaKey: string | null = null;
+
+  /**
+   * Registra la lista completa de fases programadas desde config.json
+   * y activa la que corresponde al instante actual.
+   */
+  public configurarFases(fases: DatosFaseProgramada[]): void {
+    this.fasesProgramadas = fases.filter((item) => parseFechaConfig(item.fecha, 'fin') !== null);
+    this.faseActivaKey = null;
+    this.evaluarFaseVigente();
+  }
+
+  /**
+   * Evalúa si corresponde activar una nueva fase según la hora actual.
+   * Devuelve true cuando cambió a una fase distinta.
+   */
+  public evaluarFaseVigente(ahoraMs = Date.now()): boolean {
+    if (this.fasesProgramadas.length === 0) return false;
+
+    const ordenadas = [...this.fasesProgramadas].sort((a, b) => {
+      const aIni = parseFechaConfig(a.inicio, 'inicio') ?? parseFechaConfig(a.fecha, 'fin') ?? 0;
+      const bIni = parseFechaConfig(b.inicio, 'inicio') ?? parseFechaConfig(b.fecha, 'fin') ?? 0;
+      return aIni - bIni;
+    });
+
+    const activa = ordenadas.find((item) => {
+      const ini = parseFechaConfig(item.inicio, 'inicio');
+      const fin = parseFechaConfig(item.fecha, 'fin');
+      if (fin === null) return false;
+      return (ini === null || ahoraMs >= ini) && ahoraMs < fin;
+    });
+
+    const proxima = !activa
+      ? ordenadas.find((item) => {
+          const ini = parseFechaConfig(item.inicio, 'inicio');
+          const fin = parseFechaConfig(item.fecha, 'fin');
+          if (fin === null) return false;
+          return ini !== null ? ahoraMs < ini : ahoraMs < fin;
+        })
+      : undefined;
+
+    const elegida = activa ?? proxima ?? ordenadas[ordenadas.length - 1];
+    if (!elegida) return false;
+
+    const clave = elegida.id ?? `${elegida.inicio ?? ''}|${elegida.fecha ?? ''}|${elegida.fase ?? ''}`;
+    if (clave === this.faseActivaKey) return false;
+
+    this.faseActivaKey = clave;
+    this.configurarDesdeApi(elegida);
+    return true;
+  }
+
   /**
    * Método público para actualizar tiempos dinámicamente desde una API o WebSocket
    */
@@ -105,6 +164,7 @@ export class ContadorFaseService {
     if (datos.titulo !== undefined) this.titulo.set(datos.titulo);
     if (datos.terminado !== undefined) this.terminado.set(datos.terminado);
     if (datos.etiquetaEvento !== undefined) this.etiquetaEvento.set(datos.etiquetaEvento);
+    if (datos.subtituloEvento !== undefined) this.subtituloEvento.set(datos.subtituloEvento);
     if (datos.fechaTexto !== undefined) this.fechaTexto.set(datos.fechaTexto);
     if (datos.horaTexto !== undefined) this.horaTexto.set(datos.horaTexto);
     if (datos.modalidad !== undefined) this.modalidad.set(datos.modalidad);
@@ -116,15 +176,15 @@ export class ContadorFaseService {
 
   private iniciarReloj(): void {
     if (this.intervalId) clearInterval(this.intervalId);
-    const fin = Date.parse(this.fecha());
+    const fin = parseFechaConfig(this.fecha(), 'fin') ?? Date.parse(this.fecha());
     if (Number.isFinite(fin) && fin > Date.now()) {
       this.intervalId = setInterval(() => this.actualizar(), 1000);
     }
   }
 
   private actualizar(): void {
-    const fin = Date.parse(this.fecha());
-    const inicio = Date.parse(this.inicio());
+    const fin = parseFechaConfig(this.fecha(), 'fin') ?? Date.parse(this.fecha());
+    const inicio = parseFechaConfig(this.inicio(), 'inicio') ?? Date.parse(this.inicio());
     const ahora = Date.now();
     const valido = Number.isFinite(fin);
 
@@ -145,6 +205,9 @@ export class ContadorFaseService {
     this.segundos.set(pad(segundosRestantes % 60));
 
     if (segundosRestantes === 0) {
+      if (this.fasesProgramadas.length > 0 && this.evaluarFaseVigente(ahora)) {
+        return;
+      }
       this.tituloActual.set(this.terminado());
       this.progresoOffset.set(0);
       this.finalizado.set(true);

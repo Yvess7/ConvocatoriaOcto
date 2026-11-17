@@ -1,11 +1,8 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {
-  categoriasNovedades,
-  novedades,
-  novedadesDeEjemplo,
-} from './novedades.data';
+import { categoriasNovedades } from './novedades.data';
+import { NovedadesService } from './novedades.service';
 
 @Component({
   imports: [DatePipe, RouterLink],
@@ -13,10 +10,9 @@ import {
   templateUrl: './novedades.html',
 })
 export class NovedadesComponent {
-  readonly categorias = categoriasNovedades;
-  readonly esContenidoDeEjemplo = novedadesDeEjemplo;
+  private readonly novedadesService = inject(NovedadesService);
 
-  readonly publicaciones = [...novedades].sort((a, b) =>
-    b.fecha.localeCompare(a.fecha),
-  );
+  readonly categorias = categoriasNovedades;
+  readonly esContenidoDeEjemplo = this.novedadesService.esContenidoDeEjemplo;
+  readonly publicaciones = this.novedadesService.publicaciones;
 }
