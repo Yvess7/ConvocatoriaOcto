@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home';
-import { DocumentacionComponent } from './pages/documentacion/documentacion';
 import { VideosComponent } from './pages/videos/videos';
 import { MbotComponent } from './pages/mbot/mbot';
 import { OctostudioComponent } from './pages/octostudio/octostudio';
@@ -16,7 +15,6 @@ export const routes: Routes = [
   { path: 'torneos/octostudio', redirectTo: 'octostudio', pathMatch: 'full' },
   { path: 'mbot', component: MbotComponent },
   { path: 'octostudio', component: OctostudioComponent },
-  { path: 'documentacion', component: DocumentacionComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'novedades', component: NovedadesComponent, title: 'Novedades | Robótica al Estilo Jalisco' },

@@ -1,17 +1,14 @@
 {
   "fases": [
     {
-      "id": "sesion-informativa",
-      "fase": "Sesión informativa",
-      "etiquetaEvento": "PRÓXIMO EVENTO",
-      "titulo": "La sesión informativa inicia en:",
-      "terminado": "¡La sesión informativa ha comenzado!",
+      "id": "convocatoria",
+      "etiqueta": "CONOCE LA ",
+      "fase": "CONVOCATORIA",
+      "detalle": "Saber más",
       "inicio": "2026-11-01T00:00:00-06:00",
       "fecha": "2026-12-01T09:00:00-06:00",
       "fechaTexto": "1 de diciembre, 2026",
-      "horaTexto": "09:00 hrs",
-      "modalidad": "Modalidad virtual en vivo",
-      "etapaActual": "Convocatoria 2027"
+      "horaTexto": "09:00 hrs"
     }
   ],
   "destacadosInicio": [
@@ -21,7 +18,7 @@
       "bajaEn": "2027-06-30",
       "etiqueta": "Convocatoria 2026",
       "titulo": "Convocatoria Oficial",
-      "descripcion": "Participa en el encuentro estatal de robótica y programación creativa dirigido a estudiantes de primaria y secundaria de Jalisco. Consulta las bases de esta edición y elige tu categoría para comenzar el camino hacia la Gran Final.",
+      "descripcion": "Conoce las bases de esta edición y prepara tu equipo para las inscripciones.", 
       "destaque": "Leela para estár informado!",
       "imagen": "/images/torneos.webp",
       "imagenAlt": "Vista previa de la Convocatoria Robótica al Estilo Jalisco",
@@ -97,25 +94,6 @@
       "enlace": {
         "texto": "Consultar torneo mBot",
         "ruta": "/mbot"
-      }
-    },
-    {
-      "id": "documentacion-torneo",
-      "categoria": "avisos",
-      "fecha": "2026-11-03",
-      "publicarDesde": "2026-11-03",
-      "bajaEn": "2027-06-30",
-      "titulo": "Documentación del torneo",
-      "resumen": "Ten a la mano los documentos que acompañan la participación de tu equipo.",
-      "contenido": [
-        "En la sección de documentación puedes consultar el código de conducta, el uso de imagen y el aviso de privacidad.",
-        "Comparte esta información con las personas que acompañan al equipo y revisa las bases de la modalidad en la que participarán."
-      ],
-      "imagen": "/images/hero-banner.webp",
-      "imagenAlt": "Ilustración de Robótica al Estilo Jalisco",
-      "enlace": {
-        "texto": "Ver documentación",
-        "ruta": "/documentacion"
       }
     }
   ]

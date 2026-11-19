@@ -7,6 +7,9 @@ export type EtapaTorneo = string;
 
 export interface DatosContador {
   fase?: string;
+  etiqueta?: string;
+  mensaje?: string;
+  detalle?: string;
   inicio?: string;
   fecha?: string;
   titulo?: string;
@@ -30,19 +33,22 @@ export class ContadorFaseService {
   private router = inject(Router);
 
   // Configuración base de la fase y contexto real del evento
-  readonly etiquetaEvento = signal<string>('PRÓXIMO EVENTO');
-  readonly fase = signal<string>('Sesión informativa');
-  readonly inicio = signal<string>('2026-11-01T00:00:00-06:00');
-  readonly fecha = signal<string>('2026-12-01T09:00:00-06:00');
+  readonly etiquetaEvento = signal<string>('ETAPA ACTUAL');
+  readonly fase = signal<string>('CONVOCATORIA');
+  readonly mensaje = signal<string>('REVISA LA');
+  readonly detalle = signal<string>('');
+  readonly inicio = signal<string>('');
+  readonly fecha = signal<string>('');
   readonly subtituloEvento = signal<string>('');
-  readonly fechaTexto = signal<string>('1 de diciembre, 2026');
-  readonly horaTexto = signal<string>('09:00 hrs');
-  readonly modalidad = signal<string>('Modalidad virtual en vivo');
-  readonly etapaActual = signal<EtapaTorneo>('Etapa de inscripción');
-  readonly titulo = signal<string>('La sesión informativa inicia en:');
-  readonly terminado = signal<string>('¡La sesión informativa ha comenzado!');
+  readonly fechaTexto = signal<string>('');
+  readonly horaTexto = signal<string>('');
+  readonly modalidad = signal<string>('');
+  readonly etapaActual = signal<EtapaTorneo>('');
+  readonly titulo = signal<string>('');
+  readonly terminado = signal<string>('');
 
   // Valores calculados en tiempo real
+  readonly tieneContador = signal<boolean>(false);
   readonly dias = signal<string>('00');
   readonly horas = signal<string>('00');
   readonly minutos = signal<string>('00');
@@ -109,7 +115,12 @@ export class ContadorFaseService {
    * y activa la que corresponde al instante actual.
    */
   public configurarFases(fases: DatosFaseProgramada[]): void {
-    this.fasesProgramadas = fases.filter((item) => parseFechaConfig(item.fecha, 'fin') !== null);
+    this.fasesProgramadas = fases.filter(
+      (item) =>
+        parseFechaConfig(item.fecha, 'fin') !== null ||
+        Boolean(item.mensaje?.trim()) ||
+        Boolean(item.fase?.trim())
+    );
     this.faseActivaKey = null;
     this.evaluarFaseVigente();
   }
@@ -130,7 +141,9 @@ export class ContadorFaseService {
     const activa = ordenadas.find((item) => {
       const ini = parseFechaConfig(item.inicio, 'inicio');
       const fin = parseFechaConfig(item.fecha, 'fin');
-      if (fin === null) return false;
+      if (fin === null) {
+        return (ini === null || ahoraMs >= ini) && (Boolean(item.mensaje?.trim()) || Boolean(item.fase?.trim()));
+      }
       return (ini === null || ahoraMs >= ini) && ahoraMs < fin;
     });
 
@@ -159,11 +172,14 @@ export class ContadorFaseService {
    */
   public configurarDesdeApi(datos: DatosContador): void {
     if (datos.fase !== undefined) this.fase.set(datos.fase);
+    if (datos.mensaje !== undefined) this.mensaje.set(datos.mensaje);
+    if (datos.detalle !== undefined) this.detalle.set(datos.detalle);
     if (datos.inicio !== undefined) this.inicio.set(datos.inicio);
     if (datos.fecha !== undefined) this.fecha.set(datos.fecha);
     if (datos.titulo !== undefined) this.titulo.set(datos.titulo);
     if (datos.terminado !== undefined) this.terminado.set(datos.terminado);
-    if (datos.etiquetaEvento !== undefined) this.etiquetaEvento.set(datos.etiquetaEvento);
+    const etiqueta = datos.etiqueta ?? datos.etiquetaEvento;
+    if (etiqueta !== undefined) this.etiquetaEvento.set(etiqueta);
     if (datos.subtituloEvento !== undefined) this.subtituloEvento.set(datos.subtituloEvento);
     if (datos.fechaTexto !== undefined) this.fechaTexto.set(datos.fechaTexto);
     if (datos.horaTexto !== undefined) this.horaTexto.set(datos.horaTexto);
@@ -176,23 +192,36 @@ export class ContadorFaseService {
 
   private iniciarReloj(): void {
     if (this.intervalId) clearInterval(this.intervalId);
-    const fin = parseFechaConfig(this.fecha(), 'fin') ?? Date.parse(this.fecha());
+    const fechaStr = this.fecha().trim();
+    if (!fechaStr) return;
+    const fin = parseFechaConfig(fechaStr, 'fin') ?? Date.parse(fechaStr);
     if (Number.isFinite(fin) && fin > Date.now()) {
       this.intervalId = setInterval(() => this.actualizar(), 1000);
     }
   }
 
   private actualizar(): void {
-    const fin = parseFechaConfig(this.fecha(), 'fin') ?? Date.parse(this.fecha());
+    const fechaStr = this.fecha().trim();
+    if (!fechaStr) {
+      this.tieneContador.set(false);
+      this.aviso.set('');
+      this.progresoOffset.set(100);
+      this.finalizado.set(false);
+      return;
+    }
+
+    const fin = parseFechaConfig(fechaStr, 'fin') ?? Date.parse(fechaStr);
     const inicio = parseFechaConfig(this.inicio(), 'inicio') ?? Date.parse(this.inicio());
     const ahora = Date.now();
     const valido = Number.isFinite(fin);
 
     if (!valido) {
+      this.tieneContador.set(false);
       this.aviso.set('Configura una fecha válida.');
       return;
     }
 
+    this.tieneContador.set(true);
     this.aviso.set('');
     const segundosRestantes = Math.max(0, Math.ceil((fin - ahora) / 1000));
     const diasNum = Math.floor(segundosRestantes / 86400);

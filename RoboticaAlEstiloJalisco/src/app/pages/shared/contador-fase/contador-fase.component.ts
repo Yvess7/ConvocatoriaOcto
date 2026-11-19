@@ -34,6 +34,8 @@ export class ContadorFaseComponent implements OnInit {
   };
 
   get etapaTitulo(): string {
+    const fase = this.contador.fase().trim();
+    if (fase) return fase;
     const etapa = this.contador.etapaActual();
     return this.etapas[etapa] ?? etapa;
   }
@@ -51,5 +53,9 @@ export class ContadorFaseComponent implements OnInit {
 
   public configurarTiempo(datos: DatosContador): void {
     this.contador.configurarDesdeApi(datos);
+  }
+
+  public irAConvocatoria(): void {
+    document.getElementById('convocatoria')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

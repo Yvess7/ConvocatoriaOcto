@@ -118,11 +118,12 @@
   <section #seccion [id]="'etapa-' + e.paso.id" [attr.data-i]="e.i" class="group/stage relative scroll-mt-21">
     <!-- Onda de entrada (trazo único) -->
     <div class="pointer-events-none relative -mb-px w-full overflow-hidden leading-none" [style.background-color]="e.fondoAnterior" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block h-12 w-full fill-current sm:h-16 lg:h-20" [style.color]="e.color">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block h-12 w-full fill-current sm:h-16 lg:h-20" [style.color]="e.paso.id === 'lanzamiento' ? e.fondoInicio : e.color">
         <path [attr.d]="e.ondaSuperior"></path>
       </svg>
     </div>
 
+    @if (e.paso.id !== 'lanzamiento') {
     <!-- Banda de color: icono 3D junto al título -->
     <div #banda data-gsap="etapa-banda" class="relative overflow-hidden py-10 text-white sm:py-14" [style.background-color]="e.color">
       <div data-gsap="fondo" data-vel="-0.25" class="pointer-events-none absolute -left-10 top-6 size-40 bg-white/10 shape-hexagon animate-drift" aria-hidden="true"></div>
@@ -219,10 +220,11 @@
         <path [attr.d]="e.ondaInferior"></path>
       </svg>
     </div>
+    }
 
     @if (e.paso.id === 'lanzamiento') {
-<!-- Sección 1: Convocatoria Oficial OctoStudio (Fondo rojo institucional con texto libre y figuras variadas) -->
-<section id="convocatoria-octostudio" class="relative z-10 bg-brand-red text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+<!-- Sección 1: Convocatoria Oficial OctoStudio (Unificada con el icono 3D y navegación de etapa, sin doble título) -->
+<section #banda data-gsap="etapa-banda" id="convocatoria-octostudio" class="relative z-10 bg-brand-red text-white py-16 sm:py-24 lg:py-28 overflow-hidden">
   <!-- Figuras geométricas dinámicas en el fondo con GSAP Parallax y Flotación -->
   <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-12 top-24 w-52 h-52 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
   <div data-gsap="fondo" data-vel="0.4" class="absolute right-12 top-1/4 w-36 h-36 bg-brand-orange/40 shape-diamond pointer-events-none" aria-hidden="true"></div>
@@ -231,18 +233,87 @@
   <div data-gsap="fondo" data-vel="-0.4" class="absolute left-10 bottom-24 w-32 h-32 bg-brand-orange/35 shape-cross pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
-    <!-- Encabezado editorial principal -->
-    <div class="max-w-3xl" data-gsap="convocatoria-encabezado">
-      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
-        Convocatoria Estatal Oficial 2026-2027
-      </span>
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
-        Torneo de Programación al Estilo Jalisco OctoStudio
-      </h2>
-      <div class="mt-6 h-1.5 w-24 rounded-md bg-brand-orange"></div>
-      <p class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
-        La Secretaría de Educación del Estado de Jalisco, a través de la Subsecretaría de Educación Básica, la Dirección General de Programas Estratégicos, la Dirección de Articulación y la Dirección de Alfabetización Digital, convoca a estudiantes y docentes de educación primaria alta y secundaria de escuelas públicas y particulares a participar bajo el eje temático unificado «Jalisco Verde y Sustentable».
-      </p>
+    <!-- Encabezado editorial principal junto al icono 3D y navegación -->
+    <div class="grid grid-cols-1 items-center gap-10 text-center md:grid-cols-12 md:gap-12 md:text-left lg:gap-16">
+      <div class="md:col-span-7" data-gsap="convocatoria-encabezado">
+        <span data-gsap="etapa-item" class="inline-block px-3.5 py-1 rounded-md bg-white/20 backdrop-blur-xs text-white text-xs uppercase tracking-widest font-normal mb-4">
+          {{ e.paso.etiqueta }} · Convocatoria Estatal Oficial 2026-2027
+        </span>
+        <h2 data-gsap="etapa-item" class="text-4xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
+          Torneo de Programación al Estilo Jalisco OctoStudio
+        </h2>
+        <div class="mt-6 h-1.5 w-24 rounded-md bg-brand-orange mx-auto md:mx-0"></div>
+        <p data-gsap="etapa-item" class="text-lg sm:text-xl text-white/90 font-normal leading-relaxed mt-6">
+          La Secretaría de Educación del Estado de Jalisco, a través de la Subsecretaría de Educación Básica, la Dirección General de Programas Estratégicos, la Dirección de Articulación y la Dirección de Alfabetización Digital, convoca a estudiantes y docentes de educación primaria alta y secundaria de escuelas públicas y particulares a participar bajo el eje temático unificado «Jalisco Verde y Sustentable».
+        </p>
+        <p data-gsap="etapa-item" class="mt-4 text-sm uppercase tracking-wider text-white/90">{{ e.paso.fecha }}</p>
+
+        <nav data-gsap="etapa-item" class="mt-8 flex items-stretch justify-center gap-2.5 sm:gap-4 md:justify-start" aria-label="Navegación entre etapas">
+          <button
+            #bAnterior
+            type="button"
+            class="flex flex-1 flex-col items-center rounded-lg bg-white/15 px-2.5 pt-2 pb-3 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white sm:w-36 sm:flex-none"
+            [class.invisible]="e.primera"
+            [attr.aria-label]="'Ir a la etapa anterior: ' + e.anterior"
+            (click)="irSuave(e.i - 1)"
+            (pointerenter)="hover(bAnterior, $event)"
+            (focus)="hover(bAnterior, $event)"
+          >
+            <span class="relative block h-18 w-full shrink-0 sm:h-20" aria-hidden="true">
+              <span data-spr data-k="anterior" class="pointer-events-none absolute left-1/2 top-1/2 -ml-18 -mt-19 size-36 bg-no-repeat bg-size-[500%_400%] sm:-ml-22 sm:-mt-23 sm:size-44" [style.background-image]="imagenHoja('anterior')"></span>
+            </span>
+            <span class="relative z-10 mt-2.5 block text-center text-xs leading-snug text-white sm:mt-3">{{ e.anterior }}</span>
+          </button>
+          <button
+            #bMapa
+            type="button"
+            class="flex flex-1 flex-col items-center rounded-lg bg-white/15 px-2.5 pt-2 pb-3 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white sm:w-36 sm:flex-none"
+            aria-label="Volver al mapa"
+            (click)="saltar(-1, bMapa)"
+            (pointerenter)="hover(bMapa, $event)"
+            (focus)="hover(bMapa, $event)"
+          >
+            <span class="relative block h-18 w-full shrink-0 sm:h-20" aria-hidden="true">
+              <span data-spr data-k="casa" class="pointer-events-none absolute left-1/2 top-1/2 -ml-18 -mt-19 size-36 bg-no-repeat bg-size-[500%_400%] sm:-ml-22 sm:-mt-23 sm:size-44" [style.background-image]="imagenHoja('casa')"></span>
+            </span>
+            <span class="relative z-10 mt-2.5 block text-center text-xs leading-snug text-white sm:mt-3">Mapa</span>
+          </button>
+          <button
+            #bSiguiente
+            type="button"
+            class="flex flex-1 flex-col items-center rounded-lg bg-white/15 px-2.5 pt-2 pb-3 outline-none transition hover:-translate-y-1 hover:bg-white/25 focus-visible:outline-3 focus-visible:outline-white sm:w-36 sm:flex-none"
+            [class.invisible]="e.ultima"
+            [attr.aria-label]="'Ir a la etapa siguiente: ' + e.siguiente"
+            (click)="irSuave(e.i + 1)"
+            (pointerenter)="hover(bSiguiente, $event)"
+            (focus)="hover(bSiguiente, $event)"
+          >
+            <span class="relative block h-18 w-full shrink-0 sm:h-20" aria-hidden="true">
+              <span data-spr data-k="siguiente" class="pointer-events-none absolute left-1/2 top-1/2 -ml-18 -mt-19 size-36 bg-no-repeat bg-size-[500%_400%] sm:-ml-22 sm:-mt-23 sm:size-44" [style.background-image]="imagenHoja('siguiente')"></span>
+            </span>
+            <span class="relative z-10 mt-2.5 block text-center text-xs leading-snug text-white sm:mt-3">{{ e.siguiente }}</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="md:col-span-5" data-gsap="etapa-icono">
+        <button
+          #grande
+          type="button"
+          class="relative mx-auto block size-50 rounded-lg outline-none focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-white sm:size-60"
+          [attr.aria-label]="'Animar icono 3D de ' + e.paso.titulo"
+          (click)="clicIconoGrande(grande)"
+          (pointerenter)="hover(grande, $event)"
+          (focus)="hover(grande, $event)"
+        >
+          <div
+            data-spr
+            [attr.data-k]="e.icono"
+            class="pointer-events-none absolute left-1/2 top-1/2 -ml-37.5 -mt-37.5 size-75 bg-no-repeat bg-size-[500%_400%] drop-shadow-2xl sm:-ml-47.5 sm:-mt-47.5 sm:size-95"
+            [style.background-image]="imagenHoja(e.icono)"
+          ></div>
+        </button>
+      </div>
     </div>
 
     <!-- 4 Pilares Institucionales de la Convocatoria (Texto libre, sin cajas) -->

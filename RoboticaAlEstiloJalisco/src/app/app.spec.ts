@@ -4,14 +4,8 @@ import { App } from './app';
 import { routes } from './app.routes';
 
 const expectedMenuUrls = [
-  '/torneos',
   '/mbot',
   '/octostudio',
-  '/documentacion',
-  '/documentacion#premios',
-  '/documentacion#codigo-conducta',
-  '/documentacion#uso-de-imagen',
-  '/documentacion#aviso-de-privacidad',
   '/videos',
   '/videos#en-vivo',
   '/videos#shorts',
@@ -87,7 +81,7 @@ describe('App', () => {
     expect(menuButton().getAttribute('aria-expanded')).toBe('false');
   });
 
-  it.each(['/documentacion', '/documentacion#premios', '/videos#webinars', '/novedades', '/registro'])(
+  it.each(['/mbot', '/octostudio', '/videos#webinars', '/novedades', '/registro'])(
     'navigates to %s and closes the mobile menu',
     async (url) => {
       const menu = openMobileMenu();

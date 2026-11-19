@@ -21,7 +21,6 @@ const FRAGMENT_COLORS: Record<string, string> = {
   'reglamento-octostudio': '#e81a4f',
   'seccion-videos': '#e81a4f',
   galeria: '#e81a4f',
-  documentacion: '#e81a4f',
   videos: '#e81a4f',
   'clasificacion-mbot': '#0284c7',
   mbot: '#0284c7',
@@ -32,7 +31,6 @@ const FRAGMENT_COLORS: Record<string, string> = {
 const PATH_COLORS: Record<string, string> = {
   '/mbot': '#0284c7',
   '/octostudio': '#7a59eb',
-  '/documentacion': '#e81a4f',
   '/videos': '#e81a4f',
   '/registro': '#e81a4f',
   '/': '#f6842b',

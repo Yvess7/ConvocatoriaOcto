@@ -21,16 +21,16 @@ export const navigation: {
   home: { label: 'Robótica al Estilo Jalisco', path: '/' },
   groups: [
     {
-      label: 'Documentación',
-      path: '/documentacion',
+      label: 'mBot',
+      path: '/mbot',
       compact: true,
-      scrollable: true,
-      links: [
-        { label: 'Premios', fragment: 'premios' },
-        { label: 'Código de Conducta', fragment: 'codigo-conducta' },
-        { label: 'Uso de Imagen', fragment: 'uso-de-imagen' },
-        { label: 'Aviso de Privacidad', fragment: 'aviso-de-privacidad' },
-      ],
+      links: [],
+    },
+    {
+      label: 'OctoStudio',
+      path: '/octostudio',
+      compact: true,
+      links: [],
     },
     {
       label: 'Videos',

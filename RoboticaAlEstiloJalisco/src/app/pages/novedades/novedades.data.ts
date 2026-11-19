@@ -85,19 +85,4 @@ export const novedades: readonly Novedad[] = [
     imagenAlt: 'Ilustración del torneo de robótica mBot',
     enlace: { texto: 'Consultar torneo mBot', ruta: '/mbot' },
   },
-  {
-    id: 'documentacion-torneo',
-    categoria: 'avisos',
-    fecha: '2026-11-03',
-    titulo: 'Documentación del torneo',
-    resumen:
-      'Ten a la mano los documentos que acompañan la participación de tu equipo.',
-    contenido: [
-      'En la sección de documentación puedes consultar el código de conducta, el uso de imagen y el aviso de privacidad.',
-      'Comparte esta información con las personas que acompañan al equipo y revisa las bases de la modalidad en la que participarán.',
-    ],
-    imagen: '/images/hero-banner.webp',
-    imagenAlt: 'Ilustración de Robótica al Estilo Jalisco',
-    enlace: { texto: 'Ver documentación', ruta: '/documentacion' },
-  },
 ];

@@ -14,20 +14,20 @@
     <div
       data-docked-target="capsule"
       class="group relative flex items-center gap-3.5 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white border-2 border-brand-orange text-ink transition-all duration-300"
-      [style.box-shadow]="forjandoActivo() ? '7px 7px 0 0 #f6842b, 0 0 28px rgba(232,26,79,0.45)' : '7px 7px 0 0 #e81a4f, 0 14px 30px rgba(0,0,0,0.16)'"
+      [style.box-shadow]="forjandoActivo() ? '7px 7px 0 0 #f6842b, 0 0 28px rgba(246,132,43,0.4)' : '7px 7px 0 0 #f6842b, 0 14px 30px rgba(0,0,0,0.16)'"
     >
-      <!-- Bloque Izquierdo: Cuadro Naranja con Anillo SVG y Días restantes -->
+      <!-- Bloque Izquierdo: Cuadro Naranja con Anillo SVG blanco y Días restantes -->
       <div
         data-docked-target="ring"
         class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-brand-orange text-white flex items-center justify-center shrink-0 shadow-xs overflow-hidden"
       >
-        <svg viewBox="0 0 100 100" class="w-14 h-14 sm:w-16 sm:h-16 -rotate-90 pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 100 100" class="relative z-10 w-14 h-14 sm:w-16 sm:h-16 -rotate-90 pointer-events-none" aria-hidden="true">
           <circle
             cx="50"
             cy="50"
             r="42"
             fill="none"
-            class="stroke-white/30 stroke-[4]"
+            class="stroke-white/25 stroke-[4]"
             [style.opacity]="ringProgress()"
           />
           <circle
@@ -44,14 +44,14 @@
           />
         </svg>
         <div
-          class="absolute inset-0 flex flex-col items-center justify-center will-change-transform"
+          class="absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform"
           [style.opacity]="daysProgress()"
           [style.transform]="'scale(' + (0.4 + 0.6 * daysProgress()) + ')'"
         >
-          <span class="text-xl sm:text-2xl font-normal text-white tabular-nums leading-none">
+          <span class="text-xl sm:text-2xl font-bold text-white tabular-nums leading-none">
             {{ contador.dias() }}
           </span>
-          <span class="text-[9px] sm:text-[10px] font-normal tracking-widest text-white/95 uppercase leading-none mt-0.5">
+          <span class="text-[9px] sm:text-[10px] font-bold tracking-widest text-white/90 uppercase leading-none mt-0.5">
             {{ contador.etiquetaDias() }}
           </span>
         </div>
@@ -64,32 +64,41 @@
           [style.opacity]="phaseProgress()"
           [style.transform]="'translateX(' + ((1 - phaseProgress()) * -10) + 'px)'"
         >
-          <span class="text-[10px] sm:text-[11px] font-normal tracking-[0.18em] text-brand-red uppercase leading-none">
+          <span class="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-ink/75 uppercase leading-none">
+            <span class="relative flex w-1.5 h-1.5" aria-hidden="true">
+              <span class="absolute inline-flex w-full h-full rounded-full bg-brand-orange animate-ping"></span>
+              <span class="relative inline-flex w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+            </span>
             {{ contador.etiquetaEvento() }}
           </span>
-          <span class="text-sm sm:text-base text-ink font-normal leading-tight mt-0.5 truncate max-w-[195px] sm:max-w-[245px]">
+          <span class="text-sm sm:text-base text-brand-orange font-bold leading-tight mt-0.5 truncate max-w-[195px] sm:max-w-[245px]">
             {{ contador.fase() }}
           </span>
         </div>
 
-        <div class="flex items-center gap-1.5 text-sm sm:text-base font-normal tabular-nums leading-none">
+        <div class="flex items-center gap-1.5 text-sm sm:text-base font-bold tabular-nums leading-none">
           <span
             class="px-2.5 py-1.5 rounded-md bg-orange-50 border border-brand-orange/30 text-ink will-change-transform inline-flex items-baseline"
             [style.opacity]="hProgress()"
             [style.transform]="'translateY(' + ((1 - hProgress()) * -8) + 'px) scale(' + (0.6 + 0.4 * hProgress()) + ')'"
-          >{{ contador.horas() }}<small class="text-[10px] sm:text-[11px] font-normal text-brand-orange ml-0.5">H</small></span>
-          <span class="text-ink/35 font-normal" [style.opacity]="hProgress()">:</span>
+          >{{ contador.horas() }}<small class="text-[10px] sm:text-[11px] font-bold text-brand-orange ml-0.5">H</small></span>
+          <span class="text-ink/40 font-normal" [style.opacity]="hProgress()">:</span>
           <span
             class="px-2.5 py-1.5 rounded-md bg-orange-50 border border-brand-orange/30 text-ink will-change-transform inline-flex items-baseline"
             [style.opacity]="mProgress()"
             [style.transform]="'translateY(' + ((1 - mProgress()) * -8) + 'px) scale(' + (0.6 + 0.4 * mProgress()) + ')'"
-          >{{ contador.minutos() }}<small class="text-[10px] sm:text-[11px] font-normal text-brand-orange ml-0.5">M</small></span>
-          <span class="text-ink/35 font-normal" [style.opacity]="mProgress()">:</span>
+          >{{ contador.minutos() }}<small class="text-[10px] sm:text-[11px] font-bold text-brand-orange ml-0.5">M</small></span>
+          <span class="text-ink/40 font-normal" [style.opacity]="mProgress()">:</span>
           <span
-            class="px-2.5 py-1.5 rounded-md bg-brand-red text-white will-change-transform inline-flex items-baseline shadow-2xs"
+            class="px-2.5 py-1.5 rounded-md bg-brand-orange text-white will-change-transform inline-flex items-baseline shadow-2xs"
             [style.opacity]="sProgress()"
             [style.transform]="'translateY(' + ((1 - sProgress()) * -8) + 'px) scale(' + (0.6 + 0.4 * sProgress()) + ')'"
-          >{{ contador.segundos() }}<small class="text-[10px] sm:text-[11px] font-normal text-white/85 ml-0.5">S</small></span>
+          >
+            @for (s of [contador.segundos()]; track s) {
+              <span class="animate-cifra-tick">{{ s }}</span>
+            }
+            <small class="text-[10px] sm:text-[11px] font-bold text-white/90 ml-0.5">S</small>
+          </span>
         </div>
       </div>
 
@@ -101,7 +110,7 @@
         <button
           type="button"
           (click)="alternarColapso()"
-          class="px-2.5 py-1.5 rounded-md bg-gray-100 text-ink hover:bg-brand-red hover:text-white text-sm font-normal transition-colors cursor-pointer self-center"
+          class="px-2.5 py-1.5 rounded-md bg-orange-50 text-brand-orange hover:bg-brand-orange hover:text-white text-sm font-normal transition-colors cursor-pointer self-center"
           title="Minimizar contador"
           aria-label="Minimizar contador"
         >
@@ -115,13 +124,13 @@
       type="button"
       data-docked-target="capsule"
       (click)="alternarColapso()"
-      class="group relative rounded-xl bg-white border-2 border-brand-orange p-2 shadow-[5px_5px_0_0_#e81a4f,0_10px_24px_rgba(0,0,0,0.16)] hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-300 cursor-pointer"
+      class="group relative rounded-xl bg-white border-2 border-brand-orange p-2 shadow-[5px_5px_0_0_#f6842b,0_10px_24px_rgba(0,0,0,0.16)] hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-300 cursor-pointer"
       title="Expandir contador"
       aria-label="Expandir contador"
     >
       <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-brand-orange text-white flex flex-col items-center justify-center overflow-hidden">
-        <svg viewBox="0 0 100 100" class="w-12 h-12 sm:w-14 sm:h-14 -rotate-90 pointer-events-none" aria-hidden="true">
-          <circle cx="50" cy="50" r="42" fill="none" class="stroke-white/30 stroke-[4]" />
+        <svg viewBox="0 0 100 100" class="relative z-10 w-12 h-12 sm:w-14 sm:h-14 -rotate-90 pointer-events-none" aria-hidden="true">
+          <circle cx="50" cy="50" r="42" fill="none" class="stroke-white/25 stroke-[4]" />
           <circle
             cx="50"
             cy="50"
@@ -135,9 +144,9 @@
             [style.stroke-dashoffset]="ringOffsetDinamico()"
           />
         </svg>
-        <div class="absolute inset-0 flex flex-col items-center justify-center leading-none">
-          <span class="text-base sm:text-lg font-normal text-white tabular-nums">{{ contador.dias() }}</span>
-          <span class="text-[8px] sm:text-[9px] font-normal tracking-wider text-white/95 uppercase mt-0.5">{{ contador.etiquetaDias() }}</span>
+        <div class="absolute inset-0 z-10 flex flex-col items-center justify-center leading-none">
+          <span class="text-base sm:text-lg font-bold text-white tabular-nums">{{ contador.dias() }}</span>
+          <span class="text-[8px] sm:text-[9px] font-bold tracking-wider text-white/90 uppercase mt-0.5">{{ contador.etiquetaDias() }}</span>
         </div>
       </div>
     </button>
