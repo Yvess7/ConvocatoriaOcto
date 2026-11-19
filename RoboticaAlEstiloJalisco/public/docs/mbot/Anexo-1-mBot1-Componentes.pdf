@@ -1,0 +1,446 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R] /Count 4 >>
+endobj
+4 0 obj
+<< /Length 2923 >>
+stream
+BT
+50 755 Td
+/F2 11 Tf
+(Anexo 1) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(mBot1, componentes y configuración) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(1. ¿Qué es el mBot1?) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(El mBot1 es un robot educativo programable de la marca Makeblock, diseñado) Tj
+0 -14 Td
+/F2 11 Tf
+(para la enseñanza de robótica, electrónica y pensamiento computacional. Se) Tj
+0 -14 Td
+/F2 11 Tf
+(ensambla a partir de un chasis de aluminio, dos motores con reductora,) Tj
+0 -14 Td
+/F2 11 Tf
+(ruedas, sensores de entorno y una placa de control principal llamada mCore.) Tj
+0 -14 Td
+/F2 11 Tf
+(Permite ejecutar tareas autónomas como el seguimiento de líneas, la evasión) Tj
+0 -14 Td
+/F2 11 Tf
+(de obstáculos y la navegación programada.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El mBot1 integra sensores ultrasónicos e infrarrojos para la percepción del entorno. El) Tj
+0 -14 Td
+/F1 10 Tf
+(sensor ultrasónico se utiliza para medir distancias y detectar obstáculos frontales,) Tj
+0 -14 Td
+/F1 10 Tf
+(mientras que los sensores infrarrojos identifican contrastes en la superficie de) Tj
+0 -14 Td
+/F1 10 Tf
+(rodamiento \(líneas\). La placa de control mCore procesa las lecturas de los sensores y) Tj
+0 -14 Td
+/F1 10 Tf
+(ejecuta las instrucciones del código cargado. Para su funcionamiento, el robot utiliza una) Tj
+0 -14 Td
+/F1 10 Tf
+(fuente de alimentación interna \(baterías\) y un módulo de comunicación inalámbrica) Tj
+0 -14 Td
+/F1 10 Tf
+(\(Bluetooth o 2.4G\) para su configuración y programación.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2. Entorno de Programación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La programación y la estrategia de cada equipo deberán desarrollarse mediante la) Tj
+0 -14 Td
+/F1 10 Tf
+(plataforma mBlock \(disponible en: https://ide.mblock.cc/\), un entorno de programación) Tj
+0 -14 Td
+/F1 10 Tf
+(basado en bloques que facilita la estructuración algorítmica. A través de mBlock, los) Tj
+0 -14 Td
+/F1 10 Tf
+(participantes programarán el comportamiento de los motores y la lectura de los sensores) Tj
+0 -14 Td
+/F1 10 Tf
+(para dotar al robot de autonomía en las tres pruebas del torneo \(Seguidor de Línea,) Tj
+0 -14 Td
+/F1 10 Tf
+(Laberinto y Sumo\).) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(3. Dimensiones y Peso de Referencia \(Robot Ensamblado\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Largo: 19 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ancho: 13 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alto: 13 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Peso aproximado: 500 g) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(4. Inventario Oficial de Componentes del mBot1 Makeblock) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Componentes permitidos para la construcción del robot \(Kit Básico\). - Para garantizar la) Tj
+0 -14 Td
+/F1 10 Tf
+(equidad del torneo, solo estas piezas están autorizadas para el ensamblaje de los robots) Tj
+0 -14 Td
+/F1 10 Tf
+(participantes:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Componente) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cantidad) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 1 de 4) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 1721 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Características para Identificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Chasis de aluminio) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Estructura metálica original mBot1 con perforaciones estandarizadas para montaje.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Placa de control mCore) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Placa Makeblock basada en el microcontrolador ATmega328, con cuatro puertos RJ25 y dos) Tj
+0 -14 Td
+/F1 10 Tf
+(conectores de motor.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Motores con reductora \(Tipo TT\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Motores originales de 6 V y 200 RPM para tracción independiente de las ruedas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ruedas motrices con neumáticos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Llantas plásticas tipo Plastic Timing Pulley 90T con cubierta de goma antideslizante.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rueda loca de apoyo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rueda de apoyo omnidireccional) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(\(Mini Caster Wheel\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensor ultrasónico \(Me Ultrasonic Sensor\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Módulo emisor/receptor para medición de distancia y evasión de obstáculos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensor seguidor de línea) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(\(Me Line Follower\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Módulo orientado al suelo con dos sensores infrarrojos para detección de contraste.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Portapilas) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 2 de 4) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 1563 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Soporte para 4 pilas AA) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(\(o batería LiPo según la versión del kit\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Carcasa protectora mCore) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1 conjunto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cubierta plástica translúcida de protección para la placa mCore.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Módulo inalámbrico) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Módulo de comunicación Bluetooth o 2.4G) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(\(según la versión oficial del kit\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cables RJ25) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cables de conexión rápida para vincular los sensores con la placa mCore.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cable USB) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cable de datos para transferencia de código desde la computadora a la placa.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Control remoto infrarrojo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Mando de control remoto incluido en el kit de fábrica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tornillo M3 de 25 mm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(4) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tornillo metálico largo de rosca fina M3 con cabeza redonda/cilíndrica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tuerca M3) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(4) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Pieza metálica hexagonal pequeña con rosca interna métrica de 3 mm.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 3 de 4) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 1008 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Tornillo autorroscante M2.2 de 9 mm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tornillo metálico pequeño con punta afilada y rosca ancha diseñada para fijación en) Tj
+0 -14 Td
+/F1 10 Tf
+(plástico.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tornillo M4 de 8 mm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(8) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tornillo metálico corto de cuerpo más grueso \(M4\) con cabeza de botón o gota de sebo.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(5. Configuración básica de fábrica del mBot1.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Conforme a la guía para principiantes de mBot1, publicada en sitio oficial del Makeblock) Tj
+0 -14 Td
+/F1 10 Tf
+(en el apartado de ensamblaje del mBot1 \(https://support.makeblock.com/hc/en-) Tj
+0 -14 Td
+/F1 10 Tf
+(us/articles/12822859943959-A-Beginner-s-Guide-to-mBot#Assemble%20mBot\), en el apartado de) Tj
+0 -14 Td
+/F1 10 Tf
+(ensamblar el mBot1  del paso 1 al paso 11.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 4 de 4) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000009 00000 n 
+0000000106 00000 n 
+0000000208 00000 n 
+0000000284 00000 n 
+0000003259 00000 n 
+0000003395 00000 n 
+0000005168 00000 n 
+0000005304 00000 n 
+0000006919 00000 n 
+0000007055 00000 n 
+0000008116 00000 n 
+0000008254 00000 n 
+trailer
+<< /Size 13 /Root 12 0 R >>
+startxref
+8304
+%%EOF

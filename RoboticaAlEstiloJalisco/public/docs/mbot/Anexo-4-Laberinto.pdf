@@ -1,0 +1,1535 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R 25 0 R 27 0 R 29 0 R] /Count 13 >>
+endobj
+4 0 obj
+<< /Length 2680 >>
+stream
+BT
+50 755 Td
+/F2 11 Tf
+(REGLAMENTO TÉCNICO) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(TORNEO DE ROBÓTICA AL ESTILO JALISCO MBOT TRIPLE ARENA 2026) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(DESAFÍO LABERINTO) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(1. Objetivo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El concurso desafía a los participantes a programar un robot mBot de Makeblock para) Tj
+0 -14 Td
+/F1 10 Tf
+(navegar de manera autónoma a través de un laberinto, partiendo del punto de inicio hasta) Tj
+0 -14 Td
+/F1 10 Tf
+(la meta en el menor tiempo posible. La competencia tiene como objetivo fomentar) Tj
+0 -14 Td
+/F1 10 Tf
+(habilidades en programación, pensamiento lógico, resolución de problemas, integración de) Tj
+0 -14 Td
+/F1 10 Tf
+(sensores y formulación de estrategias de navegación autónoma.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2. Especificaciones del robot) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El único modelo autorizado para la competencia es el mBot1 de Makeblock; queda) Tj
+0 -14 Td
+/F1 10 Tf
+(estrictamente prohibido el uso de cualquier otra plataforma.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El robot debe conservar íntegramente su estructura y sistema de locomoción de fábrica. Son) Tj
+0 -14 Td
+/F1 10 Tf
+(componentes obligatorios:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Chasis original sin alteraciones estructurales.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Placa controladora original \(mCore\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los dos motores y sus dos ruedas motrices originales.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rueda loca \(de apoyo\) original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Batería compatible y cableado necesario para su funcionamiento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nota sobre personalización: Se autoriza la personalización estética \(pintura o) Tj
+0 -14 Td
+/F1 10 Tf
+(rotulación\), siempre que no modifique la estructura ni interfiera con los sensores.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(3. Sensores y estética del robot) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los robots podrán equiparse con un máximo de dos sensores, limitados estrictamente a los) Tj
+0 -14 Td
+/F1 10 Tf
+(modelos estándar suministrados de fábrica:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensor ultrasónico Makeblock.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensor seguidor de líneas \(infrarrojo\) Makeblock.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Restricciones: Queda estrictamente prohibida la incorporación de cámaras, LiDAR, módulos) Tj
+0 -14 Td
+/F1 10 Tf
+(GPS, servomotores, placas de desarrollo adicionales, microcontroladores auxiliares,) Tj
+0 -14 Td
+/F1 10 Tf
+(sistemas de procesamiento externo o cualquier sensor ajeno a los autorizados.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(4. Materiales y Accesorios Prohibidos) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 1 de 13) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2998 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(El robot debe conservar estrictamente su configuración mecánica y electrónica de fábrica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Elementos prohibidos:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Actuadores y mecanismos adicionales: Motores extra, servomotores, brazos mecánicos, levas) Tj
+0 -14 Td
+/F1 10 Tf
+(o cualquier sistema móvil no incluido de serie.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dispositivos de visión o telecomunicación: Cámaras, teléfonos móviles, transmisores de) Tj
+0 -14 Td
+/F1 10 Tf
+(video o módulos de telemetría externa.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Procesamiento auxiliar: Placas de desarrollo adicionales \(Arduino, ESP32, Raspberry Pi,) Tj
+0 -14 Td
+/F1 10 Tf
+(microcontroladores auxiliares\) o sistemas de cómputo externo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Piezas no originales: Piezas impresas en 3D, elementos cortados por láser o piezas de) Tj
+0 -14 Td
+/F1 10 Tf
+(otros kits comerciales.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Apoyos y guías externas: Brazos, patines, varillas o extensiones diseñadas para tantear,) Tj
+0 -14 Td
+/F1 10 Tf
+(deslizarse o apoyarse en las paredes del laberinto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Riesgo para la pista: Adhesivos expuestos, puntas afiladas, sustancias líquidas o) Tj
+0 -14 Td
+/F1 10 Tf
+(cualquier material que pueda rayar, manchar o dañar la superficie o las paredes de la) Tj
+0 -14 Td
+/F1 10 Tf
+(pista.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificaciones estéticas permitidas:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Aplicación de pintura sobre el chasis metálico.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Colocación de etiquetas, calcomanías o vinilos para la identificación y personalización) Tj
+0 -14 Td
+/F1 10 Tf
+(del equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nota: Toda personalización estética deberá aplicarse sin obstruir el campo de visión de) Tj
+0 -14 Td
+/F1 10 Tf
+(los sensores, sin alterar significativamente el peso o centro de masa del robot, y sin) Tj
+0 -14 Td
+/F1 10 Tf
+(modificar sus dimensiones externas de fábrica.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(5. Programación y autonomía) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Software y autoría:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El código debe desarrollarse en el entorno mBlock \(ide.mblock.cc\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El programa debe ser autoría íntegra de los miembros del equipo, quienes deberán ser) Tj
+0 -14 Td
+/F1 10 Tf
+(capaces de explicar su lógica y funcionamiento ante los jueces si se solicita.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autonomía y restricciones en pista: El robot debe resolver el laberinto de manera 100%) Tj
+0 -14 Td
+/F1 10 Tf
+(autónoma. A partir del momento en que se dé la señal de arranque e inicie el recorrido,) Tj
+0 -14 Td
+/F1 10 Tf
+(queda estrictamente prohibido:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Establecer comunicación inalámbrica \(Bluetooth, Wi-Fi, radiofrecuencia o control remoto\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Enviar comandos o telemetría en tiempo real desde una computadora, tableta o teléfono) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 2 de 13) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2300 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(móvil.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificar el programa o alterar parámetros en ejecución durante el intento de recorrido.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar, empujar, detener o reorientar manualmente el robot.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Reubicar o alterar la orientación física de los sensores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ajustes entre intentos: Los equipos podrán realizar reparaciones, calibraciones físicas,) Tj
+0 -14 Td
+/F1 10 Tf
+(ajustar valores de código o transferir un nuevo programa a su robot únicamente en los) Tj
+0 -14 Td
+/F1 10 Tf
+(intervalos entre cada intento, siempre y cuando se efectúe antes del llamado formal para) Tj
+0 -14 Td
+/F1 10 Tf
+(iniciar la siguiente prueba.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(6. Características del laberinto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El laberinto estará construido sobre una superficie rígida, lisa y uniforme, delimitada) Tj
+0 -14 Td
+/F1 10 Tf
+(por paredes modulares que podrán formar pasillos, giros 90°, intersecciones y/o) Tj
+0 -14 Td
+/F1 10 Tf
+(bifurcaciones. El robot deberá navegar de manera 100% autónoma desde la casilla de inicio) Tj
+0 -14 Td
+/F1 10 Tf
+(hasta la zona designada como meta.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Variación de la pista según la etapa: El diseño del laberinto cambiará de trazado en cada) Tj
+0 -14 Td
+/F1 10 Tf
+(etapa de la competencia \(fase clasificatoria, eliminatorias y finales\) para garantizar que) Tj
+0 -14 Td
+/F1 10 Tf
+(los robots implementen algoritmos de resolución en tiempo real y no trayectorias) Tj
+0 -14 Td
+/F1 10 Tf
+(memorizadas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dimensiones y especificaciones oficiales:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Elemento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Medida / especificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Largo total de la base del laberinto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(200 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ancho total de la base del laberinto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(110 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Largo total del laberinto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(150 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ancho total del laberinto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(90 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ancho de entrada) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(30 cm) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 3 de 13) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 2256 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Ancho de salida) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(30 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ancho de los pasillos interiores) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(30 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ubicación de la salida) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(En el extremo opuesto a la entrada) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Altura de las paredes) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(15 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Material de las paredes) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(MDF Natural) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nota: Revisar ejemplo de construcción de laberinto al final de este documento) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(7. Inspección técnica) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Antes del inicio oficial de la competencia, cada robot deberá someterse a una revisión) Tj
+0 -14 Td
+/F1 10 Tf
+(técnica obligatoria para validar el cumplimiento de las normativas de hardware,) Tj
+0 -14 Td
+/F1 10 Tf
+(electrónica y seguridad.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Puntos a verificar:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autenticidad del modelo: Certificar que se trate exclusivamente del mBot de Makeblock en) Tj
+0 -14 Td
+/F1 10 Tf
+(su configuración estructural y motriz de fábrica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensores autorizados: Confirmar la presencia de un máximo de dos sensores oficiales) Tj
+0 -14 Td
+/F1 10 Tf
+(Makeblock \(un sensor ultrasónico y un sensor seguidor de líneas infrarrojo\), sin módulos) Tj
+0 -14 Td
+/F1 10 Tf
+(adicionales.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ausencia de elementos prohibidos: Constatar que no existan microcontroladores auxiliares,) Tj
+0 -14 Td
+/F1 10 Tf
+(motores extra, servomotores, mecanismos móviles o piezas no reglamentarias.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autonomía y seguridad: Corroborar que la navegación del robot sea 100% autónoma \(sin) Tj
+0 -14 Td
+/F1 10 Tf
+(intervención por control remoto, Bluetooth o Wi-Fi\) y que opere en condiciones mecánicas) Tj
+0 -14 Td
+/F1 10 Tf
+(seguras sin riesgo de dañar la pista.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Proceso de validación y ajustes:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cada equipo contará con un máximo de dos \(2\) oportunidades para aprobar la inspección) Tj
+0 -14 Td
+/F1 10 Tf
+(técnica.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 4 de 13) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 3069 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Si el robot es observado o rechazado en la primera revisión, el equipo dispondrá de un) Tj
+0 -14 Td
+/F1 10 Tf
+(plazo máximo e improrrogable de cinco \(5\) minutos para aplicar correcciones de código,) Tj
+0 -14 Td
+/F1 10 Tf
+(calibración de sensores, reemplazo de baterías o ajustes menores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Si tras la segunda inspección el robot continúa sin cumplir con los requerimientos) Tj
+0 -14 Td
+/F1 10 Tf
+(técnicos, el equipo quedará automáticamente descalificado de la competencia.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nota: Como facultad arbitral el cuerpo de jueces se reserva el derecho de someter) Tj
+0 -14 Td
+/F1 10 Tf
+(cualquier robot a una re-inspección técnica en cualquier intento o etapa del evento si) Tj
+0 -14 Td
+/F1 10 Tf
+(detecta modificaciones no autorizadas o comportamientos anómalos.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(8. Desarrollo de los intentos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Número de intentos: Cada equipo dispondrá de tres \(3\) intentos oficiales para recorrer el) Tj
+0 -14 Td
+/F1 10 Tf
+(laberinto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo límite y cronometraje: Cada intento tendrá una duración máxima de 3 minutos \(180) Tj
+0 -14 Td
+/F1 10 Tf
+(segundos\). El cronómetro iniciará de forma sincronizada con la señal oficial del juez y) Tj
+0 -14 Td
+/F1 10 Tf
+(correrá de manera continua e ininterrumpida, incluso si el robot se detiene, sufre una) Tj
+0 -14 Td
+/F1 10 Tf
+(falla de software o requiere intervención técnica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Criterios de finalización del intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La prueba se dará por concluida cuando se cumpla la primera de las siguientes condiciones:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El robot complete el recorrido de forma autónoma y cruce completamente la línea de meta) Tj
+0 -14 Td
+/F1 10 Tf
+(con su chasis.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Se agote el tiempo reglamentario de 3 minutos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El capitán del equipo declare formalmente el abandono voluntario del intento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El juez de pista ordene la detención inmediata por motivos de seguridad o daño inminente a) Tj
+0 -14 Td
+/F1 10 Tf
+(la pista.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro de resultados:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Recorrido exitoso: Si el robot cruza la línea de meta antes de terminar los 3 minutos, se) Tj
+0 -14 Td
+/F1 10 Tf
+(registrará el tiempo cronometrado exacto \(en minutos y segundos\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Recorrido fallido: Si se rebasan los 3 minutos sin que el robot haya alcanzado la línea de) Tj
+0 -14 Td
+/F1 10 Tf
+(meta, o si el equipo abandona, el intento se registrará oficialmente como INCOMPLETO. No) Tj
+0 -14 Td
+/F1 10 Tf
+(se tomarán en cuenta distancias parciales cubiertas.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(9. Penalizaciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Podrán generar advertencia o penalización \(anulación del intento\):) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar el robot durante un intento sin autorización) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 5 de 13) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 1568 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Activar o mover el robot antes de que el juez dé la señal oficial de salida.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La penalización es causada por obtener dos advertencias) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(10. Registro de los tres intentos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cada intento se registrará de manera independiente.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Resultado del intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Completa el laberinto antes de 3 minutos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo exacto del cronómetro del juez) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(No completa el laberinto en 3 minutos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(No se registra tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(EXCEDIDO DE TIEMPO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Abandona voluntariamente el intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(No se registra tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(ABANDONO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Causa de abandono) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Infracción a la convocatoria) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(No se registra tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(DESCALIFICACIÓN) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Causa de descalificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Se pide repetir el intento, registrandolo como intento "A") Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(No se registra tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(ADVERTENCIA) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 6 de 13) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 1263 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Causa de advertencia) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Se anula el intento por penalización) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(No se registra tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(PENALIZACIÓN) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Causa penalización) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ejemplo 1, un equipo podría obtener:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2:42.18) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2:17.35) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2:25.09) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Su resultado oficial: 2:17.35, por ser el menor tiempo de los intentos completados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ejemplo 2, un equipo podría obtener:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 7 de 13) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 1243 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:58:27) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(EXCEDIDO DE TIEMPO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(ABANDONO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Abandonó por fallo del robot) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Su resultado oficial: 1:58.27, por ser el menor tiempo de los intentos completados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ejemplo 3, un equipo podría obtener:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:58:27) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(EXCEDIDO DE TIEMPO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(ADVERTENCIA) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El robot fue activado antes del tiempo de salida indicado por el juez) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3a) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:48:12) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETO) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 8 de 13) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Length 1486 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Aun al estar con una una advertencia, el robot cumplio en mejor tiempo este recorrido) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Su resultado oficial: 1:48.12, por ser el menor tiempo de los intentos completados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ejemplo 4, un equipo podría obtener:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:58:27) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(EXCEDIDO DE TIEMPO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(DESCALIFICACIÓN) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Un integrante del equipo obstruyo el robot de otro equipo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Resultado oficial: Descalificación del equipo por incurrir en infracción a la convocatoria) Tj
+0 -14 Td
+/F1 10 Tf
+(Base DÉCIMA.- De las causas de descalificación.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ejemplo 5, un equipo podría obtener:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(EXCEDIDO DE TIEMPO) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(ADVERTENCIA) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 9 de 13) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 20 0 R >>
+endobj
+22 0 obj
+<< /Length 2489 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(El robot fue activado antes del tiempo de salida indicado por el juez) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2A) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(PENALIZACIÓN) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El equipo recibió una segunda advertencia al tocar el robot sin autorización) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:58:27) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(COMPLETÓ) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Su resultado oficial: 1:58.27, por ser el menor tiempo de los intentos completados \(el) Tj
+0 -14 Td
+/F1 10 Tf
+(segundo intento fue cancelado por penalización\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(11. Clasificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Para determinar la clasificación se deberá de considerar primero que el robot haya) Tj
+0 -14 Td
+/F1 10 Tf
+(completado correctamente el laberinto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(De los 3 intentos oficiales, se tomará como resultado para la clasificación el menor) Tj
+0 -14 Td
+/F1 10 Tf
+(tiempo obtenido en un intento completado.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los equipos se ordenarán del menor al mayor tiempo oficial.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Si en ninguno de los 3 intentos de un equipo lograra completar el reto, su resultado) Tj
+0 -14 Td
+/F1 10 Tf
+(general será INCOMPLETO y no se le asignará un tiempo de 3:00 min como resultado oficial.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(12. Criterios de desempate) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Si dos o más equipos obtienen el mismo resultado con el mejor tiempo, el empate se) Tj
+0 -14 Td
+/F1 10 Tf
+(resolverá evaluando los demás intentos completados, siguiendo este orden de prioridad:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Segundo mejor tiempo: Se comparará el segundo mejor intento completado.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tercer mejor tiempo: Si el empate persiste, se considerará el tercer mejor intento) Tj
+0 -14 Td
+/F1 10 Tf
+(completado.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento adicional: En caso de mantenerse la igualdad, se disputará una intento adicional) Tj
+0 -14 Td
+/F1 10 Tf
+(de desempate.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nota sobre intentos incompletos: Un intento clasificado como INCOMPLETO carece de registro) Tj
+0 -14 Td
+/F1 10 Tf
+(de tiempo válido; por consiguiente, no se le asignará un valor equivalente \(como 3:00 min\)) Tj
+0 -14 Td
+/F1 10 Tf
+(ni podrá computarse a favor o en contra de la clasificación.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Resumen operativo para jueces) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 10 de 13) Tj ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 22 0 R >>
+endobj
+24 0 obj
+<< /Length 2254 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Parámetro) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Criterio / Regla) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intentos permitidos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3 intentos por equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo límite por intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3:00 minutos máximo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro de tiempo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(- Completa la prueba: Registrar el tiempo exacto cronometrado.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(- No completa en tiempo: Registrar como INCOMPLETO \(sin valor de tiempo\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Resultado oficial) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El menor tiempo registrado entre los intentos completados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Reparaciones e intervención) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Prohibidas en pista durante el intento activo. Solo se permiten ajustes y reparaciones) Tj
+0 -14 Td
+/F1 10 Tf
+(entre intentos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Falla o detención en pista) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El cronómetro no se detiene; si el robot no puede completar la pista por sí mismo antes de) Tj
+0 -14 Td
+/F1 10 Tf
+(exceder los 3:00 minutos, el intento se registra como INCOMPLETO.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Abandono) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Si el equipo considera que el robot no puede completar el recorrido, únicamente el capitán) Tj
+0 -14 Td
+/F1 10 Tf
+(podrá solicitar a los jueces el abandono del intento en curso.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(En este caso, el intento se detendrá de inmediato y el intento se registrará oficialmente) Tj
+0 -14 Td
+/F1 10 Tf
+(como INCOMPLETO, sin derecho a tiempo parcial ni reanudación en ese mismo intento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sin intentos completados) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Si los tres intentos resultan incompletos, el resultado final del equipo será INCOMPLETO.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(13. Programación entre intentos y apoyo del asesor) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificaciones y autonomía de los participantes) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Entre cada intento, los equipos tendrán total libertad para revisar, modificar y mejorar) Tj
+0 -14 Td
+/F1 10 Tf
+(el código de programación de su robot.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 11 de 13) Tj ET
+endstream
+endobj
+25 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 24 0 R >>
+endobj
+26 0 obj
+<< /Length 2413 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Todas las decisiones técnicas durante la competencia son responsabilidad exclusiva de los) Tj
+0 -14 Td
+/F1 10 Tf
+(participantes, quienes serán los únicos facultados para:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Programar el robot y modificar su código.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Manipular físicamente el robot.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Realizar ajustes, calibraciones o reparaciones directas \(únicamente fuera de pista, entre) Tj
+0 -14 Td
+/F1 10 Tf
+(intentos\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Proponer soluciones e indicar instrucciones verbales durante el desarrollo de un intento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rol y restricciones del asesor) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El asesor desempeñará un papel estrictamente orientador y formativo. Podrá brindar) Tj
+0 -14 Td
+/F1 10 Tf
+(asesoría estratégica y conceptual.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Queda expresamente prohibido que el asesor:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Escriba, edite o altere el código del robot.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Manipule componentes, herramientas o el robot del equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Realice reparaciones o ajustes técnicos, ya sea durante la preparación previa o en los) Tj
+0 -14 Td
+/F1 10 Tf
+(periodos de ajuste entre intentos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(14. Jueces, resultados y casos no previstos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Responsabilidades del cuerpo de jueces) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los jueces son la máxima autoridad en pista y serán responsables de:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Realizar y validar la inspección técnica previa de cada robot.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autorizar la señal oficial de salida en cada intento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cronometrar el tiempo exacto del recorrido.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Determinar la validez de llegada a la meta y el cumplimiento de la prueba.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registrar oficialmente las marcas, penalizaciones y estados de cada intento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Resolver cualquier incidencia técnica relacionada con el estado del laberinto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Registro oficial de intentos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La mesa de jueceo llevará una bitácora donde registrará, como mínimo, los siguientes datos) Tj
+0 -14 Td
+/F1 10 Tf
+(por cada participación:) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 12 de 13) Tj ET
+endstream
+endobj
+27 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 26 0 R >>
+endobj
+28 0 obj
+<< /Length 1220 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Nombre o identificación del equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Número de intento \(1, 2 o 3\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo obtenido o estado del intento \(Completado / INCOMPLETO\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Penalizaciones acumuladas \(si aplican\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Mejor tiempo consolidado hasta el intento en curso.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Observaciones o incidencias relevantes.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Casos no previstos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cualquier situación, imprevisto o vacío normativo no contemplado en este documento será) Tj
+0 -14 Td
+/F1 10 Tf
+(resuelto de manera inapelable por los jueces y el Comité Organizador, bajo los principios) Tj
+0 -14 Td
+/F1 10 Tf
+(rectores de seguridad, equidad, juego limpio y enfoque formativo-educativo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Aceptación del reglamento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La formalización de la inscripción en esta categoría implica el conocimiento y la) Tj
+0 -14 Td
+/F1 10 Tf
+(aceptación plena y obligatoria tanto de la Convocatoria como del presente Reglamento) Tj
+0 -14 Td
+/F1 10 Tf
+(Técnico.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 13 de 13) Tj ET
+endstream
+endobj
+29 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 28 0 R >>
+endobj
+30 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 31
+0000000000 65535 f 
+0000000009 00000 n 
+0000000106 00000 n 
+0000000208 00000 n 
+0000000348 00000 n 
+0000003080 00000 n 
+0000003216 00000 n 
+0000006266 00000 n 
+0000006402 00000 n 
+0000008754 00000 n 
+0000008890 00000 n 
+0000011199 00000 n 
+0000011337 00000 n 
+0000014459 00000 n 
+0000014597 00000 n 
+0000016218 00000 n 
+0000016356 00000 n 
+0000017672 00000 n 
+0000017810 00000 n 
+0000019106 00000 n 
+0000019244 00000 n 
+0000020783 00000 n 
+0000020921 00000 n 
+0000023463 00000 n 
+0000023601 00000 n 
+0000025908 00000 n 
+0000026046 00000 n 
+0000028512 00000 n 
+0000028650 00000 n 
+0000029923 00000 n 
+0000030061 00000 n 
+trailer
+<< /Size 31 /Root 30 0 R >>
+startxref
+30111
+%%EOF

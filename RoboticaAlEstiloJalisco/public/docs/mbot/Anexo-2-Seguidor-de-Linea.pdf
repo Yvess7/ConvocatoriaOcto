@@ -1,0 +1,968 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R] /Count 8 >>
+endobj
+4 0 obj
+<< /Length 2316 >>
+stream
+BT
+50 755 Td
+/F2 11 Tf
+(REGLAMENTO TÉCNICO) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(TORNEO DE ROBÓTICA AL ESTILO JALISCO: MBOT TRIPLE ARENA 2026) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(DESAFÍO: SEGUIDOR DE LÍNEA) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(1. Objetivo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El propósito del desafío es programar un robot mBot1 de Makeblock para que complete el) Tj
+0 -14 Td
+/F1 10 Tf
+(recorrido de una pista de manera autónoma. El robot deberá seguir una línea trazada desde) Tj
+0 -14 Td
+/F1 10 Tf
+(el punto de salida hasta la meta en el menor tiempo posible.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cada equipo contará con tres intentos; el tiempo oficial de competencia se calculará) Tj
+0 -14 Td
+/F1 10 Tf
+(promediando sus dos mejores recorridos.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2. Especificaciones del robot) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El único modelo autorizado para la competencia es el mBot1 de Makeblock \(versión clásica\);) Tj
+0 -14 Td
+/F1 10 Tf
+(queda estrictamente prohibido el uso de cualquier otra plataforma. El robot debe conservar) Tj
+0 -14 Td
+/F1 10 Tf
+(su estructura y sistema de locomoción de fábrica, lo cual incluye de manera obligatoria:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Chasis original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Placa controladora original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dos motores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dos ruedas motrices.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rueda de apoyo original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Batería compatible y el cableado necesario para su funcionamiento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Pintar el robot.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(3. Sensores y estética del robot) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los robots solo podrán estar equipados con un máximo de dos sensores, los cuales deben ser) Tj
+0 -14 Td
+/F1 10 Tf
+(estrictamente los incluidos de fábrica:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensor ultrasónico Makeblock/mBlock.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensor infrarrojo \(siguelíneas\) Makeblock/mBlock.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificaciones estéticas permitidas:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Colocación de etiquetas o calcomanías decorativas para la identificación del equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Aplicación de pintura en el chasis o componentes del robot.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 1 de 8) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2413 >>
+stream
+BT
+50 755 Td
+/F2 11 Tf
+(4. Programación y autonomía) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La programación del robot debe realizarse exclusivamente en la plataforma mBlock) Tj
+0 -14 Td
+/F1 10 Tf
+(\(https://ide.mblock.cc/\). El código tiene que ser desarrollado y comprendido en su) Tj
+0 -14 Td
+/F1 10 Tf
+(totalidad por los integrantes del equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La programación deberá permitir al robot completar la pista de forma 100 % autónoma.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Prohibiciones durante el recorrido:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Una vez que el robot inicie la prueba, queda estrictamente prohibido:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Controlarlo mediante Bluetooth, Wi-Fi o cualquier tipo de mando a distancia.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Enviar comandos o instrucciones desde una computadora o dispositivo móvil.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alterar el programa mientras se está ejecutando.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar, empujar o reorientar físicamente al robot.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Manipular la posición o ángulo de los sensores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ajustes entre recorridos:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los equipos podrán modificar, calibrar o cargar un nuevo programa en sus robots únicamente) Tj
+0 -14 Td
+/F1 10 Tf
+(entre cada intento, siempre antes de iniciar la prueba.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(5. Características de la pista) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Diseño y dimensiones:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La pista estará conformada por módulos cuadrados intercambiables de 60 x 60 cm. Estos se) Tj
+0 -14 Td
+/F1 10 Tf
+(ensamblarán en forma de cuadrícula, pudiendo presentar una de las siguientes dos) Tj
+0 -14 Td
+/F1 10 Tf
+(configuraciones oficiales:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Opción 1 \(8 módulos\): 2 de ancho por 4 de largo \(dimensiones totales de 120 x 240 cm\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Opción 2 \(12 módulos\): 3 de ancho por 4 de largo \(dimensiones totales de 180 x 240 cm\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Elementos del recorrido:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cada módulo contendrá un segmento distinto del circuito. El trazado final del recorrido) Tj
+0 -14 Td
+/F1 10 Tf
+(podrá incluir:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Líneas rectas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Curvas simples.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Curvas en "S".) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 2 de 8) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2994 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Cambios de dirección.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Combinaciones de rectas y curvas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(\(A continuación, se muestran ejemplos y sugerencias para el armado de las pistas\).) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(6. Especificaciones de los módulos y configuración de la pista) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Características de los módulos: Todos los módulos compartirán las siguientes) Tj
+0 -14 Td
+/F1 10 Tf
+(especificaciones físicas y de trazado:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Material: MDF.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Color de fondo: MDF en su tono natural.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Color de la línea: Negro mate.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Grosor de la línea: De 1.9 a 3 cm.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Configuración variable del recorrido: No existirá un circuito fijo. Los 8 o 12 módulos se) Tj
+0 -14 Td
+/F1 10 Tf
+(podrán intercambiar y reorganizar para generar diferentes trazados. El comité organizador) Tj
+0 -14 Td
+/F1 10 Tf
+(determinará la configuración oficial dependiendo de la fase de la competencia.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Pistas de entrenamiento y competencia: Previo al torneo, se publicará un catálogo de 4) Tj
+0 -14 Td
+/F1 10 Tf
+(pistas de entrenamiento para Primaria Alta \(4.º, 5.º y 6.º grado\) y 4 pistas para) Tj
+0 -14 Td
+/F1 10 Tf
+(Secundaria \(1.º, 2.º y 3.º grado\). Cabe destacar que las pistas del concurso podrán ser) Tj
+0 -14 Td
+/F1 10 Tf
+(diferentes a las de entrenamiento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Para garantizar la equidad, todos los equipos evaluados en una ronda competirán sobre el) Tj
+0 -14 Td
+/F1 10 Tf
+(mismo recorrido y bajo idénticas condiciones. El comité evaluador será el responsable de) Tj
+0 -14 Td
+/F1 10 Tf
+(modificar el trazado entre cada fase.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(7. Inspección técnica) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Antes de iniciar la competencia, todos los robots deberán aprobar una inspección oficial) Tj
+0 -14 Td
+/F1 10 Tf
+(en la que se verificará estrictamente lo siguiente:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que sea un modelo mBot1 de Makeblock con la configuración autorizada.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que cuente únicamente con los dos sensores de fábrica permitidos \(un ultrasónico y un) Tj
+0 -14 Td
+/F1 10 Tf
+(infrarrojo de la marca Makeblock/mBlock\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que no incluya motores, mecanismos, controladores o sensores adicionales no autorizados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que su funcionamiento sea totalmente autónomo y opere en condiciones seguras.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Proceso de validación y ajustes: Cada equipo tendrá un máximo de dos oportunidades para) Tj
+0 -14 Td
+/F1 10 Tf
+(superar esta inspección. Si el robot no aprueba la primera inspección, el equipo dispondrá) Tj
+0 -14 Td
+/F1 10 Tf
+(de 5 minutos para realizar ajustes de código, calibración, cambio de baterías o) Tj
+0 -14 Td
+/F1 10 Tf
+(reparaciones menores.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 3 de 8) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 3141 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(De no aprobar la segunda inspección, el equipo quedará automáticamente descalificado.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(8. Desarrollo de los intentos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Número de intentos: Cada equipo dispondrá de tres intentos oficiales. Cada uno será) Tj
+0 -14 Td
+/F1 10 Tf
+(cronometrado de manera independiente y tendrá una duración máxima de 3 minutos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Inicio y fin del recorrido: El reloj arrancará con la señal de salida del juez de pista y) Tj
+0 -14 Td
+/F1 10 Tf
+(se detendrá únicamente cuando el robot cruce la línea de meta, siempre y cuando haya) Tj
+0 -14 Td
+/F1 10 Tf
+(completado el circuito de forma correcta.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo continuo: El cronómetro no se pausará bajo ninguna circunstancia, ni siquiera por) Tj
+0 -14 Td
+/F1 10 Tf
+(fallas técnicas del robot; todo el tiempo que transcurra será contabilizado.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo límite excedido: Si el robot no logra terminar la pista dentro del máximo de 3) Tj
+0 -14 Td
+/F1 10 Tf
+(minutos, el intento se dará por concluido, marcando recorrido incompleto y no se) Tj
+0 -14 Td
+/F1 10 Tf
+(registrará tiempo en la tabla.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Resultado final: El tiempo oficial con el que el equipo competirá en la clasificación) Tj
+0 -14 Td
+/F1 10 Tf
+(general se calculará promediando sus dos mejores marcas.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(9. Pérdida de la línea) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Se considera que existe una "pérdida de línea" cuando el robot se sale por completo del) Tj
+0 -14 Td
+/F1 10 Tf
+(recorrido trazado y pierde la trayectoria.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Recuperación autónoma: Ante esta situación, el equipo debe ser paciente y permitir que el) Tj
+0 -14 Td
+/F1 10 Tf
+(robot intente reencontrar y retomar su camino por sus propios medios \(mediante su) Tj
+0 -14 Td
+/F1 10 Tf
+(programación\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cero contacto: Queda estrictamente prohibido que los integrantes del equipo toquen,) Tj
+0 -14 Td
+/F1 10 Tf
+(empujen, manipulen o reposicionen el robot mientras este se encuentre en la pista.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(10. Reparaciones y manejo de fallas) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cualquier reparación o ajuste físico estará permitido exclusivamente durante el tiempo de) Tj
+0 -14 Td
+/F1 10 Tf
+(espera entre cada intento. Si el robot presenta alguna falla, el equipo deberá seguir este) Tj
+0 -14 Td
+/F1 10 Tf
+(protocolo:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Informar inmediatamente al juez de pista.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Realizar las reparaciones necesarias.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Notificar al juez en cuanto el robot vuelva a estar operativo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Llamados a competencia y penalización: Si un equipo es llamado a la pista por tercera) Tj
+0 -14 Td
+/F1 10 Tf
+(ocasión para realizar su intento y su robot aún no se encuentra listo, perderá dicho) Tj
+0 -14 Td
+/F1 10 Tf
+(recorrido por default \(abandono\). No se registrara tiempo en la tabla para ese intento) Tj
+0 -14 Td
+/F1 10 Tf
+(perdido.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 4 de 8) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 2538 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(11. Programación entre intentos y asesor) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autonomía del equipo: Los estudiantes tienen la libertad de mejorar su estrategia entre) Tj
+0 -14 Td
+/F1 10 Tf
+(cada intento. Durante el evento, los integrantes del equipo están autorizados para:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cargar un programa diferente en el robot.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificar o ajustar el código existente.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Manipular físicamente el robot \(siempre y cuando se respete la configuración autorizada\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Realizar cualquier reparación por cuenta propia.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rol del asesor: Todas las decisiones técnicas y la ejecución del trabajo corresponden) Tj
+0 -14 Td
+/F1 10 Tf
+(exclusivamente a los alumnos. El asesor funcionará únicamente como guía u orientador y) Tj
+0 -14 Td
+/F1 10 Tf
+(tiene estrictamente prohibido:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Escribir, corregir o modificar directamente el código en la computadora.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar o manipular el robot durante las fases de preparación, competencia o tiempos de) Tj
+0 -14 Td
+/F1 10 Tf
+(reparación.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(12. Intervención humana y sanciones) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Prohibiciones durante el recorrido: Mientras el robot se encuentre en la pista realizando) Tj
+0 -14 Td
+/F1 10 Tf
+(su prueba, queda estrictamente prohibido:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cambiarlo de posición o reorientarlo manualmente.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Regresarlo a la línea en caso de que se salga del trayecto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ajustar físicamente los sensores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificar el programa en ejecución.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intervenciones y penalizaciones:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cualquier intervención física o técnica por parte del equipo debe contar siempre con la) Tj
+0 -14 Td
+/F1 10 Tf
+(autorización previa del juez de pista. Realizar una intervención no autorizada dará lugar,) Tj
+0 -14 Td
+/F1 10 Tf
+(a criterio del juez, a una de las siguientes sanciones:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Penalización de tiempo \(se sumará un minuto al tiempo final del recorrido\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Obligación de reiniciar la prueba desde la salida.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Anulación total del intento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(13. Cálculo del tiempo oficial por recorrido) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 5 de 8) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 2302 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Reloj continuo: El tiempo final del intento es el total transcurrido desde que inicia la) Tj
+0 -14 Td
+/F1 10 Tf
+(prueba hasta que el robot cruza la meta. Dado que el cronómetro nunca se pausa, el tiempo) Tj
+0 -14 Td
+/F1 10 Tf
+(final registrado incluirá de manera automática cualquier demora o falla que haya ocurrido) Tj
+0 -14 Td
+/F1 10 Tf
+(en la pista \(por ejemplo, un registro de 2:08.40 ya contempla los retrasos, pues el reloj) Tj
+0 -14 Td
+/F1 10 Tf
+(siguió corriendo\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intentos inconclusos: Si el robot no logra completar el circuito dentro del límite de) Tj
+0 -14 Td
+/F1 10 Tf
+(tiempo establecido, el intento se dará por finalizado y no se le asignará tiempo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(14. Clasificación y evaluación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Cálculo del tiempo oficial: Cada equipo realizará tres intentos oficiales. Para definir su) Tj
+0 -14 Td
+/F1 10 Tf
+(posición en la clasificación, se descartará su peor marca y se promediarán sus dos mejores) Tj
+0 -14 Td
+/F1 10 Tf
+(tiempos. Los equipos se ordenarán en la tabla general de menor a mayor tiempo oficial) Tj
+0 -14 Td
+/F1 10 Tf
+(promedio.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sistema de puntuación: El equipo que logre el tiempo oficial promedio más bajo obtendrá el) Tj
+0 -14 Td
+/F1 10 Tf
+(primer lugar y recibirá 30 puntos. El segundo mejor tiempo recibirá 29 puntos, el tercero) Tj
+0 -14 Td
+/F1 10 Tf
+(28, y así sucesivamente en orden descendente.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ejemplo de evaluación:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Intento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo del recorrido) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Suma) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(\(2 mejores tiempos\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo Oficial \(Promedio\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2:05.30) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:48.20) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3:44.00) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:52.00) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1:55.80) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Publicación de resultados: Para garantizar la máxima transparencia, la tabla oficial será) Tj
+0 -14 Td
+/F1 10 Tf
+(pública y mostrará:) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 6 de 8) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 2573 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Nombre del equipo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo registrado en cada uno de los tres recorridos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo oficial final \(promedio de los dos mejores\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(15. Criterios de desempate) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(En caso de que dos o más equipos obtengan exactamente el mismo tiempo oficial promedio, el) Tj
+0 -14 Td
+/F1 10 Tf
+(desempate se resolverá de la siguiente manera:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Revisión del intento descartado: Se comparará el tiempo del tercer recorrido \(el que fue) Tj
+0 -14 Td
+/F1 10 Tf
+(descartado al calcular el promedio\). El equipo que haya registrado el menor tiempo en este) Tj
+0 -14 Td
+/F1 10 Tf
+(intento se llevará la ventaja.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Muerte súbita: Si el empate persiste tras esta comparación, se llevará a cabo un intento) Tj
+0 -14 Td
+/F1 10 Tf
+(adicional de eliminación directa \("muerte súbita"\) en la pista para definir al ganador) Tj
+0 -14 Td
+/F1 10 Tf
+(definitivo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(16. Penalizaciones y descalificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Las siguientes acciones podrán ser motivo de advertencia, penalización de tiempo,) Tj
+0 -14 Td
+/F1 10 Tf
+(anulación del intento o descalificación directa del torneo:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Faltas técnicas y operativas:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Utilizar más de los dos sensores autorizados o emplear componentes no permitidos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificar la configuración física del robot después de haber aprobado la inspección) Tj
+0 -14 Td
+/F1 10 Tf
+(técnica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Controlar el robot de forma remota o mediante conexión inalámbrica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Faltas en la pista:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar el robot durante un intento sin la autorización explícita del juez.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Recibir ayuda externa \(de asesores, compañeros o público\) durante el desarrollo de la) Tj
+0 -14 Td
+/F1 10 Tf
+(prueba.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Faltas de conducta y seguridad:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alterar, dañar o mover deliberadamente los módulos de la pista.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Manipular los robots de otros equipos o interferir con la participación de otro) Tj
+0 -14 Td
+/F1 10 Tf
+(competidor.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Realizar acciones que pongan en riesgo la integridad de las personas, de los equipos o de) Tj
+0 -14 Td
+/F1 10 Tf
+(las instalaciones.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 7 de 8) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 1756 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(La gravedad de la sanción será determinada de manera inapelable por los jueces, conforme a) Tj
+0 -14 Td
+/F1 10 Tf
+(lo establecido en el Reglamento General y analizando las circunstancias específicas de la) Tj
+0 -14 Td
+/F1 10 Tf
+(falta.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(17. Autoridad de los jueces y disposiciones finales) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Atribuciones del jurado: Los jueces representan la máxima autoridad en la pista y sus) Tj
+0 -14 Td
+/F1 10 Tf
+(decisiones son definitivas. Sus responsabilidades incluyen:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Validar la inspección técnica y física de los robots.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autorizar los arranques y cronometrar los recorridos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dictaminar cuándo un robot pierde la línea y validar la llegada a la meta.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Aplicar las penalizaciones correspondientes y asentar los resultados oficiales.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Casos no previstos: Cualquier situación, duda o controversia que no esté explícitamente) Tj
+0 -14 Td
+/F1 10 Tf
+(contemplada en este documento será resuelta por el jurado y el Comité Organizador. Sus) Tj
+0 -14 Td
+/F1 10 Tf
+(decisiones tendrán carácter inapelable y se tomarán buscando siempre proteger la) Tj
+0 -14 Td
+/F1 10 Tf
+(seguridad, la equidad, el juego limpio y el propósito educativo del torneo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Aceptación de las normas: La inscripción y participación en el desafío "Seguidor de Línea") Tj
+0 -14 Td
+/F1 10 Tf
+(implica la lectura, comprensión y aceptación absoluta del presente Reglamento Técnico, así) Tj
+0 -14 Td
+/F1 10 Tf
+(como del Reglamento General de Participantes.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 8 de 8) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000000009 00000 n 
+0000000106 00000 n 
+0000000208 00000 n 
+0000000312 00000 n 
+0000002680 00000 n 
+0000002816 00000 n 
+0000005281 00000 n 
+0000005417 00000 n 
+0000008463 00000 n 
+0000008599 00000 n 
+0000011793 00000 n 
+0000011931 00000 n 
+0000014522 00000 n 
+0000014660 00000 n 
+0000017015 00000 n 
+0000017153 00000 n 
+0000019779 00000 n 
+0000019917 00000 n 
+0000021726 00000 n 
+0000021864 00000 n 
+trailer
+<< /Size 21 /Root 20 0 R >>
+startxref
+21914
+%%EOF

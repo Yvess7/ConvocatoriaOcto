@@ -1,0 +1,1237 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R] /Count 10 >>
+endobj
+4 0 obj
+<< /Length 2605 >>
+stream
+BT
+50 755 Td
+/F2 11 Tf
+(REGLAMENTO TÉCNICO) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(TORNEO DE ROBÓTICA AL ESTILO JALISCO MBOT TRIPLE ARENA 2026) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(DESAFIO: SUMO) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(1. Objetivo) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La competencia consiste en enfrentar dos robots Makeblock mBot1 dentro de un dojo) Tj
+0 -14 Td
+/F1 10 Tf
+(circular. Cada robot deberá localizar a su adversario, desplazarse estratégicamente y) Tj
+0 -14 Td
+/F1 10 Tf
+(empujarlo fuera del área de combate evitando salir del dojo. A través de este desafío, se) Tj
+0 -14 Td
+/F1 10 Tf
+(busca fomentar en los participantes el desarrollo de habilidades en programación,) Tj
+0 -14 Td
+/F1 10 Tf
+(pensamiento lógico, estrategia, uso de sensores y resolución de problemas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El torneo se divide en las siguientes categorías:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Primaria alta) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Secundaria) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ambas categorías utilizarán el mismo tipo de robot y de dojo; sin embargo, las posiciones) Tj
+0 -14 Td
+/F1 10 Tf
+(iniciales variarán para establecer diferentes niveles de dificultad.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2. Robot, sensores y configuración permitida) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El único modelo autorizado para participar en la competencia es el mBot1 de Makeblock) Tj
+0 -14 Td
+/F1 10 Tf
+(\(mBot clásico\); no se permitirá el uso de ninguna otra plataforma robótica. El robot) Tj
+0 -14 Td
+/F1 10 Tf
+(deberá conservar su estructura y sistema de locomoción originales, lo cual incluye de) Tj
+0 -14 Td
+/F1 10 Tf
+(manera estricta los siguientes elementos:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Chasis original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Placa controladora original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dos motores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dos ruedas motrices.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Rueda de apoyo original.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Batería compatible y el cableado necesario para su funcionamiento.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(3. Programación y autonomía) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La programación del robot deberá realizarse de manera exclusiva mediante el entorno de) Tj
+0 -14 Td
+/F1 10 Tf
+(desarrollo mBlock. El robot deberá competir de forma completamente autónoma, por lo que su) Tj
+0 -14 Td
+/F1 10 Tf
+(programa deberá estar precargado en la placa controladora antes del inicio de cada combate) Tj
+0 -14 Td
+/F1 10 Tf
+(\(o round\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Una vez iniciado el enfrentamiento, queda estrictamente prohibido:) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 1 de 10) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2214 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Controlar el robot mediante Bluetooth, Wi-Fi, infrarrojos o cualquier otro tipo de control) Tj
+0 -14 Td
+/F1 10 Tf
+(remoto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Enviar instrucciones desde una computadora, teléfono móvil u otro dispositivo externo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar, reorientar o realizar cualquier modificación física al robot, así como alterar su) Tj
+0 -14 Td
+/F1 10 Tf
+(código de programación.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(4. Dojo de competencia) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Como referencia técnica, el dojo utilizará las dimensiones tradicionales de la categoría) Tj
+0 -14 Td
+/F1 10 Tf
+(Mini Sumo, cumpliendo con las siguientes especificaciones:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Elemento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Especificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Diámetro exterior) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(77 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Altura) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2.5 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Superficie) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Negra mate, plana y uniforme) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Borde exterior \(Tawara\)) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2.5 cm de ancho, color blanco) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Líneas de inicio \(Shikiri-Sen\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(10 cm de largo × 1 cm de ancho, Cinta aislante negra o roja) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Consideraciones sobre el dojo:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(El borde blanco \(Tawara\) forma parte del área válida de combate.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Las líneas de inicio \(Shikiri-Sen\) se colocarán de forma simétrica y paralela respecto al) Tj
+0 -14 Td
+/F1 10 Tf
+(centro del círculo. La distancia entre el centro del dojo y cada línea será exactamente de) Tj
+0 -14 Td
+/F1 10 Tf
+(8 cm.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alrededor del dojo deberá existir una zona de seguridad despejada de objetos y) Tj
+0 -14 Td
+/F1 10 Tf
+(espectadores, la cual comienza a partir del límite exterior del Tawara. Únicamente los) Tj
+0 -14 Td
+/F1 10 Tf
+(jueces, los participantes del combate en turno y el personal autorizado podrán permanecer) Tj
+0 -14 Td
+/F1 10 Tf
+(junto al área de combate.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 2 de 10) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2919 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F2 11 Tf
+(5. Inspección técnica) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Antes de iniciar la competencia, todos los robots deberán aprobar una inspección oficial) Tj
+0 -14 Td
+/F1 10 Tf
+(en la que se verificará estrictamente lo siguiente:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que sea un modelo mBot1 de Makeblock con la configuración autorizada.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que cuente únicamente con los dos sensores de fábrica permitidos \(un ultrasónico y un) Tj
+0 -14 Td
+/F1 10 Tf
+(infrarrojo de la marca Makeblock/mBlock\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que no incluya motores, mecanismos, controladores o sensores adicionales no autorizados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Que su funcionamiento sea totalmente autónomo y opere en condiciones seguras.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Proceso de validación y ajustes: Cada equipo tendrá un máximo de dos oportunidades para) Tj
+0 -14 Td
+/F1 10 Tf
+(superar esta inspección técnica. Si el robot no aprueba la primera inspección, el equipo) Tj
+0 -14 Td
+/F1 10 Tf
+(dispondrá de un tiempo límite de 5 minutos para realizar ajustes de código, calibración de) Tj
+0 -14 Td
+/F1 10 Tf
+(sensores, cambio de baterías o reparaciones menores.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(En caso de no aprobar la segunda inspección al término de este tiempo, el equipo quedará) Tj
+0 -14 Td
+/F1 10 Tf
+(automáticamente descalificado de la competencia.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(6. Estructura de la competencia) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(La competencia se desarrollará en dos fases. Cada enfrentamiento se disputará en un) Tj
+0 -14 Td
+/F1 10 Tf
+(formato de "al mejor de tres asaltos" \(o rounds\); por lo tanto, el primer robot en obtener) Tj
+0 -14 Td
+/F1 10 Tf
+(dos victorias ganará el enfrentamiento.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(6.1. Primera fase: Eliminatoria En esta etapa, cada enfrentamiento constará de hasta tres) Tj
+0 -14 Td
+/F1 10 Tf
+(asaltos. Para poner a prueba la programación y la estrategia, cada asalto utilizará una) Tj
+0 -14 Td
+/F1 10 Tf
+(configuración de arranque distinta, la cual será seleccionada por el comité organizador,) Tj
+0 -14 Td
+/F1 10 Tf
+(de entre las ocho posiciones establecidas para su respectiva categoría.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(6.2. Segunda fase: Gran final Los equipos que logren clasificar a la etapa definitiva) Tj
+0 -14 Td
+/F1 10 Tf
+(competirán nuevamente al mejor de tres asaltos. Con el fin de aumentar el nivel de) Tj
+0 -14 Td
+/F1 10 Tf
+(dificultad, se utilizarán configuraciones de arranque completamente diferentes a las) Tj
+0 -14 Td
+/F1 10 Tf
+(empleadas durante la primera fase.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(7. Posiciones iniciales - Primaria alta) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Posición) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nombre) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Descripción) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dificultad) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 3 de 10) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 1865 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Frente a frente) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ambos robots inician encarados directamente. Esta configuración facilita la detección) Tj
+0 -14 Td
+/F1 10 Tf
+(frontal inmediata del adversario.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Baja) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Frente con desplazamiento lateral) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Orientados hacia el frente pero con un ligero desplazamiento lateral sobre el límite de) Tj
+0 -14 Td
+/F1 10 Tf
+(las líneas Shikiri-Sen. Exige que los robots corrijan su trayectoria inicial.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Baja) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Diagonal) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Colocados en un ángulo de aproximadamente 45° uno respecto del otro, apuntando al centro) Tj
+0 -14 Td
+/F1 10 Tf
+(de la línea Shikiri-Sen. Requiere programación de búsqueda y ajuste de orientación.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(4) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(De espaldas) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los robots inician dándose la espalda, orientados a 180° respecto a su adversario.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(5) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Paralelos en sentido opuesto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Parten desde el límite de las líneas Shikiri-Sen, formando un ángulo de 90° respecto a) Tj
+0 -14 Td
+/F1 10 Tf
+(estas y apuntando en direcciones contrarias.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(6) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Diagonal opuesta) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Orientados en diagonal \(aproximadamente a 45°\), ubicando la parte frontal del robot en el) Tj
+0 -14 Td
+/F1 10 Tf
+(límite exterior de su respectiva línea Shikiri-Sen.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 4 de 10) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 1565 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(7) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Exterior) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Posicionados en el límite perimetral interior del dojo \(antes del Tawara\), orientados) Tj
+0 -14 Td
+/F1 10 Tf
+(hacia el centro del área de combate.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alta) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(8) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Distancia media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Orientados a 180° entre sí \(dándose la espalda\) y ubicados exactamente a la distancia) Tj
+0 -14 Td
+/F1 10 Tf
+(media entre la línea Shikiri-Sen y el límite interior del Tawara.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alta) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(8. Posiciones iniciales - Secundaria) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Posición) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Nombre) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Descripción) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dificultad) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(1) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Paralelos básicos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los robots inician formando un ángulo de 90° respecto a la línea central y apuntando en) Tj
+0 -14 Td
+/F1 10 Tf
+(direcciones opuestas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Baja) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Diagonal) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Colocados en un ángulo de aproximadamente 45° uno respecto del otro, apuntando hacia el) Tj
+0 -14 Td
+/F1 10 Tf
+(centro de la línea Shikiri-Sen.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Baja) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(3) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 5 de 10) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 2072 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Paralelos desplazados) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Parten desde el límite de las líneas Shikiri-Sen, formando un ángulo de 90° respecto a) Tj
+0 -14 Td
+/F1 10 Tf
+(estas y apuntando en direcciones contrarias.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(4) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Diagonal opuesta) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Orientados en diagonal \(aproximadamente a 45°\), ubicando la parte frontal del robot en el) Tj
+0 -14 Td
+/F1 10 Tf
+(límite exterior de su respectiva línea Shikiri-Sen.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(5) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Exterior \(Vista interna\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Posicionados en el límite perimetral interior del dojo \(antes del Tawara\), orientados) Tj
+0 -14 Td
+/F1 10 Tf
+(hacia el centro del área de combate.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(6) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Límite perimetral de espaldas) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los robots inician dándose la espalda \(orientados a 180° entre sí\) y ubicados en el límite) Tj
+0 -14 Td
+/F1 10 Tf
+(perimetral interior del dojo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Media) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(7) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Exterior \(Vista externa\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Posicionados en el límite perimetral interior del dojo, pero orientados hacia afuera \(de) Tj
+0 -14 Td
+/F1 10 Tf
+(frente al Tawara\). Exige un giro inmediato para no salir del área.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alta) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(8) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Distancia media con zona delimitada) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Orientados a 180° entre sí y ubicados a la distancia media entre la línea Shikiri-Sen y el) Tj
+0 -14 Td
+/F1 10 Tf
+(límite interior del Tawara. Existirá un círculo en el dojo para delimitar el área donde el) Tj
+0 -14 Td
+/F1 10 Tf
+(robot podrá maniobrar para ubicar al contrincante antes de avanzar a la confrontación) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 6 de 10) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 3373 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(directa.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Alta) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(9. Inicio y duración del round) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Los participantes colocarán sus robots en la posición de arranque indicada por el juez.) Tj
+0 -14 Td
+/F1 10 Tf
+(Una vez posicionados en el dojo, quedará estrictamente prohibido alterar su orientación,) Tj
+0 -14 Td
+/F1 10 Tf
+(modificar su ubicación física, manipular los sensores o cambiar el programa precargado.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Arranque y retardo de seguridad: Tras la señal oficial de inicio emitida por el juez, los) Tj
+0 -14 Td
+/F1 10 Tf
+(robots deberán ejecutar un retardo de seguridad de 5 segundos de manera autónoma antes de) Tj
+0 -14 Td
+/F1 10 Tf
+(realizar cualquier movimiento o acción.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Duración: El tiempo límite o duración máxima de cada asalto será de 90 segundos.) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(10. Victoria, salida y repetición del round) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Criterio de victoria: Un robot ganará el asalto cuando logre empujar a su adversario y) Tj
+0 -14 Td
+/F1 10 Tf
+(hacer que este toque la superficie exterior del dojo \(el área que se encuentra más allá de) Tj
+0 -14 Td
+/F1 10 Tf
+(la línea blanca o Tawara\) antes de que el suyo lo haga.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Salida autónoma: Si un robot abandona el área válida de combate y toca el exterior por sus) Tj
+0 -14 Td
+/F1 10 Tf
+(propios movimientos \(sin haber sido empujado por el contrincante\), perderá el asalto) Tj
+0 -14 Td
+/F1 10 Tf
+(automáticamente.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Permanencia de ambos robots: Si los robots continúan en el área del dojo y terminan los) Tj
+0 -14 Td
+/F1 10 Tf
+(tres minutos, se dará por nulo el enfrentamiento y ninguno de los dos robots obtendrá) Tj
+0 -14 Td
+/F1 10 Tf
+(puntos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Empate por salida simultánea: Si ambos robots salen del dojo de forma simultánea y el juez) Tj
+0 -14 Td
+/F1 10 Tf
+(no puede determinar con certeza cuál tocó el exterior primero, se ordenará la repetición) Tj
+0 -14 Td
+/F1 10 Tf
+(del asalto utilizando la misma configuración de arranque.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Inmovilidad o bloqueo \(Regla de los 10 segundos\): Si ambos robots quedan bloqueados,) Tj
+0 -14 Td
+/F1 10 Tf
+(enganchados o sin posibilidad efectiva de resolver el combate durante un periodo continuo) Tj
+0 -14 Td
+/F1 10 Tf
+(de 10 segundos, el juez detendrá el enfrentamiento y ordenará la repetición del asalto) Tj
+0 -14 Td
+/F1 10 Tf
+(desde la misma posición.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Falla técnica: Si únicamente un robot queda inmóvil por una falla propia \(de programación,) Tj
+0 -14 Td
+/F1 10 Tf
+(mecánica, de batería, etc.\) durante el lapso de 10 segundos, perderá automáticamente el) Tj
+0 -14 Td
+/F1 10 Tf
+(asalto y se le otorgará la victoria a su adversario.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(11. Intervención, ajustes y fallas) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Prohibición de intervención: Una vez iniciado el asalto, ningún participante podrá tocar,) Tj
+0 -14 Td
+/F1 10 Tf
+(detener, reorientar o realizar modificaciones físicas o de software al robot. Cualquier) Tj
+0 -14 Td
+/F1 10 Tf
+(intervención no autorizada por el juez resultará en la pérdida automática del asalto para) Tj
+0 -14 Td
+/F1 10 Tf
+(el equipo infractor.) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 7 de 10) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 3217 >>
+stream
+BT
+50 755 Td
+/F1 10 Tf
+(Fallas externas: Si se presenta una anomalía o falla atribuible a las condiciones del) Tj
+0 -14 Td
+/F1 10 Tf
+(dojo, al entorno o a la organización del evento, el juez tendrá la facultad de detener el) Tj
+0 -14 Td
+/F1 10 Tf
+(combate y ordenar su repetición sin penalización alguna para los equipos involucrados.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(12. Clasificación y fase eliminatoria) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sistema de puntuación \(Primera fase\): Durante la primera fase del torneo, la clasificación) Tj
+0 -14 Td
+/F1 10 Tf
+(se definirá utilizando el siguiente sistema de puntaje:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Victoria del enfrentamiento: 3 puntos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Derrota: 0 puntos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Criterios de desempate: En caso de presentarse un empate en puntos en la tabla general, se) Tj
+0 -14 Td
+/F1 10 Tf
+(aplicará la clasificación por tiempos. Se le otorgará la posición superior \(o el pase a la) Tj
+0 -14 Td
+/F1 10 Tf
+(siguiente ronda\) al equipo que haya logrado expulsar a su contrincante en el menor tiempo) Tj
+0 -14 Td
+/F1 10 Tf
+(registrado durante sus victorias.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Eliminación directa \(Segunda fase\): La segunda fase del torneo se desarrollará bajo un) Tj
+0 -14 Td
+/F1 10 Tf
+(formato de eliminación directa, el cual podrá estructurarse en octavos de final, cuartos) Tj
+0 -14 Td
+/F1 10 Tf
+(de final, semifinales y la gran final, dependiendo del número total de equipos) Tj
+0 -14 Td
+/F1 10 Tf
+(clasificados. Durante esta etapa, cada enfrentamiento continuará disputándose al mejor de) Tj
+0 -14 Td
+/F1 10 Tf
+(tres asaltos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(13. Penalizaciones y descalificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Pérdida automática del asalto: Se declarará la pérdida inmediata del asalto en curso si un) Tj
+0 -14 Td
+/F1 10 Tf
+(participante o equipo incurre en alguna de las siguientes faltas:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Iniciar el movimiento del robot antes de la señal oficial o evadir deliberadamente el) Tj
+0 -14 Td
+/F1 10 Tf
+(retardo de seguridad obligatorio de 5 segundos.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tocar, manipular o controlar a distancia el robot una vez iniciado el combate.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Recibir instrucción o asistencia externa durante el desarrollo del asalto.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Modificar la configuración de arranque una vez establecida por el juez.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Interferir físicamente con el robot adversario \(utilizando las manos, cuerpo u objetos) Tj
+0 -14 Td
+/F1 10 Tf
+(ajenos al robot\).) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Descalificación del torneo: Un equipo será descalificado de manera definitiva de la) Tj
+0 -14 Td
+/F1 10 Tf
+(competencia por incurrir en cualquiera de las siguientes infracciones graves:) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Utilizar componentes, motores o sensores prohibidos o no declarados en la inspección) Tj
+0 -14 Td
+/F1 10 Tf
+(técnica.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Manipular o alterar deliberadamente el robot de otro competidor.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Causar daños intencionales al dojo o a la infraestructura del evento.) Tj
+0 -14 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 8 de 10) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Length 2433 >>
+stream
+BT
+50 755 Td
+0 -8 Td
+/F1 10 Tf
+(Emplear mecanismos peligrosos que atenten contra la integridad de los equipos o personas.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Interferir electrónicamente \(mediante Bluetooth, Wi-Fi, luz infrarroja, etc.\) con el robot) Tj
+0 -14 Td
+/F1 10 Tf
+(adversario.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Incurrir en conducta antideportiva grave hacia jueces, organizadores, competidores o) Tj
+0 -14 Td
+/F1 10 Tf
+(asistentes.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(14. Jueces, resultados y casos no previstos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Autoridad del juez: El juez será la máxima autoridad durante los enfrentamientos. Sus) Tj
+0 -14 Td
+/F1 10 Tf
+(funciones incluyen verificar las configuraciones de arranque, autorizar el inicio,) Tj
+0 -14 Td
+/F1 10 Tf
+(controlar el tiempo, determinar las salidas válidas, ordenar repeticiones, aplicar las) Tj
+0 -14 Td
+/F1 10 Tf
+(penalizaciones correspondientes y declarar al ganador. Las decisiones del juez durante el) Tj
+0 -14 Td
+/F1 10 Tf
+(combate tendrán carácter de inapelables.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Casos no previstos: Cualquier situación, anomalía o controversia no contemplada en el) Tj
+0 -14 Td
+/F1 10 Tf
+(presente documento será resuelta en conjunto por los jueces y el Comité Organizador. Sus) Tj
+0 -14 Td
+/F1 10 Tf
+(resoluciones se tomarán priorizando siempre la seguridad, la equidad, el juego limpio y el) Tj
+0 -14 Td
+/F1 10 Tf
+(propósito educativo del torneo.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Aceptación del reglamento: La inscripción al torneo implica la lectura, comprensión y) Tj
+0 -14 Td
+/F1 10 Tf
+(aceptación total e incondicional de este Reglamento Técnico, así como del Reglamento) Tj
+0 -14 Td
+/F1 10 Tf
+(General de Participantes.) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Ficha técnica de la competencia) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Elemento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Especificación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Robot autorizado) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Makeblock mBot 1 \(clásico\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Programación) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(mBlock \(100% autónomo\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Sensores permitidos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Máximo 2 de fábrica \(1 ultrasónico y 1 infrarrojo sigue líneas\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dojo \(Diámetro exterior\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(77 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dojo \(Altura\)) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 9 de 10) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 20 0 R >>
+endobj
+22 0 obj
+<< /Length 1117 >>
+stream
+BT
+50 755 Td
+/F2 11 Tf
+(2.5 cm) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Dojo \(Superficie\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Negra mate, plana y uniforme) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Borde blanco \(Tawara\)) Tj
+0 -14 Td
+0 -8 Td
+/F2 11 Tf
+(2.5 cm de ancho) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Líneas de inicio \(Shikiri-Sen\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(10 cm de largo × 1 cm de ancho) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Categorías) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Primaria alta y Secundaria) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Formato del enfrentamiento) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Al mejor de 3 asaltos \(máximo 3 por partida\)) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Asaltos necesarios para ganar) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(2 victorias) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Retardo de seguridad) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(5 segundos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Duración máxima por asalto) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(90 segundos) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(Tiempo para declarar bloqueo/inmovilidad) Tj
+0 -14 Td
+0 -8 Td
+/F1 10 Tf
+(10 segundos continuos) Tj
+0 -14 Td
+0 -8 Td
+ET
+BT /F1 8 Tf 285 28 Td (Pagina 10 de 10) Tj ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 22 0 R >>
+endobj
+24 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 25
+0000000000 65535 f 
+0000000009 00000 n 
+0000000106 00000 n 
+0000000208 00000 n 
+0000000327 00000 n 
+0000002984 00000 n 
+0000003120 00000 n 
+0000005386 00000 n 
+0000005522 00000 n 
+0000008493 00000 n 
+0000008629 00000 n 
+0000010547 00000 n 
+0000010685 00000 n 
+0000012303 00000 n 
+0000012441 00000 n 
+0000014566 00000 n 
+0000014704 00000 n 
+0000018130 00000 n 
+0000018268 00000 n 
+0000021538 00000 n 
+0000021676 00000 n 
+0000024162 00000 n 
+0000024300 00000 n 
+0000025470 00000 n 
+0000025608 00000 n 
+trailer
+<< /Size 25 /Root 24 0 R >>
+startxref
+25658
+%%EOF

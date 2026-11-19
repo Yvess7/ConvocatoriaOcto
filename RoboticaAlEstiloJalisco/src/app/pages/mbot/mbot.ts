@@ -22,7 +22,7 @@ export class MbotComponent extends RutaTorneoBase {
 
   /** Etapas con contenido propio y el color de fondo con el que empiezan y terminan. */
   readonly fondos: Record<string, FondoDetalle> = {
-    lanzamiento: { inicio: '#f6842b', fin: '#ffffff' },
+    lanzamiento: { inicio: '#f6842b', fin: '#7e22ce' },
     eliminatoria: { inicio: '#f0f9ff', fin: '#f0f9ff' },
   };
 
@@ -199,4 +199,9 @@ export class MbotComponent extends RutaTorneoBase {
     competidorA: { equipoId: 'eq-1', semilla: 1, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
     competidorB: { equipoId: 'eq-2', semilla: 2, nombre: 'Por definir', escuela: 'Por definir', puntaje: '0' },
   };
+
+  /** Desplazamiento suave interno hacia un anexo o de regreso a la convocatoria, sin transición de página. */
+  scrollSuaveA(id: string): void {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
