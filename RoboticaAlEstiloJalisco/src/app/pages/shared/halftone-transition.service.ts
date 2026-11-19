@@ -30,6 +30,11 @@ const FRAGMENT_COLORS: Record<string, string> = {
 
 const PATH_COLORS: Record<string, string> = {
   '/mbot': '#0284c7',
+  '/mbot/anexo-1': '#0284c7',
+  '/mbot/anexo-2': '#e81a4f',
+  '/mbot/anexo-3': '#059669',
+  '/mbot/anexo-4': '#f6842b',
+  '/mbot/anexo-6': '#7e22ce',
   '/octostudio': '#7a59eb',
   '/videos': '#e81a4f',
   '/registro': '#e81a4f',

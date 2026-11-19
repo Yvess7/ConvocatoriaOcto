@@ -1,0 +1,104 @@
+<!-- ANEXO 1: Fondo Azul Sky -->
+<section id="anexo-1" class="relative z-10 bg-sky-600 text-white py-14 sm:py-20 overflow-hidden">
+  <div data-gsap="fondo" data-vel="-0.3" class="absolute -left-10 top-16 w-44 h-44 bg-white/15 shape-octagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="0.35" class="absolute right-12 bottom-16 w-36 h-36 bg-white/15 shape-diamond pointer-events-none" aria-hidden="true"></div>
+
+  <div id="reglamento-mbot" class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-12" data-gsap="anexo-item">
+        <!-- Navegación rápida entre Convocatoria y Anexos -->
+    <nav class="flex flex-wrap items-center gap-2 pb-4 border-b border-white/20" aria-label="Navegación de anexos">
+      <a routerLink="/mbot" fragment="convocatoria-completa-mbot" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white hover:text-ink transition-colors text-xs sm:text-sm font-normal">&larr; Volver a Convocatoria mBot</a>
+      <span class="px-3.5 py-2 rounded-md bg-white text-ink text-xs sm:text-sm font-bold">Anexo 1 · mBot1</span>
+      <a routerLink="/mbot/anexo-2" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 2 · Seguidor</a>
+      <a routerLink="/mbot/anexo-3" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 3 · Sumo</a>
+      <a routerLink="/mbot/anexo-4" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 4 · Laberinto</a>
+      <a routerLink="/mbot/anexo-6" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 6 · Bitácora</a>
+    </nav>
+
+<div class="max-w-3xl">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 text-white text-xs uppercase tracking-widest font-normal mb-3">
+        Anexo 01 · Hardware Oficial
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl text-white font-bold tracking-tight">
+        mBot1, Componentes y Configuración
+      </h1>
+      <div class="mt-4 h-1.5 w-20 rounded-md bg-white"></div>
+      <p class="text-base sm:text-lg text-white/90 font-normal leading-relaxed mt-4">
+        El robot oficial del torneo es el mBot1 de Makeblock en su configuración estándar de fábrica. Toda programación y estrategia deberá desarrollarse en la plataforma mBlock (ide.mblock.cc) en bloques o código compatible.
+      </p>
+    </div>
+
+
+    <div class="space-y-10 pt-2">
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">1. ¿Qué es el mBot1?</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">El mBot1 es un robot educativo programable de la marca Makeblock, diseñado para la enseñanza de robótica, electrónica y pensamiento computacional. Se ensambla a partir de un chasis de aluminio, dos motores con reductora, ruedas, sensores de entorno y una placa de control principal llamada mCore. Permite ejecutar tareas autónomas como el seguimiento de líneas, la evasión de obstáculos y la navegación programada. </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">El mBot1 integra sensores ultrasónicos e infrarrojos para la percepción del entorno. El sensor ultrasónico se utiliza para medir distancias y detectar obstáculos frontales, mientras que los sensores infrarrojos identifican contrastes en la superficie de rodamiento (líneas). La placa de control mCore procesa las lecturas de los sensores y ejecuta las instrucciones del código cargado. Para su funcionamiento, el robot utiliza una fuente de alimentación interna (baterías) y un módulo de comunicación inalámbrica (Bluetooth o 2.4G) para su configuración y programación.</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">2. Entorno de Programación</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">La programación y la estrategia de cada equipo deberán desarrollarse mediante la plataforma mBlock (disponible en: https://ide.mblock.cc/), un entorno de programación basado en bloques que facilita la estructuración algorítmica. A través de mBlock, los participantes programarán el comportamiento de los motores y la lectura de los sensores para dotar al robot de autonomía en las tres pruebas del torneo (Seguidor de Línea, Laberinto y Sumo). </p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">3. Dimensiones y Peso de Referencia (Robot Ensamblado)</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Largo:</strong> 19 cm</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Ancho:</strong> 13 cm</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Alto:</strong> 13 cm</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Peso aproximado:</strong> 500 g</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">4. Inventario Oficial de Componentes del mBot1 Makeblock</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Componentes permitidos para la construcción del robot (Kit Básico). - Para garantizar la equidad del torneo, solo estas piezas están autorizadas para el ensamblaje de los robots participantes:</p>
+          <div class="overflow-x-auto"><table class="w-full text-left text-sm border border-white/30 rounded-md overflow-hidden"><tbody class="divide-y divide-white/20"><tr><th class="p-3 align-top font-normal text-white bg-white/15">Componente</th><th class="p-3 align-top font-normal text-white bg-white/15">Cantidad</th><th class="p-3 align-top font-normal text-white bg-white/15">Características para Identificación</th></tr><tr><td class="p-3 align-top text-white">Chasis de aluminio</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Estructura metálica original mBot1 con perforaciones estandarizadas para montaje.</td></tr><tr><td class="p-3 align-top text-white">Placa de control mCore</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Placa Makeblock basada en el microcontrolador ATmega328, con cuatro puertos RJ25 y dos conectores de motor.</td></tr><tr><td class="p-3 align-top text-white">Motores con reductora (Tipo TT)</td><td class="p-3 align-top text-white/90">2</td><td class="p-3 align-top text-white/90">Motores originales de 6 V y 200 RPM para tracción independiente de las ruedas.</td></tr><tr><td class="p-3 align-top text-white">Ruedas motrices con neumáticos</td><td class="p-3 align-top text-white/90">2</td><td class="p-3 align-top text-white/90">Llantas plásticas tipo Plastic Timing Pulley 90T con cubierta de goma antideslizante.</td></tr><tr><td class="p-3 align-top text-white">Rueda loca de apoyo</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Rueda de apoyo omnidireccional<br>(Mini Caster Wheel).</td></tr><tr><td class="p-3 align-top text-white">Sensor ultrasónico (Me Ultrasonic Sensor)</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Módulo emisor/receptor para medición de distancia y evasión de obstáculos.</td></tr><tr><td class="p-3 align-top text-white">Sensor seguidor de línea<br>(Me Line Follower)</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Módulo orientado al suelo con dos sensores infrarrojos para detección de contraste.</td></tr><tr><td class="p-3 align-top text-white">Portapilas</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Soporte para 4 pilas AA<br>(o batería LiPo según la versión del kit)</td></tr><tr><td class="p-3 align-top text-white">Carcasa protectora mCore</td><td class="p-3 align-top text-white/90">1 conjunto</td><td class="p-3 align-top text-white/90">Cubierta plástica translúcida de protección para la placa mCore.</td></tr><tr><td class="p-3 align-top text-white">Módulo inalámbrico</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Módulo de comunicación Bluetooth o 2.4G<br>(según la versión oficial del kit).</td></tr><tr><td class="p-3 align-top text-white">Cables RJ25</td><td class="p-3 align-top text-white/90">2</td><td class="p-3 align-top text-white/90">Cables de conexión rápida para vincular los sensores con la placa mCore.</td></tr><tr><td class="p-3 align-top text-white">Cable USB</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Cable de datos para transferencia de código desde la computadora a la placa.</td></tr><tr><td class="p-3 align-top text-white">Control remoto infrarrojo</td><td class="p-3 align-top text-white/90">1</td><td class="p-3 align-top text-white/90">Mando de control remoto incluido en el kit de fábrica.</td></tr><tr><td class="p-3 align-top text-white">Tornillo M3 de 25 mm</td><td class="p-3 align-top text-white/90">4</td><td class="p-3 align-top text-white/90">Tornillo metálico largo de rosca fina M3 con cabeza redonda/cilíndrica.</td></tr><tr><td class="p-3 align-top text-white">Tuerca M3</td><td class="p-3 align-top text-white/90">4</td><td class="p-3 align-top text-white/90">Pieza metálica hexagonal pequeña con rosca interna métrica de 3 mm.</td></tr><tr><td class="p-3 align-top text-white">Tornillo autorroscante M2.2 de 9 mm</td><td class="p-3 align-top text-white/90">2</td><td class="p-3 align-top text-white/90">Tornillo metálico pequeño con punta afilada y rosca ancha diseñada para fijación en plástico.</td></tr><tr><td class="p-3 align-top text-white">Tornillo M4 de 8 mm</td><td class="p-3 align-top text-white/90">8</td><td class="p-3 align-top text-white/90">Tornillo metálico corto de cuerpo más grueso (M4) con cabeza de botón o gota de sebo.</td></tr></tbody></table></div>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">5. Configuración básica de fábrica del mBot1.</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Conforme a la guía para principiantes de mBot1, publicada en sitio oficial del Makeblock en el apartado de ensamblaje del mBot1 (https://support.makeblock.com/hc/en-us/articles/12822859943959-A-Beginner-s-Guide-to-mBot#Assemble%20mBot), en el apartado de ensamblar el mBot1  del paso 1 al paso 11.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+      <div class="max-w-xl space-y-1">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Documento del Anexo 1</span>
+        <p class="text-base text-white/90 font-normal">Consulta la tabla completa de tornillería, sensores y configuración básica de fábrica.</p>
+      </div>
+      <div class="flex flex-wrap gap-3 shrink-0">
+        <a
+          href="/docs/mbot/Anexo-1-mBot1-Componentes.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-7 py-3.5 rounded-md bg-white text-sky-700 hover:bg-brand-red-dark hover:text-white transition-colors font-normal text-base tracking-wider"
+        >
+          LEER ANEXO EN PDF
+        </a>
+        <a routerLink="/mbot" fragment="convocatoria-completa-mbot" class="px-5 py-3.5 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors font-normal text-base cursor-pointer">Volver a la Convocatoria</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Transición ondulada hacia el Footer naranja institucional -->
+<div class="relative w-full overflow-hidden leading-none bg-sky-600 -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+    <path d="M0,38 C220,70 480,14 760,46 C1040,76 1260,22 1440,50 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>

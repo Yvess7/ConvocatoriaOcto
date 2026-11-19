@@ -1,0 +1,247 @@
+<!-- ANEXO 2: Fondo Rojo (Seguidor de Línea) -->
+<section id="anexo-2" class="relative z-10 bg-brand-red text-white py-14 sm:py-20 overflow-hidden">
+  <div data-gsap="fondo" data-vel="0.3" class="absolute -right-10 top-14 w-48 h-48 bg-white/15 shape-hexagon pointer-events-none" aria-hidden="true"></div>
+  <div data-gsap="fondo" data-vel="-0.25" class="absolute left-10 bottom-14 w-32 h-32 bg-white/15 shape-cross pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 space-y-12" data-gsap="anexo-item">
+        <!-- Navegación rápida entre Convocatoria y Anexos -->
+    <nav class="flex flex-wrap items-center gap-2 pb-4 border-b border-white/20" aria-label="Navegación de anexos">
+      <a routerLink="/mbot" fragment="convocatoria-completa-mbot" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white hover:text-ink transition-colors text-xs sm:text-sm font-normal">&larr; Volver a Convocatoria mBot</a>
+      <a routerLink="/mbot/anexo-1" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 1 · mBot1</a>
+      <span class="px-3.5 py-2 rounded-md bg-white text-ink text-xs sm:text-sm font-bold">Anexo 2 · Seguidor</span>
+      <a routerLink="/mbot/anexo-3" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 3 · Sumo</a>
+      <a routerLink="/mbot/anexo-4" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 4 · Laberinto</a>
+      <a routerLink="/mbot/anexo-6" class="px-3.5 py-2 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors text-xs sm:text-sm font-normal">Anexo 6 · Bitácora</a>
+    </nav>
+
+<div class="max-w-3xl md:ml-auto md:text-right">
+      <span class="inline-block px-3.5 py-1 rounded-md bg-white/20 text-white text-xs uppercase tracking-widest font-normal mb-3">
+        Anexo 02 · Reglamento Técnico · 30 Puntos
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl text-white font-bold tracking-tight">
+        Desafío: Seguidor de Línea
+      </h1>
+      <div class="mt-4 h-1.5 w-20 rounded-md bg-white md:ml-auto"></div>
+      <p class="text-base sm:text-lg text-white/90 font-normal leading-relaxed mt-4">
+        Programar el mBot1 para completar de manera 100 % autónoma un circuito modular de alto contraste en el menor tiempo posible. Cada equipo cuenta con tres intentos y su marca oficial es el promedio de sus dos mejores recorridos.
+      </p>
+    </div>
+
+
+    <div class="space-y-10 pt-2">
+      <div class="space-y-1"><p class="text-xs sm:text-sm uppercase tracking-widest text-white/80 font-normal">REGLAMENTO TÉCNICO</p><p class="text-xs sm:text-sm uppercase tracking-widest text-white/80 font-normal">TORNEO DE ROBÓTICA AL ESTILO JALISCO: MBOT TRIPLE ARENA 2026</p><p class="text-xs sm:text-sm uppercase tracking-widest text-white/80 font-normal">DESAFÍO: SEGUIDOR DE LÍNEA</p></div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">1. Objetivo</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">El propósito del desafío es programar un robot mBot1 de Makeblock para que complete el recorrido de una pista de manera autónoma. El robot deberá seguir una línea trazada desde el punto de salida hasta la meta en el menor tiempo posible. </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Cada equipo contará con tres intentos; el tiempo oficial de competencia se calculará promediando sus dos mejores recorridos. </p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">2. Especificaciones del robot</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">El único modelo autorizado para la competencia es el mBot1 de Makeblock (versión clásica); queda estrictamente prohibido el uso de cualquier otra plataforma. El robot debe conservar su estructura y sistema de locomoción de fábrica, lo cual incluye de manera obligatoria:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Chasis original.</li><li>Placa controladora original.</li><li>Dos motores.</li><li>Dos ruedas motrices.</li><li>Rueda de apoyo original.</li><li>Batería compatible y el cableado necesario para su funcionamiento.</li><li>Pintar el robot.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">3. Sensores y estética del robot</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Los robots solo podrán estar equipados con un máximo de dos sensores, los cuales deben ser estrictamente los incluidos de fábrica:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Sensor ultrasónico Makeblock/mBlock.</li><li>Sensor infrarrojo (siguelíneas) Makeblock/mBlock.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Modificaciones estéticas permitidas:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Colocación de etiquetas o calcomanías decorativas para la identificación del equipo.</li><li>Aplicación de pintura en el chasis o componentes del robot.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">4. Programación y autonomía</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">La programación del robot debe realizarse exclusivamente en la plataforma mBlock (https://ide.mblock.cc/). El código tiene que ser desarrollado y comprendido en su totalidad por los integrantes del equipo.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">La programación deberá permitir al robot completar la pista de forma 100 % autónoma.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Prohibiciones durante el recorrido: </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Una vez que el robot inicie la prueba, queda estrictamente prohibido:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Controlarlo mediante Bluetooth, Wi-Fi o cualquier tipo de mando a distancia.</li><li>Enviar comandos o instrucciones desde una computadora o dispositivo móvil.</li><li>Alterar el programa mientras se está ejecutando.</li><li>Tocar, empujar o reorientar físicamente al robot.</li><li>Manipular la posición o ángulo de los sensores.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Ajustes entre recorridos: </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Los equipos podrán modificar, calibrar o cargar un nuevo programa en sus robots únicamente entre cada intento, siempre antes de iniciar la prueba.</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">5. Características de la pista</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Diseño y dimensiones: </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">La pista estará conformada por módulos cuadrados intercambiables de 60 x 60 cm. Estos se ensamblarán en forma de cuadrícula, pudiendo presentar una de las siguientes dos configuraciones oficiales:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Opción 1 (8 módulos): 2 de ancho por 4 de largo (dimensiones totales de 120 x 240 cm).</li><li>Opción 2 (12 módulos): 3 de ancho por 4 de largo (dimensiones totales de 180 x 240 cm).</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Elementos del recorrido: </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Cada módulo contendrá un segmento distinto del circuito. El trazado final del recorrido podrá incluir:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Líneas rectas.</li><li>Curvas simples.</li><li>Curvas en «S».</li><li>Cambios de dirección.</li><li>Combinaciones de rectas y curvas.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">(A continuación, se muestran ejemplos y sugerencias para el armado de las pistas).</p>
+          <img src="/images/mbot/anexo-2-img1.webp" alt="Ilustración del anexo" loading="lazy" class="rounded-lg max-w-full h-auto shadow-lg">
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">6. Especificaciones de los módulos y configuración de la pista</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Características de los módulos:</strong> Todos los módulos compartirán las siguientes especificaciones físicas y de trazado:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li><strong class="font-normal text-white">Material:</strong> MDF.</li><li><strong class="font-normal text-white">Color de fondo:</strong> MDF en su tono natural.</li><li><strong class="font-normal text-white">Color de la línea:</strong> Negro mate.</li><li><strong class="font-normal text-white">Grosor de la línea:</strong> De 1.9 a 3 cm.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Configuración variable del recorrido:</strong> No existirá un circuito fijo. Los 8 o 12 módulos se podrán intercambiar y reorganizar para generar diferentes trazados. El comité organizador determinará la configuración oficial dependiendo de la fase de la competencia.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Pistas de entrenamiento y competencia:</strong> Previo al torneo, se publicará un catálogo de 4 pistas de entrenamiento para Primaria Alta (4.º, 5.º y 6.º grado) y 4 pistas para Secundaria (1.º, 2.º y 3.º grado). Cabe destacar que las pistas del concurso podrán ser diferentes a las de entrenamiento.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Para garantizar la equidad, todos los equipos evaluados en una ronda competirán sobre el mismo recorrido y bajo idénticas condiciones. El comité evaluador será el responsable de modificar el trazado entre cada fase.</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">7. Inspección técnica</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Antes de iniciar la competencia, todos los robots deberán aprobar una inspección oficial en la que se verificará estrictamente lo siguiente:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Que sea un modelo mBot1 de Makeblock con la configuración autorizada.</li><li>Que cuente únicamente con los dos sensores de fábrica permitidos (un ultrasónico y un infrarrojo de la marca Makeblock/mBlock).</li><li>Que no incluya motores, mecanismos, controladores o sensores adicionales no autorizados.</li><li>Que su funcionamiento sea totalmente autónomo y opere en condiciones seguras.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Proceso de validación y ajustes:</strong> Cada equipo tendrá un máximo de dos oportunidades para superar esta inspección. Si el robot no aprueba la primera inspección, el equipo dispondrá de 5 minutos para realizar ajustes de código, calibración, cambio de baterías o reparaciones menores.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">De no aprobar la segunda inspección, el equipo quedará automáticamente descalificado.</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">8. Desarrollo de los intentos</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Número de intentos: Cada equipo dispondrá de tres intentos oficiales. Cada uno será cronometrado de manera independiente y tendrá una duración máxima de 3 minutos.</li><li>Inicio y fin del recorrido: El reloj arrancará con la señal de salida del juez de pista y se detendrá únicamente cuando el robot cruce la línea de meta, siempre y cuando haya completado el circuito de forma correcta.</li><li>Tiempo continuo: El cronómetro no se pausará bajo ninguna circunstancia, ni siquiera por fallas técnicas del robot; todo el tiempo que transcurra será contabilizado.</li><li>Tiempo límite excedido: Si el robot no logra terminar la pista dentro del máximo de 3 minutos, el intento se dará por concluido, marcando recorrido incompleto y no se registrará tiempo en la tabla.</li><li>Resultado final: El tiempo oficial con el que el equipo competirá en la clasificación general se calculará promediando sus dos mejores marcas.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">9. Pérdida de la línea</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Se considera que existe una "pérdida de línea" cuando el robot se sale por completo del recorrido trazado y pierde la trayectoria.</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Recuperación autónoma: Ante esta situación, el equipo debe ser paciente y permitir que el robot intente reencontrar y retomar su camino por sus propios medios (mediante su programación).</li><li>Cero contacto: Queda estrictamente prohibido que los integrantes del equipo toquen, empujen, manipulen o reposicionen el robot mientras este se encuentre en la pista.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">10. Reparaciones y manejo de fallas</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Cualquier reparación o ajuste físico estará permitido exclusivamente durante el tiempo de espera entre cada intento. Si el robot presenta alguna falla, el equipo deberá seguir este protocolo:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Informar inmediatamente al juez de pista.</li><li>Realizar las reparaciones necesarias.</li><li>Notificar al juez en cuanto el robot vuelva a estar operativo.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Llamados a competencia y penalización:</strong> Si un equipo es llamado a la pista por tercera ocasión para realizar su intento y su robot aún no se encuentra listo, perderá dicho recorrido por default (abandono). No se registrara tiempo en la tabla para ese intento perdido.</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">11. Programación entre intentos y asesor</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Autonomía del equipo:</strong> Los estudiantes tienen la libertad de mejorar su estrategia entre cada intento. Durante el evento, los integrantes del equipo están autorizados para:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Cargar un programa diferente en el robot.</li><li>Modificar o ajustar el código existente.</li><li>Manipular físicamente el robot (siempre y cuando se respete la configuración autorizada).</li><li>Realizar cualquier reparación por cuenta propia.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Rol del asesor:</strong> Todas las decisiones técnicas y la ejecución del trabajo corresponden exclusivamente a los alumnos. El asesor funcionará únicamente como guía u orientador y tiene estrictamente prohibido:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Escribir, corregir o modificar directamente el código en la computadora.</li><li>Tocar o manipular el robot durante las fases de preparación, competencia o tiempos de reparación.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">12. Intervención humana y sanciones</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Prohibiciones durante el recorrido:</strong> Mientras el robot se encuentre en la pista realizando su prueba, queda estrictamente prohibido:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Cambiarlo de posición o reorientarlo manualmente.</li><li>Regresarlo a la línea en caso de que se salga del trayecto.</li><li>Ajustar físicamente los sensores.</li><li>Modificar el programa en ejecución.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Intervenciones y penalizaciones: </p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Cualquier intervención física o técnica por parte del equipo debe contar siempre con la autorización previa del juez de pista. Realizar una intervención no autorizada dará lugar, a criterio del juez, a una de las siguientes sanciones:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Penalización de tiempo (se sumará un minuto al tiempo final del recorrido).</li><li>Obligación de reiniciar la prueba desde la salida.</li><li>Anulación total del intento.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">13. Cálculo del tiempo oficial por recorrido</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Reloj continuo: El tiempo final del intento es el total transcurrido desde que inicia la prueba hasta que el robot cruza la meta. Dado que el cronómetro nunca se pausa, el tiempo final registrado incluirá de manera automática cualquier demora o falla que haya ocurrido en la pista (por ejemplo, un registro de 2:08.40 ya contempla los retrasos, pues el reloj siguió corriendo).</li><li>Intentos inconclusos<strong class="font-normal text-white">:</strong> Si el robot no logra completar el circuito dentro del límite de tiempo establecido, el intento se dará por finalizado y no se le asignará tiempo.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">14. Clasificación y evaluación</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Cálculo del tiempo oficial:</strong> Cada equipo realizará tres intentos oficiales. Para definir su posición en la clasificación, se descartará su peor marca y se promediarán sus dos mejores tiempos. Los equipos se ordenarán en la tabla general de menor a mayor tiempo oficial promedio.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Sistema de puntuación:</strong> El equipo que logre el tiempo oficial promedio más bajo obtendrá el primer lugar y recibirá 30 puntos. El segundo mejor tiempo recibirá 29 puntos, el tercero 28, y así sucesivamente en orden descendente.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Ejemplo de evaluación:</p>
+          <div class="overflow-x-auto"><table class="w-full text-left text-sm border border-white/30 rounded-md overflow-hidden"><tbody class="divide-y divide-white/20"><tr><td class="p-3 align-top text-white">Intento</td><td class="p-3 align-top text-white/90">Tiempo del recorrido</td><td class="p-3 align-top text-white/90">Suma<br>(2 mejores tiempos)</td><td class="p-3 align-top text-white/90">Tiempo Oficial (Promedio)</td></tr><tr><td class="p-3 align-top text-white">1</td><td class="p-3 align-top text-white/90">2:05.30</td><td class="p-3 align-top text-white/90"></td><td class="p-3 align-top text-white/90"></td></tr><tr><td class="p-3 align-top text-white">2</td><td class="p-3 align-top text-white/90">1:48.20</td><td class="p-3 align-top text-white/90">3:44.00</td><td class="p-3 align-top text-white/90">1:52.00</td></tr><tr><td class="p-3 align-top text-white">3</td><td class="p-3 align-top text-white/90">1:55.80</td><td class="p-3 align-top text-white/90"></td><td class="p-3 align-top text-white/90"></td></tr></tbody></table></div>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Publicación de resultados:</strong> Para garantizar la máxima transparencia, la tabla oficial será pública y mostrará:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Nombre del equipo.</li><li>Tiempo registrado en cada uno de los tres recorridos.</li><li>Tiempo oficial final (promedio de los dos mejores).</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">15. Criterios de desempate</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">En caso de que dos o más equipos obtengan exactamente el mismo tiempo oficial promedio, el desempate se resolverá de la siguiente manera:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Revisión del intento descartado: Se comparará el tiempo del tercer recorrido (el que fue descartado al calcular el promedio). El equipo que haya registrado el menor tiempo en este intento se llevará la ventaja.</li><li>Muerte súbita: Si el empate persiste tras esta comparación, se llevará a cabo un intento adicional de eliminación directa ("muerte súbita") en la pista para definir al ganador definitivo.</li></ul>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white/60 pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">16. Penalizaciones y descalificación</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed">Las siguientes acciones podrán ser motivo de advertencia, penalización de tiempo, anulación del intento o descalificación directa del torneo:</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Faltas técnicas y operativas:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Utilizar más de los dos sensores autorizados o emplear componentes no permitidos.</li><li>Modificar la configuración física del robot después de haber aprobado la inspección técnica.</li><li>Controlar el robot de forma remota o mediante conexión inalámbrica.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Faltas en la pista:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Tocar el robot durante un intento sin la autorización explícita del juez.</li><li>Recibir ayuda externa (de asesores, compañeros o público) durante el desarrollo de la prueba.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">Faltas de conducta y seguridad:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Alterar, dañar o mover deliberadamente los módulos de la pista.</li><li>Manipular los robots de otros equipos o interferir con la participación de otro competidor.</li><li>Realizar acciones que pongan en riesgo la integridad de las personas, de los equipos o de las instalaciones.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed">La gravedad de la sanción será determinada de manera inapelable por los jueces, conforme a lo establecido en el Reglamento General y analizando las circunstancias específicas de la falta.</p>
+        </div>
+      </div>
+      <div data-gsap="anexo-item" class="space-y-4 pt-8 border-t border-white/20">
+        <div class="border-l-4 border-white pl-5">
+          <h4 class="text-xl sm:text-2xl text-white font-bold tracking-tight">17. Autoridad de los jueces y disposiciones finales</h4>
+        </div>
+        <div class="space-y-3 pl-5">
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Atribuciones del jurado:</strong> Los jueces representan la máxima autoridad en la pista y sus decisiones son definitivas. Sus responsabilidades incluyen:</p>
+          <ul class="list-disc pl-6 space-y-1.5 text-base text-white/90 font-normal leading-relaxed"><li>Validar la inspección técnica y física de los robots.</li><li>Autorizar los arranques y cronometrar los recorridos.</li><li>Dictaminar cuándo un robot pierde la línea y validar la llegada a la meta.</li><li>Aplicar las penalizaciones correspondientes y asentar los resultados oficiales.</li></ul>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Casos no previstos:</strong> Cualquier situación, duda o controversia que no esté explícitamente contemplada en este documento será resuelta por el jurado y el Comité Organizador. Sus decisiones tendrán carácter inapelable y se tomarán buscando siempre proteger la seguridad, la equidad, el juego limpio y el propósito educativo del torneo.</p>
+          <p class="text-base text-white/90 font-normal leading-relaxed"><strong class="font-normal text-white">Aceptación de las normas:</strong> La inscripción y participación en el desafío "Seguidor de Línea" implica la lectura, comprensión y aceptación absoluta del presente Reglamento Técnico, así como del Reglamento General de Participantes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+      <div class="max-w-xl space-y-1">
+        <span class="text-xs uppercase tracking-widest text-white/80 font-normal block">Documento del Anexo 2</span>
+        <p class="text-base text-white/90 font-normal">Revisa las reglas completas de pérdida de línea, reparaciones, tiempos y criterios de jueces.</p>
+      </div>
+      <div class="flex flex-wrap gap-3 shrink-0">
+        <a
+          href="/docs/mbot/Anexo-2-Seguidor-de-Linea.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-7 py-3.5 rounded-md bg-white text-brand-red hover:bg-brand-red-dark hover:text-white transition-colors font-normal text-base tracking-wider"
+        >
+          LEER ANEXO EN PDF
+        </a>
+        <a routerLink="/mbot" fragment="convocatoria-completa-mbot" class="px-5 py-3.5 rounded-md bg-white/15 text-white hover:bg-white/25 transition-colors font-normal text-base cursor-pointer">Volver a la Convocatoria</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Transición ondulada hacia el Footer naranja institucional -->
+<div class="relative w-full overflow-hidden leading-none bg-brand-red -mb-px z-20 pointer-events-none">
+  <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-12 sm:h-16 lg:h-20 text-brand-orange fill-current block" aria-hidden="true">
+    <path d="M0,54 C190,18 460,64 740,26 C1020,-4 1260,56 1440,32 L1440,80 L0,80 Z"></path>
+  </svg>
+</div>

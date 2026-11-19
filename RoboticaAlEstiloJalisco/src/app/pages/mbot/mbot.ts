@@ -22,7 +22,7 @@ export class MbotComponent extends RutaTorneoBase {
 
   /** Etapas con contenido propio y el color de fondo con el que empiezan y terminan. */
   readonly fondos: Record<string, FondoDetalle> = {
-    lanzamiento: { inicio: '#f6842b', fin: '#7e22ce' },
+    lanzamiento: { inicio: '#f6842b', fin: '#e81a4f' },
     eliminatoria: { inicio: '#f0f9ff', fin: '#f0f9ff' },
   };
 

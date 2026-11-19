@@ -1171,7 +1171,7 @@
 <div #flotantes class="contents">
 <!-- Riel de progreso: el icono de la etapa actual despliega su título al lado -->
 <aside
-  class="fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-2 transition-opacity duration-300 lg:flex"
+  class="fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-1.5 2xl:gap-2 transition-opacity duration-300 lg:flex"
   [class.opacity-100]="enCamino()"
   [class.opacity-0]="!enCamino()"
   [class.pointer-events-none]="!enCamino()"
@@ -1180,19 +1180,19 @@
   @for (e of etapas(); track e.paso.id) {
     <button
       type="button"
-      class="group flex items-center rounded-lg p-1.5 shadow-md outline-none transition-colors duration-300 focus-visible:outline-3 focus-visible:outline-brand-orange"
+      class="group flex items-center rounded-lg p-1 2xl:p-1.5 shadow-md outline-none transition-colors duration-300 focus-visible:outline-3 focus-visible:outline-brand-orange"
       [style.background-color]="actual() === e.i ? e.color : '#ffffff'"
       [attr.aria-current]="actual() === e.i ? 'step' : null"
       [attr.aria-label]="'Ir a ' + e.paso.titulo"
       (click)="saltar(e.i, $any($event.currentTarget))"
     >
       <span
-        [class]="'overflow-hidden whitespace-nowrap text-sm transition-all duration-300 group-hover:max-w-56 group-hover:pl-2 group-hover:pr-3 group-hover:opacity-100 group-focus-visible:max-w-56 group-focus-visible:pl-2 group-focus-visible:pr-3 group-focus-visible:opacity-100 ' + (actual() === e.i ? 'max-w-56 pl-2 pr-3 text-white opacity-100' : 'max-w-0 text-ink opacity-0')"
+        [class]="'overflow-hidden whitespace-nowrap text-xs 2xl:text-sm transition-all duration-300 group-hover:max-w-48 group-hover:pl-2 group-hover:pr-2.5 group-hover:opacity-100 group-focus-visible:max-w-48 group-focus-visible:pl-2 group-focus-visible:pr-2.5 group-focus-visible:opacity-100 ' + (actual() === e.i ? 'max-w-0 opacity-0 2xl:max-w-48 2xl:pl-2 2xl:pr-2.5 text-white 2xl:opacity-100' : 'max-w-0 text-ink opacity-0')"
       >
         {{ e.paso.titulo }}
       </span>
       <span
-        [class]="'block size-10 rounded-md bg-white/0 bg-center bg-no-repeat bg-size-[150%] transition-opacity ' + (actual() === e.i ? 'opacity-100' : 'opacity-60 group-hover:opacity-100')"
+        [class]="'block size-7 xl:size-8 2xl:size-9 rounded-md bg-white/0 bg-center bg-no-repeat bg-size-[150%] transition-opacity ' + (actual() === e.i ? 'opacity-100' : 'opacity-60 group-hover:opacity-100')"
         [style.background-image]="imagenIcono(e.icono)"
       ></span>
     </button>
